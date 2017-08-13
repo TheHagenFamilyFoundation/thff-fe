@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-letintmenu',
+  selector: 'letintmenu',
   templateUrl: './letintmenu.component.html',
   styleUrls: ['./letintmenu.component.css']
 })
