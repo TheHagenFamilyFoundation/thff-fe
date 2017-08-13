@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from './_guards/auth.guard';
+
 //Home
 import { HomeComponent } from './home/home.component'
 
@@ -8,10 +10,17 @@ import { HomeComponent } from './home/home.component'
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
 
+//letintmenu
+import { LetintmenuComponent } from './letintmenu/letintmenu.component'
+
 const appRoutes: Routes = [
+    { path: '', component: HomeComponent },
+    //login
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: '', component: HomeComponent },
+
+    { path: 'letintmenu', component: LetintmenuComponent, canActivate: [AuthGuard] },
+
     { path: '**', redirectTo: '' }
 ];
 
