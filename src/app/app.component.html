@@ -9,7 +9,6 @@
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <button md-button routerLink="/login">Login</button>
     <button md-button routerLink="/register">Register</button>
-    <button md-button routerLink="/dashboard">Dashboard</button>
   </div>
   <button md-button [md-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
      <md-icon>menu</md-icon>
@@ -18,7 +17,6 @@
 </md-toolbar>
 <md-menu x-position="before" #menu="mdMenu">
   <button md-menu-item routerLink="/login">Login</button>
-  <button md-menu-item routerLink="/dashboard">Dashboard</button>
 </md-menu>
 
 <router-outlet></router-outlet>
