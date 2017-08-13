@@ -9,14 +9,14 @@ import { AppRoutingModule } from './app.routing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AuthGuard } from './_guards/auth.guard';
+
 import { MdGridListModule } from '@angular/material';
 import { MdButtonModule, MdCheckboxModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
-
-
 
 //Components
 
@@ -25,14 +25,18 @@ import { HomeComponent } from './home/home.component'
 
 //Login
 import { LoginComponent } from './login/login.component'
-import { RegisterComponent } from './register/register.component'
+import { RegisterComponent } from './register/register.component';
+
+
+import { LetintmenuComponent } from './letintmenu/letintmenu.component';
+import { DirectorsMenuComponent } from './directors-menu/directors-menu.component'
 
 @NgModule({
     declarations: [AppComponent,
         //Home
         HomeComponent,
         //login
-        LoginComponent, RegisterComponent
+        LoginComponent, RegisterComponent, LetintmenuComponent, DirectorsMenuComponent
     ],
     imports: [BrowserModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
@@ -41,5 +45,8 @@ import { RegisterComponent } from './register/register.component'
         MdGridListModule, MdButtonModule, MdCheckboxModule, MdInputModule, MdSidenavModule
     ],
     bootstrap: [AppComponent],
+    providers: [
+        AuthGuard
+    ]
 })
 export class AppModule { }
