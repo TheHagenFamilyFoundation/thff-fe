@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
@@ -38,7 +40,7 @@ import { DirectorsMenuComponent } from './directors-menu/directors-menu.componen
         //login
         LoginComponent, RegisterComponent, LetintmenuComponent, DirectorsMenuComponent
     ],
-    imports: [BrowserModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
+    imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
         FlexLayoutModule,//.forRoot(),
         //Material Design
