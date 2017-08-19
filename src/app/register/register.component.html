@@ -3,19 +3,19 @@
 </div>
 <div align="center">
     <md-input-container>
-        <input mdInput placeholder="Username" value="">
+        <input mdInput placeholder="Username" value="" required [(ngModel)]="userName">
     </md-input-container>
     <br>
     <md-input-container>
-        <input mdInput placeholder="Email" value="">
+        <input mdInput placeholder="Email" value="" required [(ngModel)]="email">
     </md-input-container>
     <br>
     <md-input-container>
-        <input mdInput placeholder="Password" value="">
+        <input mdInput placeholder="Password" value="" type="password" required [(ngModel)]="password">
     </md-input-container>
     <br>
     <md-input-container>
-        <input mdInput placeholder="Confirm Password" value="">
+        <input mdInput placeholder="Confirm Password" value="" type="password" required [(ngModel)]="confirmPassword">
     </md-input-container>
     <br>
     <button md-raised-button (click)="register()">Register</button>
