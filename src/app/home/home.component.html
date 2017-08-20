@@ -1,7 +1,12 @@
 <div align="center">
     <h2>{{title}}</h2>
 </div>
-<h1>Hi {{currentUser.username}}!</h1>
+<div *ngIf="authService.authenticated">
+    <h1>Hi {{currentUser.username}}!</h1>
+</div>
+<div *ngIf="!authService.authenticated">
+    Please Login
+</div>
 <!--<nav>
     <ul>
         <li><a [routerLink]="['/Login']">Login</a></li>
