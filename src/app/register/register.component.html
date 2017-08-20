@@ -5,10 +5,16 @@
     <md-input-container>
         <input mdInput placeholder="Username" value="" required [(ngModel)]="userName" (ngModelChange)="UsernameChange($event)">
     </md-input-container>
+    <div *ngIf="ShowUserNameError">
+        That User Name is already taken
+    </div>
     <br>
     <md-input-container>
         <input mdInput placeholder="Email" value="" required [(ngModel)]="email" (ngModelChange)="EmailChange($event)">
     </md-input-container>
+    <div *ngIf="ShowEmailError">
+        That Email is already taken
+    </div>
     <br>
     <!-- <div class="password"> -->
     <md-input-container>
