@@ -35,6 +35,10 @@ export class RegisterComponent implements OnInit {
   ValidEmail = false;
   ValidPassword = false;
 
+  ShowUserNameError = false;
+  ShowEmailError = false;
+  ShowPasswordError = false;
+
   CanRegister = false;
 
   constructor(private router: Router, private http: HttpClient) { }
@@ -94,28 +98,15 @@ export class RegisterComponent implements OnInit {
 
     console.log(event);
 
-    let validUser = false;
-
     if (this.userName != "") {
 
-      this.ValidUser();
+      this.ValidUserCheck();
 
-      // validUser = this.ValidUser();
-
-      // console.log("1validUser = " + validUser)
-
-      // //if user is found then its not a valid user name
-      // if (validUser) {
-      //   this.ValidUserName = false;
-      // }
-      // else {
-      //   this.ValidUserName = true;
-      // }
-
-      //console.log("this.ValidUserName = " + this.ValidUserName);
     }
     else {
+
       this.ValidUserName = false;
+
     }
 
     this.VerifyInput();
@@ -127,7 +118,8 @@ export class RegisterComponent implements OnInit {
     console.log(event);
 
     if (this.email != "") {
-      this.ValidEmail = true;
+      //this.ValidEmail = true;
+      this.ValidEmailCheck();
     }
     else {
       this.ValidEmail = false;
@@ -188,7 +180,7 @@ export class RegisterComponent implements OnInit {
 
   }//end of ComparePasswords
 
-  ValidUser(): void {
+  ValidUserCheck(): void {
 
     let isValidUser = false;
 
@@ -206,10 +198,14 @@ export class RegisterComponent implements OnInit {
         if (this.results) {
           isValidUser = false;
           this.ValidUserName = false;
+
+          this.ShowUserNameError = true;
         }
         else {
           isValidUser = true;
           this.ValidUserName = true;
+
+          this.ShowUserNameError = false;
         }
 
         console.log("isValidUser = " + isValidUser)
@@ -219,6 +215,40 @@ export class RegisterComponent implements OnInit {
 
     //return isValidUser;
 
+  }
+
+  ValidEmailCheck(): void {
+    let isValidEmail = false;
+
+    let urlString = this.API_URL + "/EmailExists?email=" + this.email;
+
+    console.log("urlString = " + urlString);
+
+    this.http.get(urlString)
+      .subscribe(data => {
+        this.results = data["emailfound"];
+        console.log("data");
+        console.log(data);
+        console.log(this.results);
+
+        if (this.results) {
+          isValidEmail = false;
+          this.ValidEmail = false;
+
+          this.ShowEmailError = true;
+        }
+        else {
+          isValidEmail = true;
+          this.ValidEmail = true;
+
+          this.ShowEmailError = false;
+        }
+
+        console.log("isValidEmail = " + isValidEmail);
+        console.log("ValidEmail = " + this.ValidEmail);
+
+        this.VerifyInput();
+      });
   }
 
   VerifyInput(): void {
