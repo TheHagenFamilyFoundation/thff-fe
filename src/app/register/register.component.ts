@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map'
-
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'register',
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
 
   CanRegister = false;
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -87,10 +87,12 @@ export class RegisterComponent implements OnInit {
         console.log("token = " + localStorage.getItem('token'));
         console.log("currentUser = " + localStorage.getItem('currentUser'));
 
+        this.authService.login();
+
       });
 
     //this.router.navigate(['/login']);
-    this.router.navigate(['/home']);
+    //this.router.navigate(['/home']);
 
   }//end of register function
 
