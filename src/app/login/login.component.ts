@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map'
+import { AuthService } from '../auth/auth.service';
+
 
 @Component({
   selector: 'login',
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit {
   data;
   results: any;
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient,private authService: AuthService ) { }
 
   ngOnInit() {
   }
@@ -65,6 +67,8 @@ export class LoginComponent implements OnInit {
 
         console.log("token = " + localStorage.getItem('token'));
         console.log("currentUser = " + localStorage.getItem('currentUser'));
+
+        this.authService.login();
 
       });
 
