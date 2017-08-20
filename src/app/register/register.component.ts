@@ -82,7 +82,7 @@ export class RegisterComponent implements OnInit {
         //console.log(this.results)
 
         localStorage.setItem('token', this.results.token);
-        localStorage.setItem('currentUser', this.results.user);
+        localStorage.setItem('currentUser', JSON.stringify(this.results.user));
 
         console.log("token = " + localStorage.getItem('token'));
         console.log("currentUser = " + localStorage.getItem('currentUser'));
