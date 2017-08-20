@@ -13,7 +13,15 @@ export class HomeComponent implements OnInit {
   title = "Home"
 
   constructor(private authService: AuthService) {
+
+    console.log("Home Constructor")
+
+    console.log(this.authService.authenticated)
+
     if (this.authService.authenticated) {
+
+      console.log("authService authenticated")
+
       console.log("currentUser");
       console.log(localStorage.getItem('currentUser'));
       console.log(localStorage.getItem('currentUser.username'));
@@ -23,6 +31,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    console.log("ngOnINit")
 
     if (this.authService.authenticated) {
       console.log("currentUser");
