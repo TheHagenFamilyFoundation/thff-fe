@@ -20,6 +20,8 @@ export class AuthService {
     login() {
         console.log("auth service login");
 
+        this.router.navigate(['/home']);
+
     }
 
     setLoggedIn(value: boolean) {
