@@ -15,7 +15,6 @@ export class RegisterComponent implements OnInit {
   title = "Register";
 
   //API_URL = 'https://hagenfoundationbackend.herokuapp.com'
-
   API_URL = 'http://localhost:1337';
 
   body;
@@ -51,10 +50,10 @@ export class RegisterComponent implements OnInit {
 
     let urlString = this.API_URL + '/user';
 
-    console.log("userName = " + this.userName);
-    console.log("email = " + this.email);
-    console.log("password = " + this.password);
-    console.log("confirmPassword = " + this.confirmPassword);
+    // console.log("userName = " + this.userName);
+    // console.log("email = " + this.email);
+    // console.log("password = " + this.password);
+    // console.log("confirmPassword = " + this.confirmPassword);
 
     this.body = {
       username: this.userName,
@@ -80,11 +79,13 @@ export class RegisterComponent implements OnInit {
         console.log(this.results.token);
         */
 
-        //console.log(this.results.token)
+        //console.log(this.results)
 
         localStorage.setItem('token', this.results.token);
+        localStorage.setItem('currentUser', this.results.user);
 
         console.log("token = " + localStorage.getItem('token'));
+        console.log("currentUser = " + localStorage.getItem('currentUser'));
 
       });
 
