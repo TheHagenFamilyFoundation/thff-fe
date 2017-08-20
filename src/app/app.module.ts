@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthGuard } from './_guards/auth.guard';
+import { AuthService } from './auth/auth.service';
 
 import { MdGridListModule } from '@angular/material';
 import { MdButtonModule, MdCheckboxModule } from '@angular/material';
@@ -48,7 +49,7 @@ import { DirectorsMenuComponent } from './directors-menu/directors-menu.componen
     ],
     bootstrap: [AppComponent],
     providers: [
-        AuthGuard
+        AuthGuard, AuthService
     ]
 })
 export class AppModule { }
