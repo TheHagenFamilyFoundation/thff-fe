@@ -17,8 +17,6 @@ export class RegisterComponent implements OnInit {
   //API_URL = 'https://hagenfoundationbackend.herokuapp.com'
 
   API_URL = 'http://localhost:1337';
-  //https://hagenfoundationbackend.herokuapp.com/requests
-  //API_URL = 'localhost:1337';
 
   body;
 
@@ -29,6 +27,15 @@ export class RegisterComponent implements OnInit {
 
   data;
   results: any;
+
+  NoMatchPassword = true;
+  ShowConfirmPassword = false;
+
+  ValidUserName = false;
+  ValidEmail = false;
+  ValidPassword = false;
+
+  CanRegister = false;
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -55,64 +62,172 @@ export class RegisterComponent implements OnInit {
     console.log(this.body);
     console.log(urlString);
 
-    // this.http.get(this.API_URL + '/foo')
-    //   .subscribe(data => {
-    //     //this.results = data['results'];
-    //     console.log(data);
-    //     //console.log(this.results);
-    //   }
-    //   );
-
-
-    // let headers = new HttpHeaders({
-    //   'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Credentials": "true",
-    //   "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT, DELETE",
-    //   "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-    // });
-    //headers.append("Access-Control-Allow-Credentials", "true", )
-    //headers.append("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    //headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-
-    //console.log(headers);
-
-
-    // this.http.get(this.API_URL + '/requests') //, { headers: headers } 
-    //   //)
-    //   //.subscribe(data => data, //{
-    //   // Read the result field from the JSON response.
-    //   //this.results = data['results'];
-
-    //   .subscribe(data => console.log(data)
-
-
-    //   //  console.log(this.results);
-
-
-    //   //  }
-    //   );
-
-
     //send to api
 
     this.http.post(urlString, this.body)
       .subscribe(data => {
         this.results = data;
+
+        /*debug
+
         console.log(data);
         console.log("this.results");
         console.log(this.results);
         console.log(this.results.token);
+        */
 
         //console.log(this.results.token)
+
         localStorage.setItem('token', this.results.token);
 
         console.log("token = " + localStorage.getItem('token'));
 
-      }
-      );
-
+      });
 
     //this.router.navigate(['/login']);
     this.router.navigate(['/home']);
+
+  }//end of register function
+
+  UsernameChange(event) {
+    console.log("UsernameChange");
+
+    console.log(event);
+
+    let validUser = false;
+
+    if (this.userName != "") {
+
+      this.ValidUser();
+
+      // validUser = this.ValidUser();
+
+      // console.log("1validUser = " + validUser)
+
+      // //if user is found then its not a valid user name
+      // if (validUser) {
+      //   this.ValidUserName = false;
+      // }
+      // else {
+      //   this.ValidUserName = true;
+      // }
+
+      //console.log("this.ValidUserName = " + this.ValidUserName);
+    }
+    else {
+      this.ValidUserName = false;
+    }
+
+    this.VerifyInput();
+  }
+
+  EmailChange(event) {
+    console.log("EmailChange");
+
+    console.log(event);
+
+    if (this.email != "") {
+      this.ValidEmail = true;
+    }
+    else {
+      this.ValidEmail = false;
+    }
+
+    this.VerifyInput();
+  }
+
+  PasswordChange(event) {
+    console.log("PasswordChange");
+
+    console.log(event);
+
+    if (this.password != "") {
+      this.ShowConfirmPassword = true;
+    }
+    else {
+      this.ShowConfirmPassword = false;
+      this.confirmPassword = "";
+      this.ValidPassword = false;
+    }
+
+    this.VerifyInput();
+
+  }
+
+
+  ConfirmPasswordChange(event) {
+    console.log("ConfirmPasswordChange");
+
+    console.log(event);
+
+    this.ComparePasswords();
+  }
+
+  ComparePasswords(): void {
+
+    if (this.password != this.confirmPassword) {
+      this.NoMatchPassword = false;
+      //debug
+      console.log("NoMatchPassword = " + this.NoMatchPassword);
+
+      this.ValidPassword = false;
+
+      this.VerifyInput();
+    }
+    else {
+
+      //if the passwords match
+      this.NoMatchPassword = true;
+      //debug
+      console.log("NoMatchPassword = " + this.NoMatchPassword);
+
+      this.ValidPassword = true;
+
+      this.VerifyInput();
+    }
+
+  }//end of ComparePasswords
+
+  ValidUser(): void {
+
+    let isValidUser = false;
+
+    let urlString = this.API_URL + "/UserNameExists?username=" + this.userName;
+
+    console.log("urlString = " + urlString);
+
+    this.http.get(urlString)
+      .subscribe(data => {
+        this.results = data["userfound"];
+        console.log("data");
+        console.log(data);
+        console.log(this.results);
+
+        if (this.results) {
+          isValidUser = false;
+          this.ValidUserName = false;
+        }
+        else {
+          isValidUser = true;
+          this.ValidUserName = true;
+        }
+
+        console.log("isValidUser = " + isValidUser)
+        console.log("ValidUserName = " + this.ValidUserName)
+        this.VerifyInput();
+      });
+
+    //return isValidUser;
+
+  }
+
+  VerifyInput(): void {
+    if (this.ValidUserName && this.ValidEmail && this.ValidPassword) {
+      this.CanRegister = true;
+    }
+    else {
+      this.CanRegister = false;
+    }
   }
 
 }
