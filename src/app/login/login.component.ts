@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
 
   title = "Login"
 
-  //API_URL = 'https://hagenfoundationbackend.herokuapp.com'
-  API_URL = 'http://localhost:1337';
+  API_URL = 'https://hagenfoundationbackend.herokuapp.com'
+  //API_URL = 'http://localhost:1337';
 
   userName;
   password;
