@@ -23,7 +23,15 @@
 
 </md-toolbar>
 <md-menu x-position="before" #menu="mdMenu">
-  <button md-menu-item routerLink="/login">Login</button>
+  <div *ngIf="!authService.authenticated">
+    <button md-button routerLink="/login">Login</button>
+  </div>
+  <div *ngIf="!authService.authenticated">
+    <button md-button routerLink="/register">Register</button>
+  </div>
+  <div *ngIf="authService.authenticated">
+    <button md-button (click)="authService.logout()">Logout</button>
+  </div>
 </md-menu>
 
 <router-outlet></router-outlet>
