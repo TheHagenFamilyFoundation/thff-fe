@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   title = "Home"
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
 
     console.log("Home Constructor")
 
