@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log("ngOnINit")
+    console.log("ngOnInit")
 
     if (this.authService.authenticated) {
       console.log("currentUser");
