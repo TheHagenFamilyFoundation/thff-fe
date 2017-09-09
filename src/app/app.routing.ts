@@ -10,6 +10,10 @@ import { AboutusComponent } from './home/aboutus/aboutus.component'
 import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
 import { ApplicationTimelineComponent } from './home/application-timeline/application-timeline.component';
 
+import { InthenewsComponent } from './home/inthenews/inthenews.component';
+import { GrantsAwardedComponent } from './home/grants-awarded/grants-awarded.component';
+import { FrequentlyAskedQuestionsComponent } from './home/frequently-asked-questions/frequently-asked-questions.component';
+
 //Login
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
@@ -26,6 +30,11 @@ const appRoutes: Routes = [
     { path: 'about', component: AboutusComponent },
     { path: 'application-materials', component: ApplicationMaterialsComponent },
     { path: 'application-timeline', component: ApplicationTimelineComponent },
+
+    { path: 'inthenews', component: InthenewsComponent },
+    { path: 'grants-awarded', component: GrantsAwardedComponent },
+    { path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent },
+
 
     { path: 'letintmenu', component: LetintmenuComponent, canActivate: [AuthGuard] },
 
