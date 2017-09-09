@@ -37,6 +37,9 @@ import { RegisterComponent } from './register/register.component';
 
 import { LetintmenuComponent } from './letintmenu/letintmenu.component';
 import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
+import { InthenewsComponent } from './home/inthenews/inthenews.component';
+import { GrantsAwardedComponent } from './home/grants-awarded/grants-awarded.component';
+import { FrequentlyAskedQuestionsComponent } from './home/frequently-asked-questions/frequently-asked-questions.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -46,7 +49,7 @@ import { DirectorsMenuComponent } from './directors-menu/directors-menu.componen
         //login
         LoginComponent, RegisterComponent,
         
-        LetintmenuComponent, DirectorsMenuComponent,
+        LetintmenuComponent, DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent, FrequentlyAskedQuestionsComponent,
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
