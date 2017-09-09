@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   title = "Home"
 
+  /* Constructor */
   constructor(public authService: AuthService) {
 
     console.log("Home Constructor")
@@ -30,6 +31,8 @@ export class HomeComponent implements OnInit {
 
   }
 
+  /* ngOnInit */
+
   ngOnInit() {
 
     console.log("ngOnInit")
@@ -40,6 +43,6 @@ export class HomeComponent implements OnInit {
       console.log(localStorage.getItem('currentUser.username'));
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
-  }
+  }//end of ngOnInit
 
 }
