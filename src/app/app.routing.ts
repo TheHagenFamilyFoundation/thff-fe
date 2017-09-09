@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component'
 
 import { AboutusComponent } from './home/aboutus/aboutus.component'
 import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
+import { ApplicationTimelineComponent } from './home/application-timeline/application-timeline.component';
 
 //Login
 import { LoginComponent } from './login/login.component'
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
 
     { path: 'about', component: AboutusComponent },
     { path: 'application-materials', component: ApplicationMaterialsComponent },
+    { path: 'application-timeline', component: ApplicationTimelineComponent },
 
     { path: 'letintmenu', component: LetintmenuComponent, canActivate: [AuthGuard] },
 
