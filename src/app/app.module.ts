@@ -28,6 +28,7 @@ import { HomeComponent } from './home/home.component'
 
 import { AboutusComponent } from './home/aboutus/aboutus.component'
 import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
+import { ApplicationTimelineComponent } from './home/application-timeline/application-timeline.component';
 
 //Login
 import { LoginComponent } from './login/login.component'
@@ -37,15 +38,15 @@ import { RegisterComponent } from './register/register.component';
 import { LetintmenuComponent } from './letintmenu/letintmenu.component';
 import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
 
-
-
-
 @NgModule({
     declarations: [AppComponent,
         //Home
         HomeComponent,
+        AboutusComponent, ApplicationMaterialsComponent, ApplicationTimelineComponent,
         //login
-        LoginComponent, RegisterComponent, LetintmenuComponent, DirectorsMenuComponent, AboutusComponent, ApplicationMaterialsComponent
+        LoginComponent, RegisterComponent,
+        
+        LetintmenuComponent, DirectorsMenuComponent,
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
