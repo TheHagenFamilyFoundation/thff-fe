@@ -26,20 +26,26 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 //Home
 import { HomeComponent } from './home/home.component'
 
+import { AboutusComponent } from './home/aboutus/aboutus.component'
+import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
+
 //Login
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component';
 
 
 import { LetintmenuComponent } from './letintmenu/letintmenu.component';
-import { DirectorsMenuComponent } from './directors-menu/directors-menu.component'
+import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
+
+
+
 
 @NgModule({
     declarations: [AppComponent,
         //Home
         HomeComponent,
         //login
-        LoginComponent, RegisterComponent, LetintmenuComponent, DirectorsMenuComponent
+        LoginComponent, RegisterComponent, LetintmenuComponent, DirectorsMenuComponent, AboutusComponent, ApplicationMaterialsComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
