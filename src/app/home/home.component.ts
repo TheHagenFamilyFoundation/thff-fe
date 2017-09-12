@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
 
   title = "Home"
 
-  imagepaths = 'image/path/1.png';
+  fullImagePath = '/assets/images/thfflogo1.JPG'
+
 
   /* Constructor */
   constructor(public authService: AuthService) {
