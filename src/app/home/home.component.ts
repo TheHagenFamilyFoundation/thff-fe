@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
 
   title = "Home"
 
+  imagepaths = 'image/path/1.png';
+
   /* Constructor */
   constructor(public authService: AuthService) {
 
@@ -29,7 +31,7 @@ export class HomeComponent implements OnInit {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
-  }
+  }//end of constructor
 
   /* ngOnInit */
 
