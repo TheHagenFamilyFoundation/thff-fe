@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component'
 
 import { AboutusComponent } from './home/aboutus/aboutus.component'
 import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
+import { ProcessComponent } from './home/application-materials/process/process.component';
+
+
 import { ApplicationTimelineComponent } from './home/application-timeline/application-timeline.component';
 
 import { InthenewsComponent } from './home/inthenews/inthenews.component';
@@ -29,6 +32,9 @@ const appRoutes: Routes = [
 
     { path: 'about', component: AboutusComponent },
     { path: 'application-materials', component: ApplicationMaterialsComponent },
+    { path: 'process', component: ProcessComponent },
+
+
     { path: 'application-timeline', component: ApplicationTimelineComponent },
 
     { path: 'inthenews', component: InthenewsComponent },
