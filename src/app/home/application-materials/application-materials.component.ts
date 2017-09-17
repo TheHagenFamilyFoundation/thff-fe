@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicationMaterialsComponent implements OnInit {
 
+  title = "Application Information"
+
   constructor() { }
 
   ngOnInit() {
