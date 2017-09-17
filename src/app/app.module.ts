@@ -28,6 +28,10 @@ import { HomeComponent } from './home/home.component'
 
 import { AboutusComponent } from './home/aboutus/aboutus.component'
 import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
+import { ProcessComponent } from './home/application-materials/process/process.component';
+
+
+
 import { ApplicationTimelineComponent } from './home/application-timeline/application-timeline.component';
 
 import { InthenewsComponent } from './home/inthenews/inthenews.component';
@@ -51,7 +55,7 @@ import { DirectorsMenuComponent } from './directors-menu/directors-menu.componen
         //login
         LoginComponent, RegisterComponent,
         
-        LetintmenuComponent, DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent, FrequentlyAskedQuestionsComponent,
+        LetintmenuComponent, DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent, FrequentlyAskedQuestionsComponent, ProcessComponent,
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
