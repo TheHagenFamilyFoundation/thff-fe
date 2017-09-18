@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProcessComponent implements OnInit {
 
+  fullImagePath = '/assets/images/grantreqproc.gif';
+
+
   constructor() { }
 
   ngOnInit() {
