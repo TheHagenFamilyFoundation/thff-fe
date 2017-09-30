@@ -1,23 +1,23 @@
 <div align="center">
-  <h1>Application Timeline</h1>
+  <h1>Application Timeline Date: {{cycleDate}}</h1>
 </div>
 <div>
   <div class="example-container mat-elevation-z8">
-    <md-table #table [dataSource]="dataSource">
+    <md-table [dataSource]="dataSource">
 
       <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
 
-      <!-- Position Column -->
-      <ng-container mdColumnDef="position">
-        <md-header-cell *mdHeaderCellDef> No. </md-header-cell>
-        <md-cell *mdCellDef="let element"> {{element.position}} </md-cell>
+      <!-- Step Column -->
+      <ng-container mdColumnDef="Step">
+        <md-header-cell *mdHeaderCellDef> Step </md-header-cell>
+        <md-cell *mdCellDef="let element"> {{element.Step}} </md-cell>
       </ng-container>
 
-      <!-- Name Column -->
-      <ng-container mdColumnDef="name">
-        <md-header-cell *mdHeaderCellDef> Name </md-header-cell>
-        <md-cell *mdCellDef="let element"> {{element.name}} </md-cell>
+      <!-- Date Column -->
+      <ng-container mdColumnDef="Date">
+        <md-header-cell *mdHeaderCellDef> Date </md-header-cell>
+        <md-cell *mdCellDef="let element"> {{element.Date}} </md-cell>
       </ng-container>
 
       <!-- Weight Column -->
