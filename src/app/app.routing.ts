@@ -23,6 +23,9 @@ import { RegisterComponent } from './register/register.component'
 
 //letintmenu
 import { LetintmenuComponent } from './letintmenu/letintmenu.component'
+//Letint and LetintStatus
+import { LetintComponent } from './letintmenu/letint/letint.component'
+import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component'
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -43,6 +46,8 @@ const appRoutes: Routes = [
 
 
     { path: 'letintmenu', component: LetintmenuComponent, canActivate: [AuthGuard] },
+    { path: 'letint', component: LetintComponent, canActivate: [AuthGuard] },
+    { path: 'status', component: LetintStatusComponent, canActivate: [AuthGuard] },
 
     { path: '**', redirectTo: '' }
 ];
