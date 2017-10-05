@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LetintmenuComponent implements OnInit {
 
+  title = "Letter of Intent Menu"
+
   constructor() { }
 
   ngOnInit() {
