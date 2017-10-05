@@ -1,40 +1,110 @@
 <div align="center">
-  <h1>Application Timeline - {{currentYear}}/{{nextYear}} Cycle</h1>
+  <h1>Application Timeline - {{previousYear}}/{{currentYear}} Cycle</h1>
 </div>
 <div>
-  <div class="example-container mat-elevation-z8">
-    <md-table [dataSource]="dataSource">
+  <md-grid-list cols="1" rowHeight="400px">
+    <md-grid-tile>
+      <table class="at">
+        <thead>
+          <tr>
+            <th>
+              Step
+            </th>
+            <th>
+              Date
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div>
+                Deadline for Letters of Intent
+              </div>
+              <div>
+                If your organization wishes to apply for funding, you must begin by completing the <span><a [routerLink]="['/letintmenu']">Letter of Intent</a></span>.
+              </div>
+            </td>
+            <td>
+              April {{currentYear}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                Second round notifications distributed.
+              </div>
+              <br>
+              <div>
+                After a first round of deliberations, we will request full proposals from those organizations who best meet our objectives
+                and criteria. A notification will be sent via email to the primary contact named on the letter of intent.
+              </div>
+              <br>
+              <div>
+                <span style="font-weight:bold">Due to the large volume of requests we receive each year, we DO NOT send out notifications of rejection.</span>
+              </div>
+            </td>
+            <td>
+              May {{currentYear}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                Deadline for Full Proposals
+              </div>
+              <div>
+                If your organization has been asked to submit a full proposal, we ask that this be completed online as soon as possible.
+              </div>
+            </td>
+            <td>
+              June {{currentYear}}
+            </td>
+            <tr>
+              <td>
+                Notification of grants to be funded by The Hagen Family Foundation
+              </td>
+              <td>
+                August {{currentYear}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Awards distributed
+              </td>
+              <td>
+                Sept. - Oct. {{currentYear}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Announcement of {{nextYear}} timeline.
+              </td>
+              <td>
+                November {{currentYear}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Progess Reports due from {{previousYear}} grantees
+              </td>
+              <td>
+                February {{currentYear}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Final Status Reports due from {{previousYear}} grantees
+              </td>
+              <td>
+                June {{currentYear}}
+              </td>
+            </tr>
 
-      <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
+        </tbody>
+      </table>
+    </md-grid-tile>
+  </md-grid-list>
 
-      <!-- Step Column -->
-      <ng-container mdColumnDef="Step">
-        <md-header-cell *mdHeaderCellDef> Step </md-header-cell>
-        <md-cell *mdCellDef="let element"> {{element.Step}} </md-cell>
-      </ng-container>
-
-      <!-- Date Column -->
-      <ng-container mdColumnDef="Date">
-        <md-header-cell *mdHeaderCellDef> Date </md-header-cell>
-        <md-cell *mdCellDef="let element"> {{element.Date}} </md-cell>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <!-- <ng-container mdColumnDef="weight">
-        <md-header-cell *mdHeaderCellDef> Weight </md-header-cell>
-        <md-cell *mdCellDef="let element"> {{element.weight}} </md-cell>
-      </ng-container> -->
-
-      <!-- Color Column -->
-      <!-- <ng-container mdColumnDef="symbol">
-        <md-header-cell *mdHeaderCellDef> Symbol </md-header-cell>
-        <md-cell *mdCellDef="let element"> {{element.symbol}} </md-cell>
-      </ng-container> -->
-
-      <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
-      <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
-    </md-table>
-  </div>
 
 </div>
