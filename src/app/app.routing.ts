@@ -20,7 +20,7 @@ import { FrequentlyAskedQuestionsComponent } from './home/frequently-asked-quest
 //Login
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
-import { ForgotPasswordOrUsernameComponent } from './login/forgot-password-or-username/forgot-password-or-username.component';
+import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-username/reset-password-or-username.component';
 
 //letintmenu
 import { LetintmenuComponent } from './letintmenu/letintmenu.component'
@@ -33,7 +33,7 @@ const appRoutes: Routes = [
     //login
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'forgot-password-or-username', component: ForgotPasswordOrUsernameComponent },
+    { path: 'reset-password-or-username', component: ResetPasswordOrUsernameComponent },
 
 
     { path: 'about', component: AboutusComponent },
