@@ -20,7 +20,7 @@ import { FrequentlyAskedQuestionsComponent } from './home/frequently-asked-quest
 //Login
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
-import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-username/reset-password-or-username.component';
+import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forgot-username/reset-password-or-forgot-username.component';
 
 //letintmenu
 import { LetintmenuComponent } from './letintmenu/letintmenu.component'
