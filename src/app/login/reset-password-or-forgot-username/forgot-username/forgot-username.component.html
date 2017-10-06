@@ -1,0 +1,13 @@
+<div align="center">
+  <h3>{{title}}</h3>
+</div>
+<div align="center">
+  <div>
+    <md-input-container>
+      <input mdInput placeholder="Email" type="email" value="" [(ngModel)]="email">
+    </md-input-container>
+  </div>
+  <div>
+    <button md-raised-button (click)="retrieveUsername()">Retrieve Username</button>
+  </div>
+</div>
