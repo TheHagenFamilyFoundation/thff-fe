@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordOrUsernameComponent implements OnInit {
 
+  title = "Forgot Password Or Username"
+
   constructor() { }
 
   ngOnInit() {
