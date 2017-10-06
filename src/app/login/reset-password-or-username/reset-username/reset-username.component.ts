@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-Reset-username',
-  templateUrl: './Reset-username.component.html',
-  styleUrls: ['./Reset-username.component.css']
+  selector: 'app-reset-username',
+  templateUrl: './reset-username.component.html',
+  styleUrls: ['./reset-username.component.css']
 })
 export class ResetUsernameComponent implements OnInit {
 
