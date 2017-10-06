@@ -9,9 +9,17 @@ export class ForgotPasswordComponent implements OnInit {
 
   title = "Forgot Password"
 
+  username;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  resetPassword(): void {
+
+    console.log("You clicked on the Reset Password")
+
   }
 
 }
