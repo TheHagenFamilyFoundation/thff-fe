@@ -48,7 +48,7 @@ import { DirectorsMenuComponent } from './directors-menu/directors-menu.componen
 import { LetintComponent } from './letintmenu/letint/letint.component';
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component';
 import { ResetPasswordComponent } from './login/reset-password-or-username/reset-password/reset-password.component';
-import { ForgotUsernameComponent } from './login/reset-password-or-username/forgot-username/forgot-username.component';
+import { ResetUsernameComponent } from './login/reset-password-or-username/reset-username/reset-username.component';
 
 
 
@@ -65,7 +65,7 @@ import { ForgotUsernameComponent } from './login/reset-password-or-username/forg
         DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent,
         FrequentlyAskedQuestionsComponent, ProcessComponent,
 
-        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent
+        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ResetUsernameComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
