@@ -41,14 +41,14 @@ import { FrequentlyAskedQuestionsComponent } from './home/frequently-asked-quest
 //Login
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component';
-import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-username/reset-password-or-username.component';
+import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forgot-username/reset-password-or-forgot-username.component';
 
 import { LetintmenuComponent } from './letintmenu/letintmenu.component';
 import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
 import { LetintComponent } from './letintmenu/letint/letint.component';
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component';
-import { ResetPasswordComponent } from './login/reset-password-or-username/reset-password/reset-password.component';
-import { ResetUsernameComponent } from './login/reset-password-or-username/reset-username/reset-username.component';
+import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
+import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
 
 
 
@@ -65,7 +65,7 @@ import { ResetUsernameComponent } from './login/reset-password-or-username/reset
         DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent,
         FrequentlyAskedQuestionsComponent, ProcessComponent,
 
-        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ResetUsernameComponent
+        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
