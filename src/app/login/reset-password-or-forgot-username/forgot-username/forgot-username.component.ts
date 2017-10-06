@@ -14,4 +14,11 @@ export class ForgotUsernameComponent implements OnInit {
   ngOnInit() {
   }
 
+  retrieveUsername(): void {
+
+    console.log("You clicked on the Retrieve Username")
+
+  }
+
+
 }
