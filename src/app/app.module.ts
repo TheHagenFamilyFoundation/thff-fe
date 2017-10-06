@@ -41,14 +41,14 @@ import { FrequentlyAskedQuestionsComponent } from './home/frequently-asked-quest
 //Login
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component';
-import { ForgotPasswordOrUsernameComponent } from './login/forgot-password-or-username/forgot-password-or-username.component';
+import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-username/reset-password-or-username.component';
 
 import { LetintmenuComponent } from './letintmenu/letintmenu.component';
 import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
 import { LetintComponent } from './letintmenu/letint/letint.component';
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component';
-import { ForgotPasswordComponent } from './login/forgot-password-or-username/forgot-password/forgot-password.component';
-import { ForgotUsernameComponent } from './login/forgot-password-or-username/forgot-username/forgot-username.component';
+import { ResetPasswordComponent } from './login/reset-password-or-username/reset-password/reset-password.component';
+import { ForgotUsernameComponent } from './login/reset-password-or-username/forgot-username/forgot-username.component';
 
 
 
@@ -60,12 +60,12 @@ import { ForgotUsernameComponent } from './login/forgot-password-or-username/for
         AboutusComponent, ApplicationMaterialsComponent, ApplicationTimelineComponent,
         //login
         LoginComponent, RegisterComponent
-        , ForgotPasswordOrUsernameComponent,
+        , ResetPasswordOrUsernameComponent,
 
         DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent,
         FrequentlyAskedQuestionsComponent, ProcessComponent,
 
-        LetintmenuComponent, LetintComponent, LetintStatusComponent, ForgotPasswordComponent, ForgotUsernameComponent
+        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
