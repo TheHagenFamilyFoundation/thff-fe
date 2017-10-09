@@ -9,6 +9,8 @@ export class ForgotUsernameComponent implements OnInit {
 
   title = "Forgot Username"
 
+  email: any;
+
   constructor() { }
 
   ngOnInit() {
