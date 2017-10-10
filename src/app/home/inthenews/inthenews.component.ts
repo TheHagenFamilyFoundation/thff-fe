@@ -19,4 +19,9 @@ export class InthenewsComponent implements OnInit {
   ngOnInit() {
   }
 
+  goTo(location: string): void {
+    window.location.hash = location;
+  }
+
+
 }
