@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-reset-password',
@@ -10,9 +11,10 @@ export class ResetPasswordComponent implements OnInit {
 
   title = "Reset Password"
 
-  username;
+  username: any;
+  email: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public snackBar: MdSnackBar) { }
 
   ngOnInit() {
   }
@@ -21,8 +23,24 @@ export class ResetPasswordComponent implements OnInit {
 
     console.log("You clicked on the Reset Password")
 
+    let snackBarRef = this.snackBar.open('Password has been reset. Please check your email.', 'OK', {
+      duration: 3000
+    });
+
+    //check if username and email are valid then sends email
+    this.checkValidUserNameEmail();
+
     this.router.navigate(['/login']);
 
   }
+
+  checkValidUserNameEmail(): void {
+
+    console.log("Checking if Username and Email are valid");
+
+
+  }
+
+
 
 }
