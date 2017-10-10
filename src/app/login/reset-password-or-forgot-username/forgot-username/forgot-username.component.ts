@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-username',
@@ -11,7 +12,7 @@ export class ForgotUsernameComponent implements OnInit {
 
   email: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,8 @@ export class ForgotUsernameComponent implements OnInit {
   retrieveUsername(): void {
 
     console.log("You clicked on the Retrieve Username")
+
+    this.router.navigate(['/login']);
 
   }
 
