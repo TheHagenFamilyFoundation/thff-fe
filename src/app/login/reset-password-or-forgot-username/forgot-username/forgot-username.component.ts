@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-forgot-username',
@@ -12,7 +13,7 @@ export class ForgotUsernameComponent implements OnInit {
 
   email: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public snackBar: MdSnackBar) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,9 @@ export class ForgotUsernameComponent implements OnInit {
 
     console.log("You clicked on the Retrieve Username")
 
+    let snackBarRef = this.snackBar.open('Email has been sent', 'OK', {
+      duration: 3000
+    });
     this.router.navigate(['/login']);
 
   }
