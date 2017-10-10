@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
         }
 
         // Simple message.
-        let snackBarRef = this.snackBar.open('You need to be Loggged In to access that page', 'OK', {
+        let snackBarRef = this.snackBar.open('You need to be logged In to access that page', 'OK', {
             duration: 3000
         });
 
