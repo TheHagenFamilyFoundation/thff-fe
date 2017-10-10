@@ -1,0 +1,9 @@
+.sdn {
+    position: fixed;
+}
+.c {
+    cursor: pointer;
+}
+.bl {
+border-left: 2px solid black;
+}
