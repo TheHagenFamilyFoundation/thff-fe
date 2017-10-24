@@ -1,44 +1,34 @@
 <div align="center">
   <h2>{{title}}</h2>
 </div>
-<md-sidenav-container>
-  <md-sidenav mode="side" opened="true" align="end" position="fixed">
-    <!-- sidenav content -->
-    <a (click)="goTo('2001')">2001 - Michigan Senior Project</a>
-    <br>
-    <a (click)="goTo('2005')">2005 - Cambodia</a>
-    <br>
-    <a (click)="goTo('2006')">2006 - Overland</a>
-  </md-sidenav>
+<!-- primary content -->
 
-  <!-- primary content -->
-
-  <div align="center">
-    <div id="2001">
-      CEEP Update, Fall 2001<br> The University of Michigan - Dearborn<br> College of Engineering and Education Practice
-      (CEEP)
-      <div>
-        <img [src]="fullImagePath" width="40%" height="40%">
-      </div>
-    </div>
+<div align="center">
+  <div id="2001">
+    CEEP Update, Fall 2001
+    <br> The University of Michigan - Dearborn
+    <br> College of Engineering and Education Practice (CEEP)
     <div>
-      <div>
-        <img [src]="fullImagePath2" width="60%" height="60%">
-      </div>
-    </div>
-    <br>
-    <div id="2005">
-      <div>
-        Children in Cambodia supported through a grant to Warm Blankets Childrens Foundation (2005)
-        <img [src]="fullImagePath4" width="60%" height="60%">
-      </div>
-    </div>
-    <br>
-    <div id="2006">
-      <div>
-        In 2006, THFF provided funding for lighting in the new library at Overland Elementary School in Los Angeles, California.
-        <img [src]="fullImagePath3" width="60%" height="60%">
-      </div>
+      <img [src]="fullImagePath" width="40%" height="40%">
     </div>
   </div>
-</md-sidenav-container>
+  <div>
+    <div>
+      <img [src]="fullImagePath2" width="60%" height="60%">
+    </div>
+  </div>
+  <br>
+  <div id="2005">
+    <div>
+      Children in Cambodia supported through a grant to Warm Blankets Childrens Foundation (2005)
+      <img [src]="fullImagePath4" width="60%" height="60%">
+    </div>
+  </div>
+  <br>
+  <div id="2006">
+    <div>
+      In 2006, THFF provided funding for lighting in the new library at Overland Elementary School in Los Angeles, California.
+      <img [src]="fullImagePath3" width="60%" height="60%">
+    </div>
+  </div>
+</div>
