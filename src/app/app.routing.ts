@@ -43,7 +43,15 @@ const appRoutes: Routes = [
 
     { path: 'application-timeline', component: ApplicationTimelineComponent },
 
-    { path: 'inthenews', component: InthenewsComponent },
+    {
+        path: 'inthenews', component: InthenewsComponent,
+        children: [
+            { path: '2001'  }  //go to the senior design project
+        ]
+    },
+    //child routes
+
+
     { path: 'grants-awarded', component: GrantsAwardedComponent },
     { path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent },
 
