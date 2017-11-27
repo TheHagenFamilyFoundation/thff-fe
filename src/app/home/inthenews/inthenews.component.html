@@ -1,5 +1,7 @@
 <div align="center">
-  <h2>{{title}}</h2>
+  <div id="title">
+    <h2>{{title}}</h2>
+  </div>
 </div>
 <!-- primary content -->
 
@@ -45,4 +47,6 @@
 
 <div align="center">
   Back to the top
+  <button md-raised-button id="myBtn" (click)="topFunction()">Top</button>
+  <!-- <button ()="topFunction()" id="myBtn" title="Go to top">Top</button> -->
 </div>
