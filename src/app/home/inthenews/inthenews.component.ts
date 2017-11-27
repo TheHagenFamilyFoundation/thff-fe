@@ -19,7 +19,6 @@ export class InthenewsComponent implements OnInit {
 
 
     window.onscroll = function () {
-      //console.log("help")
 
       if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         document.getElementById("myBtn").style.display = "block";
@@ -27,7 +26,7 @@ export class InthenewsComponent implements OnInit {
         document.getElementById("myBtn").style.display = "none";
       }
 
-    };//this.scrollFunction() };
+    };
 
   }
 
@@ -36,18 +35,6 @@ export class InthenewsComponent implements OnInit {
 
   goTo(location: string): void {
     window.location.hash = location;
-  }
-
-  // When the user scrolls down 20px from the top of the document, show the button
-  //window.onscroll = function () { this.scrollFunction() };
-
-  // //function 
-  scrollFunction(): void {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      document.getElementById("myBtn").style.display = "block";
-    } else {
-      document.getElementById("myBtn").style.display = "none";
-    }
   }
 
   // When the user clicks on the button, scroll to the top of the document
@@ -59,9 +46,7 @@ export class InthenewsComponent implements OnInit {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
-    //this.goTo('title');
-
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0) //scroll back up to the top
 
   }
 
