@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GrantsAwardedComponent implements OnInit {
 
+  title = "Grants Awarded"
+
   constructor() { }
 
   ngOnInit() {
