@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LetintStatusComponent implements OnInit {
 
+  title = "Letter of Intent Status"
+
   constructor() { }
 
   ngOnInit() {
