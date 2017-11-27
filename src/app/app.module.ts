@@ -26,6 +26,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 //Home
 import { HomeComponent } from './home/home.component'
 
+import { HeaderComponent } from './header/header.component';
+
 import { AboutusComponent } from './home/aboutus/aboutus.component'
 import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
 import { ProcessComponent } from './home/application-materials/process/process.component';
@@ -56,6 +58,7 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
 
 
 
+
 @NgModule({
     declarations: [AppComponent,
         //Home
@@ -68,7 +71,7 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
         DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent,
         FrequentlyAskedQuestionsComponent, ProcessComponent,
 
-        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, TableOfContentsComponent
+        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, TableOfContentsComponent, HeaderComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
