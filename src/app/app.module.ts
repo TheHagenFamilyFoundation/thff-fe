@@ -21,6 +21,9 @@ import { MdSidenavModule } from '@angular/material';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
+import { ContentsModule } from 'angular-contents';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+
 //Components
 
 //Home
@@ -77,7 +80,9 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
 
         FlexLayoutModule,//.forRoot(),
         //Material Design
-        MdGridListModule, MdButtonModule, MdCheckboxModule, MdInputModule, MdSidenavModule
+        MdGridListModule, MdButtonModule, MdCheckboxModule, MdInputModule, MdSidenavModule,
+
+        ContentsModule, NgxPageScrollModule
     ],
     bootstrap: [AppComponent],
     providers: [
