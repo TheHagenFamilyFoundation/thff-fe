@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrequentlyAskedQuestionsComponent implements OnInit {
 
-  title = "Frequently Asked Questions"
+  title = "THFF FAQ"
+  subTitle = "(Frequently Asked Questions)"
 
   constructor() { }
 
