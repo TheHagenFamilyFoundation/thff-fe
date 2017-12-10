@@ -11,9 +11,6 @@ import { AppRoutingModule } from './app.routing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AuthGuard } from './_guards/auth.guard';
-import { AuthService } from './auth/auth.service';
-
 import { MdGridListModule } from '@angular/material';
 import { MdButtonModule, MdCheckboxModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
@@ -23,6 +20,15 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { ContentsModule } from 'angular-contents';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
+
+//guards
+import { AuthGuard } from './_guards/auth.guard';
+
+//services
+//inside auth
+import { AuthService } from './auth/auth.service';
+
+import { GrantService } from './services/grant.service';
 
 //Components
 
@@ -86,7 +92,7 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
     ],
     bootstrap: [AppComponent],
     providers: [
-        AuthGuard, AuthService
+        AuthGuard, AuthService, GrantService
     ]
 })
 export class AppModule { }
