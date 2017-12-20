@@ -29,6 +29,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './auth/auth.service';
 
 import { GrantService } from './services/grant.service';
+import { GrantApiService } from './services/grant-api.service';
 
 //Components
 
@@ -62,10 +63,6 @@ import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
 
-import { TableOfContentsComponent } from './table-of-contents/table-of-contents.component';
-
-
-
 
 
 @NgModule({
@@ -80,7 +77,7 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
         DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent,
         FrequentlyAskedQuestionsComponent, ProcessComponent,
 
-        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, TableOfContentsComponent, HeaderComponent
+        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, HeaderComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
@@ -92,7 +89,8 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
     ],
     bootstrap: [AppComponent],
     providers: [
-        AuthGuard, AuthService, GrantService
+        AuthGuard, AuthService, 
+        GrantService, GrantApiService
     ]
 })
 export class AppModule { }
