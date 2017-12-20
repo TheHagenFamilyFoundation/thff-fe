@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GrantService} from '../../services/grant.service'
+import { GrantService } from '../../services/grant.service'
 
 @Component({
   selector: 'app-grants-awarded',
@@ -17,12 +17,18 @@ export class GrantsAwardedComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log("Grants - ngOnInit");
+
     this.getGrants();
 
   }
 
   getGrants(): void {
-    this.grants = this.grantService.getGrants();
+    this.grantService.getGrants().subscribe(
+      (grants) => {
+        this.grants = grants;
+      }
+    )
   }
 
 
