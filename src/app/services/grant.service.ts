@@ -12,30 +12,30 @@ export class GrantService {
   ) {
   }
 
-  // Simulate POST /grant
-  addTodo(grant: Grant): Observable<Grant> {
-    return this.grantapi.createGrant(grant);
-  }
+  // // Simulate POST /grant
+  // addTodo(grant: Grant): Observable<Grant> {
+  //   return this.grantapi.createGrant(grant);
+  // }
 
-  // Simulate DELETE /grant/:id
-  deleteGrantById(grantId: number): Observable<Grant> {
-    return this.grantapi.deleteGrantById(grantId);
-  }
+  // // Simulate DELETE /grant/:id
+  // deleteGrantById(grantId: number): Observable<Grant> {
+  //   return this.grantapi.deleteGrantById(grantId);
+  // }
 
-  // Simulate PUT /grant/:id
-  updateGrant(grant: Grant): Observable<Grant> {
-    return this.grantapi.updateGrant(grant);
-  }
+  // // Simulate PUT /grant/:id
+  // updateGrant(grant: Grant): Observable<Grant> {
+  //   return this.grantapi.updateGrant(grant);
+  // }
 
   // Simulate GET /grant
   getAllGrants(): Observable<Grant[]> {
     return this.grantapi.getAllGrants();
   }
 
-  // Simulate GET /grant/:id
-  getGrantById(grantId: number): Observable<Grant> {
-    return this.grantapi.getGrantById(grantId);
-  }
+  // // Simulate GET /grant/:id
+  // getGrantById(grantId: number): Observable<Grant> {
+  //   return this.grantapi.getGrantById(grantId);
+  // }
 
   // // Toggle complete
   // toggleGrantComplete(grant: Grant) {
