@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GrantService } from '../../services/grant.service'
+import { Grant } from '../../grant'
 
 @Component({
   selector: 'app-grants-awarded',
@@ -11,7 +12,7 @@ export class GrantsAwardedComponent implements OnInit {
   title = "Grants Awarded"
 
   //heroes: Hero[];
-  grants: any[];
+  grants: Grant[];
 
   constructor(private grantService: GrantService) { }
 
@@ -19,16 +20,18 @@ export class GrantsAwardedComponent implements OnInit {
 
     console.log("Grants - ngOnInit");
 
-    this.getGrants();
+    //this.getGrants();
 
   }
 
   getGrants(): void {
-    this.grantService.getGrants().subscribe(
+    this.grantService
+      .getAllGrants()
+      .subscribe(
       (grants) => {
         this.grants = grants;
       }
-    )
+      );
   }
 
 
