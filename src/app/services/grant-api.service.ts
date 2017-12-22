@@ -11,8 +11,14 @@ export class GrantApiService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllGrants(): Observable<Grant[]> {
-    return this.http.get(this.API_URL + '/grant');
+  public getAllGrants(): Observable<any> {
+
+    console.log("getAllGrants");
+    
+
+    let urlString = this.API_URL + '/grant'
+
+    return this.http.get(urlString);
   }
 
   // public createGrant(grant: Grant): Observable<Grant> {
