@@ -20,7 +20,7 @@ export class GrantsAwardedComponent implements OnInit {
 
     console.log("Grants - ngOnInit");
 
-    //this.getGrants();
+    this.getGrants();
 
   }
 
@@ -29,6 +29,7 @@ export class GrantsAwardedComponent implements OnInit {
       .getAllGrants()
       .subscribe(
       (grants) => {
+        console.log(grants);
         this.grants = grants;
       }
       );
