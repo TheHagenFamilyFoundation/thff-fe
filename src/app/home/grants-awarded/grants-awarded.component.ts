@@ -20,13 +20,24 @@ export class GrantsAwardedComponent implements OnInit {
 
     console.log("Grants - ngOnInit");
 
-    this.getGrants();
-
+    //this.getGrants();
+    this.getGrantsByYear(2000);
   }
 
   getGrants(): void {
     this.grantService
       .getAllGrants()
+      .subscribe(
+      (grants) => {
+        console.log(grants);
+        this.grants = grants;
+      }
+      );
+  }
+
+  getGrantsByYear(year:number): void {
+    this.grantService
+      .getGrantsByYear(year)
       .subscribe(
       (grants) => {
         console.log(grants);
