@@ -32,6 +32,10 @@ export class GrantService {
     return this.grantapi.getAllGrants();
   }
 
+  getGrantsByYear(year: number): Observable<Grant[]> {
+    return this.grantapi.getGrantsByYear(year);
+  }
+
   // // Simulate GET /grant/:id
   // getGrantById(grantId: number): Observable<Grant> {
   //   return this.grantapi.getGrantById(grantId);
