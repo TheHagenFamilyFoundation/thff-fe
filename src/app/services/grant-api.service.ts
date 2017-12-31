@@ -6,20 +6,28 @@ import { Observable } from 'rxjs/Observable'
 @Injectable()
 export class GrantApiService {
 
+  //API_URL = 'https://hagenfoundationbackend.herokuapp.com'
   API_URL = 'http://localhost:1337';
-
 
   constructor(private http: HttpClient) { }
 
   public getAllGrants(): Observable<any> {
 
     console.log("getAllGrants");
-    
 
-    let urlString = this.API_URL + '/grant'
+    let urlString = this.API_URL + '/grant?limit=0'
 
     return this.http.get(urlString);
-  }
+  }//getAllGrants
+
+  public getGrantsByYear(year: number): Observable<any> {
+
+    console.log("getGrantsByYear");
+
+    let urlString = this.API_URL + '/grant?year=' + year
+
+    return this.http.get(urlString);
+  }//getGrantsByYear
 
   // public createGrant(grant: Grant): Observable<Grant> {
   //   return this.http
