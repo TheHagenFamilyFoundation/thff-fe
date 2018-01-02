@@ -24,7 +24,9 @@ export class GrantApiService {
 
     console.log("getGrantsByYear");
 
-    let urlString = this.API_URL + '/grant?year=' + year
+    let urlString = this.API_URL + '/grant?where={\'year\':\' ' + year + '\'}'
+
+    console.log(urlString)
 
     return this.http.get(urlString);
   }//getGrantsByYear
