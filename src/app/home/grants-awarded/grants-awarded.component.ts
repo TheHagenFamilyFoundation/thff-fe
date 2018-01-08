@@ -119,6 +119,12 @@ export class GrantsAwardedComponent implements OnInit {
 
 
 
+  topFunction(): void {
 
+    console.log('topFunction')
+
+    window.scrollTo(0, 0) //scroll back up to the top
+
+  }
 
 }
