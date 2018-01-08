@@ -16,6 +16,9 @@ export class GrantsAwardedComponent implements OnInit {
   //arrays
   grants: Grant[];
 
+  grantYears: any[];
+
+
   constructor(private grantService: GrantService) { }
 
   ngOnInit() {
@@ -23,25 +26,49 @@ export class GrantsAwardedComponent implements OnInit {
     console.log("Grants - ngOnInit");
 
     this.grants = [];
+    this.grantYears = [];
 
     console.log("this.grants");
     console.log(this.grants);
 
+    this.getCurrentYear();
 
-    // //this.getGrants();
-    // this.getGrantsByYear(2000);
+    this.getGrantYears();
+
 
     this.initialGetGrants();
 
   }
 
-  initialGetGrants(): void {
-
+  getCurrentYear(): void {
     var today = new Date();
 
     console.log(today.getFullYear());
 
     this.currentYear = today.getFullYear();
+  }
+
+  getGrantYears(): void {
+
+    console.log("getGrantYears");
+
+    //this.grantYears.push(this.currentYear)
+
+    for (let i = this.currentYear; i >= 2000; i--) {
+
+      //debug
+      console.log("i =" + i);
+
+      this.grantYears.push(i);
+    }
+
+    console.log(this.grantYears);
+
+  }
+
+
+
+  initialGetGrants(): void {
 
     //this.getGrantsByYear(this.currentYear);
     this.getGrantsByYear(2015);
@@ -70,22 +97,26 @@ export class GrantsAwardedComponent implements OnInit {
         console.log("grants");
         //console.log(this.grants);
 
-        // if (this.grants) {
-        //   this.grants = grants;
-        // }
-        // else {
-        grants.forEach((item, index) => {
-          console.log(item);
+        if (this.grants.length == 0) {
+          this.grants = grants;
+        }
+        else {
+          grants.forEach((item, index) => {
+            console.log(item);
 
-          this.grants.push(item);
+            this.grants.push(item);
 
-        })
+          })
+
+        }
+
 
         console.log(this.grants);
 
-      }
-      );
+        // );
+      });
   }
+
 
 
 
