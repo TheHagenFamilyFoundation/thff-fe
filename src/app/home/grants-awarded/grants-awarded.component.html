@@ -1,3 +1,78 @@
 <div align="center">
   <h2>{{title}}</h2>
 </div>
+
+<div class="columnify" contents>
+  <!-- Body -->
+  <div>
+    <div [contentsSection]="'section-one'">
+      <h1>The University of Michigan - Dearborn</h1>
+      <p>College of Engineering and Education Practice (CEEP)</p>
+      <p>Fall 2001 </p>
+    </div>
+
+    <div [contentsSection]="'section-two'">
+      <h1>Children In Cambodia</h1>
+      <div>
+        <div align="center">Children in Cambodia supported through a grant to Warm Blankets Childrens Foundation (2005)</div>
+        <br>
+      </div>
+    </div>
+
+    <div [contentsSection]="'section-three'">
+      <h1>Overland Elementary</h1>
+      <div>
+        <div align="center">
+          In 2006, THFF provided funding for lighting in the new library at Overland Elementary School in Los Angeles, California.
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+  <!-- Table of Contents -->
+  <div class="table-column">
+    <ul class="contents-table" contentsTable>
+      <li *ngFor="let grantYear of grantYears; let i = index">
+        <a href="#section-one" contentsLink pageScroll>{{grantYear}}</a>
+      </li>
+      <!-- <li>
+        <a href="#section-two" contentsLink pageScroll>Children In Cambodia</a>
+      </li>
+      <li>
+        <a href="#section-three" contentsLink pageScroll>Overland Elementary</a>
+      </li> -->
+    </ul>
+  </div>
+</div>
+
+<!-- <div class="reader"> -->
+<div contents>
+  <!-- <div class="columnify" contents> -->
+  <!-- Body -->
+  <div *ngFor="let grantYear of grantYears; let i = index">
+    <h1>{{grantYear}}</h1>
+    <br>
+  </div>
+  <!-- <div [contentsSection]="grantYear">
+        <h1>{{grantYear}}</h1>
+        <p>Help</p>
+        <br>
+      </div> -->
+
+  <!-- Table of Contents -->
+  <div class="table-column">
+    <ul class="contents-table" contentsTable>
+      <div *ngFor="let grantYear of grantYears; let i = index">
+        <li>
+          <a href="grantYear" contentsLink pageScroll>{{grantYear}}</a>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
+
+<!-- <div align="center">
+    <button md-raised-button id="myBtn" (click)="topFunction()">Top</button>
+  </div> -->
+<!-- </div> -->
+<!-- </div> -->
