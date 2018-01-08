@@ -41,6 +41,9 @@ export class GrantsAwardedComponent implements OnInit {
   }
 
   getCurrentYear(): void {
+
+    console.log("getCurrentYear");
+
     var today = new Date();
 
     console.log(today.getFullYear());
