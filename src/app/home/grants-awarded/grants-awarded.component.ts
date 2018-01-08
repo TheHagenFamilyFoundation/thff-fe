@@ -69,11 +69,8 @@ export class GrantsAwardedComponent implements OnInit {
 
   }
 
-
-
   initialGetGrants(): void {
 
-    //this.getGrantsByYear(this.currentYear);
     this.getGrantsByYear(2015);
 
   }
