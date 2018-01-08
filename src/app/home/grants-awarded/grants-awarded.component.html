@@ -6,15 +6,9 @@
   <!-- Body -->
   <div>
     <div *ngFor="let grantYear of grantYears; let i = index">
-      <!-- <div [contentsSection]="'section-one'"> -->
       <div [contentsSection]="'section-' + grantYear">
         <h1>{{grantYear}}</h1>
       </div>
-      <!-- <div [contentsSection]="'section-one'">
-      <h1>The University of Michigan - Dearborn</h1>
-      <p>College of Engineering and Education Practice (CEEP)</p>
-      <p>Fall 2001 </p>
-    </div> -->
 
     </div>
   </div>
@@ -22,47 +16,8 @@
   <div class="table-column">
     <ul class="contents-table" contentsTable>
       <li *ngFor="let grantYear of grantYears; let i = index">
-        <!-- <a href="#section-one" contentsLink pageScroll>{{grantYear}}</a> -->
         <a href="#section-{{grantYear}}" contentsLink pageScroll>{{grantYear}}</a>
       </li>
-      <!-- <li>
-        <a href="#section-two" contentsLink pageScroll>Children In Cambodia</a>
-      </li>
-      <li>
-        <a href="#section-three" contentsLink pageScroll>Overland Elementary</a>
-      </li> -->
     </ul>
   </div>
 </div>
-
-<!-- <div class="reader"> -->
-<!-- <div contents> -->
-<!-- <div class="columnify" contents> -->
-<!-- Body -->
-<!-- <div *ngFor="let grantYear of grantYears; let i = index">
-    <h1>{{grantYear}}</h1>
-    <br>
-  </div> -->
-<!-- <div [contentsSection]="grantYear">
-        <h1>{{grantYear}}</h1>
-        <p>Help</p>
-        <br>
-      </div> -->
-
-<!-- Table of Contents -->
-<!-- <div class="table-column">
-    <ul class="contents-table" contentsTable>
-      <div *ngFor="let grantYear of grantYears; let i = index">
-        <li>
-          <a href="grantYear" contentsLink pageScroll>{{grantYear}}</a>
-        </li>
-      </div>
-    </ul>
-  </div>
-</div> -->
-
-<!-- <div align="center">
-    <button md-raised-button id="myBtn" (click)="topFunction()">Top</button>
-  </div> -->
-<!-- </div> -->
-<!-- </div> -->
