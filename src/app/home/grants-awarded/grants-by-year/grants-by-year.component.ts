@@ -27,6 +27,9 @@ export class GrantsByYearComponent implements OnInit {
 
     this.grants = [];
 
+    console.log(this.year);
+
+
     this.getGrantsByYear(this.year);
 
   }
