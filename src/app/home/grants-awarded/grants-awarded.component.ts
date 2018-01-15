@@ -115,7 +115,7 @@ export class GrantsAwardedComponent implements OnInit {
 
         // );
       });
-  }
+  }//end of getGrantsByYear
 
 
 
