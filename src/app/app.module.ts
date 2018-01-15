@@ -62,6 +62,7 @@ import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
+import { GrantsByYearComponent } from './home/grants-awarded/grants-by-year/grants-by-year.component';
 
 
 
@@ -77,7 +78,7 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
         DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent,
         FrequentlyAskedQuestionsComponent, ProcessComponent,
 
-        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, HeaderComponent
+        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, HeaderComponent, GrantsByYearComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
 
