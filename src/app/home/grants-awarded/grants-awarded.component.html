@@ -8,7 +8,9 @@
     <div *ngFor="let grantYear of grantYears; let i = index">
       <div [contentsSection]="'section-' + grantYear">
         <h1>{{grantYear}}</h1>
+        <!-- <div *ngIf="grantYear == 2015"> -->
         <app-grants-by-year [year]="grantYear"></app-grants-by-year>
+        <!-- </div> -->
       </div>
 
     </div>
