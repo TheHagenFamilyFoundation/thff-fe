@@ -2,7 +2,7 @@ export class Grant {
     id: number;
     year: number;
     amount: number;
-    description: string;
+    Description: string;
     city: string;
     state: string;
 
