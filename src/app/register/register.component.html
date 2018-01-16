@@ -2,33 +2,33 @@
     <h2>{{title}}</h2>
 </div>
 <div align="center">
-    <md-input-container>
+    <mat-input-container>
         <input mdInput placeholder="Username" value="" required [(ngModel)]="userName" (ngModelChange)="UsernameChange($event)">
-    </md-input-container>
+    </mat-input-container>
     <div *ngIf="ShowUserNameError">
         That User Name is already taken
     </div>
     <br>
-    <md-input-container>
+    <mat-input-container>
         <input mdInput placeholder="Email" value="" required [(ngModel)]="email" (ngModelChange)="EmailChange($event)">
-    </md-input-container>
+    </mat-input-container>
     <div *ngIf="ShowEmailError">
         That Email is already taken
     </div>
     <br>
     <!-- <div class="password"> -->
-    <md-input-container>
+    <mat-input-container>
         <input mdInput placeholder="Password" value="" type="password" required [(ngModel)]="password" (ngModelChange)="PasswordChange($event)">
-    </md-input-container>
+    </mat-input-container>
     <br>
     <div *ngIf="ShowConfirmPassword">
-        <md-input-container>
+        <mat-input-container>
             <input mdInput placeholder="Confirm Password" value="" type="password" required [(ngModel)]="confirmPassword" (ngModelChange)="ConfirmPasswordChange($event)">
-        </md-input-container>
+        </mat-input-container>
     </div>
     <!-- </div> -->
     <br>
     <div *ngIf="CanRegister">
-        <button md-raised-button (click)="register()">Register</button>
+        <button mat-raised-button (click)="register()">Register</button>
     </div>
 </div>

@@ -2,16 +2,16 @@
   <h2>{{title}}</h2>
 </div>
 <div align="center">
-  <md-input-container>
+  <mat-input-container>
     <input mdInput placeholder="Username" value="" [(ngModel)]="userName">
-  </md-input-container>
+  </mat-input-container>
   <br>
-  <md-input-container>
+  <mat-input-container>
     <input mdInput placeholder="Password" type="password" value="" [(ngModel)]="password">
-  </md-input-container>
+  </mat-input-container>
   <br>
-  <button md-raised-button (click)="login()">Login</button>
-  <button md-raised-button (click)="register()">Register</button>
+  <button mat-raised-button (click)="login()">Login</button>
+  <button mat-raised-button (click)="register()">Register</button>
   <br>
   <br>
   <div>
