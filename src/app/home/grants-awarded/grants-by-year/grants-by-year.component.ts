@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GrantService } from '../../../services/grant.service'
-import { Grant } from '../../../grant'
+import { GrantService } from '../../../services/grant.service';
+import { Grant } from '../../../grant';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-grants-by-year',
