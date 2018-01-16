@@ -1,6 +1,19 @@
-<h3>{{title}}</h3>
-<h4>{{year}}</h4>
-{{grants.length}}
-<div *ngFor="let grant of grants; let i = index">
-  {{grant.Description}}
+<!-- <h3>{{title}}</h3> -->
+<!-- <h4>{{year}}</h4> -->
+<!-- {{grants.length}} -->
+<div *ngIf="grants.length > 0">
+  <div *ngFor="let grant of grants; let i = index">
+    <div style="color:black;font-size:14px;">
+      <!-- <strong> {{grant.Amount | currency:'USD':true:'4.2-2' }} </strong> to {{grant.Description}}, -->
+      <div *ngIf="grant.City">
+        <strong> {{grant.Amount | currency:'USD':true:'4.2-2' }} </strong> to {{grant.Description}}, {{grant.City}}, {{grant.State}}</div>
+      <div *ngIf="!grant.City">
+        <strong> {{grant.Amount | currency:'USD':true:'4.2-2' }} </strong> to {{grant.Description}},{{grant.State}}</div>
+    </div>
+    <br>
+  </div>
+  <br>
+</div>
+<div *ngIf="grants.length < 1">
+  No grants awarded yet.
 </div>
