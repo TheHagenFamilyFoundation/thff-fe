@@ -3,11 +3,11 @@
 </div>
 <div align="center">
   <mat-input-container>
-    <input mdInput placeholder="Username" value="" [(ngModel)]="userName">
+    <input matInput placeholder="Username" value="" [(ngModel)]="userName">
   </mat-input-container>
   <br>
   <mat-input-container>
-    <input mdInput placeholder="Password" type="password" value="" [(ngModel)]="password">
+    <input matInput placeholder="Password" type="password" value="" [(ngModel)]="password">
   </mat-input-container>
   <br>
   <button mat-raised-button (click)="login()">Login</button>
@@ -18,4 +18,3 @@
     <a routerLink="/reset-password-or-username">Reset Password Or Forgot Username</a>
   </div>
 </div>
-
