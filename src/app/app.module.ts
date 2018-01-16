@@ -3,7 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
 import { Router } from '@angular/router';
@@ -11,10 +10,14 @@ import { AppRoutingModule } from './app.routing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MdGridListModule } from '@angular/material';
-import { MdButtonModule, MdCheckboxModule } from '@angular/material';
-import { MdInputModule } from '@angular/material';
-import { MdSidenavModule } from '@angular/material';
+import { MatGridListModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -42,12 +45,11 @@ import { AboutusComponent } from './home/aboutus/aboutus.component'
 import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
 import { ProcessComponent } from './home/application-materials/process/process.component';
 
-
-
 import { ApplicationTimelineComponent } from './home/application-timeline/application-timeline.component';
 
 import { InthenewsComponent } from './home/inthenews/inthenews.component';
 import { GrantsAwardedComponent } from './home/grants-awarded/grants-awarded.component';
+import { GrantsByYearComponent } from './home/grants-awarded/grants-by-year/grants-by-year.component';
 import { FrequentlyAskedQuestionsComponent } from './home/frequently-asked-questions/frequently-asked-questions.component';
 
 //Login
@@ -62,7 +64,7 @@ import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
-import { GrantsByYearComponent } from './home/grants-awarded/grants-by-year/grants-by-year.component';
+
 
 
 
@@ -80,17 +82,17 @@ import { GrantsByYearComponent } from './home/grants-awarded/grants-by-year/gran
 
         LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, HeaderComponent, GrantsByYearComponent
     ],
-    imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
+    imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AppRoutingModule,
 
         FlexLayoutModule,//.forRoot(),
         //Material Design
-        MdGridListModule, MdButtonModule, MdCheckboxModule, MdInputModule, MdSidenavModule,
+        MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule, MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
 
         ContentsModule, NgxPageScrollModule
     ],
     bootstrap: [AppComponent],
     providers: [
-        AuthGuard, AuthService, 
+        AuthGuard, AuthService,
         GrantService, GrantApiService
     ]
 })

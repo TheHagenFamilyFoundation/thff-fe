@@ -1,35 +1,35 @@
-<md-toolbar color="primary">
+<mat-toolbar color="primary">
 
-  <button md-button routerLink="/">
-    <md-icon>home</md-icon>
+  <button mat-button routerLink="/">
+    <mat-icon>home</mat-icon>
   </button>
 
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <div *ngIf="!authService.authenticated">
-      <button md-button routerLink="/login">Login</button>
+      <button mat-button routerLink="/login">Login</button>
     </div>
     <div *ngIf="!authService.authenticated">
-      <button md-button routerLink="/register">Register</button>
+      <button mat-button routerLink="/register">Register</button>
     </div>
     <div *ngIf="authService.authenticated">
-      <button md-button (click)="authService.logout()">Logout</button>
+      <button mat-button (click)="authService.logout()">Logout</button>
     </div>
   </div>
-  <button md-button [md-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-    <md-icon>menu</md-icon>
+  <button mat-button [matMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
   </button>
 
-</md-toolbar>
-<md-menu x-position="before" #menu="mdMenu">
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
   <div *ngIf="!authService.authenticated">
-    <button md-button routerLink="/login">Login</button>
+    <button mat-button routerLink="/login">Login</button>
   </div>
   <div *ngIf="!authService.authenticated">
-    <button md-button routerLink="/register">Register</button>
+    <button mat-button routerLink="/register">Register</button>
   </div>
   <div *ngIf="authService.authenticated">
-    <button md-button (click)="authService.logout()">Logout</button>
+    <button mat-button (click)="authService.logout()">Logout</button>
   </div>
-</md-menu>
+</mat-menu>
