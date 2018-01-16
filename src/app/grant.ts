@@ -1,10 +1,10 @@
 export class Grant {
     id: number;
-    year: number;
-    amount: number;
-    description: string;
-    city: string;
-    state: string;
+    Year: number;
+    Amount: number;
+    Description: string;
+    City: string;
+    State: string;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);
