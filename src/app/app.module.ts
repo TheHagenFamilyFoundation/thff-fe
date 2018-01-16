@@ -3,7 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
 import { Router } from '@angular/router';
@@ -11,10 +10,10 @@ import { AppRoutingModule } from './app.routing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MdGridListModule } from '@angular/material';
-import { MdButtonModule, MdCheckboxModule } from '@angular/material';
-import { MdInputModule } from '@angular/material';
-import { MdSidenavModule } from '@angular/material';
+import { MatGridListModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -80,11 +79,11 @@ import { GrantsByYearComponent } from './home/grants-awarded/grants-by-year/gran
 
         LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, HeaderComponent, GrantsByYearComponent
     ],
-    imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialModule, AppRoutingModule,
+    imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AppRoutingModule,
 
         FlexLayoutModule,//.forRoot(),
         //Material Design
-        MdGridListModule, MdButtonModule, MdCheckboxModule, MdInputModule, MdSidenavModule,
+        MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule, MatSidenavModule,
 
         ContentsModule, NgxPageScrollModule
     ],
