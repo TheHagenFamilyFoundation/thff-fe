@@ -1,3 +1,26 @@
 <div align="center">
   <h2>{{title}}</h2>
 </div>
+
+<div class="columnify" contents>
+  <!-- Body -->
+  <div>
+    <div *ngFor="let grantYear of grantYears; let i = index">
+      <div [contentsSection]="'section-' + grantYear">
+        <h1>{{grantYear}}</h1>
+        <!-- <div *ngIf="grantYear == 2015"> -->
+        <app-grants-by-year [year]="grantYear"></app-grants-by-year>
+        <!-- </div> -->
+      </div>
+
+    </div>
+  </div>
+  <!-- Table of Contents -->
+  <div class="table-column">
+    <ul class="contents-table" contentsTable>
+      <li *ngFor="let grantYear of grantYears; let i = index">
+        <a class="pointer" href="#section-{{grantYear}}" contentsLink pageScroll>{{grantYear}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
