@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-reset-password',
@@ -14,7 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   username: any;
   email: any;
 
-  constructor(private router: Router, public snackBar: MdSnackBar) { }
+  constructor(private router: Router, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
