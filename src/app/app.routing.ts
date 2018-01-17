@@ -51,7 +51,7 @@ const appRoutes: Routes = [
     { path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent },
 
 
-    { path: 'letintmenu', component: LetintmenuComponent, canActivate: [AuthGuard] },
+    { path: 'loimenu', component: LetintmenuComponent, canActivate: [AuthGuard] },
     { path: 'letint', component: LetintComponent, canActivate: [AuthGuard] },
     { path: 'status', component: LetintStatusComponent, canActivate: [AuthGuard] },
 
