@@ -37,7 +37,6 @@
     "magic-string": "^0.22.3",
     "ngx-page-scroll": "^4.0.2",
     "rxjs": "^5.5.6",
-    "typescript": "^2.6.2",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
@@ -58,7 +57,7 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
-    "typescript": "^2.4.2"
+    "typescript": "^2.5.3"
   },
   "engines": {
     "node": "7.9.0",
