@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map'
 import { AuthService } from '../auth/auth.service';
+import { ValidEmailService } from '../services/valid-email.service';
+import { ValidUserNameService } from '../services/valid-username.service';
 
 @Component({
   selector: 'register',
@@ -30,8 +32,9 @@ export class RegisterComponent implements OnInit {
   NoMatchPassword = true;
   ShowConfirmPassword = false;
 
-  ValidUserName = false;
-  ValidEmail = false;
+  ValidUserName: any;
+  ValidEmail: any;
+
   ValidPassword = false;
 
   ShowUserNameError = false;
@@ -40,7 +43,13 @@ export class RegisterComponent implements OnInit {
 
   CanRegister = false;
 
-  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private authService: AuthService,
+    private validEmailService: ValidEmailService,
+    private validUserNameService: ValidUserNameService,
+  ) { }
 
   ngOnInit() {
   }
@@ -185,73 +194,56 @@ export class RegisterComponent implements OnInit {
 
   ValidUserCheck(): void {
 
-    let isValidUser = false;
-
-    let urlString = this.API_URL + "/UserNameExists?username=" + this.userName;
-
-    console.log("urlString = " + urlString);
-
-    this.http.get(urlString)
-      .subscribe(data => {
-        this.results = data["userfound"];
-        console.log("data");
+    this.ValidUserName = this.validUserNameService.checkValidUserName(this.userName)
+      .subscribe(
+      (data) => {
+        //debug
         console.log(data);
-        console.log(this.results);
+        console.log("data");
 
-        if (this.results) {
-          isValidUser = false;
-          this.ValidUserName = false;
+        if (data.userfound) {
+          console.log("user found");
 
           this.ShowUserNameError = true;
         }
         else {
-          isValidUser = true;
-          this.ValidUserName = true;
+          console.log("user not found");
 
           this.ShowUserNameError = false;
+
         }
 
-        console.log("isValidUser = " + isValidUser)
-        console.log("ValidUserName = " + this.ValidUserName)
         this.VerifyInput();
-      });
 
-    //return isValidUser;
+      });
 
   }
 
   ValidEmailCheck(): void {
-    let isValidEmail = false;
 
-    let urlString = this.API_URL + "/EmailExists?email=" + this.email;
-
-    console.log("urlString = " + urlString);
-
-    this.http.get(urlString)
-      .subscribe(data => {
-        this.results = data["emailfound"];
-        console.log("data");
+    this.ValidEmail = this.validEmailService.checkValidEmail(this.email)
+      .subscribe(
+      (data) => {
+        //debug
         console.log(data);
-        console.log(this.results);
+        console.log("data");
 
-        if (this.results) {
-          isValidEmail = false;
-          this.ValidEmail = false;
+        if (data.emailfound) {
+          console.log("email found");
 
           this.ShowEmailError = true;
         }
         else {
-          isValidEmail = true;
-          this.ValidEmail = true;
+          console.log("email not found");
 
           this.ShowEmailError = false;
+
         }
 
-        console.log("isValidEmail = " + isValidEmail);
-        console.log("ValidEmail = " + this.ValidEmail);
-
         this.VerifyInput();
+
       });
+
   }
 
   VerifyInput(): void {
