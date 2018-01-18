@@ -18,6 +18,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -86,7 +87,9 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
 
         FlexLayoutModule,//.forRoot(),
         //Material Design
-        MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule, MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
+        MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule,
+        MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
+        MatSnackBarModule,
 
         ContentsModule, NgxPageScrollModule
     ],
