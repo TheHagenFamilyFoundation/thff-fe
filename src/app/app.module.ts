@@ -35,6 +35,9 @@ import { AuthService } from './auth/auth.service';
 import { GrantService } from './services/grant.service';
 import { GrantApiService } from './services/grant-api.service';
 
+import { ValidEmailService } from './services/valid-email.service';
+import { ValidUserNameService } from './services/valid-username.service';
+
 //Components
 
 //Home
@@ -96,7 +99,8 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
     bootstrap: [AppComponent],
     providers: [
         AuthGuard, AuthService,
-        GrantService, GrantApiService
+        GrantService, GrantApiService,
+        ValidEmailService, ValidUserNameService
     ]
 })
 export class AppModule { }
