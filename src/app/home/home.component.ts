@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'home',
@@ -15,11 +16,16 @@ export class HomeComponent implements OnInit {
   fullImagePath = '/assets/images/thfflogo1.JPG';
   fullImagePath2 = '/assets/images/cv_busses1.JPG';
 
+  env: any;
 
   /* Constructor */
   constructor(public authService: AuthService) {
 
     console.log("Home Constructor")
+
+    this.env = environment.envName;
+
+
 
     console.log(this.authService.authenticated)
 
