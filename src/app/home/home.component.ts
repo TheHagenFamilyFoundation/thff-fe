@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   fullImagePath2 = '/assets/images/cv_busses1.JPG';
 
   env: any;
+  API: any;
 
   /* Constructor */
   constructor(public authService: AuthService) {
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
     console.log("Home Constructor")
 
     this.env = environment.envName;
+    this.API = environment.API_URL;
 
 
 
