@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map'
 import { AuthService } from '../auth/auth.service';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   title = "Login"
 
-  API_URL = 'https://hagenfoundationbackend.herokuapp.com'
+  API_URL = environment.API_URL;
+  //API_URL = 'https://hagenfoundationbackend.herokuapp.com'
   //API_URL = 'http://localhost:1337';
 
   userName;
