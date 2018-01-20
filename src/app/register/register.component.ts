@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map'
 import { AuthService } from '../auth/auth.service';
 import { ValidEmailService } from '../services/valid-email.service';
 import { ValidUserNameService } from '../services/valid-username.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'register',
@@ -16,8 +17,10 @@ export class RegisterComponent implements OnInit {
 
   title = "Register";
 
+
+  API_URL = environment.API_URL;
   //API_URL = 'https://hagenfoundationbackend.herokuapp.com'
-  API_URL = 'http://localhost:1337';
+  //API_URL = 'http://localhost:1337';
 
   body;
 
