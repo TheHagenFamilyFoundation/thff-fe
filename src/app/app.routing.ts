@@ -28,6 +28,9 @@ import { LetintmenuComponent } from './letintmenu/letintmenu.component'
 import { LetintComponent } from './letintmenu/letint/letint.component'
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component'
 
+import { EmailComponent } from './test/email/email.component';
+
+
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     //login
@@ -54,6 +57,8 @@ const appRoutes: Routes = [
     { path: 'loimenu', component: LetintmenuComponent, canActivate: [AuthGuard] },
     { path: 'letint', component: LetintComponent, canActivate: [AuthGuard] },
     { path: 'status', component: LetintStatusComponent, canActivate: [AuthGuard] },
+
+    { path: 'email', component: EmailComponent },
 
     { path: '**', redirectTo: '' }
 ];
