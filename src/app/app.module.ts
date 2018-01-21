@@ -38,6 +38,8 @@ import { GrantApiService } from './services/grant-api.service';
 import { ValidEmailService } from './services/valid-email.service';
 import { ValidUserNameService } from './services/valid-username.service';
 
+import { EmailService } from './email.service';
+
 //Components
 
 //Home
@@ -70,6 +72,9 @@ import { ResetPasswordComponent } from './login/reset-password-or-forgot-usernam
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
 
 
+import { EmailComponent } from './test/email/email.component';
+
+
 
 
 @NgModule({
@@ -84,7 +89,7 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
         DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent,
         FrequentlyAskedQuestionsComponent, ProcessComponent,
 
-        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, HeaderComponent, GrantsByYearComponent
+        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, HeaderComponent, GrantsByYearComponent, EmailComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AppRoutingModule,
 
@@ -100,7 +105,8 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
     providers: [
         AuthGuard, AuthService,
         GrantService, GrantApiService,
-        ValidEmailService, ValidUserNameService
+        ValidEmailService, ValidUserNameService,
+        EmailService
     ]
 })
 export class AppModule { }
