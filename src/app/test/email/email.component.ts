@@ -24,9 +24,12 @@ export class EmailComponent implements OnInit {
       text: message,
     })
       .subscribe(
-      () => { this.router.navigate(['/home']); },
+      () => { },
       err => console.log(err)
       );
+
+    this.router.navigate(['/home']);
+
   }
 
 
