@@ -38,7 +38,7 @@ import { GrantApiService } from './services/grant-api.service';
 import { ValidEmailService } from './services/valid-email.service';
 import { ValidUserNameService } from './services/valid-username.service';
 
-import { EmailService } from './email.service';
+import { EmailService } from './services/email.service';
 
 //Components
 
