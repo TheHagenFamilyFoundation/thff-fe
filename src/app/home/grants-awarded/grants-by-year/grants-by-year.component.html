@@ -6,9 +6,9 @@
     <div style="color:black;font-size:14px;">
       <!-- <strong> {{grant.Amount | currency:'USD':true:'4.2-2' }} </strong> to {{grant.Description}}, -->
       <div *ngIf="grant.City">
-        <strong> {{grant.Amount | currency:'USD':true:'4.2-2' }} </strong> to {{grant.Description}}, {{grant.City}}, {{grant.State}}</div>
+        <strong> {{grant.Amount | currency:'USD':'symbol':'4.2-2' }} </strong> to {{grant.Description}}, {{grant.City}}, {{grant.State}}</div>
       <div *ngIf="!grant.City">
-        <strong> {{grant.Amount | currency:'USD':true:'4.2-2' }} </strong> to {{grant.Description}},{{grant.State}}</div>
+        <strong> {{grant.Amount | currency:'USD':'symbol':'4.2-2' }} </strong> to {{grant.Description}},{{grant.State}}</div>
     </div>
     <br>
   </div>
