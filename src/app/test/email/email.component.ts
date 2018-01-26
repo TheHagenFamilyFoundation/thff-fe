@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailService } from '../../email.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-email',
@@ -8,7 +9,9 @@ import { EmailService } from '../../email.service';
 })
 export class EmailComponent implements OnInit {
 
-  constructor(private _emailService: EmailService) { }
+  constructor(
+    private _emailService: EmailService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,6 +27,9 @@ export class EmailComponent implements OnInit {
       () => { },
       err => console.log(err)
       );
+
+    this.router.navigate(['/home']);
+
   }
 
 
