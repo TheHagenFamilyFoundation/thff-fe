@@ -21,6 +21,7 @@ import { FrequentlyAskedQuestionsComponent } from './home/frequently-asked-quest
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
 import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forgot-username/reset-password-or-forgot-username.component';
+import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
 
 //letintmenu
 import { LetintmenuComponent } from './letintmenu/letintmenu.component'
@@ -37,6 +38,8 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'reset-password-or-username', component: ResetPasswordOrUsernameComponent },
+    { path: 'type-new-password', component: TypeNewPasswordComponent },
+
 
 
     { path: 'about', component: AboutusComponent },
