@@ -40,6 +40,8 @@ import { ValidUserNameService } from './services/valid-username.service';
 
 import { EmailService } from './services/email.service';
 
+import { ResetCodeService } from './services/reset-code.service';
+
 //Components
 
 //Home
@@ -108,7 +110,7 @@ import { EmailComponent } from './test/email/email.component';
         AuthGuard, AuthService,
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService,
-        EmailService
+        EmailService, ResetCodeService
     ]
 })
 export class AppModule { }
