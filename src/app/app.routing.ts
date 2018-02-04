@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'reset-password-or-username', component: ResetPasswordOrUsernameComponent },
-    { path: 'type-new-password/:resetCode', component: TypeNewPasswordComponent },
+    { path: 'type-new-password/:username/:resetCode', component: TypeNewPasswordComponent },
 
 
 
