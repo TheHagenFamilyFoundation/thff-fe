@@ -5,6 +5,7 @@ import { ValidEmailService } from '../../../services/valid-email.service';
 import { ValidUserNameService } from '../../../services/valid-username.service';
 import { environment } from '../../../../environments/environment';
 import { EmailService } from '../../../services/email.service';
+import { ResetCodeService } from '../../../services/reset-code.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,6 +21,8 @@ export class ResetPasswordComponent implements OnInit {
   userName: any;
   email: any;
 
+  response: any;
+
   ValidUserName: any;
   ValidEmail: any;
 
@@ -33,7 +36,8 @@ export class ResetPasswordComponent implements OnInit {
     public snackBar: MatSnackBar,
     private validEmailService: ValidEmailService,
     private validUserNameService: ValidUserNameService,
-    private _emailService: EmailService
+    private _emailService: EmailService,
+    private _resetService: ResetCodeService
   ) { }
 
   ngOnInit() {
@@ -43,28 +47,63 @@ export class ResetPasswordComponent implements OnInit {
 
     console.log("You clicked on the Reset Password")
 
+    //this works
     let snackBarRef = this.snackBar.open('Please check your email for reset instructions.', 'OK', {
       duration: 3000
     });
 
     //create random function that creates a password
-
-    let message = "Your password is reset"
-
-    this._emailService.sendEmail({
-      from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
-      to: this.email,
-      name: name,
-      text: message,
+    //call the createResetCode
+    this._resetService.createResetCode({
+      email: this.email
     })
       .subscribe(
-      () => { },
-      err => console.log(err)
-      );
+      (data) => {
+        //debug
+        console.log(data);
+        console.log("data");
+
+        if (data.resetCodeCreated) {
+          let message = "Your password is reset"
+          console.log("after")
+          this._emailService.sendResetEmail({
+            from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+            to: this.email,
+            name: this.userName,
+            text: message,
+          })
+            .subscribe(
+            () => { },
+            err => console.log(err)
+            );
+
+        }
+        else{
+          console.log("Unable to reset password");
+          
+        }
+
+      })
+
+    // let message = "Your password is reset"
+    // console.log("after")
+    // this._emailService.sendResetEmail({
+    //   from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+    //   to: this.email,
+    //   name: this.userName,
+    //   text: message,
+    // })
+    //   .subscribe(
+    //   () => { },
+    //   err => console.log(err)
+    //   );
+
+
+
 
     this.router.navigate(['/login']);
 
-  }
+  }//end of resetPassword
 
   UsernameChange(event) {
     console.log("UsernameChange");
