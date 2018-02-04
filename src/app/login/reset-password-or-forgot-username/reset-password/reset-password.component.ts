@@ -71,6 +71,8 @@ export class ResetPasswordComponent implements OnInit {
             to: this.email,
             name: this.userName,
             text: message,
+            resetCode: data.resetCode,
+            //resetTime: data.resetTime
           })
             .subscribe(
             () => { },
