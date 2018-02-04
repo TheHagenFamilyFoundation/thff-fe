@@ -10,7 +10,7 @@ export class ResetCodeService {
 
   constructor(private http: HttpClient) { }
 
-  createResetCode(data) {
+  createResetCode(data): Observable<any> {
     //data is the user email
     return this.http.post(this.API_URL + '/CreateResetCode', data)
   }
