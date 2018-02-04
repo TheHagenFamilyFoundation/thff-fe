@@ -37,6 +37,7 @@ import { GrantApiService } from './services/grant-api.service';
 
 import { ValidEmailService } from './services/valid-email.service';
 import { ValidUserNameService } from './services/valid-username.service';
+import { ValidResetCodeService } from './services/valid-resetcode.service';
 
 import { EmailService } from './services/email.service';
 
@@ -109,7 +110,7 @@ import { EmailComponent } from './test/email/email.component';
     providers: [
         AuthGuard, AuthService,
         GrantService, GrantApiService,
-        ValidEmailService, ValidUserNameService,
+        ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService
     ]
 })
