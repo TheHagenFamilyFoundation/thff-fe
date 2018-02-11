@@ -74,6 +74,7 @@ export class TypeNewPasswordComponent implements OnInit {
 
   }
 
+  //also checks the time
   checkResetCode(): void {
 
     console.log("checkResetCode");
@@ -96,15 +97,7 @@ export class TypeNewPasswordComponent implements OnInit {
 
       });
 
-  }
-
-  checkResetTime(): void {
-
-
-
-
-  }
-
+  }//end of checkResetCode
 
   currentPasswordChange(event) {
     console.log("currentPasswordChange");
@@ -124,7 +117,12 @@ export class TypeNewPasswordComponent implements OnInit {
     console.log(event);
   }
 
+  setNewPassword(): void {
 
+    console.log("set New Password");
+    
+
+  }
 
 
 }
