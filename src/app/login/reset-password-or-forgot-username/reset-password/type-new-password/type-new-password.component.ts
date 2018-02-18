@@ -52,7 +52,7 @@ export class TypeNewPasswordComponent implements OnInit {
       this.checkUserName();
     });
 
-  }
+  }//end of ngOnInit
 
   checkUserName(): void {
 
@@ -76,7 +76,7 @@ export class TypeNewPasswordComponent implements OnInit {
 
       });
 
-  }
+  }//end of checkUserName
 
   //also checks the time
   checkResetCode(): void {
@@ -107,7 +107,7 @@ export class TypeNewPasswordComponent implements OnInit {
     console.log("currentPasswordChange");
 
     console.log(event);
-  }
+  }//end of currentPasswordChange
 
   newPasswordChange(event) {
     console.log("newPasswordChange");
@@ -125,20 +125,20 @@ export class TypeNewPasswordComponent implements OnInit {
 
     //this.VerifyInput();
 
-  }
+  }//end of new PasswordChange
 
   confirmPasswordChange(event) {
     console.log("confirmPasswordChange");
 
     console.log(event);
-  }
+  }//end of confirmPasswordChange
 
   setNewPassword(): void {
 
     console.log("set New Password");
 
 
-  }
+  }//end of setNewPassword
 
 
 }
