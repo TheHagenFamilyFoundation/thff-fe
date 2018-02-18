@@ -27,6 +27,10 @@ export class TypeNewPasswordComponent implements OnInit {
   ValidResetCode: any;
   //ValidResetTime: any;
 
+  ValidPassword: any;
+
+  ShowConfirmPassword = false;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -109,6 +113,18 @@ export class TypeNewPasswordComponent implements OnInit {
     console.log("newPasswordChange");
 
     console.log(event);
+
+    if (this.newPassword != "") {
+      this.ShowConfirmPassword = true;
+    }
+    else {
+      this.ShowConfirmPassword = false;
+      this.confirmPassword = "";
+      this.ValidPassword = false;
+    }
+
+    //this.VerifyInput();
+
   }
 
   confirmPasswordChange(event) {
@@ -120,7 +136,7 @@ export class TypeNewPasswordComponent implements OnInit {
   setNewPassword(): void {
 
     console.log("set New Password");
-    
+
 
   }
 
