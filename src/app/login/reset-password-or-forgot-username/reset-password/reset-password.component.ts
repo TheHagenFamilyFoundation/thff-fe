@@ -167,7 +167,7 @@ export class ResetPasswordComponent implements OnInit {
 
       });
 
-  }
+  }//end of ValidUserCheck
 
   ValidEmailCheck(): void {
 
