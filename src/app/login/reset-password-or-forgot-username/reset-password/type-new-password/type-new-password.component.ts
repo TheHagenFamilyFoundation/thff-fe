@@ -29,7 +29,15 @@ export class TypeNewPasswordComponent implements OnInit {
 
   ValidPassword: any;
 
+  ValidCurrentPassword: any;
+  ValidNewPassword: any;
+  ValidConfirmPassword: any;
+
   ShowConfirmPassword = false;
+
+  NoMatchPassword = true;
+
+  CanSetNewPassword = false; //initialize to false
 
   constructor(
     private router: Router,
@@ -60,21 +68,21 @@ export class TypeNewPasswordComponent implements OnInit {
 
     this.ValidUserName = this.validUserNameService.checkValidUserName(this.userName)
       .subscribe(
-      (data) => {
-        //debug
-        console.log(data);
-        console.log("data");
+        (data) => {
+          //debug
+          console.log(data);
+          console.log("data");
 
-        if (data.userfound) {
-          console.log("user found");
-          this.checkResetCode();
-        }
-        else {
-          console.log("user not found");
-          this.router.navigate(['home']);
-        }
+          if (data.userfound) {
+            console.log("user found");
+            this.checkResetCode();
+          }
+          else {
+            console.log("user not found");
+            this.router.navigate(['home']);
+          }
 
-      });
+        });
 
   }//end of checkUserName
 
@@ -85,21 +93,21 @@ export class TypeNewPasswordComponent implements OnInit {
 
     this.ValidResetCode = this.validResetCodeService.checkValidResetCode(this.resetCode)
       .subscribe(
-      (data) => {
-        //debug
-        console.log(data);
-        console.log("data");
+        (data) => {
+          //debug
+          console.log(data);
+          console.log("data");
 
-        if (data.validresetCode) {
-          console.log("reset code found");
-          //this.checkResetTime();
-        }
-        else {
-          console.log("reset code not found");
-          this.router.navigate(['home']);
-        }
+          if (data.validresetCode) {
+            console.log("reset code found");
+            //this.checkResetTime();
+          }
+          else {
+            console.log("reset code not found");
+            this.router.navigate(['home']);
+          }
 
-      });
+        });
 
   }//end of checkResetCode
 
@@ -107,6 +115,15 @@ export class TypeNewPasswordComponent implements OnInit {
     console.log("currentPasswordChange");
 
     console.log(event);
+
+    if (this.currentPassword != "") {
+      this.ValidCurrentPassword = true;
+    }
+    else {
+      this.ValidCurrentPassword = false;
+    }
+
+    this.verifyInput();
   }//end of currentPasswordChange
 
   newPasswordChange(event) {
@@ -116,22 +133,53 @@ export class TypeNewPasswordComponent implements OnInit {
 
     if (this.newPassword != "") {
       this.ShowConfirmPassword = true;
+      this.ValidNewPassword = true;
     }
     else {
       this.ShowConfirmPassword = false;
       this.confirmPassword = "";
-      this.ValidPassword = false;
+      this.ValidNewPassword = false;
     }
 
-    //this.VerifyInput();
+    this.verifyInput();
 
   }//end of new PasswordChange
 
   confirmPasswordChange(event) {
     console.log("confirmPasswordChange");
 
-    console.log(event);
+    this.comparePasswords();
   }//end of confirmPasswordChange
+
+  comparePasswords(): void {
+
+    console.log("comparePasswords");
+    
+
+    if (this.newPassword != this.confirmPassword) {
+      this.NoMatchPassword = false;
+      //debug
+      console.log("NoMatchPassword = " + this.NoMatchPassword);
+
+      this.ValidConfirmPassword = false;
+
+      this.verifyInput();
+    }
+    else {
+
+      //if the passwords match
+      this.NoMatchPassword = true;
+      //debug
+      console.log("NoMatchPassword = " + this.NoMatchPassword);
+
+      this.ValidConfirmPassword = true;
+
+      this.verifyInput();
+    }
+
+  }//end of ComparePasswords
+
+
 
   setNewPassword(): void {
 
@@ -139,6 +187,18 @@ export class TypeNewPasswordComponent implements OnInit {
 
 
   }//end of setNewPassword
+
+  verifyInput(): void {
+    console.log("verifyInput");
+
+    if (this.ValidCurrentPassword && this.ValidNewPassword && this.ValidConfirmPassword) {
+      this.CanSetNewPassword = true;
+    }
+    else {
+      this.CanSetNewPassword = false;
+    }
+
+  }
 
 
 }
