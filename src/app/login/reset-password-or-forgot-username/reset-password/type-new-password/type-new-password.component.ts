@@ -179,12 +179,9 @@ export class TypeNewPasswordComponent implements OnInit {
 
   }//end of ComparePasswords
 
-
-
   setNewPassword(): void {
 
     console.log("set New Password");
-
 
   }//end of setNewPassword
 
