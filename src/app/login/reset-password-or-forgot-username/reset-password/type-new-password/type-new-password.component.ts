@@ -195,7 +195,6 @@ export class TypeNewPasswordComponent implements OnInit {
       this.CanSetNewPassword = false;
     }
 
-  }
-
+  }//end of verifyInput()
 
 }
