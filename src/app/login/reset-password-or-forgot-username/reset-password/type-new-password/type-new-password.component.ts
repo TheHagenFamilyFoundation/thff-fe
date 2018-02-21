@@ -35,6 +35,7 @@ export class TypeNewPasswordComponent implements OnInit {
 
   ShowConfirmPassword = false;
 
+  NoMatchNewCurrentPassword = true;
   NoMatchPassword = true;
 
   CanSetNewPassword = false; //initialize to false
@@ -44,7 +45,13 @@ export class TypeNewPasswordComponent implements OnInit {
     private route: ActivatedRoute,
     private validUserNameService: ValidUserNameService,
     private validResetCodeService: ValidResetCodeService
-  ) { }
+  ) {
+
+    this.currentPassword = "";
+    this.newPassword = "";
+    this.confirmPassword = "";
+
+   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -116,14 +123,8 @@ export class TypeNewPasswordComponent implements OnInit {
 
     console.log(event);
 
-    if (this.currentPassword != "") {
-      this.ValidCurrentPassword = true;
-    }
-    else {
-      this.ValidCurrentPassword = false;
-    }
+    this.compareNewCurrentPasswords();
 
-    this.verifyInput();
   }//end of currentPasswordChange
 
   newPasswordChange(event) {
@@ -131,17 +132,7 @@ export class TypeNewPasswordComponent implements OnInit {
 
     console.log(event);
 
-    if (this.newPassword != "") {
-      this.ShowConfirmPassword = true;
-      this.ValidNewPassword = true;
-    }
-    else {
-      this.ShowConfirmPassword = false;
-      this.confirmPassword = "";
-      this.ValidNewPassword = false;
-    }
-
-    this.verifyInput();
+    this.compareNewCurrentPasswords();
 
   }//end of new PasswordChange
 
@@ -151,10 +142,38 @@ export class TypeNewPasswordComponent implements OnInit {
     this.comparePasswords();
   }//end of confirmPasswordChange
 
+  compareNewCurrentPasswords(): void {
+
+    console.log("compareNewOldPasswords");
+
+    if (this.currentPassword != "" && this.newPassword != "") {
+
+      console.log("currentPassword and newPassword are not blank");
+
+
+      if (this.currentPassword != this.newPassword) {
+        this.ShowConfirmPassword = true;
+        this.ValidNewPassword = true;
+        this.ValidCurrentPassword = true;
+        this.NoMatchNewCurrentPassword = false;
+      }
+      else {
+        this.ShowConfirmPassword = false;
+        this.confirmPassword = "";
+        this.ValidNewPassword = false;
+        this.ValidCurrentPassword = false;
+        this.NoMatchNewCurrentPassword = true;
+      }
+
+    }
+
+    this.verifyInput();
+
+  }//end of compareNewCurrentPasswords
+
   comparePasswords(): void {
 
     console.log("comparePasswords");
-    
 
     if (this.newPassword != this.confirmPassword) {
       this.NoMatchPassword = false;
@@ -179,12 +198,6 @@ export class TypeNewPasswordComponent implements OnInit {
 
   }//end of ComparePasswords
 
-  setNewPassword(): void {
-
-    console.log("set New Password");
-
-  }//end of setNewPassword
-
   verifyInput(): void {
     console.log("verifyInput");
 
@@ -196,5 +209,12 @@ export class TypeNewPasswordComponent implements OnInit {
     }
 
   }//end of verifyInput()
+
+  setNewPassword(): void {
+
+    console.log("set New Password");
+
+  }//end of setNewPassword
+
 
 }
