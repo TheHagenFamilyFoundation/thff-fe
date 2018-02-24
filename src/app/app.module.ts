@@ -38,6 +38,7 @@ import { GrantApiService } from './services/grant-api.service';
 import { ValidEmailService } from './services/valid-email.service';
 import { ValidUserNameService } from './services/valid-username.service';
 import { ValidResetCodeService } from './services/valid-resetcode.service';
+import { SetNewPasswordService } from './services/set-new-password.service';
 
 import { EmailService } from './services/email.service';
 
@@ -111,7 +112,7 @@ import { EmailComponent } from './test/email/email.component';
         AuthGuard, AuthService,
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
-        EmailService, ResetCodeService
+        EmailService, ResetCodeService, SetNewPasswordService
     ]
 })
 export class AppModule { }
