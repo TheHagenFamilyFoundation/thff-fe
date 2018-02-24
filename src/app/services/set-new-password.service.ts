@@ -11,7 +11,11 @@ export class SetNewPasswordService {
   constructor(private http: HttpClient) { }
 
   setNewPassword(data): Observable<any> {
-    //data is the user email
+
+    console.log(data);
+    
+
+    //data is the user current, new, and confirm passwords
     return this.http.post(this.API_URL + '/setNewPassword', data)
   }
 
