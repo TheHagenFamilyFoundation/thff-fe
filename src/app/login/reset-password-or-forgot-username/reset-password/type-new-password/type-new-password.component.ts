@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ValidUserNameService } from '../../../../services/valid-username.service';
 import { ValidResetCodeService } from '../../../../services/valid-resetcode.service';
+import { SetNewPasswordService } from '../../../../services/set-new-password.service';
 //import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -213,6 +214,9 @@ export class TypeNewPasswordComponent implements OnInit {
   setNewPassword(): void {
 
     console.log("set New Password");
+
+
+    
 
   }//end of setNewPassword
 
