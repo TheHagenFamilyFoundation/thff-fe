@@ -34,6 +34,8 @@ export class TypeNewPasswordComponent implements OnInit {
   ValidNewPassword: any;
   ValidConfirmPassword: any;
 
+  ValidPasswordReset: any;
+
   ShowConfirmPassword = false;
 
   NoMatchNewCurrentPassword = true;
@@ -45,14 +47,15 @@ export class TypeNewPasswordComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private validUserNameService: ValidUserNameService,
-    private validResetCodeService: ValidResetCodeService
+    private validResetCodeService: ValidResetCodeService,
+    private setNewPasswordService: SetNewPasswordService
   ) {
 
     this.currentPassword = "";
     this.newPassword = "";
     this.confirmPassword = "";
 
-   }
+  }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -215,8 +218,15 @@ export class TypeNewPasswordComponent implements OnInit {
 
     console.log("set New Password");
 
+    var data = {
+      cp: this.currentPassword,
+      np: this.newPassword,
+      conp: this.confirmPassword
+    }
 
-    
+    this.ValidPasswordReset= this.setNewPasswordService.setNewPassword(data);
+
+    //redirect
 
   }//end of setNewPassword
 
