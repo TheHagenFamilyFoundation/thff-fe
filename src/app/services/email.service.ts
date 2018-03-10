@@ -18,7 +18,7 @@ export class EmailService {
   }
 
   sendResetEmail(data) {
-    return this.http.post(this.API_URL + '/sendResetEmail', data)
+    return this.http.put(this.API_URL + '/sendResetEmail', data)
   }
 
 

@@ -12,7 +12,7 @@ export class ResetCodeService {
 
   createResetCode(data): Observable<any> {
     //data is the user email
-    return this.http.post(this.API_URL + '/CreateResetCode', data)
+    return this.http.put(this.API_URL + '/CreateResetCode', data)
   }
 
 }
