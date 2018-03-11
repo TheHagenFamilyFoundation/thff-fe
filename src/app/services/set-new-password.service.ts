@@ -12,11 +12,9 @@ export class SetNewPasswordService {
 
   setNewPassword(data): Observable<any> {
 
-    console.log(data);
-    
-
+    //console.log(data);
     //data is the user current, new, and confirm passwords
-    return this.http.post(this.API_URL + '/setNewPassword', data)
+    return this.http.put(this.API_URL + '/setNewPassword', data)
   }
 
 }
