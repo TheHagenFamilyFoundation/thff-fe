@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+
 import { ValidUserNameService } from '../../../../services/valid-username.service';
 import { ValidResetCodeService } from '../../../../services/valid-resetcode.service';
 import { SetNewPasswordService } from '../../../../services/set-new-password.service';
-//import { environment } from '../../../../../environments/environment';
+
 
 @Component({
   selector: 'app-type-new-password',
@@ -17,6 +19,8 @@ export class TypeNewPasswordComponent implements OnInit {
   user: any;
   userName: any;
 
+  message: any;
+
   currentPassword: any;
   newPassword: any;
   confirmPassword: any;
@@ -26,7 +30,6 @@ export class TypeNewPasswordComponent implements OnInit {
 
   ValidUserName: any;
   ValidResetCode: any;
-  //ValidResetTime: any;
 
   ValidPassword: any;
 
@@ -37,17 +40,25 @@ export class TypeNewPasswordComponent implements OnInit {
   ValidPasswordReset: any;
 
   NoMatchPassword = true;
+  NoMatchNewCurrentPassword = true;
 
   CanSetNewPassword = false; //initialize to false
+
+  ShowCurrentNewError = false;
+  ShowNewConfirmError = false;
+  ShowConfirmPassword = false;
+  ShowMessage = false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    public snackBar: MatSnackBar,
     private validUserNameService: ValidUserNameService,
     private validResetCodeService: ValidResetCodeService,
-    private setNewPasswordService: SetNewPasswordService
+    private setNewPasswordService: SetNewPasswordService,
   ) {
 
+    this.currentPassword = "";
     this.newPassword = "";
     this.confirmPassword = "";
 
@@ -93,7 +104,8 @@ export class TypeNewPasswordComponent implements OnInit {
 
   }//end of checkUserName
 
-  //also checks the time
+  //also checks the time and the resetPassword field if true or false
+  //false implying that the user already reset the password
   checkResetCode(): void {
 
     console.log("checkResetCode");
@@ -105,12 +117,22 @@ export class TypeNewPasswordComponent implements OnInit {
           console.log(data);
           console.log("data");
 
+          var message = data.message;
+
           if (data.validresetCode) {
             console.log("reset code found");
+            console.log(message);
             //this.checkResetTime();
           }
           else {
             console.log("reset code not found");
+            console.log(message);
+            //show a toast before redirect
+
+            let snackBarRef = this.snackBar.open(message, 'OK', {
+              duration: 3000
+            });
+
             this.router.navigate(['home']);
           }
 
@@ -123,10 +145,16 @@ export class TypeNewPasswordComponent implements OnInit {
 
     console.log(event);
 
-    this.ValidCurrentPassword = true;
+    this.message = "";
 
-    this.comparePasswords();
-    //this.compareNewCurrentPasswords();
+    if (this.currentPassword != "") {
+      this.ValidCurrentPassword = true;
+    }
+    else {
+      this.ValidCurrentPassword = false;
+    }
+
+    this.compareNewCurrentPasswords();
 
   }//end of new PasswordChange
 
@@ -135,67 +163,86 @@ export class TypeNewPasswordComponent implements OnInit {
 
     console.log(event);
 
-    this.ValidNewPassword = true;
+    this.message = "";
 
-    this.comparePasswords();
-    //this.compareNewCurrentPasswords();
+    if (this.newPassword != "") {
+      this.ValidNewPassword = true;
+    }
+    else {
+      this.ValidNewPassword = false;
+    }
+
+    this.compareNewCurrentPasswords();
 
   }//end of new PasswordChange
 
   confirmPasswordChange(event) {
     console.log("confirmPasswordChange");
 
+    this.message = "";
+
     this.comparePasswords();
   }//end of confirmPasswordChange
 
-  // compareNewCurrentPasswords(): void {
+  compareNewCurrentPasswords(): void {
 
-  //   console.log("compareNewOldPasswords");
+    console.log("compareNewCurrentPasswords");
 
+    //check if they are valid - meaning not blank
+    if (this.ValidCurrentPassword && this.ValidNewPassword) {
 
-  //     if (this.currentPassword != this.newPassword) {
-  //       this.ShowConfirmPassword = true;
-  //       this.ValidNewPassword = true;
-  //       this.ValidCurrentPassword = true;
-  //       this.NoMatchNewCurrentPassword = false;
-  //     }
-  //     else {
-  //       this.ShowConfirmPassword = false;
-  //       this.confirmPassword = "";
-  //       this.ValidNewPassword = false;
-  //       this.ValidCurrentPassword = false;
-  //       this.NoMatchNewCurrentPassword = true;
-  //     }
+      if (this.currentPassword != this.newPassword) {
+        this.ShowConfirmPassword = true;
+        this.NoMatchNewCurrentPassword = false;
 
-  //   }
+        this.ShowCurrentNewError = false;
 
-  //   this.verifyInput();
+      }
+      else {
+        this.ShowConfirmPassword = false;
+        this.confirmPassword = "";
+        this.NoMatchNewCurrentPassword = true;
 
-  // }//end of compareNewCurrentPasswords
+        this.ShowCurrentNewError = true;
+
+      }
+
+    }
+    else {
+      this.ShowConfirmPassword = false;
+    }
+
+    this.verifyInput();
+
+  }//end of compareNewCurrentPasswords
 
   comparePasswords(): void {
 
     console.log("comparePasswords");
 
-    if (this.newPassword != this.confirmPassword) {
-      this.NoMatchPassword = false;
-      //debug
-      console.log("NoMatchPassword = " + this.NoMatchPassword);
+    if (this.confirmPassword != "") {
+      if (this.newPassword != this.confirmPassword) {
+        this.NoMatchPassword = false;
+        //debug
+        console.log("NoMatchPassword = " + this.NoMatchPassword);
 
-      this.ValidConfirmPassword = false;
+        this.ValidConfirmPassword = false;
+        this.ShowNewConfirmError = true;
 
-      this.verifyInput();
-    }
-    else {
+        this.verifyInput();
+      }
+      else {
 
-      //if the passwords match
-      this.NoMatchPassword = true;
-      //debug
-      console.log("NoMatchPassword = " + this.NoMatchPassword);
+        //if the passwords match
+        this.NoMatchPassword = true;
+        //debug
+        console.log("NoMatchPassword = " + this.NoMatchPassword);
 
-      this.ValidConfirmPassword = true;
+        this.ValidConfirmPassword = true;
+        this.ShowNewConfirmError = false;
 
-      this.verifyInput();
+        this.verifyInput();
+      }
     }
 
   }//end of ComparePasswords
@@ -203,7 +250,7 @@ export class TypeNewPasswordComponent implements OnInit {
   verifyInput(): void {
     console.log("verifyInput");
 
-    if (this.ValidNewPassword && this.ValidConfirmPassword) {
+    if (this.ValidCurrentPassword && this.ValidNewPassword && this.ValidConfirmPassword) {
       this.CanSetNewPassword = true;
     }
     else {
@@ -229,15 +276,31 @@ export class TypeNewPasswordComponent implements OnInit {
       .subscribe(
         (data) => {
           console.log("new password set");
+          console.log("data");
           console.log(data);
+
           reset = data.reset;
-          
-          if(reset)
-          {
+          var message = data.message;
+
+          if (message) {
+            console.log("message: " + message);
+            this.ShowMessage = true;
+
+            this.message = message;
+          }
+
+          if (reset) {
+
+            let snackBarRef = this.snackBar.open(message, 'OK', {
+              duration: 3000
+            });
+
             this.router.navigate(['/login']);
           }
-          else{
+          else {
             //error message
+
+            console.log("Error: " + reset);
           }
         })
 
