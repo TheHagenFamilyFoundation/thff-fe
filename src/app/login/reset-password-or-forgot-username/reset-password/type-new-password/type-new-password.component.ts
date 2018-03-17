@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { ValidUserNameService } from '../../../../services/user/valid-username.service';
 import { ValidResetCodeService } from '../../../../services/user/valid-resetcode.service';
 import { SetNewPasswordService } from '../../../../services/user/set-new-password.service';
+import { GetUserService } from '../../../../services/user/get-user.service';
 import { EmailService } from '../../../../services/user/email.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class TypeNewPasswordComponent implements OnInit {
 
   user: any;
   userName: any;
+  email: any;
 
   message: any;
 
@@ -56,7 +58,8 @@ export class TypeNewPasswordComponent implements OnInit {
     private validUserNameService: ValidUserNameService,
     private validResetCodeService: ValidResetCodeService,
     private setNewPasswordService: SetNewPasswordService,
-    private emailService: EmailService,
+    private getUserService: GetUserService,
+    private emailService: EmailService
   ) {
 
     this.currentPassword = "";
@@ -296,19 +299,27 @@ export class TypeNewPasswordComponent implements OnInit {
               duration: 3000
             });
 
-            // this.emailService.sendResetEmailConfirmation({
-            //   from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
-            //   to: this.email,
-            //   name: this.userName,
-            //   text: message,
-            //   resetCode: data.resetCode,
-            //   //resetTime: data.resetTime
-            // })
-            //   .subscribe(
-            //   () => { },
-            //   err => console.log(err)
-            //   );
+            this.getUserService.getUserbyUsername(this.userName)
+              .subscribe(
+                (user) => {
+                  console.log(user)
+                  console.log(user[0].email)
+                  this.email = user[0].email;
 
+                  this.emailService.sendResetEmailConfirmation({
+                    from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+                    to: this.email,
+                    name: this.userName,
+                    text: message,
+                  })
+                    .subscribe(
+                      () => { },
+                      err => console.log(err)
+                    );
+
+                },
+                err => console.log(err)
+              )
 
             this.router.navigate(['/login']);
           }
@@ -316,6 +327,7 @@ export class TypeNewPasswordComponent implements OnInit {
             //error message
 
             console.log("Error: " + reset);
+            this.CanSetNewPassword = false;
           }
         })
 
