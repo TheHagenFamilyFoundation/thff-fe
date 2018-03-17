@@ -18,4 +18,12 @@ export class GetUserService {
     return this.http.get(urlString);
   }
 
+  getUserbyEmail(email: string): Observable<any> {
+
+    let urlString = this.API_URL + "/user?email=" + email;
+
+    return this.http.get(urlString);
+  }
+
+
 }
