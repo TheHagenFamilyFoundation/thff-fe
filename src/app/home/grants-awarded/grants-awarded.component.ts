@@ -109,14 +109,11 @@ export class GrantsAwardedComponent implements OnInit {
 
         }
 
-
         console.log(this.grants);
 
         // );
       });
   }//end of getGrantsByYear
-
-
 
   topFunction(): void {
 
