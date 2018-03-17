@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class EmailService {
@@ -21,6 +21,9 @@ export class EmailService {
     return this.http.put(this.API_URL + '/sendResetEmail', data)
   }
 
+  sendResetEmailConfirmation(data) {
+    return this.http.put(this.API_URL + '/sendResetEmailConfirmation', data)
+  }
 
   private _errorHandler(error: Response) {
     console.error(error);

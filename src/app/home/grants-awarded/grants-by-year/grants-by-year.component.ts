@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GrantService } from '../../../services/grant.service';
-import { Grant } from '../../../grant';
+import { GrantService } from '../../../services/grants/grant.service';
+import { Grant } from '../../../services/grants/grant'
 import { CurrencyPipe } from '@angular/common';
 
 @Component({

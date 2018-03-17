@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { ValidEmailService } from '../../../services/valid-email.service';
-import { ValidUserNameService } from '../../../services/valid-username.service';
+import { ValidEmailService } from '../../../services/user/valid-email.service';
+import { ValidUserNameService } from '../../../services/user/valid-username.service';
 import { environment } from '../../../../environments/environment';
-import { EmailService } from '../../../services/email.service';
-import { ResetCodeService } from '../../../services/reset-code.service';
+import { EmailService } from '../../../services/user/email.service';
+import { ResetCodeService } from '../../../services/user/reset-code.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -86,22 +86,6 @@ export class ResetPasswordComponent implements OnInit {
         }
 
       })
-
-    // let message = "Your password is reset"
-    // console.log("after")
-    // this._emailService.sendResetEmail({
-    //   from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
-    //   to: this.email,
-    //   name: this.userName,
-    //   text: message,
-    // })
-    //   .subscribe(
-    //   () => { },
-    //   err => console.log(err)
-    //   );
-
-
-
 
     this.router.navigate(['/login']);
 
@@ -204,7 +188,5 @@ export class ResetPasswordComponent implements OnInit {
       this.CanResetPassword = false;
     }
   }
-
-
 
 }

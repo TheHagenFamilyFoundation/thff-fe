@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GrantService } from '../../services/grant.service'
-import { Grant } from '../../grant'
+import { GrantService } from '../../services/grants/grant.service'
+import { Grant } from '../../services/grants/grant'
 
 @Component({
   selector: 'app-grants-awarded',
@@ -17,7 +17,6 @@ export class GrantsAwardedComponent implements OnInit {
   grants: Grant[];
 
   grantYears: any[];
-
 
   constructor(private grantService: GrantService) { }
 

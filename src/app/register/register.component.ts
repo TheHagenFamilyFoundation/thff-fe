@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map'
 import { AuthService } from '../auth/auth.service';
-import { ValidEmailService } from '../services/valid-email.service';
-import { ValidUserNameService } from '../services/valid-username.service';
+import { ValidEmailService } from '../services/user/valid-email.service';
+import { ValidUserNameService } from '../services/user/valid-username.service';
 import { environment } from '../../environments/environment';
 
 @Component({
