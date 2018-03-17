@@ -27,7 +27,10 @@ export class LoginComponent implements OnInit {
   data;
   results: any;
 
-  constructor(private router: Router, private http: HttpClient,private authService: AuthService ) { }
+  ShowMessage = false;
+  message: any;
+
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -52,36 +55,45 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         this.results = data;
 
-        /*debug
-  
-        console.log(data);
-        console.log("this.results");
-        console.log(this.results);
-        console.log(this.results.token);
-        */
+        //console.log(data);
 
-        //console.log(this.results.token)
+        if (this.results.user) {
+          console.log("this.results.user = " + this.results.user)
 
-        console.log(this.results.user)
+          localStorage.setItem('token', this.results.token);
+          localStorage.setItem('currentUser', JSON.stringify(this.results.user));
 
-        localStorage.setItem('token', this.results.token);
-        localStorage.setItem('currentUser', JSON.stringify(this.results.user));
+          console.log("token = " + localStorage.getItem('token'));
+          console.log("currentUser = " + localStorage.getItem('currentUser'));
 
-        console.log("token = " + localStorage.getItem('token'));
-        console.log("currentUser = " + localStorage.getItem('currentUser'));
-
-        this.authService.login();
+          this.authService.login();
+        }
+        else {
+          this.message = this.results.message;
+          this.ShowMessage = true;
+        }
 
       });
-
-    //this.router.navigate(['/login']);
-    //this.router.navigate(['/home']);
 
   }
 
   register(): void {
     console.log("You clicked on the Register")
     this.router.navigate(['/register']);
+  }
+
+  usernameChange(event) {
+    console.log("usernameChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  passwordChange(event) {
+    console.log("passwordChange");
+
+    this.ShowMessage = false;
+
   }
 
 }

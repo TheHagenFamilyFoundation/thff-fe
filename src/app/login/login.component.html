@@ -3,12 +3,17 @@
 </div>
 <div align="center">
   <mat-input-container>
-    <input matInput placeholder="Username" value="" [(ngModel)]="userName">
+    <input matInput placeholder="Username" value="" [(ngModel)]="userName" (ngModelChange)="usernameChange($event)">
   </mat-input-container>
   <br>
   <mat-input-container>
-    <input matInput placeholder="Password" type="password" value="" [(ngModel)]="password">
+    <input matInput placeholder="Password" type="password" value="" [(ngModel)]="password" (ngModelChange)="passwordChange($event)">
   </mat-input-container>
+  <br>
+  <div *ngIf="ShowMessage">
+    {{message}}
+    <br>
+  </div>
   <br>
   <button mat-raised-button (click)="login()">Login</button>
   <button mat-raised-button (click)="register()">Register</button>
