@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Observable'
+import { environment } from '../../../environments/environment';
 
 @Injectable()
-export class ValidEmailService {
+export class ValidUserNameService {
 
   API_URL = environment.API_URL;
   //API_URL = 'https://hagenfoundationbackend.herokuapp.com'
@@ -12,11 +12,12 @@ export class ValidEmailService {
 
   constructor(private http: HttpClient) { }
 
-  checkValidEmail(email: string): Observable<any> {
+  checkValidUserName(username: string): Observable<any> {
 
-    let urlString = this.API_URL + "/EmailExists?email=" + email;
+    let urlString = this.API_URL + "/UserNameExists?username=" + username;
 
     return this.http.get(urlString);
   }
+
 
 }

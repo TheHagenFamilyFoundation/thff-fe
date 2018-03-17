@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Grant } from '../grant'
+import { Grant } from './grant'
 import { Observable } from 'rxjs/Observable'
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class GrantApiService {

@@ -32,17 +32,18 @@ import { AuthGuard } from './_guards/auth.guard';
 //inside auth
 import { AuthService } from './auth/auth.service';
 
-import { GrantService } from './services/grant.service';
-import { GrantApiService } from './services/grant-api.service';
+import { GrantService } from './services/grants/grant.service';
+import { GrantApiService } from './services/grants/grant-api.service';
 
-import { ValidEmailService } from './services/valid-email.service';
-import { ValidUserNameService } from './services/valid-username.service';
-import { ValidResetCodeService } from './services/valid-resetcode.service';
-import { SetNewPasswordService } from './services/set-new-password.service';
+import { ValidEmailService } from './services/user/valid-email.service';
+import { ValidUserNameService } from './services/user/valid-username.service';
+import { ValidResetCodeService } from './services/user/valid-resetcode.service';
+import { SetNewPasswordService } from './services/user/set-new-password.service';
+import { GetUserService } from './services/user/get-user.service';
 
-import { EmailService } from './services/email.service';
+import { EmailService } from './services/user/email.service';
 
-import { ResetCodeService } from './services/reset-code.service';
+import { ResetCodeService } from './services/user/reset-code.service';
 
 //Components
 
@@ -112,7 +113,7 @@ import { EmailComponent } from './test/email/email.component';
         AuthGuard, AuthService,
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
-        EmailService, ResetCodeService, SetNewPasswordService
+        EmailService, ResetCodeService, SetNewPasswordService, GetUserService
     ]
 })
 export class AppModule { }
