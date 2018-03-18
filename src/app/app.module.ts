@@ -79,6 +79,8 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
 
 
 import { EmailComponent } from './test/email/email.component';
+import { UserComponent } from './user/user.component';
+import { OrganizationComponent } from './organization/organization.component';
 
 
 
@@ -96,7 +98,7 @@ import { EmailComponent } from './test/email/email.component';
         DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent,
         FrequentlyAskedQuestionsComponent, ProcessComponent,
 
-        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, HeaderComponent, GrantsByYearComponent, EmailComponent, TypeNewPasswordComponent
+        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, HeaderComponent, GrantsByYearComponent, EmailComponent, TypeNewPasswordComponent, UserComponent, OrganizationComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AppRoutingModule,
 
