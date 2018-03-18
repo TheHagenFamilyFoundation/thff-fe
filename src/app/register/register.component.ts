@@ -1,12 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/map'
+
+//Environment
+import { environment } from '../../environments/environment';
+
+//Services
 import { AuthService } from '../auth/auth.service';
 import { ValidEmailService } from '../services/user/valid-email.service';
 import { ValidUserNameService } from '../services/user/valid-username.service';
-import { environment } from '../../environments/environment';
 import { EmailService } from '../services/user/email.service';
+
+//for deboucne
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'register',
@@ -21,6 +31,12 @@ export class RegisterComponent implements OnInit {
   API_URL = environment.API_URL;
 
   body;
+
+
+  userName$ = new Subject<string>();
+  email$ = new Subject<string>();
+  password$ = new Subject<string>();
+  confirmPassword$ = new Subject<string>();
 
   userName;
   email;
@@ -51,7 +67,46 @@ export class RegisterComponent implements OnInit {
     private validEmailService: ValidEmailService,
     private validUserNameService: ValidUserNameService,
     private emailService: EmailService
-  ) { }
+  ) {
+
+    //debounce
+    this.userName$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.userName = term;
+        this.usernameChange()
+      });
+
+    this.email$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.email = term;
+        this.emailChange()
+      });
+
+    this.password$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.password = term;
+        this.passwordChange()
+      });
+
+    this.confirmPassword$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.confirmPassword = term;
+        this.confirmPasswordChange()
+      });
+
+  }
 
   ngOnInit() {
   }
@@ -78,7 +133,7 @@ export class RegisterComponent implements OnInit {
         this.results = data;
 
         /*debug
-
+  
         console.log(data);
         console.log("this.results");
         console.log(this.results);
@@ -107,10 +162,8 @@ export class RegisterComponent implements OnInit {
 
   }//end of register function
 
-  UsernameChange(event) {
+  usernameChange() {
     console.log("UsernameChange");
-
-    console.log(event);
 
     if (this.userName != "") {
 
@@ -126,10 +179,8 @@ export class RegisterComponent implements OnInit {
     this.VerifyInput();
   }
 
-  EmailChange(event) {
+  emailChange() {
     console.log("EmailChange");
-
-    console.log(event);
 
     if (this.email != "") {
       //this.ValidEmail = true;
@@ -142,10 +193,8 @@ export class RegisterComponent implements OnInit {
     this.VerifyInput();
   }
 
-  PasswordChange(event) {
+  passwordChange() {
     console.log("PasswordChange");
-
-    console.log(event);
 
     if (this.password != "") {
       this.ShowConfirmPassword = true;
@@ -161,10 +210,8 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  ConfirmPasswordChange(event) {
+  confirmPasswordChange() {
     console.log("ConfirmPasswordChange");
-
-    console.log(event);
 
     this.ComparePasswords();
   }
