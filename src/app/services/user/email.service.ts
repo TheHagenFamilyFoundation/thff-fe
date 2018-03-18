@@ -25,6 +25,10 @@ export class EmailService {
     return this.http.put(this.API_URL + '/sendResetEmailConfirmation', data)
   }
 
+  sendUserNameEmail(data) {
+    return this.http.put(this.API_URL + '/sendUserNameEmail', data)
+  }
+
   private _errorHandler(error: Response) {
     console.error(error);
     return Observable.throw(error || 'Server Error')
