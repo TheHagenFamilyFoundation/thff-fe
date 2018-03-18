@@ -6,6 +6,7 @@ import { AuthService } from '../auth/auth.service';
 import { ValidEmailService } from '../services/user/valid-email.service';
 import { ValidUserNameService } from '../services/user/valid-username.service';
 import { environment } from '../../environments/environment';
+import { EmailService } from '../services/user/email.service';
 
 @Component({
   selector: 'register',
@@ -17,10 +18,7 @@ export class RegisterComponent implements OnInit {
 
   title = "Register";
 
-
   API_URL = environment.API_URL;
-  //API_URL = 'https://hagenfoundationbackend.herokuapp.com'
-  //API_URL = 'http://localhost:1337';
 
   body;
 
@@ -52,6 +50,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private validEmailService: ValidEmailService,
     private validUserNameService: ValidUserNameService,
+    private emailService: EmailService
   ) { }
 
   ngOnInit() {
@@ -61,11 +60,6 @@ export class RegisterComponent implements OnInit {
     console.log("You clicked on the Register")
 
     let urlString = this.API_URL + '/user';
-
-    // console.log("userName = " + this.userName);
-    // console.log("email = " + this.email);
-    // console.log("password = " + this.password);
-    // console.log("confirmPassword = " + this.confirmPassword);
 
     this.body = {
       username: this.userName,
@@ -91,20 +85,25 @@ export class RegisterComponent implements OnInit {
         console.log(this.results.token);
         */
 
-        //console.log(this.results)
-
         localStorage.setItem('token', this.results.token);
         localStorage.setItem('currentUser', JSON.stringify(this.results.user));
 
         console.log("token = " + localStorage.getItem('token'));
         console.log("currentUser = " + localStorage.getItem('currentUser'));
 
+        this.emailService.sendRegisterUserEmail({
+          from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+          to: this.email,
+          name: this.userName,
+        })
+          .subscribe(
+            () => { },
+            err => console.log(err)
+          );
+
         this.authService.login();
 
       });
-
-    //this.router.navigate(['/login']);
-    //this.router.navigate(['/home']);
 
   }//end of register function
 
@@ -199,26 +198,26 @@ export class RegisterComponent implements OnInit {
 
     this.ValidUserName = this.validUserNameService.checkValidUserName(this.userName)
       .subscribe(
-      (data) => {
-        //debug
-        console.log(data);
-        console.log("data");
+        (data) => {
+          //debug
+          console.log(data);
+          console.log("data");
 
-        if (data.userfound) {
-          console.log("user found");
+          if (data.userfound) {
+            console.log("user found");
 
-          this.ShowUserNameError = true;
-        }
-        else {
-          console.log("user not found");
+            this.ShowUserNameError = true;
+          }
+          else {
+            console.log("user not found");
 
-          this.ShowUserNameError = false;
+            this.ShowUserNameError = false;
 
-        }
+          }
 
-        this.VerifyInput();
+          this.VerifyInput();
 
-      });
+        });
 
   }
 
@@ -226,26 +225,26 @@ export class RegisterComponent implements OnInit {
 
     this.ValidEmail = this.validEmailService.checkValidEmail(this.email)
       .subscribe(
-      (data) => {
-        //debug
-        console.log(data);
-        console.log("data");
+        (data) => {
+          //debug
+          console.log(data);
+          console.log("data");
 
-        if (data.emailfound) {
-          console.log("email found");
+          if (data.emailfound) {
+            console.log("email found");
 
-          this.ShowEmailError = true;
-        }
-        else {
-          console.log("email not found");
+            this.ShowEmailError = true;
+          }
+          else {
+            console.log("email not found");
 
-          this.ShowEmailError = false;
+            this.ShowEmailError = false;
 
-        }
+          }
 
-        this.VerifyInput();
+          this.VerifyInput();
 
-      });
+        });
 
   }
 
