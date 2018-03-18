@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
+import { ValidEmailService } from '../../../services/user/valid-email.service';
 import { GetUserService } from '../../../services/user/get-user.service';
 import { EmailService } from '../../../services/user/email.service';
 
@@ -17,9 +18,17 @@ export class ForgotUsernameComponent implements OnInit {
   email: any;
   userName: any;
 
+  message: any;
+
+  ValidEmail: any;
+
+  ShowEmailError = false;
+  CanRetrieveUserName = false;
+
   constructor(
     private router: Router,
     public snackBar: MatSnackBar,
+    private validEmailService: ValidEmailService,
     public getUserService: GetUserService,
     public emailService: EmailService) { }
 
@@ -54,5 +63,46 @@ export class ForgotUsernameComponent implements OnInit {
           this.router.navigate(['/login']);
         })
   }//end of retrieveUsername
+
+  EmailChange(event) {
+    console.log("EmailChange");
+
+    console.log(event);
+
+    if (this.email != "") {
+      //this.ValidEmail = true;
+      this.ValidEmailCheck();
+    }
+    else {
+      this.CanRetrieveUserName = false;
+    }
+
+  }//end of EmailChange
+
+  ValidEmailCheck(): void {
+
+    this.ValidEmail = this.validEmailService.checkValidEmail(this.email)
+      .subscribe(
+        (data) => {
+          //debug
+          console.log(data);
+          console.log("data");
+
+          if (data.emailfound) {
+            console.log("email found");
+
+            this.ShowEmailError = false;
+            this.CanRetrieveUserName = true;
+          }
+          else {
+            console.log("email not found");
+
+            this.ShowEmailError = true;
+
+          }
+
+        });
+
+  }//end of ValidEmailCheck
 
 }
