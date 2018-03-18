@@ -21,6 +21,10 @@ export class EmailService {
     return this.http.put(this.API_URL + '/sendResetEmail', data)
   }
 
+  sendRegisterUserEmail(data) {
+    return this.http.put(this.API_URL + '/sendRegisterUserEmail', data)
+  }
+
   sendResetEmailConfirmation(data) {
     return this.http.put(this.API_URL + '/sendResetEmailConfirmation', data)
   }
