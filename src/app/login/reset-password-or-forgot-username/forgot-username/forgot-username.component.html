@@ -4,7 +4,7 @@
 <div align="center">
   <div>
     <mat-input-container>
-      <input matInput placeholder="Email" type="email" value="" [(ngModel)]="email" (ngModelChange)="EmailChange($event)">
+      <input matInput placeholder="Email" type="email" value="" (keyup)="email$.next($event.target.value)">
     </mat-input-container>
   </div>
   <div *ngIf="ShowEmailError">
