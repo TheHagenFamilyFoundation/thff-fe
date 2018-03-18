@@ -4,10 +4,13 @@
 <div align="center">
   <div>
     <mat-input-container>
-      <input matInput placeholder="Email" type="email" value="" [(ngModel)]="email">
+      <input matInput placeholder="Email" type="email" value="" [(ngModel)]="email" (ngModelChange)="EmailChange($event)">
     </mat-input-container>
   </div>
-  <div>
+  <div *ngIf="ShowEmailError">
+    That User Name was not found in the database.
+  </div>
+  <div *ngIf="CanRetrieveUserName">
     <button mat-raised-button (click)="retrieveUsername()">Retrieve Username</button>
   </div>
 </div>
