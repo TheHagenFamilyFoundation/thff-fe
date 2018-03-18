@@ -58,8 +58,7 @@ export class LoginComponent implements OnInit {
         this.password = term;
         this.passwordChange()
       });
-
-
+      
   }
 
   ngOnInit() {
