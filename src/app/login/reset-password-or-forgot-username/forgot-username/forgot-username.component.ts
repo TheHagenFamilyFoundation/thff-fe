@@ -6,6 +6,12 @@ import { ValidEmailService } from '../../../services/user/valid-email.service';
 import { GetUserService } from '../../../services/user/get-user.service';
 import { EmailService } from '../../../services/user/email.service';
 
+//debounce
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+
 @Component({
   selector: 'app-forgot-username',
   templateUrl: './forgot-username.component.html',
@@ -14,6 +20,8 @@ import { EmailService } from '../../../services/user/email.service';
 export class ForgotUsernameComponent implements OnInit {
 
   title = "Forgot Username"
+
+  email$ = new Subject<string>();
 
   email: any;
   userName: any;
@@ -30,7 +38,18 @@ export class ForgotUsernameComponent implements OnInit {
     public snackBar: MatSnackBar,
     private validEmailService: ValidEmailService,
     public getUserService: GetUserService,
-    public emailService: EmailService) { }
+    public emailService: EmailService) {
+
+    this.email$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.email = term;
+        this.emailChange()
+      });
+
+  }
 
   ngOnInit() {
   }
@@ -64,10 +83,8 @@ export class ForgotUsernameComponent implements OnInit {
         })
   }//end of retrieveUsername
 
-  EmailChange(event) {
-    console.log("EmailChange");
-
-    console.log(event);
+  emailChange() {
+    console.log("emailChange");
 
     if (this.email != "") {
       //this.ValidEmail = true;

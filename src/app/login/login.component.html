@@ -3,11 +3,11 @@
 </div>
 <div align="center">
   <mat-input-container>
-    <input matInput placeholder="Username" value="" [(ngModel)]="userName" (ngModelChange)="usernameChange($event)">
+    <input matInput placeholder="Username" value="" (keyup)="userName$.next($event.target.value)">
   </mat-input-container>
   <br>
   <mat-input-container>
-    <input matInput placeholder="Password" type="password" value="" [(ngModel)]="password" (ngModelChange)="passwordChange($event)">
+    <input matInput placeholder="Password" type="password" value="" (keyup)="password$.next($event.target.value)">
   </mat-input-container>
   <br>
   <div *ngIf="ShowMessage">

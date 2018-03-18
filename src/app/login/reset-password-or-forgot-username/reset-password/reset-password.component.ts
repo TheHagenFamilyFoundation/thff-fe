@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+
+import { environment } from '../../../../environments/environment';
+
+//services
 import { ValidEmailService } from '../../../services/user/valid-email.service';
 import { ValidUserNameService } from '../../../services/user/valid-username.service';
-import { environment } from '../../../../environments/environment';
 import { EmailService } from '../../../services/user/email.service';
 import { ResetCodeService } from '../../../services/user/reset-code.service';
+
+//debounce
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-reset-password',
@@ -17,6 +26,9 @@ export class ResetPasswordComponent implements OnInit {
   title = "Reset Password"
 
   API_URL = environment.API_URL;
+
+  userName$ = new Subject<string>();
+  email$ = new Subject<string>();
 
   userName: any;
   email: any;
@@ -38,7 +50,27 @@ export class ResetPasswordComponent implements OnInit {
     private validUserNameService: ValidUserNameService,
     private _emailService: EmailService,
     private _resetService: ResetCodeService
-  ) { }
+  ) {
+
+    this.userName$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.userName = term;
+        this.usernameChange()
+      });
+
+    this.email$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.email = term;
+        this.emailChange()
+      });
+
+  }
 
   ngOnInit() {
   }
@@ -58,43 +90,41 @@ export class ResetPasswordComponent implements OnInit {
       email: this.email
     })
       .subscribe(
-      (data) => {
-        //debug
-        console.log(data);
-        console.log("data");
+        (data) => {
+          //debug
+          console.log(data);
+          console.log("data");
 
-        if (data.resetCodeCreated) {
-          let message = "Your password is reset"
-          console.log("after")
-          this._emailService.sendResetEmail({
-            from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
-            to: this.email,
-            name: this.userName,
-            text: message,
-            resetCode: data.resetCode,
-            //resetTime: data.resetTime
-          })
-            .subscribe(
-            () => { },
-            err => console.log(err)
-            );
+          if (data.resetCodeCreated) {
+            let message = "Your password is reset"
+            console.log("after")
+            this._emailService.sendResetEmail({
+              from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+              to: this.email,
+              name: this.userName,
+              text: message,
+              resetCode: data.resetCode,
+              //resetTime: data.resetTime
+            })
+              .subscribe(
+                () => { },
+                err => console.log(err)
+              );
 
-        }
-        else{
-          console.log("Unable to reset password");
-          
-        }
+          }
+          else {
+            console.log("Unable to reset password");
 
-      })
+          }
+
+        })
 
     this.router.navigate(['/login']);
 
   }//end of resetPassword
 
-  UsernameChange(event) {
+  usernameChange() {
     console.log("UsernameChange");
-
-    console.log(event);
 
     if (this.userName != "") {
 
@@ -110,10 +140,8 @@ export class ResetPasswordComponent implements OnInit {
     this.VerifyInput();
   }
 
-  EmailChange(event) {
+  emailChange() {
     console.log("EmailChange");
-
-    console.log(event);
 
     if (this.email != "") {
       //this.ValidEmail = true;
@@ -130,26 +158,26 @@ export class ResetPasswordComponent implements OnInit {
 
     this.ValidUserName = this.validUserNameService.checkValidUserName(this.userName)
       .subscribe(
-      (data) => {
-        //debug
-        console.log(data);
-        console.log("data");
+        (data) => {
+          //debug
+          console.log(data);
+          console.log("data");
 
-        if (data.userfound) {
-          console.log("user found");
+          if (data.userfound) {
+            console.log("user found");
 
-          this.ShowUserNameError = false;
-        }
-        else {
-          console.log("user not found");
+            this.ShowUserNameError = false;
+          }
+          else {
+            console.log("user not found");
 
-          this.ShowUserNameError = true;
+            this.ShowUserNameError = true;
 
-        }
+          }
 
-        this.VerifyInput();
+          this.VerifyInput();
 
-      });
+        });
 
   }//end of ValidUserCheck
 
@@ -157,26 +185,26 @@ export class ResetPasswordComponent implements OnInit {
 
     this.ValidEmail = this.validEmailService.checkValidEmail(this.email)
       .subscribe(
-      (data) => {
-        //debug
-        console.log(data);
-        console.log("data");
+        (data) => {
+          //debug
+          console.log(data);
+          console.log("data");
 
-        if (data.emailfound) {
-          console.log("email found");
+          if (data.emailfound) {
+            console.log("email found");
 
-          this.ShowEmailError = false;
-        }
-        else {
-          console.log("email not found");
+            this.ShowEmailError = false;
+          }
+          else {
+            console.log("email not found");
 
-          this.ShowEmailError = true;
+            this.ShowEmailError = true;
 
-        }
+          }
 
-        this.VerifyInput();
+          this.VerifyInput();
 
-      });
+        });
 
   }//end of ValidEmailCheck
 

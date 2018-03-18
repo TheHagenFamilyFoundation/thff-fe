@@ -2,11 +2,18 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
+//services
 import { ValidUserNameService } from '../../../../services/user/valid-username.service';
 import { ValidResetCodeService } from '../../../../services/user/valid-resetcode.service';
 import { SetNewPasswordService } from '../../../../services/user/set-new-password.service';
 import { GetUserService } from '../../../../services/user/get-user.service';
 import { EmailService } from '../../../../services/user/email.service';
+
+//debounce
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-type-new-password',
@@ -22,6 +29,11 @@ export class TypeNewPasswordComponent implements OnInit {
   email: any;
 
   message: any;
+
+
+  currentPassword$ = new Subject<string>();
+  newPassword$ = new Subject<string>();
+  confirmPassword$ = new Subject<string>();
 
   currentPassword: any;
   newPassword: any;
@@ -65,6 +77,35 @@ export class TypeNewPasswordComponent implements OnInit {
     this.currentPassword = "";
     this.newPassword = "";
     this.confirmPassword = "";
+
+    this.currentPassword$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.currentPassword = term;
+        this.currentPasswordChange()
+      });
+
+    this.newPassword$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.newPassword = term;
+        this.newPasswordChange()
+      });
+
+    this.confirmPassword$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.confirmPassword = term;
+        this.confirmPasswordChange()
+      });
+
+
 
   }
 
@@ -144,10 +185,8 @@ export class TypeNewPasswordComponent implements OnInit {
 
   }//end of checkResetCode
 
-  currentPasswordChange(event) {
+  currentPasswordChange() {
     console.log("currentPasswordChange");
-
-    console.log(event);
 
     this.message = "";
 
@@ -162,10 +201,8 @@ export class TypeNewPasswordComponent implements OnInit {
 
   }//end of new PasswordChange
 
-  newPasswordChange(event) {
+  newPasswordChange() {
     console.log("newPasswordChange");
-
-    console.log(event);
 
     this.message = "";
 
@@ -180,7 +217,7 @@ export class TypeNewPasswordComponent implements OnInit {
 
   }//end of new PasswordChange
 
-  confirmPasswordChange(event) {
+  confirmPasswordChange() {
     console.log("confirmPasswordChange");
 
     this.message = "";
