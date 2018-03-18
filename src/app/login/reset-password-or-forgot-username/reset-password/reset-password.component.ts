@@ -178,7 +178,7 @@ export class ResetPasswordComponent implements OnInit {
 
       });
 
-  }
+  }//end of ValidEmailCheck
 
   VerifyInput(): void {
     if (this.ValidUserName && this.ValidEmail) {
