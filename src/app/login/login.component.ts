@@ -5,6 +5,10 @@ import 'rxjs/add/operator/map'
 import { AuthService } from '../auth/auth.service';
 import { environment } from '../../environments/environment';
 
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'login',
@@ -16,8 +20,9 @@ export class LoginComponent implements OnInit {
   title = "Login"
 
   API_URL = environment.API_URL;
-  //API_URL = 'https://hagenfoundationbackend.herokuapp.com'
-  //API_URL = 'http://localhost:1337';
+
+  userName$ = new Subject<string>();
+  password$ = new Subject<string>();
 
   userName;
   password;
@@ -30,7 +35,32 @@ export class LoginComponent implements OnInit {
   ShowMessage = false;
   message: any;
 
-  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private authService: AuthService,
+  ) {
+
+    this.userName$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.userName = term;
+        this.usernameChange()
+      });
+
+    this.password$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+
+        this.password = term;
+        this.passwordChange()
+      });
+
+
+  }
 
   ngOnInit() {
   }
@@ -82,14 +112,14 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/register']);
   }
 
-  usernameChange(event) {
+  usernameChange() {
     console.log("usernameChange");
 
     this.ShowMessage = false;
 
   }
 
-  passwordChange(event) {
+  passwordChange() {
     console.log("passwordChange");
 
     this.ShowMessage = false;
