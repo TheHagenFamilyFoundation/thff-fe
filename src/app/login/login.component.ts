@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map'
 import { AuthService } from '../auth/auth.service';
 import { environment } from '../../environments/environment';
 
+//debounce
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -58,7 +59,7 @@ export class LoginComponent implements OnInit {
         this.password = term;
         this.passwordChange()
       });
-      
+
   }
 
   ngOnInit() {
