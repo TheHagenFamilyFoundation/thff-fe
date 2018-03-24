@@ -18,6 +18,10 @@
     <div *ngIf="authService.authenticated">
       <button mat-button routerLink="/user">User</button>
     </div>
+    <!-- if user has an organization -->
+    <div *ngIf="authService.authenticated">
+      <button mat-button routerLink="/organization">Organization</button>
+    </div>
     <div *ngIf="authService.authenticated">
       <button mat-button routerLink="/loimenu">LOI Menu</button>
     </div>

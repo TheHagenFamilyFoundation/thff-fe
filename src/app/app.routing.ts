@@ -31,6 +31,9 @@ import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.
 //user
 import { UserComponent } from './user/user.component';
 
+//organization
+import { OrganizationComponent } from './organization/organization.component';
+
 //testing the email
 import { EmailComponent } from './test/email/email.component';
 
@@ -59,6 +62,8 @@ const appRoutes: Routes = [
     { path: 'status', component: LetintStatusComponent, canActivate: [AuthGuard] },
 
     { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+
+    { path: 'organization', component: OrganizationComponent, canActivate: [AuthGuard] },
 
     { path: 'email', component: EmailComponent },
 
