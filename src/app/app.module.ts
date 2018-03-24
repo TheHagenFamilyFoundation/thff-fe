@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app.routing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//Angular Material
 import { MatGridListModule } from '@angular/material';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
@@ -19,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -79,6 +81,7 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
 
 //user
 import { UserComponent } from './user/user.component';
+import { UserResetPasswordComponent } from './user/reset-password/reset-password.component';
 
 //organization
 import { OrganizationComponent } from './organization/organization.component';
@@ -105,8 +108,8 @@ import { EmailComponent } from './test/email/email.component';
         ForgotUsernameComponent,
 
         //user
-        UserComponent,
-        
+        UserComponent, UserResetPasswordComponent,
+
         //organization
         OrganizationComponent,
 
@@ -125,7 +128,7 @@ import { EmailComponent } from './test/email/email.component';
         //Material Design
         MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule,
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
-        MatSnackBarModule,
+        MatSnackBarModule, MatCardModule,
 
         ContentsModule, NgxPageScrollModule
     ],
