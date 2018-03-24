@@ -178,9 +178,11 @@ export class TypeNewPasswordComponent implements OnInit {
 
     if (this.newPassword != "") {
       this.ValidNewPassword = true;
+      this.ShowConfirmPassword = true;
     }
     else {
       this.ValidNewPassword = false;
+      this.ShowConfirmPassword = false;
     }
 
     this.comparePasswords();
