@@ -77,30 +77,51 @@ import { ResetPasswordComponent } from './login/reset-password-or-forgot-usernam
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
 
+//user
+import { UserComponent } from './user/user.component';
 
+//organization
+import { OrganizationComponent } from './organization/organization.component';
+
+//test email component
 import { EmailComponent } from './test/email/email.component';
-
-
-
-
 
 @NgModule({
     declarations: [AppComponent,
+        HeaderComponent,
         //Home
         HomeComponent,
         AboutusComponent, ApplicationMaterialsComponent, ApplicationTimelineComponent,
+        InthenewsComponent, FrequentlyAskedQuestionsComponent, ProcessComponent,
+        GrantsAwardedComponent, GrantsByYearComponent,
         //login
         LoginComponent, RegisterComponent
         , ResetPasswordOrUsernameComponent,
 
-        DirectorsMenuComponent, InthenewsComponent, GrantsAwardedComponent,
-        FrequentlyAskedQuestionsComponent, ProcessComponent,
+        DirectorsMenuComponent,
 
-        LetintmenuComponent, LetintComponent, LetintStatusComponent, ResetPasswordComponent, ForgotUsernameComponent, HeaderComponent, GrantsByYearComponent, EmailComponent, TypeNewPasswordComponent
+        ResetPasswordComponent,
+        TypeNewPasswordComponent,
+        ForgotUsernameComponent,
+
+        //user
+        UserComponent,
+        
+        //organization
+        OrganizationComponent,
+
+        //letter of intent
+        LetintmenuComponent, LetintComponent, LetintStatusComponent,
+
+        //test component - email
+        EmailComponent
+
     ],
-    imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AppRoutingModule,
+    imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule,
+        AppRoutingModule,
 
-        FlexLayoutModule,//.forRoot(),
+        FlexLayoutModule,
+
         //Material Design
         MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule,
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
