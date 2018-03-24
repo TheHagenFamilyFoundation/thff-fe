@@ -23,11 +23,20 @@
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <!-- logged in -->
     <div *ngIf="authService.authenticated">
-      <button mat-button routerLink="/user">
+      <button mat-button [matMenuTriggerFor]="user">
         <mat-icon>account_circle</mat-icon>
       </button>
     </div>
   </div>
+
+  <mat-menu #user="matMenu">
+    <div *ngIf="authService.authenticated">
+      <button mat-button routerLink="/user">User Page</button>
+    </div>
+    <div *ngIf="authService.authenticated">
+      <button mat-button (click)="authService.logout()">Logout</button>
+    </div>
+  </mat-menu>
 
   <!-- if user has an organization -->
   <!-- <div *ngIf="authService.authenticated">
