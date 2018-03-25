@@ -81,13 +81,15 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
 
 //user
 import { UserComponent } from './user/user.component';
-import { UserResetPasswordComponent } from './user/reset-password/reset-password.component';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
 
 //organization
 import { OrganizationComponent } from './organization/organization.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
+import { ChangeEmailComponent } from './user/change-email/change-email.component';
+
 
 @NgModule({
     declarations: [AppComponent,
@@ -108,7 +110,7 @@ import { EmailComponent } from './test/email/email.component';
         ForgotUsernameComponent,
 
         //user
-        UserComponent, UserResetPasswordComponent,
+        UserComponent, ChangePasswordComponent, ChangeEmailComponent,
 
         //organization
         OrganizationComponent,
@@ -117,7 +119,7 @@ import { EmailComponent } from './test/email/email.component';
         LetintmenuComponent, LetintComponent, LetintStatusComponent,
 
         //test component - email
-        EmailComponent
+        EmailComponent,
 
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule,
