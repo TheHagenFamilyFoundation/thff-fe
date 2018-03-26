@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -82,14 +83,13 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
 //user
 import { UserComponent } from './user/user.component';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
+import { ChangeEmailComponent } from './user/change-email/change-email.component';
 
 //organization
 import { OrganizationComponent } from './organization/organization.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
-import { ChangeEmailComponent } from './user/change-email/change-email.component';
-
 
 @NgModule({
     declarations: [AppComponent,
@@ -130,7 +130,7 @@ import { ChangeEmailComponent } from './user/change-email/change-email.component
         //Material Design
         MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule,
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
-        MatSnackBarModule, MatCardModule,
+        MatSnackBarModule, MatCardModule, MatDividerModule,
 
         ContentsModule, NgxPageScrollModule
     ],
