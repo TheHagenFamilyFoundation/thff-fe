@@ -1,3 +1,19 @@
-<p>
-  user works!
-</p>
+<mat-card>
+  <mat-card-title>User Page</mat-card-title>
+  <mat-card-content class="demo-basic-list">
+    <mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+      <mat-grid-tile [rowspan]="2">
+        <mat-card>
+          <!-- <mat-card-title>User</mat-card-title> -->
+          <mat-card-content>
+            <app-change-password [user]="user"></app-change-password>
+            <!-- <mat-divider></mat-divider> -->
+            <app-change-email [user]="user"></app-change-email>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile> Two </mat-grid-tile>
+      <mat-grid-tile> Three </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
