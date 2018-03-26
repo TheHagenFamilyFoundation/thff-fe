@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  basicRowHeight = 300;
+
+  user;
+
+  constructor(private router: Router, ) {
+  }
 
   ngOnInit() {
+
+    if (!localStorage.getItem('currentUser')) {
+      // not logged in so redirect to login page
+      this.router.navigate(['/login']);
+    }
+
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+
+    console.log("User - this.user");
+    console.log(this.user);
+
   }
 
 }
