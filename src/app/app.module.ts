@@ -90,6 +90,7 @@ import { OrganizationComponent } from './organization/organization.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
+import { UserOrganizationComponent } from './user/user-organization/user-organization.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -120,6 +121,8 @@ import { EmailComponent } from './test/email/email.component';
 
         //test component - email
         EmailComponent,
+
+        UserOrganizationComponent,
 
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule,
