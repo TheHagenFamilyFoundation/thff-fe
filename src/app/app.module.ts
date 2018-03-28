@@ -22,6 +22,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -84,13 +87,14 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
 import { UserComponent } from './user/user.component';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
 import { ChangeEmailComponent } from './user/change-email/change-email.component';
+import { UserOrganizationComponent } from './user/user-organization/user-organization.component';
+import { UserGrantRequestsComponent } from './user/user-grant-requests/user-grant-requests.component';
 
 //organization
 import { OrganizationComponent } from './organization/organization.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
-import { UserOrganizationComponent } from './user/user-organization/user-organization.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -124,6 +128,8 @@ import { UserOrganizationComponent } from './user/user-organization/user-organiz
 
         UserOrganizationComponent,
 
+        UserGrantRequestsComponent,
+
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule,
         AppRoutingModule,
@@ -133,7 +139,8 @@ import { UserOrganizationComponent } from './user/user-organization/user-organiz
         //Material Design
         MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule,
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
-        MatSnackBarModule, MatCardModule, MatDividerModule,
+        MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
+        MatPaginatorModule,
 
         ContentsModule, NgxPageScrollModule
     ],
