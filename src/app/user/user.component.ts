@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  basicRowHeight = 300;
+  //check basic row height
+  basicRowHeight = 400;
 
   user;
 

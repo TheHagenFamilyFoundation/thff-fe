@@ -17,3 +17,8 @@
   img {
     width: 350px;
   }
+
+  .change_password_email {
+    display:flex;
+    flex-direction: column;
+  }
