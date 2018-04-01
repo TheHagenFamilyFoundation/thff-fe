@@ -97,6 +97,7 @@ import { OrganizationComponent } from './organization/organization.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
+import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -131,6 +132,8 @@ import { EmailComponent } from './test/email/email.component';
         UserOrganizationComponent,
 
         UserGrantRequestsComponent,
+
+        CreateOrganizationComponent,
 
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule,
