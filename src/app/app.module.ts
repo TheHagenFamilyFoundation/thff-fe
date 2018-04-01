@@ -47,6 +47,8 @@ import { ValidResetCodeService } from './services/user/valid-resetcode.service';
 import { SetNewPasswordService } from './services/user/set-new-password.service';
 import { GetUserService } from './services/user/get-user.service';
 
+import { GetOrganizationService } from './services/user/get-organization.service';
+
 import { EmailService } from './services/user/email.service';
 
 import { ResetCodeService } from './services/user/reset-code.service';
@@ -149,7 +151,8 @@ import { EmailComponent } from './test/email/email.component';
         AuthGuard, AuthService,
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
-        EmailService, ResetCodeService, SetNewPasswordService, GetUserService
+        EmailService, ResetCodeService, SetNewPasswordService, GetUserService,
+        GetOrganizationService
     ]
 })
 export class AppModule { }
