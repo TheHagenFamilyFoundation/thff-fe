@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { GetOrganizationsService } from './get-organizations.service';
+import { GetOrganizationService } from './get-organization.service';
 
 describe('GetOrganizationsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GetOrganizationsService]
+      providers: [GetOrganizationService]
     });
   });
 
-  it('should be created', inject([GetOrganizationsService], (service: GetOrganizationsService) => {
+  it('should be created', inject([GetOrganizationService], (service: GetOrganizationService) => {
     expect(service).toBeTruthy();
   }));
 });

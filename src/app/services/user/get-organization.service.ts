@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
-export class GetOrganizationsService {
+export class GetOrganizationService {
 
 
   API_URL = environment.API_URL;
@@ -19,7 +19,7 @@ export class GetOrganizationsService {
     return this.http.get(urlString);
   }
 
-  getOrganizationbyName(name: string): Observable<any> {
+  getOrgbyName(name: string): Observable<any> {
 
     let urlString = this.API_URL + "/organization?name=" + name;
 
