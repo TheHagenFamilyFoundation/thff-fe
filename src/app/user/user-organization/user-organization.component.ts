@@ -1,7 +1,10 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { GetOrganizationService } from '../../services/user/get-organization.service';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
+
+import { CreateOrganizationComponent } from '../../organization/create-organization/create-organization.component';
 
 @Component({
   selector: 'app-user-organization',
@@ -24,6 +27,7 @@ export class UserOrganizationComponent implements OnInit {
   constructor(
     public getOrganizationService: GetOrganizationService,
     private router: Router,
+    public dialog: MatDialog,
   ) {
     // // Create 100 organizations
     // const organizations: OrganizationData[] = [];
@@ -107,7 +111,22 @@ export class UserOrganizationComponent implements OnInit {
 
     console.log('create organization');
 
+    //modal
+    this.openDialog();
+
   }
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(CreateOrganizationComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+
 
 }//end of component
 

@@ -25,6 +25,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -94,10 +95,10 @@ import { UserGrantRequestsComponent } from './user/user-grant-requests/user-gran
 
 //organization
 import { OrganizationComponent } from './organization/organization.component';
+import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
-import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -121,7 +122,7 @@ import { CreateOrganizationComponent } from './organization/create-organization/
         UserComponent, ChangePasswordComponent, ChangeEmailComponent,
 
         //organization
-        OrganizationComponent,
+        OrganizationComponent, CreateOrganizationComponent,
 
         //letter of intent
         LetintmenuComponent, LetintComponent, LetintStatusComponent,
@@ -133,7 +134,7 @@ import { CreateOrganizationComponent } from './organization/create-organization/
 
         UserGrantRequestsComponent,
 
-        CreateOrganizationComponent,
+
 
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule,
@@ -145,7 +146,7 @@ import { CreateOrganizationComponent } from './organization/create-organization/
         MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule,
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
         MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
-        MatPaginatorModule,
+        MatPaginatorModule, MatDialogModule,
 
         ContentsModule, NgxPageScrollModule
     ],
@@ -156,6 +157,7 @@ import { CreateOrganizationComponent } from './organization/create-organization/
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService,
         GetOrganizationService
-    ]
+    ],
+    entryComponents: [CreateOrganizationComponent]
 })
 export class AppModule { }
