@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
-export class CreateOrganizationsService {
+export class CreateOrganizationService {
 
   API_URL = environment.API_URL;
 
