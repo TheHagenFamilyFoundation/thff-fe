@@ -49,6 +49,7 @@ import { SetNewPasswordService } from './services/user/set-new-password.service'
 import { GetUserService } from './services/user/get-user.service';
 
 import { GetOrganizationService } from './services/user/get-organization.service';
+import { CreateOrganizationService } from './services/organization/create-organization.service';
 
 import { EmailService } from './services/user/email.service';
 
@@ -156,7 +157,7 @@ import { EmailComponent } from './test/email/email.component';
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService,
-        GetOrganizationService
+        GetOrganizationService, CreateOrganizationService
     ],
     entryComponents: [CreateOrganizationComponent]
 })
