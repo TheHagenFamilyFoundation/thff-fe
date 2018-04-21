@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { GetOrganizationService } from '../../services/user/get-organization.service';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { CreateOrganizationComponent } from '../../organization/create-organization/create-organization.component';
@@ -21,8 +21,11 @@ export class UserOrganizationComponent implements OnInit {
   user: any;
   userName: any; //string
 
+  orgName: any;//string
+  description: any;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort; f
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     public getOrganizationService: GetOrganizationService,
@@ -119,10 +122,15 @@ export class UserOrganizationComponent implements OnInit {
   openDialog(): void {
     let dialogRef = this.dialog.open(CreateOrganizationComponent, {
       width: '250px',
+      data: { name: this.orgName, animal: this.description }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      //maybe pull the organizations again
+      console.log('result', result);
+      this.checkOrganizations();
+
     });
   }
 
