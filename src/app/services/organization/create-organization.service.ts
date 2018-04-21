@@ -15,6 +15,8 @@ export class CreateOrganizationService {
 
   createOrganization(body) {
 
+    console.log('createOrganization');
+
     let urlString = this.API_URL + '/organization';
 
     this.body = body;
@@ -24,11 +26,11 @@ export class CreateOrganizationService {
 
     //send to api
 
-    this.http.post(urlString, this.body)
-      .subscribe(data => {
-        this.results = data;
+    return this.http.post(urlString, this.body)
+    // .subscribe(data => {
+    //   this.results = data;
 
-      })
+    // })
   }
 
 }
