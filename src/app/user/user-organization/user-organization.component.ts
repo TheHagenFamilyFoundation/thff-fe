@@ -1,9 +1,10 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { GetUserService } from '../../services/user/get-user.service';
+
 import { CreateOrganizationComponent } from '../../organization/create-organization/create-organization.component';
 
 @Component({
@@ -19,7 +20,9 @@ export class UserOrganizationComponent implements OnInit {
 
   InOrganization = false;
 
+  @Input()
   user: any;
+
   userName: any; //string
 
   orgName: any;//string
@@ -42,7 +45,11 @@ export class UserOrganizationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserName();
+    // this.getUserName();
+
+    this.userName = this.user.username
+
+    this.checkOrganizations();
   }
 
   /**
@@ -63,22 +70,22 @@ export class UserOrganizationComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  getUserName() {
+  // getUserName() {
 
-    if (localStorage.getItem('currentUser')) {
-      // logged in so return true
-      this.user = JSON.parse(localStorage.getItem('currentUser'));
-      this.userName = this.user.username
+  //   if (localStorage.getItem('currentUser')) {
+  //     // logged in so return true
+  //     this.user = JSON.parse(localStorage.getItem('currentUser'));
+  //     this.userName = this.user.username
 
-      this.checkOrganizations();
+  //     this.checkOrganizations();
 
-    }
-    else {
-      //logout
-      this.router.navigate(['/logout']);
-    }
+  //   }
+  //   else {
+  //     //logout
+  //     this.router.navigate(['/logout']);
+  //   }
 
-  }//end of getUserName
+  // }//end of getUserName
 
   //checks if user is in any organizations
   checkOrganizations() {

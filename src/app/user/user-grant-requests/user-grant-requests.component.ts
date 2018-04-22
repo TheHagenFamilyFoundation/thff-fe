@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-grant-requests',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-grant-requests.component.css']
 })
 export class UserGrantRequestsComponent implements OnInit {
+
+  @Input()
+  user: any;
 
   constructor() { }
 
