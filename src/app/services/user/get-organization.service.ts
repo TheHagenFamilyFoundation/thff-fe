@@ -11,10 +11,10 @@ export class GetOrganizationService {
 
   constructor(private http: HttpClient) { }
 
-  //get Organization by username
-  getOrgbyUsername(username: string): Observable<any> {
+  //get Organization by director
+  getOrgbyDirector(username: string): Observable<any> {
 
-    let urlString = this.API_URL + "/organization?username=" + username;
+    let urlString = this.API_URL + "/organization?director=" + username;
 
     return this.http.get(urlString);
   }
