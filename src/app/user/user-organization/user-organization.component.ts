@@ -13,7 +13,8 @@ import { CreateOrganizationComponent } from '../../organization/create-organizat
 })
 export class UserOrganizationComponent implements OnInit {
 
-  displayedColumns = ['id', 'name', 'progress', 'color'];
+  // displayedColumns = ['id', 'name', 'progress', 'color'];
+  displayedColumns = ['name', 'createdAt'];
   dataSource: MatTableDataSource<OrganizationData>;
 
   InOrganization = false;
@@ -122,13 +123,13 @@ export class UserOrganizationComponent implements OnInit {
   openDialog(): void {
     let dialogRef = this.dialog.open(CreateOrganizationComponent, {
       width: '250px',
-      data: { name: this.orgName, animal: this.description }
+      data: { name: this.orgName, description: this.description }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The dialog was closed'); //debug
       //maybe pull the organizations again
-      console.log('result', result);
+      console.log('result', result); //debug
       this.checkOrganizations();
 
     });
