@@ -1,24 +1,13 @@
-  <h3>Organizations   <button mat-icon-button color="primary" (click)="createOrganization()">
+<h3>Organizations
+  <button mat-icon-button color="primary" (click)="createOrganization()">
     <mat-icon>add</mat-icon>
-  </button></h3>
+  </button>
+</h3>
 
 <div *ngIf="InOrganization">
   <div class="example-container mat-elevation-z8">
 
-
     <mat-table [dataSource]="dataSource" matSort>
-
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-      </ng-container>
-
-      <!-- Progress Column -->
-      <ng-container matColumnDef="progress">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.progress}}% </mat-cell>
-      </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="name">
@@ -26,10 +15,10 @@
         <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
       </ng-container>
 
-      <!-- Color Column -->
-      <ng-container matColumnDef="color">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
-        <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
+      <!-- createdAt Column -->
+      <ng-container matColumnDef="createdAt">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Created At </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'MM/dd/yyyy'}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
