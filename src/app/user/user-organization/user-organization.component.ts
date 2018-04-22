@@ -1,9 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { GetOrganizationService } from '../../services/user/get-organization.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
+import { GetUserService } from '../../services/user/get-user.service';
 import { CreateOrganizationComponent } from '../../organization/create-organization/create-organization.component';
 
 @Component({
@@ -29,7 +29,7 @@ export class UserOrganizationComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    public getOrganizationService: GetOrganizationService,
+    public getUserService: GetUserService,
     private router: Router,
     public dialog: MatDialog,
   ) {
@@ -85,11 +85,13 @@ export class UserOrganizationComponent implements OnInit {
 
     console.log('check organizations');
 
-    this.getOrganizationService.getOrgbyUsername(this.userName)
+    this.getUserService.getUserbyUsername(this.userName)
       .subscribe(
-        (organization) => {
+        (user) => {
 
-          console.log(organization);
+          console.log('user', user);
+
+          let organization = user[0].organizations;
 
           if (organization.length > 0) {
             this.InOrganization = true;
