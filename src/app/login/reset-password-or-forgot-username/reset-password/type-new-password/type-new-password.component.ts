@@ -91,8 +91,6 @@ export class TypeNewPasswordComponent implements OnInit {
         this.confirmPasswordChange()
       });
 
-
-
   }
 
   ngOnInit() {
