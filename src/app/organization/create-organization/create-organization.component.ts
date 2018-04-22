@@ -76,7 +76,7 @@ export class CreateOrganizationComponent implements OnInit {
       name: this.orgName,
       description: this.description,
       username: this.userName,
-      userid: this.userId//userid of user who created the organization
+      userid: this.userId,//userid of user who created the organization
     }
 
     this.dialogRef.close(body);
@@ -91,6 +91,7 @@ export class CreateOrganizationComponent implements OnInit {
   }//end of createOrg
 
   cancel() {
+
     console.log('cancel pressed');
 
   }
