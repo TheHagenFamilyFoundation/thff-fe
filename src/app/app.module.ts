@@ -47,6 +47,8 @@ import { ValidUserNameService } from './services/user/valid-username.service';
 import { ValidResetCodeService } from './services/user/valid-resetcode.service';
 import { SetNewPasswordService } from './services/user/set-new-password.service';
 import { GetUserService } from './services/user/get-user.service';
+import { ChangePasswordService } from './services/user/change-password.service';
+import { ChangeEmailService } from './services/user/change-email.service';
 
 import { GetOrganizationService } from './services/user/get-organization.service';
 import { CreateOrganizationService } from './services/organization/create-organization.service';
@@ -156,7 +158,7 @@ import { EmailComponent } from './test/email/email.component';
         AuthGuard, AuthService,
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
-        EmailService, ResetCodeService, SetNewPasswordService, GetUserService,
+        EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
         GetOrganizationService, CreateOrganizationService
     ],
     entryComponents: [CreateOrganizationComponent]
