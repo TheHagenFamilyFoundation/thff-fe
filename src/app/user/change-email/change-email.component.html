@@ -6,7 +6,7 @@
     Current Email: {{email}}
     <br>
     <mat-input-container>
-      <input matInput placeholder="New Email" value="" (keyup)="newEmail$.next($event.target.value)">
+      <input matInput placeholder="New Email" value="" (keyup)="newEmail$.next($event.target.value)" #ce>
     </mat-input-container>
     <br>
     <div *ngIf="CanChangeEmail">
