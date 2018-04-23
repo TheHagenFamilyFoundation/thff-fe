@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+
+import { ChangeEmailService } from '../../services/user/change-email.service';
 
 //debounce
 import { Subject } from 'rxjs/Subject';
@@ -21,9 +23,15 @@ export class ChangeEmailComponent implements OnInit {
   @Input()
   user: any;
 
+  updatedUser: any;
+
+  ValidChangeEmail: any;
+
   CanChangeEmail = false;
 
-  constructor() {
+  //@ViewChild('ce') ce: ElementRef;
+
+  constructor(private changeEmailService: ChangeEmailService) {
 
     this.newEmail$
       .debounceTime(400)
@@ -47,16 +55,39 @@ export class ChangeEmailComponent implements OnInit {
   changeEmail(): void {
     console.log("changeEmail Pressed");
 
-    
+    var data = {
+      username: this.user.username,
+      email: this.newEmail
+    }
 
-  }
+    this.ValidChangeEmail = this.changeEmailService.changeEmail(data)
+      .subscribe(
+        (data) => {
+          console.log("new email set");
+          console.log("data");
+          console.log(data);
+
+          //edit local storage
+          this.email = this.newEmail;
+          this.newEmail = '';
+
+          // this.ce.nativeElement.value = '';
+
+          this.updatedUser = JSON.parse(localStorage.getItem('currentUser'));
+
+          this.updatedUser.email = this.email;
+          localStorage.removeItem('currentUser');
+          localStorage.setItem('currentUser', JSON.stringify(this.updatedUser));
+
+
+        });
+  }//end of changeEmail
 
   newEmailChange(): void {
 
     console.log("newEmailChange");
 
     //add in logic for valid email
-    
 
     if (this.newEmail != "") {
       this.CanChangeEmail = true;

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { ChangePasswordService } from '../../services/user/change-password.service';
+
 //debounce
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
@@ -33,9 +35,11 @@ export class ChangePasswordComponent implements OnInit {
   ValidNewPassword = false;
   ValidConfirmPassword = false;
 
+  ValidChangePassword: any;
+
   CanChangePassword = false;
 
-  constructor() {
+  constructor(private changePasswordService: ChangePasswordService) {
 
     //debounce
     this.currentPassword$
@@ -76,6 +80,20 @@ export class ChangePasswordComponent implements OnInit {
 
   changePassword(): void {
     console.log("change password pressed");
+
+    var data = {
+      username: this.user.username,
+      currentPassword: this.currentPassword,
+      newPassword: this.newPassword
+    }
+
+    this.ValidChangePassword = this.changePasswordService.changePassword(data)
+      .subscribe(
+        (data) => {
+          console.log("new password set");
+          console.log("data");
+          console.log(data);
+        });
 
   }
 
