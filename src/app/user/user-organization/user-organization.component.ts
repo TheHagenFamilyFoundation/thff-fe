@@ -15,7 +15,7 @@ import { CreateOrganizationComponent } from '../../organization/create-organizat
 export class UserOrganizationComponent implements OnInit {
 
   // displayedColumns = ['id', 'name', 'progress', 'color'];
-  displayedColumns = ['name', 'createdAt'];
+  displayedColumns = ['name', 'createdOn'];
   dataSource: MatTableDataSource<OrganizationData>;
 
   InOrganization = false;
