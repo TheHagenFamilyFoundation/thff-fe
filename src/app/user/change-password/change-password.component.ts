@@ -23,6 +23,10 @@ export class ChangePasswordComponent implements OnInit {
   newPassword: any;
   confirmPassword: any;
 
+  curP: any;
+  newP: any;
+  conP: any;
+
   @Input()
   user: any;
 
@@ -30,6 +34,8 @@ export class ChangePasswordComponent implements OnInit {
 
   ShowMessage = false;
   message: any;
+
+  results: any;
 
   ValidCurrentPassword = false;
   ValidNewPassword = false;
@@ -46,7 +52,7 @@ export class ChangePasswordComponent implements OnInit {
       .debounceTime(400)
       .distinctUntilChanged()
       .subscribe(term => {
-
+        this.message = '';
         this.currentPassword = term;
         this.currentPasswordChange()
       });
@@ -55,7 +61,7 @@ export class ChangePasswordComponent implements OnInit {
       .debounceTime(400)
       .distinctUntilChanged()
       .subscribe(term => {
-
+        this.message = '';
         this.newPassword = term;
         this.newPasswordChange()
       });
@@ -64,7 +70,7 @@ export class ChangePasswordComponent implements OnInit {
       .debounceTime(400)
       .distinctUntilChanged()
       .subscribe(term => {
-
+        this.message = '';
         this.confirmPassword = term;
         this.confirmPasswordChange()
       });
@@ -89,10 +95,32 @@ export class ChangePasswordComponent implements OnInit {
 
     this.ValidChangePassword = this.changePasswordService.changePassword(data)
       .subscribe(
-        (data) => {
-          console.log("new password set");
-          console.log("data");
-          console.log(data);
+        (response) => {
+
+          this.results = response;
+
+          console.log('response', response);
+
+          if (this.results.change) {
+            console.log('success')
+
+            //output success message
+            this.message = this.results.message;
+            this.ShowMessage = true;
+
+            //only reset on successful change
+            this.resetComponent();
+
+          }
+          else {
+            console.log('fail')
+
+            //output fail message
+            this.message = 'Password Change was unsuccessful. Try Again.';
+            this.ShowMessage = true;
+
+          }
+
         });
 
   }
@@ -101,14 +129,14 @@ export class ChangePasswordComponent implements OnInit {
 
     console.log("currentPasswordChange");
 
-    if (this.currentPassword != "") {
-      this.ValidCurrentPassword = true;
-    }
-    else {
-      this.ValidCurrentPassword = false;
-    }
+    // if (this.currentPassword != "") {
+    //   this.ValidCurrentPassword = true;
+    // }
+    // else {
+    //   this.ValidCurrentPassword = false;
+    // }
 
-    this.compareNewCurrentPasswords();
+    this.currentCompareNewCurrentPasswords();
 
   }
 
@@ -116,15 +144,15 @@ export class ChangePasswordComponent implements OnInit {
 
     console.log("newPasswordChange");
 
-    if (this.newPassword != "") {
-      this.ValidNewPassword = true;
+    // if (this.newPassword != "") {
+    //   this.ValidNewPassword = true;
 
-    }
-    else {
-      this.ValidNewPassword = false;
-    }
+    // }
+    // else {
+    //   this.ValidNewPassword = false;
+    // }
 
-    this.compareNewCurrentPasswords();
+    this.newCompareNewCurrentConfirmPasswords();
 
   }
 
@@ -132,31 +160,144 @@ export class ChangePasswordComponent implements OnInit {
 
     console.log("confirmPasswordChange");
 
-    this.compareNewConfirmPasswords();
+    this.confirmCompareNewConfirmPasswords();
 
   }
 
-  compareNewCurrentPasswords(): void {
+  currentCompareNewCurrentPasswords(): void {
 
-    if (this.ValidCurrentPassword && this.ValidNewPassword) {
+    console.log('currentCompareNewCurrentPasswords');
+
+    if (this.currentPassword && this.newPassword) {
+
       if (this.currentPassword != this.newPassword) {
-        this.ShowConfirmPassword = true;
+        this.ValidCurrentPassword = true;
+        this.newCompareNewCurrentConfirmPasswords();
+
+        // this.ShowConfirmPassword = true;
+
+        // this.message = '';
+        // this.ShowMessage = false;
+
       }
       else {
-        this.ShowConfirmPassword = false;
+        this.ValidCurrentPassword = false;
+        this.newCompareNewCurrentConfirmPasswords();
+
+        // this.ShowConfirmPassword = false;
+
+        // //only show error if they are not blank
+        // this.message = 'New Password must be different from Current Password';
+        // this.ShowMessage = true;
       }
+
     }
+    else {
+      this.ValidCurrentPassword = false;
+    }
+
     this.verifyInput();
   }
 
-  compareNewConfirmPasswords(): void {
+  newCompareNewCurrentConfirmPasswords(): void {
 
-    if (this.newPassword == this.confirmPassword) {
-      this.ValidConfirmPassword = true;
+    console.log('newCompareNewCurrentConfirmPasswords');
+
+    //var sameCN = false; //same current and new
+
+    //compare current and new
+    if (this.newPassword && this.currentPassword) {
+
+      if (this.currentPassword != this.newPassword) {
+        this.ValidNewPassword = true;
+        this.ValidCurrentPassword = true;
+
+        this.ShowConfirmPassword = true;
+
+        this.message = '';
+        this.ShowMessage = false;
+
+      }
+      else {
+
+        console.log('new and current are the same');
+
+
+        this.ValidNewPassword = false;
+        this.ValidCurrentPassword = false;
+
+        this.ShowConfirmPassword = false;
+
+        this.message = 'New Password must be different from Current Password';
+        this.ShowMessage = true;
+
+        //sameCN = true;
+
+      }
+
+    }
+    else {
+      this.ValidNewPassword = false;
+    }
+
+    console.log('this.message', this.message);
+
+
+    //compare new and confirm
+    if (this.newPassword && this.confirmPassword && this.ShowConfirmPassword) { //&& !sameCN) {
+
+      if (this.newPassword == this.confirmPassword) {
+        this.ValidConfirmPassword = true;
+        this.ValidNewPassword = true;
+
+        this.message = '';
+        this.ShowMessage = false;
+
+      }
+      else {
+        this.ValidConfirmPassword = false;
+        this.ValidNewPassword = false;
+
+        this.message = 'Confirm Password does not match New Password';
+        this.ShowMessage = true;
+
+      }
+    }
+    else {
+      this.ValidNewPassword = false;
+    }
+
+    console.log('this.message', this.message);
+
+    this.verifyInput();
+  }
+
+  confirmCompareNewConfirmPasswords(): void {
+
+    console.log('confirmCompareNewConfirmPasswords');
+
+    if (this.confirmPassword && this.newPassword) {
+      if (this.newPassword == this.confirmPassword) {
+        this.ValidConfirmPassword = true;
+        this.ValidNewPassword = true;
+
+        this.message = '';
+        this.ShowMessage = false;
+
+      }
+      else {
+        this.ValidConfirmPassword = false;
+        this.ValidNewPassword = false;
+
+        this.message = 'Confirm Password does not match New Password';
+        this.ShowMessage = true;
+
+      }
     }
     else {
       this.ValidConfirmPassword = false;
     }
+
     this.verifyInput();
   }//end of compareNewConfirmPasswords
 
@@ -166,11 +307,32 @@ export class ChangePasswordComponent implements OnInit {
 
     if (this.ValidCurrentPassword && this.ValidNewPassword && this.ValidConfirmPassword) {
       this.CanChangePassword = true;
+
+      this.message = '';//clear message
     }
     else {
       this.CanChangePassword = false;
     }
   }//end of verifyInput
 
+  resetComponent(): void {
+
+    this.currentPassword = '';
+    this.newPassword = '';
+    this.confirmPassword = '';
+
+    this.curP = '';
+    this.newP = '';
+    this.conP = '';
+
+    this.ValidCurrentPassword = false;
+    this.ValidNewPassword = false;
+    this.ValidConfirmPassword = false;
+
+    this.ShowConfirmPassword = false;
+
+    this.CanChangePassword = false;
+
+  }
 
 }
