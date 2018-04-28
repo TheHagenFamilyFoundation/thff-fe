@@ -19,6 +19,7 @@ export class ChangeEmailComponent implements OnInit {
 
   email: any;
   newEmail: any;
+  nE: any;
 
   @Input()
   user: any;
@@ -70,8 +71,10 @@ export class ChangeEmailComponent implements OnInit {
           //edit local storage
           this.email = this.newEmail;
           this.newEmail = '';
+          //set the subject to '' as well
+          this.nE = '';
 
-          // this.ce.nativeElement.value = '';
+          this.CanChangeEmail = false;
 
           this.updatedUser = JSON.parse(localStorage.getItem('currentUser'));
 
