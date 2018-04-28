@@ -129,13 +129,6 @@ export class ChangePasswordComponent implements OnInit {
 
     console.log("currentPasswordChange");
 
-    // if (this.currentPassword != "") {
-    //   this.ValidCurrentPassword = true;
-    // }
-    // else {
-    //   this.ValidCurrentPassword = false;
-    // }
-
     this.currentCompareNewCurrentPasswords();
 
   }
@@ -143,14 +136,6 @@ export class ChangePasswordComponent implements OnInit {
   newPasswordChange(): void {
 
     console.log("newPasswordChange");
-
-    // if (this.newPassword != "") {
-    //   this.ValidNewPassword = true;
-
-    // }
-    // else {
-    //   this.ValidNewPassword = false;
-    // }
 
     this.newCompareNewCurrentConfirmPasswords();
 
@@ -174,21 +159,11 @@ export class ChangePasswordComponent implements OnInit {
         this.ValidCurrentPassword = true;
         this.newCompareNewCurrentConfirmPasswords();
 
-        // this.ShowConfirmPassword = true;
-
-        // this.message = '';
-        // this.ShowMessage = false;
-
       }
       else {
         this.ValidCurrentPassword = false;
         this.newCompareNewCurrentConfirmPasswords();
 
-        // this.ShowConfirmPassword = false;
-
-        // //only show error if they are not blank
-        // this.message = 'New Password must be different from Current Password';
-        // this.ShowMessage = true;
       }
 
     }
@@ -202,8 +177,6 @@ export class ChangePasswordComponent implements OnInit {
   newCompareNewCurrentConfirmPasswords(): void {
 
     console.log('newCompareNewCurrentConfirmPasswords');
-
-    //var sameCN = false; //same current and new
 
     //compare current and new
     if (this.newPassword && this.currentPassword) {
@@ -231,8 +204,6 @@ export class ChangePasswordComponent implements OnInit {
         this.message = 'New Password must be different from Current Password';
         this.ShowMessage = true;
 
-        //sameCN = true;
-
       }
 
     }
@@ -244,7 +215,7 @@ export class ChangePasswordComponent implements OnInit {
 
 
     //compare new and confirm
-    if (this.newPassword && this.confirmPassword && this.ShowConfirmPassword) { //&& !sameCN) {
+    if (this.newPassword && this.confirmPassword && this.ShowConfirmPassword) {
 
       if (this.newPassword == this.confirmPassword) {
         this.ValidConfirmPassword = true;
@@ -266,8 +237,6 @@ export class ChangePasswordComponent implements OnInit {
     else {
       this.ValidNewPassword = false;
     }
-
-    console.log('this.message', this.message);
 
     this.verifyInput();
   }
