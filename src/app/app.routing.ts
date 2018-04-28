@@ -10,7 +10,6 @@ import { AboutusComponent } from './home/aboutus/aboutus.component'
 import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
 import { ProcessComponent } from './home/application-materials/process/process.component';
 
-
 import { ApplicationTimelineComponent } from './home/application-timeline/application-timeline.component';
 
 import { InthenewsComponent } from './home/inthenews/inthenews.component';
@@ -29,8 +28,14 @@ import { LetintmenuComponent } from './letintmenu/letintmenu.component'
 import { LetintComponent } from './letintmenu/letint/letint.component'
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component'
 
-import { EmailComponent } from './test/email/email.component';
+//user
+import { UserComponent } from './user/user.component';
 
+//organization
+import { OrganizationComponent } from './organization/organization.component';
+
+//testing the email
+import { EmailComponent } from './test/email/email.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -40,26 +45,25 @@ const appRoutes: Routes = [
     { path: 'reset-password-or-username', component: ResetPasswordOrUsernameComponent },
     { path: 'type-new-password/:username/:resetCode', component: TypeNewPasswordComponent },
 
-
-
     { path: 'about', component: AboutusComponent },
     { path: 'application-materials', component: ApplicationMaterialsComponent },
     { path: 'process', component: ProcessComponent },
-
 
     { path: 'application-timeline', component: ApplicationTimelineComponent },
 
     { path: 'inthenews', component: InthenewsComponent },
     //child routes
 
-
     { path: 'grants-awarded', component: GrantsAwardedComponent },
     { path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent },
-
 
     { path: 'loimenu', component: LetintmenuComponent, canActivate: [AuthGuard] },
     { path: 'letint', component: LetintComponent, canActivate: [AuthGuard] },
     { path: 'status', component: LetintStatusComponent, canActivate: [AuthGuard] },
+
+    { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+
+    { path: 'organization', component: OrganizationComponent, canActivate: [AuthGuard] },
 
     { path: 'email', component: EmailComponent },
 

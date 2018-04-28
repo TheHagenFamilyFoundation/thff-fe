@@ -1,0 +1,22 @@
+<h3>Create Organization</h3>
+<div>
+  <mat-input-container>
+    <input matInput placeholder="Organization Name" value="" (keyup)="orgName$.next($event.target.value)">
+  </mat-input-container>
+  <br>
+  <mat-input-container>
+    <!-- <input matInput placeholder="Description" value="" (keyup)="description$.next($event.target.value)"> -->
+    <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" (keyup)="description$.next($event.target.value)"></textarea>
+  </mat-input-container>
+</div>
+<div *ngIf="ShowMessage">
+  {{message}}
+  <br>
+</div>
+<br>
+<div *ngIf="CanCreateOrg">
+  <button mat-raised-button (click)="createOrg()">Create Organization</button>
+</div>
+<div>
+  <button mat-raised-button (click)="cancel()" mat-dialog-close>Cancel</button>
+</div>

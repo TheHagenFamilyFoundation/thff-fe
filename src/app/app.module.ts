@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app.routing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//Angular Material
 import { MatGridListModule } from '@angular/material';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
@@ -19,6 +20,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -40,6 +47,11 @@ import { ValidUserNameService } from './services/user/valid-username.service';
 import { ValidResetCodeService } from './services/user/valid-resetcode.service';
 import { SetNewPasswordService } from './services/user/set-new-password.service';
 import { GetUserService } from './services/user/get-user.service';
+import { ChangePasswordService } from './services/user/change-password.service';
+import { ChangeEmailService } from './services/user/change-email.service';
+
+import { GetOrganizationService } from './services/user/get-organization.service';
+import { CreateOrganizationService } from './services/organization/create-organization.service';
 
 import { EmailService } from './services/user/email.service';
 
@@ -79,9 +91,14 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
 
 //user
 import { UserComponent } from './user/user.component';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
+import { ChangeEmailComponent } from './user/change-email/change-email.component';
+import { UserOrganizationComponent } from './user/user-organization/user-organization.component';
+import { UserGrantRequestsComponent } from './user/user-grant-requests/user-grant-requests.component';
 
 //organization
 import { OrganizationComponent } from './organization/organization.component';
+import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
@@ -105,16 +122,22 @@ import { EmailComponent } from './test/email/email.component';
         ForgotUsernameComponent,
 
         //user
-        UserComponent,
-        
+        UserComponent, ChangePasswordComponent, ChangeEmailComponent,
+
         //organization
-        OrganizationComponent,
+        OrganizationComponent, CreateOrganizationComponent,
 
         //letter of intent
         LetintmenuComponent, LetintComponent, LetintStatusComponent,
 
         //test component - email
-        EmailComponent
+        EmailComponent,
+
+        UserOrganizationComponent,
+
+        UserGrantRequestsComponent,
+
+
 
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule,
@@ -125,7 +148,8 @@ import { EmailComponent } from './test/email/email.component';
         //Material Design
         MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule,
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
-        MatSnackBarModule,
+        MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
+        MatPaginatorModule, MatDialogModule,
 
         ContentsModule, NgxPageScrollModule
     ],
@@ -134,7 +158,9 @@ import { EmailComponent } from './test/email/email.component';
         AuthGuard, AuthService,
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
-        EmailService, ResetCodeService, SetNewPasswordService, GetUserService
-    ]
+        EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
+        GetOrganizationService, CreateOrganizationService
+    ],
+    entryComponents: [CreateOrganizationComponent]
 })
 export class AppModule { }

@@ -1,33 +1,63 @@
 <mat-toolbar color="primary">
 
-  <button mat-button routerLink="/">
-    <mat-icon>home</mat-icon>
-  </button>
-
-  <!-- This fills the remaining space of the current row -->
-  <span class="fill-remaining-space"></span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button routerLink="/" fxHide="false">
+      <mat-icon>home</mat-icon>
+    </button>
+
     <div *ngIf="!authService.authenticated">
-      <button mat-button routerLink="/login">Login</button>
+      <button mat-button routerLink="/login" fxHide="false">Login</button>
     </div>
-    <div *ngIf="!authService.authenticated">
+    <div *ngIf="!authService.authenticated" fxHide="false">
       <button mat-button routerLink="/register">Register</button>
     </div>
-
-    <!-- logged in -->
-
-    <div *ngIf="authService.authenticated">
-      <button mat-button routerLink="/loimenu">LOI Menu</button>
-    </div>
-    <div *ngIf="authService.authenticated">
-      <button mat-button (click)="authService.logout()">Logout</button>
-    </div>
   </div>
+
   <button mat-button [matMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
     <mat-icon>menu</mat-icon>
   </button>
 
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-spacer"></span>
+
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <!-- logged in -->
+    <div *ngIf="authService.authenticated">
+      <button mat-button [matMenuTriggerFor]="user">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <mat-menu #user="matMenu">
+    <div *ngIf="authService.authenticated">
+      <button mat-button routerLink="/user">User Page</button>
+    </div>
+    <div *ngIf="authService.authenticated">
+      <button mat-button (click)="authService.logout()">Logout</button>
+    </div>
+  </mat-menu>
+
+  <!-- if user has an organization -->
+  <!-- <div *ngIf="authService.authenticated">
+      <button mat-button routerLink="/organization">Organization</button>
+    </div>
+    <div *ngIf="authService.authenticated">
+      <button mat-button routerLink="/loimenu">LOI Menu</button>
+    </div> -->
+  <!-- <div *ngIf="authService.authenticated">
+      <button mat-button (click)="authService.logout()">Logout</button>
+    </div> -->
+  <!-- </div> -->
+
 </mat-toolbar>
+
+
+
+
+
+
+<!-- Shown when the window is for mobile or smaller-->
 <mat-menu x-position="before" #menu="matMenu">
   <div *ngIf="!authService.authenticated">
     <button mat-button routerLink="/login">Login</button>

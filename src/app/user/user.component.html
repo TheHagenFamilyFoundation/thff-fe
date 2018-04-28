@@ -1,3 +1,33 @@
-<p>
-  user works!
-</p>
+<mat-card>
+  <mat-card-title>User Page - {{user.username}}</mat-card-title>
+  <mat-card-content class="demo-basic-list">
+    <mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+      <mat-grid-tile [rowspan]="2">
+        <mat-card>
+          <!-- <mat-card-title>User</mat-card-title> -->
+          <mat-card-content class="change_password_email">
+            <app-change-password [user]="user"></app-change-password>
+            <br>
+            <mat-divider></mat-divider>
+            <br>
+            <app-change-email [user]="user"></app-change-email>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-content>
+            <app-user-organization [user]="user"></app-user-organization>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-content>
+            <app-user-grant-requests [user]="user"></app-user-grant-requests>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

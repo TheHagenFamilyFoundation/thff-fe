@@ -1,0 +1,24 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .mat-card {
+    margin: 16px 0;
+  }
+  
+  p {
+    margin: 16px;
+  }
+   
+  .demo-basic-list .mat-grid-tile {
+    background: rgb(201, 201, 201);
+  }
+  
+  img {
+    width: 350px;
+  }
+
+  .change_password_email {
+    display:flex;
+    flex-direction: column;
+  }
