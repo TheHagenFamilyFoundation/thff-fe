@@ -45,6 +45,8 @@ export class ChangePasswordComponent implements OnInit {
 
   CanChangePassword = false;
 
+  CLEAR_TIMER = 5000;
+
   constructor(private changePasswordService: ChangePasswordService) {
 
     //debounce
@@ -107,6 +109,10 @@ export class ChangePasswordComponent implements OnInit {
             //output success message
             this.message = this.results.message;
             this.ShowMessage = true;
+
+            setTimeout(() => {
+              this.clearMessage();
+            }, 3000);
 
             //only reset on successful change
             this.resetComponent();
@@ -302,6 +308,10 @@ export class ChangePasswordComponent implements OnInit {
 
     this.CanChangePassword = false;
 
+  }
+
+  clearMessage() {
+    this.message = '';
   }
 
 }
