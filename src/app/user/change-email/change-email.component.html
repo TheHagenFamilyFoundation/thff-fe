@@ -1,20 +1,19 @@
-<!-- <mat-card>
-  <mat-card-title>Change Email</mat-card-title>
-  <mat-card-content> -->
-    <h3>Change Email</h3>
+<h3>Change Email</h3>
 
-    Current Email: {{email}}
-    <br>
-    <mat-input-container>
-      <input matInput placeholder="New Email" value="" (keyup)="newEmail$.next($event.target.value)" [(ngModel)]="nE">
-    </mat-input-container>
-    <br>
-    <div *ngIf="CanChangeEmail">
-      <button mat-raised-button (click)="changeEmail()">Change Email</button>
-    </div>
-    <div *ngIf="!CanChangeEmail">
-      <br>
-      <br>
-    </div>
-  <!-- </mat-card-content>
-</mat-card> -->
+Current Email: {{email}}
+<br>
+<mat-input-container>
+  <input matInput placeholder="New Email" value="" (keyup)="newEmail$.next($event.target.value)" [(ngModel)]="nE">
+</mat-input-container>
+<br>
+<div *ngIf="CanChangeEmail">
+  <button mat-raised-button (click)="changeEmail()">Change Email</button>
+</div>
+<div *ngIf="!CanChangeEmail">
+  <br>
+  <br>
+</div>
+<div *ngIf="ShowMessage">
+  {{message}}
+  <br>
+</div>

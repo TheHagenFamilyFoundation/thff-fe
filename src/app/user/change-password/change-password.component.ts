@@ -311,7 +311,11 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   clearMessage() {
+
     this.message = '';
+
+    this.ShowMessage = false;
+
   }
 
 }

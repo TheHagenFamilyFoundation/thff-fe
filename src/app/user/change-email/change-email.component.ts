@@ -30,7 +30,10 @@ export class ChangeEmailComponent implements OnInit {
 
   CanChangeEmail = false;
 
-  //@ViewChild('ce') ce: ElementRef;
+  results: any;
+
+  ShowMessage = false;
+  message: any;
 
   constructor(private changeEmailService: ChangeEmailService) {
 
@@ -63,10 +66,9 @@ export class ChangeEmailComponent implements OnInit {
 
     this.ValidChangeEmail = this.changeEmailService.changeEmail(data)
       .subscribe(
-        (data) => {
-          console.log("new email set");
-          console.log("data");
-          console.log(data);
+        (response) => {
+
+          this.results = response;
 
           //edit local storage
           this.email = this.newEmail;
@@ -82,6 +84,25 @@ export class ChangeEmailComponent implements OnInit {
           localStorage.removeItem('currentUser');
           localStorage.setItem('currentUser', JSON.stringify(this.updatedUser));
 
+          if (this.results.change) {
+            console.log('success')
+
+            //output success message
+            this.message = this.results.message;
+            this.ShowMessage = true;
+
+            setTimeout(() => {
+              this.clearMessage();
+            }, 3000);
+
+          }
+          else {
+            console.log('fail')
+
+            //output fail message
+            this.message = 'Email Change was unsuccessful. Try Again.';
+            this.ShowMessage = true;
+          }
 
         });
   }//end of changeEmail
@@ -98,6 +119,14 @@ export class ChangeEmailComponent implements OnInit {
     else {
       this.CanChangeEmail = false;
     }
+  }
+
+  clearMessage() {
+
+    this.message = '';
+
+    this.ShowMessage = false;
+
   }
 
 }
