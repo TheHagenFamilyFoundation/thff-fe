@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { GetUserService } from '../../services/user/get-user.service';
 
 import { CreateOrganizationComponent } from '../../organization/create-organization/create-organization.component';
+import { SelectedOrganizationComponent } from '../../user/user-organization/selected-organization/selected-organization.component';
 
 @Component({
   selector: 'app-user-organization',
@@ -101,6 +102,7 @@ export class UserOrganizationComponent implements OnInit {
           let organization = user[0].organizations;
 
           if (organization.length > 0) {
+
             this.InOrganization = true;
             this.dataSource = new MatTableDataSource(organization);
 
@@ -125,11 +127,11 @@ export class UserOrganizationComponent implements OnInit {
     console.log('create organization');
 
     //modal
-    this.openDialog();
+    this.openCreateOrgDialog();
 
   }
 
-  openDialog(): void {
+  openCreateOrgDialog(): void {
     let dialogRef = this.dialog.open(CreateOrganizationComponent, {
       width: '250px',
       data: { name: this.orgName, description: this.description }
@@ -144,10 +146,31 @@ export class UserOrganizationComponent implements OnInit {
     });
   }
 
+  openSelectedOrgDialog(org): void {
+    let dialogRef = this.dialog.open(SelectedOrganizationComponent, {
+      width: '400px',
+      data: { name: org.name, id: org.id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+      console.log('result', result); //debug
+
+    });
+  }
+
+  onRowClicked(row) {
+    console.log('Row clicked: ', row);
+    //console.log('row.name',row.name)
+
+    this.openSelectedOrgDialog(row); //pass in the org from row object
+
+  }
 
 
 }//end of component
 
+//old
 /** Builds and returns a new Organization. */
 function createNewOrganization(id: number): OrganizationData {
   const name =
@@ -162,6 +185,7 @@ function createNewOrganization(id: number): OrganizationData {
   };
 }
 
+//old
 /** Constants used to fill up our data base. */
 const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
   'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
@@ -169,6 +193,7 @@ const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
   'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
   'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
 
+//old
 export interface OrganizationData {
   id: string;
   name: string;
