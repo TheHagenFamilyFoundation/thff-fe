@@ -63,7 +63,7 @@ const appRoutes: Routes = [
 
     { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
 
-    { path: 'organization', component: OrganizationComponent, canActivate: [AuthGuard] },
+    { path: 'organization/:id', component: OrganizationComponent, canActivate: [AuthGuard] },
 
     { path: 'email', component: EmailComponent },
 
