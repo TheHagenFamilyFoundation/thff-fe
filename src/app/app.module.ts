@@ -94,6 +94,7 @@ import { UserComponent } from './user/user.component';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
 import { ChangeEmailComponent } from './user/change-email/change-email.component';
 import { UserOrganizationComponent } from './user/user-organization/user-organization.component';
+import { SelectedOrganizationComponent } from './user/user-organization/selected-organization/selected-organization.component';
 import { UserGrantRequestsComponent } from './user/user-grant-requests/user-grant-requests.component';
 
 //organization
@@ -123,6 +124,7 @@ import { EmailComponent } from './test/email/email.component';
 
         //user
         UserComponent, ChangePasswordComponent, ChangeEmailComponent,
+        UserOrganizationComponent, SelectedOrganizationComponent, UserGrantRequestsComponent,
 
         //organization
         OrganizationComponent, CreateOrganizationComponent,
@@ -132,12 +134,6 @@ import { EmailComponent } from './test/email/email.component';
 
         //test component - email
         EmailComponent,
-
-        UserOrganizationComponent,
-
-        UserGrantRequestsComponent,
-
-
 
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule,
@@ -161,6 +157,6 @@ import { EmailComponent } from './test/email/email.component';
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
         GetOrganizationService, CreateOrganizationService
     ],
-    entryComponents: [CreateOrganizationComponent]
+    entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent]
 })
 export class AppModule { }

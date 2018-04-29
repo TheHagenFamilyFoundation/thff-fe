@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-organization',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganizationComponent implements OnInit {
 
-  constructor() { }
+  orgId: any;
+
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      console.log(params);
+      this.orgId = params.id;
+    }
+    );
+    //console.log('orgId', this.orgId)
+
+  }
 
   ngOnInit() {
   }
