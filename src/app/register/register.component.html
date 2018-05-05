@@ -2,29 +2,29 @@
     <h2>{{title}}</h2>
 </div>
 <div align="center">
-    <mat-input-container>
+    <mat-form-field>
         <input matInput placeholder="Username" value="" required (keyup)="userName$.next($event.target.value)">
-    </mat-input-container>
+    </mat-form-field>
     <div *ngIf="ShowUserNameError">
         That User Name is already taken
     </div>
     <br>
-    <mat-input-container>
+    <mat-form-field>
         <input matInput placeholder="Email" value="" required (keyup)="email$.next($event.target.value)">
-    </mat-input-container>
+    </mat-form-field>
     <div *ngIf="ShowEmailError">
         That Email is already taken
     </div>
     <br>
     <!-- <div class="password"> -->
-    <mat-input-container>
+    <mat-form-field>
         <input matInput placeholder="Password" value="" type="password" required (keyup)="password$.next($event.target.value)">
-    </mat-input-container>
+    </mat-form-field>
     <br>
     <div *ngIf="ShowConfirmPassword">
-        <mat-input-container>
+        <mat-form-field>
             <input matInput placeholder="Confirm Password" value="" type="password" required (keyup)="confirmPassword$.next($event.target.value)">
-        </mat-input-container>
+        </mat-form-field>
     </div>
     <!-- </div> -->
     <br>

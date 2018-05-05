@@ -3,10 +3,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ChangePasswordService } from '../../services/user/change-password.service';
 
 //debounce
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+import { Subject } from 'rxjs';
+
+import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-change-password',
@@ -50,27 +49,27 @@ export class ChangePasswordComponent implements OnInit {
   constructor(private changePasswordService: ChangePasswordService) {
 
     //debounce
-    this.currentPassword$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.currentPassword$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
         this.message = '';
         this.currentPassword = term;
         this.currentPasswordChange()
       });
 
-    this.newPassword$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.newPassword$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
         this.message = '';
         this.newPassword = term;
         this.newPasswordChange()
       });
 
-    this.confirmPassword$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.confirmPassword$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
         this.message = '';
         this.confirmPassword = term;

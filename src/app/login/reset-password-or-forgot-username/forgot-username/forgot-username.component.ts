@@ -7,10 +7,9 @@ import { GetUserService } from '../../../services/user/get-user.service';
 import { EmailService } from '../../../services/user/email.service';
 
 //debounce
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+import { Subject } from 'rxjs';
+
+import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-forgot-username',
@@ -40,9 +39,9 @@ export class ForgotUsernameComponent implements OnInit {
     public getUserService: GetUserService,
     public emailService: EmailService) {
 
-    this.email$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.email$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.email = term;

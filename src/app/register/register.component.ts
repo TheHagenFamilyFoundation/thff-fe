@@ -12,11 +12,9 @@ import { ValidUserNameService } from '../services/user/valid-username.service';
 import { EmailService } from '../services/user/email.service';
 
 //for deboucne
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+import { Subject } from 'rxjs';
+
+import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'register',
@@ -31,7 +29,6 @@ export class RegisterComponent implements OnInit {
   API_URL = environment.API_URL;
 
   body;
-
 
   userName$ = new Subject<string>();
   email$ = new Subject<string>();
@@ -70,36 +67,36 @@ export class RegisterComponent implements OnInit {
   ) {
 
     //debounce
-    this.userName$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.userName$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.userName = term;
         this.usernameChange()
       });
 
-    this.email$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.email$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.email = term;
         this.emailChange()
       });
 
-    this.password$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.password$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.password = term;
         this.passwordChange()
       });
 
-    this.confirmPassword$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.confirmPassword$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.confirmPassword = term;

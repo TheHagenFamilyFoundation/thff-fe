@@ -2,13 +2,13 @@
   <h2>{{title}}</h2>
 </div>
 <div align="center">
-  <mat-input-container>
+  <mat-form-field>
     <input matInput placeholder="Username" value="" (keyup)="userName$.next($event.target.value)">
-  </mat-input-container>
+  </mat-form-field>
   <br>
-  <mat-input-container>
+  <mat-form-field>
     <input matInput placeholder="Password" type="password" value="" (keyup)="password$.next($event.target.value)">
-  </mat-input-container>
+  </mat-form-field>
   <br>
   <div *ngIf="ShowMessage">
     {{message}}

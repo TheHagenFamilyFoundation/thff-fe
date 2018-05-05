@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/map'
+
 import { AuthService } from '../auth/auth.service';
 import { environment } from '../../environments/environment';
 
 //debounce
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+import { Subject } from 'rxjs';
+
+import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'login',
@@ -42,18 +41,18 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
   ) {
 
-    this.userName$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.userName$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.userName = term;
         this.usernameChange()
       });
 
-    this.password$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.password$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.password = term;
