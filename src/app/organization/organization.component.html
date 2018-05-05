@@ -1,3 +1,30 @@
-<p>
-  organization works!
-</p>
+<mat-card>
+  <mat-card-title>Organization Page - {{org.name}}</mat-card-title>
+  <mat-card-content class="demo-basic-list">
+    <mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+      <mat-grid-tile [rowspan]="2">
+        <mat-card>
+          <mat-card-content>
+            card 1
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-content>
+            Users
+            <!-- <app-user-organization [user]="user"></app-user-organization> -->
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-content>
+            Requests
+            <!-- <app-user-grant-requests [user]="user"></app-user-grant-requests> -->
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

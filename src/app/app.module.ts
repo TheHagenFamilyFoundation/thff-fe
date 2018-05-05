@@ -50,7 +50,7 @@ import { GetUserService } from './services/user/get-user.service';
 import { ChangePasswordService } from './services/user/change-password.service';
 import { ChangeEmailService } from './services/user/change-email.service';
 
-import { GetOrganizationService } from './services/user/get-organization.service';
+import { GetOrganizationService } from './services/organization/get-organization.service';
 import { CreateOrganizationService } from './services/organization/create-organization.service';
 
 import { EmailService } from './services/user/email.service';
