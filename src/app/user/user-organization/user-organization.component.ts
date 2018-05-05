@@ -147,9 +147,12 @@ export class UserOrganizationComponent implements OnInit {
   }
 
   openSelectedOrgDialog(org): void {
+
+    console.log('org.organizationID', org.organizationID);
+
     let dialogRef = this.dialog.open(SelectedOrganizationComponent, {
       width: '400px',
-      data: { name: org.name, id: org.id }
+      data: { name: org.name, orgID: org.organizationID }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -161,7 +164,6 @@ export class UserOrganizationComponent implements OnInit {
 
   onRowClicked(row) {
     console.log('Row clicked: ', row);
-    //console.log('row.name',row.name)
 
     this.openSelectedOrgDialog(row); //pass in the org from row object
 
