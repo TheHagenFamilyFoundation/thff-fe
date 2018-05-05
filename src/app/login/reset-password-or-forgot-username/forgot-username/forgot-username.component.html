@@ -3,9 +3,9 @@
 </div>
 <div align="center">
   <div>
-    <mat-input-container>
+    <mat-form-field>
       <input matInput placeholder="Email" type="email" value="" (keyup)="email$.next($event.target.value)">
-    </mat-input-container>
+    </mat-form-field>
   </div>
   <div *ngIf="ShowEmailError">
     That User Name was not found in the database.

@@ -1,13 +1,13 @@
 <h3>Create Organization</h3>
 <div>
-  <mat-input-container>
+  <mat-form-field>
     <input matInput placeholder="Organization Name" value="" (keyup)="orgName$.next($event.target.value)">
-  </mat-input-container>
+  </mat-form-field>
   <br>
-  <mat-input-container>
+  <mat-form-field>
     <!-- <input matInput placeholder="Description" value="" (keyup)="description$.next($event.target.value)"> -->
     <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" (keyup)="description$.next($event.target.value)"></textarea>
-  </mat-input-container>
+  </mat-form-field>
 </div>
 <div *ngIf="ShowMessage">
   {{message}}

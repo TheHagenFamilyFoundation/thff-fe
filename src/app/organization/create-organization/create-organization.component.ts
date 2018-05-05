@@ -8,10 +8,9 @@ import { environment } from '../../../environments/environment';
 import { CreateOrganizationService } from '../../services/organization/create-organization.service';
 
 //debounce
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+import { Subject } from 'rxjs';
+
+import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-organization',
@@ -44,18 +43,18 @@ export class CreateOrganizationComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateOrganizationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
-    this.orgName$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.orgName$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.orgName = term;
         this.orgNameChange()
       });
 
-    this.description$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.description$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.description = term;

@@ -2,9 +2,9 @@
 
 Current Email: {{email}}
 <br>
-<mat-input-container>
+<mat-form-field>
   <input matInput placeholder="New Email" value="" (keyup)="newEmail$.next($event.target.value)" [(ngModel)]="nE">
-</mat-input-container>
+</mat-form-field>
 <br>
 <div *ngIf="CanChangeEmail">
   <button mat-raised-button (click)="changeEmail()">Change Email</button>

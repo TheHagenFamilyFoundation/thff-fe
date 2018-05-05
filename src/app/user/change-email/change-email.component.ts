@@ -3,10 +3,9 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { ChangeEmailService } from '../../services/user/change-email.service';
 
 //debounce
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+import { Subject } from 'rxjs';
+
+import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-change-email',
@@ -37,9 +36,9 @@ export class ChangeEmailComponent implements OnInit {
 
   constructor(private changeEmailService: ChangeEmailService) {
 
-    this.newEmail$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.newEmail$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.newEmail = term;

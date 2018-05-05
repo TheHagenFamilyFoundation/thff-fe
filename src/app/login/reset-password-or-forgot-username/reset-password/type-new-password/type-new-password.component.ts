@@ -10,10 +10,9 @@ import { GetUserService } from '../../../../services/user/get-user.service';
 import { EmailService } from '../../../../services/user/email.service';
 
 //debounce
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
+import { Subject } from 'rxjs';
+
+import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-type-new-password',
@@ -73,18 +72,18 @@ export class TypeNewPasswordComponent implements OnInit {
     this.newPassword = "";
     this.confirmPassword = "";
 
-    this.newPassword$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.newPassword$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.newPassword = term;
         this.newPasswordChange()
       });
 
-    this.confirmPassword$
-      .debounceTime(400)
-      .distinctUntilChanged()
+    this.confirmPassword$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
       .subscribe(term => {
 
         this.confirmPassword = term;

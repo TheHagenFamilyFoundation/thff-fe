@@ -1,6 +1,7 @@
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
@@ -35,7 +36,7 @@ export class EmailService {
 
   private _errorHandler(error: Response) {
     console.error(error);
-    return Observable.throw(error || 'Server Error')
+    return observableThrowError(error || 'Server Error')
   }
 
 }

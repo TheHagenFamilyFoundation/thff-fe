@@ -1,12 +1,12 @@
 <form>
-  <mat-input-container>
+  <mat-form-field>
     <input matInput type="text" class="form-control" required name="name" #name placeholder="name">
-  </mat-input-container>
-  <mat-input-container>
+  </mat-form-field>
+  <mat-form-field>
     <input matInput type="email" class="form-control" required name="email" #email placeholder="email">
-  </mat-input-container>
-  <mat-input-container>
+  </mat-form-field>
+  <mat-form-field>
     <input matInput type="text" class="form-control" required name="message" #message placeholder="message">
-  </mat-input-container>
+  </mat-form-field>
   <button mat-raised-button class="btn btn-default" type="button" (click)="onSubmit(name.value, email.value, message.value)">Submit</button>
 </form>
