@@ -95,7 +95,9 @@ import { ChangePasswordComponent } from './user/change-password/change-password.
 import { ChangeEmailComponent } from './user/change-email/change-email.component';
 import { UserOrganizationComponent } from './user/user-organization/user-organization.component';
 import { SelectedOrganizationComponent } from './user/user-organization/selected-organization/selected-organization.component';
-import { UserGrantRequestsComponent } from './user/user-grant-requests/user-grant-requests.component';
+
+import { UserLetterOfIntentComponent } from './user/user-letter-of-intent/user-letter-of-intent.component';
+import { SelectedLetterOfIntentComponent } from './user/user-letter-of-intent/selected-letter-of-intent/selected-letter-of-intent.component';
 
 //organization
 import { OrganizationComponent } from './organization/organization.component';
@@ -103,6 +105,8 @@ import { CreateOrganizationComponent } from './organization/create-organization/
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
+import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
+import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -124,13 +128,16 @@ import { EmailComponent } from './test/email/email.component';
 
         //user
         UserComponent, ChangePasswordComponent, ChangeEmailComponent,
-        UserOrganizationComponent, SelectedOrganizationComponent, UserGrantRequestsComponent,
+        UserOrganizationComponent, SelectedOrganizationComponent,
+        UserLetterOfIntentComponent, SelectedLetterOfIntentComponent,
 
         //organization
         OrganizationComponent, CreateOrganizationComponent,
 
         //letter of intent
         LetintmenuComponent, LetintComponent, LetintStatusComponent,
+        LetterOfIntentComponent,
+        CreateLetterOfIntentComponent,
 
         //test component - email
         EmailComponent,

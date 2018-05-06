@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserGrantRequestsComponent } from './user-grant-requests.component';
+import { LetterOfIntentComponent } from './letter-of-intent.component';
 
-describe('UserGrantRequestsComponent', () => {
-  let component: UserGrantRequestsComponent;
-  let fixture: ComponentFixture<UserGrantRequestsComponent>;
+describe('LetterOfIntentComponent', () => {
+  let component: LetterOfIntentComponent;
+  let fixture: ComponentFixture<LetterOfIntentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserGrantRequestsComponent ]
+      declarations: [ LetterOfIntentComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserGrantRequestsComponent);
+    fixture = TestBed.createComponent(LetterOfIntentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
