@@ -12,7 +12,7 @@ export class SelectedOrganizationComponent implements OnInit {
   orgLink = '/organization/'
   link: string;
 
-  orgId: any;
+  orgID: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -21,15 +21,13 @@ export class SelectedOrganizationComponent implements OnInit {
 
   ngOnInit() {
     // will log the entire data object
-    console.log(this.data)
+    console.log('this.data', this.data)
 
-    this.orgId = this.data.id;
+    this.orgID = this.data.orgID;
 
-    this.link = this.orgLink + this.data.id;
+    this.link = this.orgLink + this.data.orgID;
 
-    console.log('link', this.link);
-
-
+    console.log('this is the link', this.link);
 
   }
 

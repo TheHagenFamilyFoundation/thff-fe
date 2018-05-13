@@ -27,8 +27,6 @@ export class HomeComponent implements OnInit {
     this.env = environment.envName;
     this.API = environment.API_URL;
 
-
-
     console.log(this.authService.authenticated)
 
     if (this.authService.authenticated) {
@@ -56,7 +54,6 @@ export class HomeComponent implements OnInit {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
       console.log(this.currentUser.username);
-
 
     }
   }//end of ngOnInit

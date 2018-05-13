@@ -26,4 +26,11 @@ export class GetOrganizationService {
     return this.http.get(urlString);
   }
 
+  getOrgbyID(orgID: string): Observable<any> {
+
+    let urlString = this.API_URL + "/organization?organizationID=" + orgID;
+
+    return this.http.get(urlString);
+  }
+
 }

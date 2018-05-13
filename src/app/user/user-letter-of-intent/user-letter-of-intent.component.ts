@@ -5,28 +5,28 @@ import { Router } from '@angular/router';
 
 import { GetUserService } from '../../services/user/get-user.service';
 
-import { CreateOrganizationComponent } from '../../organization/create-organization/create-organization.component';
-import { SelectedOrganizationComponent } from '../../user/user-organization/selected-organization/selected-organization.component';
+import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
+import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-intent/selected-letter-of-intent/selected-letter-of-intent.component';
 
 @Component({
-  selector: 'app-user-organization',
-  templateUrl: './user-organization.component.html',
-  styleUrls: ['./user-organization.component.css']
+  selector: 'app-user-letter-of-intent',
+  templateUrl: './user-letter-of-intent.component.html',
+  styleUrls: ['./user-letter-of-intent.component.css']
 })
-export class UserOrganizationComponent implements OnInit {
+export class UserLetterOfIntentComponent implements OnInit {
 
   // displayedColumns = ['id', 'name', 'progress', 'color'];
-  displayedColumns = ['name', 'createdOn'];
+  displayedColumns = ['name', 'submittedOn'];
   dataSource: MatTableDataSource<OrganizationData>;
 
-  InOrganization = false;
+  HasLOIs = false;
 
   @Input()
   user: any;
 
   userName: any; //string
 
-  orgName: any;//string
+  loiName: any;//string - letter of intent name
   description: any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -50,7 +50,7 @@ export class UserOrganizationComponent implements OnInit {
 
     this.userName = this.user.username
 
-    this.checkOrganizations();
+    this.checkLOIs();
   }
 
   /**
@@ -88,71 +88,71 @@ export class UserOrganizationComponent implements OnInit {
 
   // }//end of getUserName
 
-  //checks if user is in any organizations
-  checkOrganizations() {
+  //checks if user has any LOIs
+  checkLOIs() {
 
     console.log('check organizations');
 
-    this.getUserService.getUserbyUsername(this.userName)
-      .subscribe(
-        (user) => {
+    // this.getUserService.getUserbyUsername(this.userName)
+    //   .subscribe(
+    //     (user) => {
 
-          console.log('user', user);
+    //       console.log('user', user);
 
-          let organization = user[0].organizations;
+    //       let loi = user[0].letterOfIntent;
 
-          if (organization.length > 0) {
+    //       if (organization.length > 0) {
 
-            this.InOrganization = true;
-            this.dataSource = new MatTableDataSource(organization);
+    //         this.InOrganization = true;
+    //         this.dataSource = new MatTableDataSource(organization);
 
-            this.dataSource.paginator = this.paginator;
-            this.dataSource.sort = this.sort;
+    //         this.dataSource.paginator = this.paginator;
+    //         this.dataSource.sort = this.sort;
 
-          }
-          else {
+    //       }
+    //       else {
 
-            //no organizations
-            console.log("not in any organizations");
+    //         //no organizations
+    //         console.log("not in any organizations");
 
-            this.InOrganization = false;
+    //         this.HasLOIs = false;
 
-          }
+    //       }
 
-        })
-  }//end of checkOrganization
+    //     })
+  }//end of checkLOIs
 
-  createOrganization() {
+  createLOI() {
 
-    console.log('create organization');
+    console.log('create letter of intent');
 
     //modal
-    this.openCreateOrgDialog();
+    this.openCreateLOIDialog();
 
   }
 
-  openCreateOrgDialog(): void {
-    let dialogRef = this.dialog.open(CreateOrganizationComponent, {
+  openCreateLOIDialog(): void {
+    let dialogRef = this.dialog.open(CreateLetterOfIntentComponent, {
       width: '250px',
-      data: { name: this.orgName, description: this.description }
+      data: { name: this.loiName, description: this.description }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed'); //debug
       //maybe pull the organizations again
       console.log('result', result); //debug
-      this.checkOrganizations();
+      this.checkLOIs();
 
     });
   }
 
-  openSelectedOrgDialog(org): void {
+  openSelectedLOIDialog(loi): void {
 
-    console.log('org.organizationID', org.organizationID);
+    console.log('loi.organizationID', loi.organizationID);
 
-    let dialogRef = this.dialog.open(SelectedOrganizationComponent, {
+    let dialogRef = this.dialog.open(SelectedLetterOfIntentComponent, {
       width: '400px',
-      data: { name: org.name, orgID: org.organizationID }
+      data: { name: loi.name, loiID: loi.organizationID }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -165,7 +165,7 @@ export class UserOrganizationComponent implements OnInit {
   onRowClicked(row) {
     console.log('Row clicked: ', row);
 
-    this.openSelectedOrgDialog(row); //pass in the org from row object
+    this.openSelectedLOIDialog(row); //pass in the loi from row object
 
   }
 
