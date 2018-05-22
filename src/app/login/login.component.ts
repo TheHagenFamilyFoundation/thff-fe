@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AuthService } from '../auth/auth.service';
+import { LoginService } from '../services/user/login.service';
+
 import { environment } from '../../environments/environment';
 
 //debounce
@@ -35,10 +37,13 @@ export class LoginComponent implements OnInit {
   ShowMessage = false;
   message: any;
 
+  Login: any;
+
   constructor(
     private router: Router,
     private http: HttpClient,
     private authService: AuthService,
+    private loginService: LoginService
   ) {
 
     this.userName$.pipe(
@@ -70,7 +75,7 @@ export class LoginComponent implements OnInit {
     console.log("userName = " + this.userName);
     console.log("password = " + this.password);
 
-    let urlString = this.API_URL + '/auth';
+    let urlString = this.API_URL + '/login';
 
     this.body = {
       username: this.userName,
@@ -78,31 +83,39 @@ export class LoginComponent implements OnInit {
     }
 
     console.log(this.body);
-    console.log(urlString);
+    console.log('urlString', urlString);
 
-    this.http.post(urlString, this.body)
-      .subscribe(data => {
-        this.results = data;
+    this.Login = this.loginService.login(this.body)
+      .subscribe(
+        (data) => {
 
-        //console.log(data);
+          console.log('data', data)
 
-        if (this.results.user) {
-          console.log("this.results.user = " + this.results.user)
+        })
 
-          localStorage.setItem('token', this.results.token);
-          localStorage.setItem('currentUser', JSON.stringify(this.results.user));
+    // this.http.put(urlString, this.body)
+    //   .subscribe(data => {
+    //     this.results = data;
 
-          console.log("token = " + localStorage.getItem('token'));
-          console.log("currentUser = " + localStorage.getItem('currentUser'));
+    //     //console.log(data);
 
-          this.authService.login();
-        }
-        else {
-          this.message = this.results.message;
-          this.ShowMessage = true;
-        }
+    //     if (this.results.user) {
+    //       console.log("this.results.user = " + this.results.user)
 
-      });
+    //       localStorage.setItem('token', this.results.token);
+    //       localStorage.setItem('currentUser', JSON.stringify(this.results.user));
+
+    //       console.log("token = " + localStorage.getItem('token'));
+    //       console.log("currentUser = " + localStorage.getItem('currentUser'));
+
+    //       this.authService.login();
+    //     }
+    //     else {
+    //       this.message = this.results.message;
+    //       this.ShowMessage = true;
+    //     }
+
+    //   });
 
   }
 
