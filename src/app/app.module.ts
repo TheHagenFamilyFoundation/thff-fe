@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -145,7 +145,13 @@ import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-
         EmailComponent,
 
     ],
-    imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule,
+    imports: [BrowserModule,
+        HttpClientModule, HttpClientXsrfModule.withOptions({
+            cookieName: 'xsrf-token',
+            headerName: 'x-csrf-token',
+        }),
+
+        FormsModule, BrowserAnimationsModule,
         AppRoutingModule,
 
         FlexLayoutModule,

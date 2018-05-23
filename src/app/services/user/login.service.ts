@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { environment } from '../../../environments/environment';
 
@@ -10,11 +10,19 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  login(data): Observable<any> {
+  login(data, csrf): Observable<any> {
 
-    console.log('login', data);
+    console.log('login', data, 'and', csrf);
 
-    return this.http.put(this.API_URL + '/login', data)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'x-csrf-token': csrf
+      })
+    };
+
+    return this.http.put(this.API_URL + '/login', data, httpOptions)
+
   }
 
 

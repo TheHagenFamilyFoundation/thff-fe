@@ -107,7 +107,6 @@ export class LoginComponent implements OnInit {
 
           console.log('csrfToken', this.csrfToken)
 
-
           let urlString = this.API_URL + '/login';
 
           this.body = {
@@ -119,39 +118,31 @@ export class LoginComponent implements OnInit {
           console.log(this.body);
           console.log('urlString', urlString);
 
-          this.Login = this.loginService.login(this.body)
+          this.Login = this.loginService.login(this.body, this.csrfToken)
             .subscribe(
               (data) => {
+                this.results = data;
 
-                console.log('data', data)
+                if (this.results.user) {
+                  console.log("this.results.user = " + this.results.user)
+
+                  localStorage.setItem('token', this.results.token);
+                  localStorage.setItem('currentUser', JSON.stringify(this.results.user));
+
+                  console.log("token = " + localStorage.getItem('token'));
+                  console.log("currentUser = " + localStorage.getItem('currentUser'));
+
+                  this.authService.login();
+                }
+                else {
+                  this.message = this.results.message;
+                  this.ShowMessage = true;
+                }
 
               })
 
         })
-    // this.http.put(urlString, this.body)
-    //   .subscribe(data => {
-    //     this.results = data;
-
-    //     //console.log(data);
-
-    //     if (this.results.user) {
-    //       console.log("this.results.user = " + this.results.user)
-
-    //       localStorage.setItem('token', this.results.token);
-    //       localStorage.setItem('currentUser', JSON.stringify(this.results.user));
-
-    //       console.log("token = " + localStorage.getItem('token'));
-    //       console.log("currentUser = " + localStorage.getItem('currentUser'));
-
-    //       this.authService.login();
-    //     }
-    //     else {
-    //       this.message = this.results.message;
-    //       this.ShowMessage = true;
-    //     }
-
-    //   });
-
+   
   }
 
   register(): void {
