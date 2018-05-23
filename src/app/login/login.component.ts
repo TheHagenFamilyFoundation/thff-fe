@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getCSRF();
+    //this.getCSRF();
 
   }
 
@@ -99,25 +99,35 @@ export class LoginComponent implements OnInit {
     console.log("userName = " + this.userName);
     console.log("password = " + this.password);
 
-    let urlString = this.API_URL + '/login';
-
-    this.body = {
-      username: this.userName,
-      password: this.password,
-      _csrf: this.csrfToken
-    }
-
-    console.log(this.body);
-    console.log('urlString', urlString);
-
-    this.Login = this.loginService.login(this.body)
+    this.CSRF = this.getCSRFTokenService.getCSRF()
       .subscribe(
         (data) => {
 
-          console.log('data', data)
+          this.csrfToken = data._csrf;
+
+          console.log('csrfToken', this.csrfToken)
+
+
+          let urlString = this.API_URL + '/login';
+
+          this.body = {
+            username: this.userName,
+            password: this.password,
+            _csrf: this.csrfToken
+          }
+
+          console.log(this.body);
+          console.log('urlString', urlString);
+
+          this.Login = this.loginService.login(this.body)
+            .subscribe(
+              (data) => {
+
+                console.log('data', data)
+
+              })
 
         })
-
     // this.http.put(urlString, this.body)
     //   .subscribe(data => {
     //     this.results = data;
