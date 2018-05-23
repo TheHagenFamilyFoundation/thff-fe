@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AuthService } from '../auth/auth.service';
+import { GetCSRFTokenService } from '../services/auth/get-csrf-token.service';
 import { LoginService } from '../services/user/login.service';
 
 import { environment } from '../../environments/environment';
@@ -22,6 +23,9 @@ export class LoginComponent implements OnInit {
   title = "Login"
 
   API_URL = environment.API_URL;
+
+  csrfToken: any;
+  CSRF: any;
 
   userName$ = new Subject<string>();
   password$ = new Subject<string>();
@@ -43,6 +47,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private authService: AuthService,
+    private getCSRFTokenService: GetCSRFTokenService,
     private loginService: LoginService
   ) {
 
@@ -67,6 +72,25 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.getCSRF();
+
+  }
+
+  getCSRF() {
+
+    console.log('getCSRF');
+
+    this.CSRF = this.getCSRFTokenService.getCSRF()
+      .subscribe(
+        (data) => {
+
+          this.csrfToken = data._csrf;
+
+          console.log('csrfToken', this.csrfToken)
+
+        })
+
   }
 
   login(): void {
@@ -79,7 +103,8 @@ export class LoginComponent implements OnInit {
 
     this.body = {
       username: this.userName,
-      password: this.password
+      password: this.password,
+      _csrf: this.csrfToken
     }
 
     console.log(this.body);
