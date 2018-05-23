@@ -14,7 +14,7 @@ export class GetCSRFTokenService {
 
   getCSRF(): Observable<any> {
 
-    let urlString = this.API_URL + "/security/grant-csrf-token";
+    let urlString = this.API_URL + "/csrfToken";
 
     return this.http.get(urlString);
   }

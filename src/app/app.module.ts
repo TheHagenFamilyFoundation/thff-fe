@@ -39,6 +39,7 @@ import { AuthGuard } from './_guards/auth.guard';
 //inside auth
 import { AuthService } from './auth/auth.service';
 import { LoginService } from './services/user/login.service';
+import { GetCSRFTokenService } from './services/auth/get-csrf-token.service';
 
 import { GrantService } from './services/grants/grant.service';
 import { GrantApiService } from './services/grants/grant-api.service';
@@ -159,7 +160,7 @@ import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-
     ],
     bootstrap: [AppComponent],
     providers: [
-        AuthGuard, AuthService, LoginService,
+        AuthGuard, AuthService, LoginService, GetCSRFTokenService,
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,

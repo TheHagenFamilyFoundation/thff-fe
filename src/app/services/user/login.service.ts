@@ -14,7 +14,6 @@ export class LoginService {
 
     console.log('login', data);
 
-
     return this.http.put(this.API_URL + '/login', data)
   }
 
