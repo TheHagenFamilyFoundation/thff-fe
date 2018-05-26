@@ -105,10 +105,13 @@ import { SelectedLetterOfIntentComponent } from './user/user-letter-of-intent/se
 import { OrganizationComponent } from './organization/organization.component';
 import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
 
-//test email component
-import { EmailComponent } from './test/email/email.component';
+//letter of intent
 import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
 import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
+
+//test email component
+import { EmailComponent } from './test/email/email.component';
+
 
 @NgModule({
     declarations: [AppComponent,
@@ -172,6 +175,6 @@ import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
         GetOrganizationService, CreateOrganizationService
     ],
-    entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent]
+    entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent, CreateLetterOfIntentComponent]
 })
 export class AppModule { }

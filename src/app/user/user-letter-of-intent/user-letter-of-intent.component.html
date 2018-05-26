@@ -1,3 +1,31 @@
-<p>
-  user-letter-of-intent works!
-</p>
+<h3>Organizations
+  <button mat-icon-button color="primary" (click)="createLOI()">
+    <mat-icon>add</mat-icon>
+  </button>
+</h3>
+
+<div *ngIf="HasLOIs">
+  <div class="example-container mat-elevation-z8">
+
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      </ng-container>
+
+      <!-- createdOn Column -->
+      <ng-container matColumnDef="createdOn">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Created On </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'MM/dd/yyyy'}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
+      </mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>

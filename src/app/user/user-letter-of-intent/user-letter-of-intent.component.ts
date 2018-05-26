@@ -91,7 +91,7 @@ export class UserLetterOfIntentComponent implements OnInit {
   //checks if user has any LOIs
   checkLOIs() {
 
-    console.log('check organizations');
+    console.log('check LOIs');
 
     // this.getUserService.getUserbyUsername(this.userName)
     //   .subscribe(
