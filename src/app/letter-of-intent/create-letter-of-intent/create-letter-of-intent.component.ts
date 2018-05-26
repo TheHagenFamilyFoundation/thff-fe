@@ -17,14 +17,15 @@ import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/op
   templateUrl: './create-letter-of-intent.component.html',
   styleUrls: ['./create-letter-of-intent.component.css']
 })
+
 export class CreateLetterOfIntentComponent implements OnInit {
 
   API_URL = environment.API_URL;
 
-  orgName$ = new Subject<string>();
+  loiName$ = new Subject<string>();
   description$ = new Subject<string>();
 
-  orgName: any; //string
+  loiName: any; //string
   description: any; //string
 
   message: any; //string
@@ -35,7 +36,7 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
   ShowMessage = false;
 
-  CanCreateOrg = false;
+  CanCreateLOI = false;
 
   constructor(
     private http: HttpClient,
@@ -43,13 +44,13 @@ export class CreateLetterOfIntentComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateLetterOfIntentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
-    this.orgName$.pipe(
+    this.loiName$.pipe(
       debounceTime(400),
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.orgName = term;
-        this.orgNameChange()
+        this.loiName = term;
+        this.loiNameChange()
       });
 
     this.description$.pipe(
@@ -69,10 +70,10 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
   }
 
-  createOrg() {
+  createLOI() {
 
     var body = {
-      name: this.orgName,
+      name: this.loiName,
       description: this.description,
       username: this.userName,
       userid: this.userId,//userid of user who created the organization
@@ -95,13 +96,13 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
   }
 
-  orgNameChange() {
+  loiNameChange() {
 
-    console.log('organization name change');
+    console.log('loi name change');
 
-    if (this.orgName != "") {
+    if (this.loiName != "") {
 
-      this.CanCreateOrg = true;
+      this.CanCreateLOI = true;
     }
 
   }

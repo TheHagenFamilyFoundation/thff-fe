@@ -16,8 +16,8 @@ import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-inten
 export class UserLetterOfIntentComponent implements OnInit {
 
   // displayedColumns = ['id', 'name', 'progress', 'color'];
-  displayedColumns = ['name', 'submittedOn'];
-  dataSource: MatTableDataSource<OrganizationData>;
+  displayedColumns = ['name', 'Org','submittedOn'];
+  dataSource: MatTableDataSource<LOIData>;
 
   HasLOIs = false;
 
@@ -173,8 +173,8 @@ export class UserLetterOfIntentComponent implements OnInit {
 }//end of component
 
 //old
-/** Builds and returns a new Organization. */
-function createNewOrganization(id: number): OrganizationData {
+/** Builds and returns a new LOI. */
+function createNewLOI(id: number): LOIData {
   const name =
     NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
     NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
@@ -196,7 +196,7 @@ const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
   'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
 
 //old
-export interface OrganizationData {
+export interface LOIData {
   id: string;
   name: string;
   progress: string;

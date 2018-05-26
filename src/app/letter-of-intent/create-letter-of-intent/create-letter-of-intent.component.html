@@ -1,7 +1,7 @@
 <h3>Create LOI</h3>
 <div>
   <mat-form-field>
-    <input matInput placeholder="LOI Name" value="" (keyup)="orgName$.next($event.target.value)">
+    <input matInput placeholder="LOI Name" value="" (keyup)="loiName$.next($event.target.value)">
   </mat-form-field>
   <br>
   <mat-form-field>
@@ -14,8 +14,8 @@
   <br>
 </div>
 <br>
-<div *ngIf="CanCreateOrg">
-  <button mat-raised-button (click)="createOrg()">Create Organization</button>
+<div *ngIf="CanCreateLOI">
+  <button mat-raised-button (click)="createLOI()">Create LOI</button>
 </div>
 <br>
 <div>
