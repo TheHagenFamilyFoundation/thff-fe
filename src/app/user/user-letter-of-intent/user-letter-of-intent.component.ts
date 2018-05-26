@@ -15,11 +15,13 @@ import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-inten
 })
 export class UserLetterOfIntentComponent implements OnInit {
 
-  // displayedColumns = ['id', 'name', 'progress', 'color'];
-  displayedColumns = ['name', 'Org','submittedOn'];
+  displayedColumns = ['name', 'Org', 'submittedOn'];
   dataSource: MatTableDataSource<LOIData>;
 
-  HasLOIs = false;
+  HasLOIs = false; //has LOIs
+  InOrganization = false; //if user is in org
+
+  NotInOrgMessage = 'You must be in an Organization in order to create a LOI.'
 
   @Input()
   user: any;
@@ -36,34 +38,15 @@ export class UserLetterOfIntentComponent implements OnInit {
     public getUserService: GetUserService,
     private router: Router,
     public dialog: MatDialog,
-  ) {
-    // // Create 100 organizations
-    // const organizations: OrganizationData[] = [];
-    // for (let i = 1; i <= 100; i++) { organizations.push(createNewOrganization(i)); }
-
-    // // Assign the data to the data source for the table to render
-    //this.dataSource = new MatTableDataSource(organizations);
-  }
+  ) { }
 
   ngOnInit() {
-    // this.getUserName();
 
     this.userName = this.user.username
 
-    this.checkLOIs();
+    this.getUser();
+
   }
-
-  /**
-   * Set the paginator and sort after the view init since this component will
-   * be able to query its view for the initialized paginator and sort.
-   */
-  // ngAfterViewInit() {
-
-
-
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
-  // }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -71,27 +54,43 @@ export class UserLetterOfIntentComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  // getUserName() {
+  getUser() {
 
-  //   if (localStorage.getItem('currentUser')) {
-  //     // logged in so return true
-  //     this.user = JSON.parse(localStorage.getItem('currentUser'));
-  //     this.userName = this.user.username
+    this.getUserService.getUserbyUsername(this.userName)
+      .subscribe((user) => {
 
-  //     this.checkOrganizations();
+        //pass in the user to the check functions
+        this.checkOrganizations(user);
+        this.checkLOIs(user);
 
-  //   }
-  //   else {
-  //     //logout
-  //     this.router.navigate(['/logout']);
-  //   }
+      })
+  }
 
-  // }//end of getUserName
+  //checks if user is in any organizations
+  checkOrganizations(user) {
+
+    let organization = user[0].organizations;
+
+    if (organization.length > 0) {
+
+      this.InOrganization = true;
+
+    }
+    else {
+
+      //no organizations
+      console.log("not in any organizations");
+
+      this.InOrganization = false;
+
+    }
+  }//end of checkOrganization
 
   //checks if user has any LOIs
-  checkLOIs() {
+  checkLOIs(user) {
 
     console.log('check LOIs');
+
 
     // this.getUserService.getUserbyUsername(this.userName)
     //   .subscribe(
@@ -122,6 +121,40 @@ export class UserLetterOfIntentComponent implements OnInit {
     //     })
   }//end of checkLOIs
 
+  getLOIs() {
+
+    this.getUserService.getUserbyUsername(this.userName)
+      .subscribe(
+        (user) => {
+
+          console.log('user', user);
+
+          let loi = user[0].letterOfIntent;
+
+          if (loi) {
+
+            if (loi.length > 0) {
+
+              this.InOrganization = true;
+              this.dataSource = new MatTableDataSource(loi);
+
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+
+            }
+            else {
+
+              //no organizations
+              console.log("not in any LOIs");
+
+              this.HasLOIs = false;
+
+            }
+          }
+        })
+
+  }//end of getLOIs
+
   createLOI() {
 
     console.log('create letter of intent');
@@ -141,8 +174,8 @@ export class UserLetterOfIntentComponent implements OnInit {
       console.log('The dialog was closed'); //debug
       //maybe pull the organizations again
       console.log('result', result); //debug
-      this.checkLOIs();
-
+      //this.checkLOIs(this.user);
+      this.getLOIs();
     });
   }
 

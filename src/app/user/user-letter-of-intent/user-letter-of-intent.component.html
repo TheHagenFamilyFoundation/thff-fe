@@ -1,8 +1,13 @@
 <h3>Letter of Intents
-  <button mat-icon-button color="primary" (click)="createLOI()">
-    <mat-icon>add</mat-icon>
-  </button>
+  <div *ngIf="InOrganization">
+    <button mat-icon-button color="primary" (click)="createLOI()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </h3>
+<div *ngIf="!InOrganization">
+  <p>{{NotInOrgMessage}}</p>
+</div>
 
 <div *ngIf="HasLOIs">
   <div class="example-container mat-elevation-z8">
