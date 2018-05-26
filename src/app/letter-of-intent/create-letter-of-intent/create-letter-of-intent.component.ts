@@ -38,6 +38,12 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
   CanCreateLOI = false;
 
+  foods = [
+    { value: 'steak-0', viewValue: 'Steak' },
+    { value: 'pizza-1', viewValue: 'Pizza' },
+    { value: 'tacos-2', viewValue: 'Tacos' }
+  ];
+
   constructor(
     private http: HttpClient,
     private createLoiService: CreateLoiService,
@@ -76,7 +82,8 @@ export class CreateLetterOfIntentComponent implements OnInit {
       name: this.loiName,
       description: this.description,
       username: this.userName,
-      userid: this.userId,//userid of user who created the organization
+      userid: this.userId,//userid of user who created the loi
+      //need to add org
     }
 
     this.dialogRef.close(body);
@@ -84,7 +91,7 @@ export class CreateLetterOfIntentComponent implements OnInit {
     //call the service
     this.createLoiService.createLOI(body)
       .subscribe(
-        () => { 'Org Created' },
+        () => { 'loi Created' },
         err => console.log(err)
       );
 

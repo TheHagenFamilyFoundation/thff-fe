@@ -5,6 +5,14 @@
   </mat-form-field>
   <br>
   <mat-form-field>
+    <mat-select placeholder="Favorite food">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{ food.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
     <!-- <input matInput placeholder="Description" value="" (keyup)="description$.next($event.target.value)"> -->
     <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" (keyup)="description$.next($event.target.value)"></textarea>
   </mat-form-field>
