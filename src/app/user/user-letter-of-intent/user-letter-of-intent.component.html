@@ -20,8 +20,14 @@
         <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
       </ng-container>
 
-      <!-- createdOn Column -->
-      <ng-container matColumnDef="createdOn">
+      <!-- Org Column -->
+      <ng-container matColumnDef="organization">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Org </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.organization}} </mat-cell>
+      </ng-container>
+
+      <!-- createdAt Column -->
+      <ng-container matColumnDef="createdAt">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Created On </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'MM/dd/yyyy'}} </mat-cell>
       </ng-container>
