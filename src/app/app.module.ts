@@ -56,7 +56,7 @@ import { ChangeEmailService } from './services/user/change-email.service';
 import { GetOrganizationService } from './services/organization/get-organization.service';
 import { CreateOrganizationService } from './services/organization/create-organization.service';
 
-//mport { GetLoiService } from './services/loi/get-loi.service';
+import { GetLoiService } from './services/loi/get-loi.service';
 import { CreateLoiService } from './services/loi/create-loi.service';
 
 import { EmailService } from './services/user/email.service';
@@ -178,8 +178,7 @@ import { EmailComponent } from './test/email/email.component';
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
         GetOrganizationService, CreateOrganizationService,
-        //GetLoiService,
-        CreateLoiService
+        GetLoiService, CreateLoiService
     ],
     entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent, CreateLetterOfIntentComponent]
 })
