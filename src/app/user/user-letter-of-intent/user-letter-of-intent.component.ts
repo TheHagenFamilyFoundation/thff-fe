@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { GetUserService } from '../../services/user/get-user.service';
+import { GetLoiService } from '../../services/loi/get-loi.service';
 
 import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-intent/selected-letter-of-intent/selected-letter-of-intent.component';
@@ -15,7 +16,7 @@ import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-inten
 })
 export class UserLetterOfIntentComponent implements OnInit {
 
-  displayedColumns = ['name', 'Org', 'submittedOn'];
+  displayedColumns = ['name', 'organization', 'createdAt'];
   dataSource: MatTableDataSource<LOIData>;
 
   HasLOIs = false; //has LOIs
@@ -26,6 +27,7 @@ export class UserLetterOfIntentComponent implements OnInit {
   @Input()
   user: any;
 
+  userID: any; //string
   userName: any; //string
 
   loiName: any;//string - letter of intent name
@@ -36,6 +38,7 @@ export class UserLetterOfIntentComponent implements OnInit {
 
   constructor(
     public getUserService: GetUserService,
+    public getLoiService: GetLoiService,
     private router: Router,
     public dialog: MatDialog,
   ) { }
@@ -43,6 +46,7 @@ export class UserLetterOfIntentComponent implements OnInit {
   ngOnInit() {
 
     this.userName = this.user.username
+    this.userID = this.user.id;
 
     this.getUser();
 
@@ -61,7 +65,7 @@ export class UserLetterOfIntentComponent implements OnInit {
 
         //pass in the user to the check functions
         this.checkOrganizations(user);
-        this.checkLOIs(user);
+        this.checkLOIs();
 
       })
   }
@@ -87,55 +91,21 @@ export class UserLetterOfIntentComponent implements OnInit {
   }//end of checkOrganization
 
   //checks if user has any LOIs
-  checkLOIs(user) {
+  checkLOIs() {
 
     console.log('check LOIs');
 
-
-    // this.getUserService.getUserbyUsername(this.userName)
-    //   .subscribe(
-    //     (user) => {
-
-    //       console.log('user', user);
-
-    //       let loi = user[0].letterOfIntent;
-
-    //       if (organization.length > 0) {
-
-    //         this.InOrganization = true;
-    //         this.dataSource = new MatTableDataSource(organization);
-
-    //         this.dataSource.paginator = this.paginator;
-    //         this.dataSource.sort = this.sort;
-
-    //       }
-    //       else {
-
-    //         //no organizations
-    //         console.log("not in any organizations");
-
-    //         this.HasLOIs = false;
-
-    //       }
-
-    //     })
-  }//end of checkLOIs
-
-  getLOIs() {
-
-    this.getUserService.getUserbyUsername(this.userName)
+    this.getLoiService.getLOIbyuserID(this.userID)
       .subscribe(
-        (user) => {
+        (loi) => {
 
-          console.log('user', user);
-
-          let loi = user[0].letterOfIntent;
+          console.log('loi', loi);
 
           if (loi) {
 
             if (loi.length > 0) {
 
-              this.InOrganization = true;
+              this.HasLOIs = true;
               this.dataSource = new MatTableDataSource(loi);
 
               this.dataSource.paginator = this.paginator;
@@ -144,13 +114,49 @@ export class UserLetterOfIntentComponent implements OnInit {
             }
             else {
 
-              //no organizations
-              console.log("not in any LOIs");
+              //no lois
+              console.log("does not have any LOIs");
 
               this.HasLOIs = false;
 
             }
+
           }
+
+        })
+
+  }//end of checkLOIs
+
+  getLOIs() {
+
+    this.getLoiService.getLOIbyuserID(this.userID)
+      .subscribe(
+        (loi) => {
+
+          console.log('loi', loi);
+
+          if (loi) {
+
+            if (loi.length > 0) {
+
+              this.HasLOIs = true;
+              this.dataSource = new MatTableDataSource(loi);
+
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+
+            }
+            else {
+
+              //no lois
+              console.log("does not have any LOIs");
+
+              this.HasLOIs = false;
+
+            }
+
+          }
+
         })
 
   }//end of getLOIs
