@@ -23,7 +23,7 @@
       <!-- Org Column -->
       <ng-container matColumnDef="organization">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Org </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.organization}} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{row.organization.name}} </mat-cell>
       </ng-container>
 
       <!-- createdAt Column -->
