@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 
 //Services
 import { CreateLoiService } from '../../services/loi/create-loi.service';
+import { GetUserService } from '../../services/user/get-user.service'; //used for getting organizations
 
 //debounce
 import { Subject } from 'rxjs';
@@ -34,19 +35,19 @@ export class CreateLetterOfIntentComponent implements OnInit {
   userId: any; //string
   userName: any; //string
 
+  org: any;
+  orgSelected: any;
+
   ShowMessage = false;
 
   CanCreateLOI = false;
 
-  foods = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' }
-  ];
+  organizations = [];
 
   constructor(
     private http: HttpClient,
     private createLoiService: CreateLoiService,
+    private getUserService: GetUserService,
     public dialogRef: MatDialogRef<CreateLetterOfIntentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
@@ -74,6 +75,8 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
     this.getUserName();
 
+    this.getOrganizations();
+
   }
 
   createLOI() {
@@ -84,9 +87,12 @@ export class CreateLetterOfIntentComponent implements OnInit {
       username: this.userName,
       userid: this.userId,//userid of user who created the loi
       //need to add org
+      org: this.org
     }
 
     this.dialogRef.close(body);
+
+    console.log('body', body)
 
     //call the service
     this.createLoiService.createLOI(body)
@@ -121,6 +127,13 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
   }
 
+  orgChanged(newObj) {
+    console.log('org change', newObj)
+
+    this.org = newObj;
+
+  }
+
   getUserName() {
 
     if (localStorage.getItem('currentUser')) {
@@ -132,5 +145,19 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
   }//end of getUserName
 
+  getOrganizations() {
+
+    console.log('get organizations');
+
+    this.getUserService.getUserbyUsername(this.userName)
+      .subscribe(
+        (user) => {
+
+          console.log('user', user);
+
+          this.organizations = user[0].organizations;
+
+        })
+  }//end of checkOrganization
 
 }
