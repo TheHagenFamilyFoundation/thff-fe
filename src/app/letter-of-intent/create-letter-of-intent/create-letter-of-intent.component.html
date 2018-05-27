@@ -5,9 +5,9 @@
   </mat-form-field>
   <br>
   <mat-form-field>
-    <mat-select placeholder="Favorite food">
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{ food.viewValue }}
+    <mat-select placeholder="Select Organization" [(ngModel)]="orgSelected" name="org" (ngModelChange)="orgChanged($event)">
+      <mat-option *ngFor="let org of organizations" [value]="org.organizationID">
+        {{ org.name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
