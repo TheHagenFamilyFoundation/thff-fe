@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AuthService } from '../auth/auth.service';
+import { GetCSRFTokenService } from '../services/auth/get-csrf-token.service';
+import { LoginService } from '../services/user/login.service';
+
 import { environment } from '../../environments/environment';
 
 //debounce
@@ -21,6 +24,9 @@ export class LoginComponent implements OnInit {
 
   API_URL = environment.API_URL;
 
+  csrfToken: any;
+  CSRF: any;
+
   userName$ = new Subject<string>();
   password$ = new Subject<string>();
 
@@ -35,10 +41,14 @@ export class LoginComponent implements OnInit {
   ShowMessage = false;
   message: any;
 
+  Login: any;
+
   constructor(
     private router: Router,
     private http: HttpClient,
     private authService: AuthService,
+    private getCSRFTokenService: GetCSRFTokenService,
+    private loginService: LoginService
   ) {
 
     this.userName$.pipe(
@@ -62,6 +72,25 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    //this.getCSRF();
+
+  }
+
+  getCSRF() {
+
+    console.log('getCSRF');
+
+    this.CSRF = this.getCSRFTokenService.getCSRF()
+      .subscribe(
+        (data) => {
+
+          this.csrfToken = data._csrf;
+
+          console.log('csrfToken', this.csrfToken)
+
+        })
+
   }
 
   login(): void {
@@ -70,40 +99,50 @@ export class LoginComponent implements OnInit {
     console.log("userName = " + this.userName);
     console.log("password = " + this.password);
 
-    let urlString = this.API_URL + '/auth';
+    this.CSRF = this.getCSRFTokenService.getCSRF()
+      .subscribe(
+        (data) => {
 
-    this.body = {
-      username: this.userName,
-      password: this.password
-    }
+          this.csrfToken = data._csrf;
 
-    console.log(this.body);
-    console.log(urlString);
+          console.log('csrfToken', this.csrfToken)
 
-    this.http.post(urlString, this.body)
-      .subscribe(data => {
-        this.results = data;
+          let urlString = this.API_URL + '/login';
 
-        //console.log(data);
+          this.body = {
+            username: this.userName,
+            password: this.password,
+            _csrf: this.csrfToken
+          }
 
-        if (this.results.user) {
-          console.log("this.results.user = " + this.results.user)
+          console.log(this.body);
+          console.log('urlString', urlString);
 
-          localStorage.setItem('token', this.results.token);
-          localStorage.setItem('currentUser', JSON.stringify(this.results.user));
+          this.Login = this.loginService.login(this.body, this.csrfToken)
+            .subscribe(
+              (data) => {
+                this.results = data;
 
-          console.log("token = " + localStorage.getItem('token'));
-          console.log("currentUser = " + localStorage.getItem('currentUser'));
+                if (this.results.user) {
+                  console.log("this.results.user = " + this.results.user)
 
-          this.authService.login();
-        }
-        else {
-          this.message = this.results.message;
-          this.ShowMessage = true;
-        }
+                  localStorage.setItem('token', this.results.token);
+                  localStorage.setItem('currentUser', JSON.stringify(this.results.user));
 
-      });
+                  console.log("token = " + localStorage.getItem('token'));
+                  console.log("currentUser = " + localStorage.getItem('currentUser'));
 
+                  this.authService.login();
+                }
+                else {
+                  this.message = this.results.message;
+                  this.ShowMessage = true;
+                }
+
+              })
+
+        })
+   
   }
 
   register(): void {

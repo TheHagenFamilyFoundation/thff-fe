@@ -1,3 +1,31 @@
-<p>
-  create-letter-of-intent works!
-</p>
+<h3>Create LOI</h3>
+<div>
+  <mat-form-field>
+    <input matInput placeholder="LOI Name" value="" (keyup)="loiName$.next($event.target.value)">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select placeholder="Select Organization" [(ngModel)]="orgSelected" name="org" (ngModelChange)="orgChanged($event)">
+      <mat-option *ngFor="let org of organizations" [value]="org.organizationID">
+        {{ org.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <!-- <input matInput placeholder="Description" value="" (keyup)="description$.next($event.target.value)"> -->
+    <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" (keyup)="description$.next($event.target.value)"></textarea>
+  </mat-form-field>
+</div>
+<div *ngIf="ShowMessage">
+  {{message}}
+  <br>
+</div>
+<br>
+<div *ngIf="CanCreateLOI">
+  <button mat-raised-button (click)="createLOI()">Create LOI</button>
+</div>
+<br>
+<div>
+  <button mat-raised-button (click)="cancel()" mat-dialog-close>Cancel</button>
+</div>

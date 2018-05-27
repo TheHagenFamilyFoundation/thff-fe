@@ -24,9 +24,11 @@ import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-usern
 
 //letintmenu
 import { LetintmenuComponent } from './letintmenu/letintmenu.component'
+
 //Letint and LetintStatus
 import { LetintComponent } from './letintmenu/letint/letint.component'
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component'
+import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
 
 //user
 import { UserComponent } from './user/user.component';
@@ -64,6 +66,8 @@ const appRoutes: Routes = [
     { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
 
     { path: 'organization/:id', component: OrganizationComponent, canActivate: [AuthGuard] },
+
+    { path: 'loi/:id', component: LetterOfIntentComponent, canActivate: [AuthGuard] },
 
     { path: 'email', component: EmailComponent },
 

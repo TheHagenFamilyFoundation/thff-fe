@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -26,6 +26,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -38,6 +39,8 @@ import { AuthGuard } from './_guards/auth.guard';
 //services
 //inside auth
 import { AuthService } from './auth/auth.service';
+import { LoginService } from './services/user/login.service';
+import { GetCSRFTokenService } from './services/auth/get-csrf-token.service';
 
 import { GrantService } from './services/grants/grant.service';
 import { GrantApiService } from './services/grants/grant-api.service';
@@ -52,6 +55,9 @@ import { ChangeEmailService } from './services/user/change-email.service';
 
 import { GetOrganizationService } from './services/organization/get-organization.service';
 import { CreateOrganizationService } from './services/organization/create-organization.service';
+
+import { GetLoiService } from './services/loi/get-loi.service';
+import { CreateLoiService } from './services/loi/create-loi.service';
 
 import { EmailService } from './services/user/email.service';
 
@@ -80,10 +86,15 @@ import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component';
 import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forgot-username/reset-password-or-forgot-username.component';
 
+//letter of intent
+import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
+import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 import { LetintmenuComponent } from './letintmenu/letintmenu.component';
-import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
+
 import { LetintComponent } from './letintmenu/letint/letint.component';
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component';
+
+import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
@@ -105,8 +116,7 @@ import { CreateOrganizationComponent } from './organization/create-organization/
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
-import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
-import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
+
 
 @NgModule({
     declarations: [AppComponent,
@@ -143,7 +153,13 @@ import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-
         EmailComponent,
 
     ],
-    imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule,
+    imports: [BrowserModule,
+        HttpClientModule, HttpClientXsrfModule.withOptions({
+            cookieName: 'xsrf-token',
+            headerName: 'x-csrf-token',
+        }),
+
+        FormsModule, BrowserAnimationsModule,
         AppRoutingModule,
 
         FlexLayoutModule,
@@ -152,18 +168,20 @@ import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-
         MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule,
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
         MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
-        MatPaginatorModule, MatDialogModule,
+        MatPaginatorModule, MatDialogModule, MatSelectModule,
 
         ContentsModule, NgxPageScrollModule
     ],
     bootstrap: [AppComponent],
     providers: [
-        AuthGuard, AuthService,
+        AuthGuard, AuthService, LoginService, GetCSRFTokenService,
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
-        GetOrganizationService, CreateOrganizationService
+        GetOrganizationService, CreateOrganizationService,
+        GetLoiService, CreateLoiService
     ],
-    entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent]
+    entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent, 
+        CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent]
 })
 export class AppModule { }

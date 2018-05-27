@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { GetUserService } from '../../services/user/get-user.service';
+import { GetLoiService } from '../../services/loi/get-loi.service';
 
 import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-intent/selected-letter-of-intent/selected-letter-of-intent.component';
@@ -15,15 +16,18 @@ import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-inten
 })
 export class UserLetterOfIntentComponent implements OnInit {
 
-  // displayedColumns = ['id', 'name', 'progress', 'color'];
-  displayedColumns = ['name', 'submittedOn'];
-  dataSource: MatTableDataSource<OrganizationData>;
+  displayedColumns = ['name', 'organization', 'createdAt'];
+  dataSource: MatTableDataSource<LOIData>;
 
-  HasLOIs = false;
+  HasLOIs = false; //has LOIs
+  InOrganization = false; //if user is in org
+
+  NotInOrgMessage = 'You must be in an Organization in order to create a LOI.'
 
   @Input()
   user: any;
 
+  userID: any; //string
   userName: any; //string
 
   loiName: any;//string - letter of intent name
@@ -34,36 +38,19 @@ export class UserLetterOfIntentComponent implements OnInit {
 
   constructor(
     public getUserService: GetUserService,
+    public getLoiService: GetLoiService,
     private router: Router,
     public dialog: MatDialog,
-  ) {
-    // // Create 100 organizations
-    // const organizations: OrganizationData[] = [];
-    // for (let i = 1; i <= 100; i++) { organizations.push(createNewOrganization(i)); }
-
-    // // Assign the data to the data source for the table to render
-    //this.dataSource = new MatTableDataSource(organizations);
-  }
+  ) { }
 
   ngOnInit() {
-    // this.getUserName();
 
     this.userName = this.user.username
+    this.userID = this.user.id;
 
-    this.checkLOIs();
+    this.getUser();
+
   }
-
-  /**
-   * Set the paginator and sort after the view init since this component will
-   * be able to query its view for the initialized paginator and sort.
-   */
-  // ngAfterViewInit() {
-
-
-
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
-  // }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -71,56 +58,108 @@ export class UserLetterOfIntentComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  // getUserName() {
+  getUser() {
 
-  //   if (localStorage.getItem('currentUser')) {
-  //     // logged in so return true
-  //     this.user = JSON.parse(localStorage.getItem('currentUser'));
-  //     this.userName = this.user.username
+    this.getUserService.getUserbyUsername(this.userName)
+      .subscribe((user) => {
 
-  //     this.checkOrganizations();
+        //pass in the user to the check functions
+        this.checkOrganizations(user);
+        this.checkLOIs();
 
-  //   }
-  //   else {
-  //     //logout
-  //     this.router.navigate(['/logout']);
-  //   }
+      })
+  }
 
-  // }//end of getUserName
+  //checks if user is in any organizations
+  checkOrganizations(user) {
+
+    let organization = user[0].organizations;
+
+    if (organization.length > 0) {
+
+      this.InOrganization = true;
+
+    }
+    else {
+
+      //no organizations
+      console.log("not in any organizations");
+
+      this.InOrganization = false;
+
+    }
+  }//end of checkOrganization
 
   //checks if user has any LOIs
   checkLOIs() {
 
-    console.log('check organizations');
+    console.log('check LOIs');
 
-    // this.getUserService.getUserbyUsername(this.userName)
-    //   .subscribe(
-    //     (user) => {
+    this.getLoiService.getLOIbyuserID(this.userID)
+      .subscribe(
+        (loi) => {
 
-    //       console.log('user', user);
+          console.log('loi', loi);
 
-    //       let loi = user[0].letterOfIntent;
+          if (loi) {
 
-    //       if (organization.length > 0) {
+            if (loi.length > 0) {
 
-    //         this.InOrganization = true;
-    //         this.dataSource = new MatTableDataSource(organization);
+              this.HasLOIs = true;
+              this.dataSource = new MatTableDataSource(loi);
 
-    //         this.dataSource.paginator = this.paginator;
-    //         this.dataSource.sort = this.sort;
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
 
-    //       }
-    //       else {
+            }
+            else {
 
-    //         //no organizations
-    //         console.log("not in any organizations");
+              //no lois
+              console.log("does not have any LOIs");
 
-    //         this.HasLOIs = false;
+              this.HasLOIs = false;
 
-    //       }
+            }
 
-    //     })
+          }
+
+        })
+
   }//end of checkLOIs
+
+  getLOIs() {
+
+    this.getLoiService.getLOIbyuserID(this.userID)
+      .subscribe(
+        (loi) => {
+
+          console.log('loi', loi);
+
+          if (loi) {
+
+            if (loi.length > 0) {
+
+              this.HasLOIs = true;
+              this.dataSource = new MatTableDataSource(loi);
+
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+
+            }
+            else {
+
+              //no lois
+              console.log("does not have any LOIs");
+
+              this.HasLOIs = false;
+
+            }
+
+          }
+
+        })
+
+  }//end of getLOIs
 
   createLOI() {
 
@@ -141,18 +180,18 @@ export class UserLetterOfIntentComponent implements OnInit {
       console.log('The dialog was closed'); //debug
       //maybe pull the organizations again
       console.log('result', result); //debug
-      this.checkLOIs();
-
+      //this.checkLOIs(this.user);
+      this.getLOIs();
     });
   }
 
   openSelectedLOIDialog(loi): void {
 
-    console.log('loi.organizationID', loi.organizationID);
+    console.log('loi.loiID', loi.loiID);
 
     let dialogRef = this.dialog.open(SelectedLetterOfIntentComponent, {
       width: '400px',
-      data: { name: loi.name, loiID: loi.organizationID }
+      data: { name: loi.name, loiID: loi.loiID }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -173,8 +212,8 @@ export class UserLetterOfIntentComponent implements OnInit {
 }//end of component
 
 //old
-/** Builds and returns a new Organization. */
-function createNewOrganization(id: number): OrganizationData {
+/** Builds and returns a new LOI. */
+function createNewLOI(id: number): LOIData {
   const name =
     NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
     NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
@@ -196,7 +235,7 @@ const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
   'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
 
 //old
-export interface OrganizationData {
+export interface LOIData {
   id: string;
   name: string;
   progress: string;
