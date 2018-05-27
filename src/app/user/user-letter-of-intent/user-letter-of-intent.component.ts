@@ -187,11 +187,11 @@ export class UserLetterOfIntentComponent implements OnInit {
 
   openSelectedLOIDialog(loi): void {
 
-    console.log('loi.organizationID', loi.organizationID);
+    console.log('loi.loiID', loi.loiID);
 
     let dialogRef = this.dialog.open(SelectedLetterOfIntentComponent, {
       width: '400px',
-      data: { name: loi.name, loiID: loi.organizationID }
+      data: { name: loi.name, loiID: loi.loiID }
     });
 
     dialogRef.afterClosed().subscribe(result => {
