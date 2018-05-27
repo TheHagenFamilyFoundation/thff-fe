@@ -86,10 +86,15 @@ import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component';
 import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forgot-username/reset-password-or-forgot-username.component';
 
+//letter of intent
+import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
+import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 import { LetintmenuComponent } from './letintmenu/letintmenu.component';
-import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
+
 import { LetintComponent } from './letintmenu/letint/letint.component';
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component';
+
+import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
@@ -108,10 +113,6 @@ import { SelectedLetterOfIntentComponent } from './user/user-letter-of-intent/se
 //organization
 import { OrganizationComponent } from './organization/organization.component';
 import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
-
-//letter of intent
-import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
-import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
@@ -180,6 +181,7 @@ import { EmailComponent } from './test/email/email.component';
         GetOrganizationService, CreateOrganizationService,
         GetLoiService, CreateLoiService
     ],
-    entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent, CreateLetterOfIntentComponent]
+    entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent, 
+        CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent]
 })
 export class AppModule { }
