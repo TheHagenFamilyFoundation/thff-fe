@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from "../services/data.service";
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,9 @@ export class UserComponent implements OnInit {
 
   user;
 
-  constructor(private router: Router, ) {
+  message: string;
+
+  constructor(private router: Router, private data: DataService) {
   }
 
   ngOnInit() {
@@ -27,6 +30,8 @@ export class UserComponent implements OnInit {
 
     console.log("User - this.user");
     console.log(this.user);
+
+    this.data.currentMessage.subscribe(message => this.message = message)
 
   }
 
