@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { GetUserService } from '../../services/user/get-user.service';
+import { DataService } from "../../services/data.service";
 
 import { CreateOrganizationComponent } from '../../organization/create-organization/create-organization.component';
 import { SelectedOrganizationComponent } from '../../user/user-organization/selected-organization/selected-organization.component';
@@ -29,6 +30,8 @@ export class UserOrganizationComponent implements OnInit {
   orgName: any;//string
   description: any;
 
+  message: string;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -36,6 +39,7 @@ export class UserOrganizationComponent implements OnInit {
     public getUserService: GetUserService,
     private router: Router,
     public dialog: MatDialog,
+    private data: DataService
   ) {
     // // Create 100 organizations
     // const organizations: OrganizationData[] = [];
@@ -46,7 +50,7 @@ export class UserOrganizationComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getUserName();
+    this.data.currentMessage.subscribe(message => this.message = message)
 
     this.userName = this.user.username
 
@@ -167,6 +171,10 @@ export class UserOrganizationComponent implements OnInit {
 
     this.openSelectedOrgDialog(row); //pass in the org from row object
 
+  }
+
+  newMessage() {
+    this.data.changeMessage("Hello from Sibling - User Organization")
   }
 
 

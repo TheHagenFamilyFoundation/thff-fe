@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { GetUserService } from '../../services/user/get-user.service';
 import { GetLoiService } from '../../services/loi/get-loi.service';
+import { DataService } from "../../services/data.service";
 
 import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-intent/selected-letter-of-intent/selected-letter-of-intent.component';
@@ -33,6 +34,8 @@ export class UserLetterOfIntentComponent implements OnInit {
   loiName: any;//string - letter of intent name
   description: any;
 
+  message: string;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -41,9 +44,12 @@ export class UserLetterOfIntentComponent implements OnInit {
     public getLoiService: GetLoiService,
     private router: Router,
     public dialog: MatDialog,
+    private data: DataService
   ) { }
 
   ngOnInit() {
+
+    this.data.currentMessage.subscribe(message => this.message = message)
 
     this.userName = this.user.username
     this.userID = this.user.id;
@@ -208,6 +214,9 @@ export class UserLetterOfIntentComponent implements OnInit {
 
   }
 
+  newMessage() {
+    this.data.changeMessage("Hello from Sibling- User Letter of Intent")
+  }
 
 }//end of component
 
