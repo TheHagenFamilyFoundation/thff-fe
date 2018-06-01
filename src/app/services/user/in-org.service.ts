@@ -4,13 +4,13 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class InOrgService {
 
-  private messageSource = new BehaviorSubject('default message');
-  currentMessage = this.messageSource.asObservable();
+  private inOrgSource = new BehaviorSubject(false);
+  currentInOrg = this.inOrgSource.asObservable();
 
   constructor() { }
 
-  changeMessage(message: string) {
-    this.messageSource.next(message)
+  changeMessage(inOrg: boolean) {
+    this.inOrgSource.next(inOrg)
   }
 
 }
