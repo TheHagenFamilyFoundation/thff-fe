@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { GetUserService } from '../../services/user/get-user.service';
 import { GetLoiService } from '../../services/loi/get-loi.service';
+import { InOrgService } from "../../services/user/in-org.service";
 
 import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-intent/selected-letter-of-intent/selected-letter-of-intent.component';
@@ -33,6 +34,8 @@ export class UserLetterOfIntentComponent implements OnInit {
   loiName: any;//string - letter of intent name
   description: any;
 
+  inOrgCheck: boolean;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -41,9 +44,24 @@ export class UserLetterOfIntentComponent implements OnInit {
     public getLoiService: GetLoiService,
     private router: Router,
     public dialog: MatDialog,
+    private inOrg: InOrgService
   ) { }
 
   ngOnInit() {
+
+    this.inOrg.currentInOrg.subscribe(message => {
+
+
+      this.inOrgCheck = message;
+
+      console.log('inOrgCheck change', this.inOrgCheck)
+      if(this.inOrgCheck)
+      {
+        console.log('enable LOI')
+        this.InOrganization = true;
+      }
+
+    })
 
     this.userName = this.user.username
     this.userID = this.user.id;
@@ -208,6 +226,9 @@ export class UserLetterOfIntentComponent implements OnInit {
 
   }
 
+  newMessage() {
+    this.inOrg.changeMessage(false)
+  }
 
 }//end of component
 

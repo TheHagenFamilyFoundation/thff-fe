@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InOrgService } from "../services/user/in-org.service";
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,9 @@ export class UserComponent implements OnInit {
 
   user;
 
-  constructor(private router: Router, ) {
+  inOrgCheck: boolean;
+
+  constructor(private router: Router, private inOrg: InOrgService) {
   }
 
   ngOnInit() {
@@ -27,6 +30,8 @@ export class UserComponent implements OnInit {
 
     console.log("User - this.user");
     console.log(this.user);
+
+    this.inOrg.currentInOrg.subscribe(message => this.inOrgCheck = message)
 
   }
 

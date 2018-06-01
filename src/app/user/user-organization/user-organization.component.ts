@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { GetUserService } from '../../services/user/get-user.service';
+import { InOrgService } from "../../services/user/in-org.service"; //organization cross components
 
 import { CreateOrganizationComponent } from '../../organization/create-organization/create-organization.component';
 import { SelectedOrganizationComponent } from '../../user/user-organization/selected-organization/selected-organization.component';
@@ -29,6 +30,8 @@ export class UserOrganizationComponent implements OnInit {
   orgName: any;//string
   description: any;
 
+  inOrgCheck: boolean;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -36,6 +39,7 @@ export class UserOrganizationComponent implements OnInit {
     public getUserService: GetUserService,
     private router: Router,
     public dialog: MatDialog,
+    private inOrg: InOrgService
   ) {
     // // Create 100 organizations
     // const organizations: OrganizationData[] = [];
@@ -46,7 +50,7 @@ export class UserOrganizationComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getUserName();
+    this.inOrg.currentInOrg.subscribe(message => this.inOrgCheck = message)
 
     this.userName = this.user.username
 
@@ -109,6 +113,8 @@ export class UserOrganizationComponent implements OnInit {
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
 
+            this.inOrg.changeMessage(true)
+
           }
           else {
 
@@ -141,6 +147,7 @@ export class UserOrganizationComponent implements OnInit {
       console.log('The dialog was closed'); //debug
       //maybe pull the organizations again
       console.log('result', result); //debug
+
       this.checkOrganizations();
 
     });
@@ -167,6 +174,10 @@ export class UserOrganizationComponent implements OnInit {
 
     this.openSelectedOrgDialog(row); //pass in the org from row object
 
+  }
+
+  newMessage() {
+    this.inOrg.changeMessage(false)
   }
 
 
