@@ -53,7 +53,7 @@ import { GetUserService } from './services/user/get-user.service';
 import { ChangePasswordService } from './services/user/change-password.service';
 import { ChangeEmailService } from './services/user/change-email.service';
 
-import { DataService } from './services/data.service';
+import { InOrgService } from './services/user/in-org.service';
 
 import { GetOrganizationService } from './services/organization/get-organization.service';
 import { CreateOrganizationService } from './services/organization/create-organization.service';
@@ -180,7 +180,7 @@ import { EmailComponent } from './test/email/email.component';
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
-        DataService,
+        InOrgService,
         GetOrganizationService, CreateOrganizationService,
         GetLoiService, CreateLoiService
     ],

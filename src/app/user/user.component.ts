@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from "../services/data.service";
+import { InOrgService } from "../services/user/in-org.service";
 
 @Component({
   selector: 'app-user',
@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
 
   message: string;
 
-  constructor(private router: Router, private data: DataService) {
+  constructor(private router: Router, private inOrg: InOrgService) {
   }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
     console.log("User - this.user");
     console.log(this.user);
 
-    this.data.currentMessage.subscribe(message => this.message = message)
+    this.inOrg.currentMessage.subscribe(message => this.message = message)
 
   }
 

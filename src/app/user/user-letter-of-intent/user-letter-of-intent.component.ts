@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { GetUserService } from '../../services/user/get-user.service';
 import { GetLoiService } from '../../services/loi/get-loi.service';
-import { DataService } from "../../services/data.service";
+import { InOrgService } from "../../services/user/in-org.service";
 
 import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-intent/selected-letter-of-intent/selected-letter-of-intent.component';
@@ -44,7 +44,7 @@ export class UserLetterOfIntentComponent implements OnInit {
     public getLoiService: GetLoiService,
     private router: Router,
     public dialog: MatDialog,
-    private data: DataService
+    private data: InOrgService
   ) { }
 
   ngOnInit() {
