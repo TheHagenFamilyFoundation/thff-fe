@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
 
   user;
 
-  message: string;
+  inOrgCheck: boolean;
 
   constructor(private router: Router, private inOrg: InOrgService) {
   }
@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
     console.log("User - this.user");
     console.log(this.user);
 
-    this.inOrg.currentMessage.subscribe(message => this.message = message)
+    this.inOrg.currentInOrg.subscribe(message => this.inOrgCheck = message)
 
   }
 
