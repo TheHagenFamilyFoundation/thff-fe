@@ -30,7 +30,7 @@ export class UserOrganizationComponent implements OnInit {
   orgName: any;//string
   description: any;
 
-  message: string;
+  inOrgCheck: boolean;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -50,7 +50,7 @@ export class UserOrganizationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.inOrg.currentMessage.subscribe(message => this.message = message)
+    this.inOrg.currentInOrg.subscribe(message => this.inOrgCheck = message)
 
     this.userName = this.user.username
 
@@ -113,7 +113,7 @@ export class UserOrganizationComponent implements OnInit {
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
 
-            this.inOrg.changeMessage("Hello from Sibling - User Organization")
+            this.inOrg.changeMessage(true)
 
           }
           else {
@@ -177,7 +177,7 @@ export class UserOrganizationComponent implements OnInit {
   }
 
   newMessage() {
-    this.inOrg.changeMessage("Hello from Sibling - User Organization")
+    this.inOrg.changeMessage(false)
   }
 
 

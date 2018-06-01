@@ -34,7 +34,7 @@ export class UserLetterOfIntentComponent implements OnInit {
   loiName: any;//string - letter of intent name
   description: any;
 
-  message: string;
+  inOrgCheck: boolean;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -44,12 +44,24 @@ export class UserLetterOfIntentComponent implements OnInit {
     public getLoiService: GetLoiService,
     private router: Router,
     public dialog: MatDialog,
-    private data: InOrgService
+    private inOrg: InOrgService
   ) { }
 
   ngOnInit() {
 
-    this.data.currentMessage.subscribe(message => this.message = message)
+    this.inOrg.currentInOrg.subscribe(message => {
+
+
+      this.inOrgCheck = message;
+
+      console.log('inOrgCheck change', this.inOrgCheck)
+      if(this.inOrgCheck)
+      {
+        console.log('enable LOI')
+        this.InOrganization = true;
+      }
+
+    })
 
     this.userName = this.user.username
     this.userID = this.user.id;
@@ -215,7 +227,7 @@ export class UserLetterOfIntentComponent implements OnInit {
   }
 
   newMessage() {
-    this.data.changeMessage("Hello from Sibling- User Letter of Intent")
+    this.inOrg.changeMessage(false)
   }
 
 }//end of component
