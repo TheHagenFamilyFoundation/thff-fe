@@ -27,4 +27,12 @@ export class GetLoiService {
     return this.http.get(urlString);
   }
 
+  //retrieves the LOIs of an org
+  getLOIbyorgID(orgID: string): Observable<any> {
+
+    let urlString = this.API_URL + "/loi?org=" + orgID;
+
+    return this.http.get(urlString);
+  }
+
 }
