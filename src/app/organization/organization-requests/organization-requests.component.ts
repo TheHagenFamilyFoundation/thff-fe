@@ -16,6 +16,7 @@ export class OrganizationRequestsComponent implements OnInit {
   @Input()
   org: any;
 
+  orgName: any;
   orgID: any;
 
   lois: any;
@@ -44,6 +45,7 @@ export class OrganizationRequestsComponent implements OnInit {
     this.lois = this.org.lois;
     this.dataSource = this.lois;
     this.orgID = this.org.organizationID;
+    this.orgName = this.org.name;
 
     if (this.lois.length > 0) {
 
@@ -74,7 +76,7 @@ export class OrganizationRequestsComponent implements OnInit {
   openCreateLOIDialog(): void {
     let dialogRef = this.dialog.open(CreateLetterOfIntentComponent, {
       width: '250px',
-      data: { name: this.loiName, description: this.description }
+      data: { orgId: this.orgID, orgName: this.orgName }
     });
 
     dialogRef.afterClosed().subscribe(result => {
