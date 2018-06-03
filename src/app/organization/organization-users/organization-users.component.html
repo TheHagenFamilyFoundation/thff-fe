@@ -1,23 +1,23 @@
 <div class="example-container mat-elevation-z8">
 
-    <mat-table [dataSource]="dataSource" matSort>
+  <mat-table [dataSource]="dataSource" matSort>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="username">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
-      </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
+    </ng-container>
 
-      <!-- createdOn Column -->
-      <!-- <ng-container matColumnDef="createdOn">
+    <!-- createdOn Column -->
+    <!-- <ng-container matColumnDef="createdOn">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Created On </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'MM/dd/yyyy'}} </mat-cell>
       </ng-container> -->
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
-      </mat-row>
-    </mat-table>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
+    </mat-row>
+  </mat-table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
