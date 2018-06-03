@@ -115,10 +115,11 @@ import { SelectedLetterOfIntentComponent } from './user/user-letter-of-intent/se
 //organization
 import { OrganizationComponent } from './organization/organization.component';
 import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
+import { OrganizationUsersComponent } from './organization/organization-users/organization-users.component';
+import { OrganizationRequestsComponent } from './organization/organization-requests/organization-requests.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
-
 
 @NgModule({
     declarations: [AppComponent,
@@ -153,6 +154,10 @@ import { EmailComponent } from './test/email/email.component';
 
         //test component - email
         EmailComponent,
+
+        OrganizationUsersComponent,
+
+        OrganizationRequestsComponent,
 
     ],
     imports: [BrowserModule,
