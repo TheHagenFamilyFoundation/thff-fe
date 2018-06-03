@@ -54,7 +54,17 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
     console.log('data', data)
 
-    this.orgName = data.orgName;
+    if (data.orgName) {
+      this.orgName = data.orgName;
+    }
+
+    if (data.orgName) {
+      this.org = data.orgId;
+    }
+
+    console.log('this.org', this.org)
+
+
 
     this.loiName$.pipe(
       debounceTime(400),
