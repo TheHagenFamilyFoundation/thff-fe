@@ -4,13 +4,20 @@
     <input matInput placeholder="LOI Name" value="" (keyup)="loiName$.next($event.target.value)">
   </mat-form-field>
   <br>
-  <mat-form-field>
-    <mat-select placeholder="Select Organization" [(ngModel)]="orgSelected" name="org" (ngModelChange)="orgChanged($event)">
-      <mat-option *ngFor="let org of organizations" [value]="org.organizationID">
-        {{ org.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div *ngIf='!orgName'>
+    <mat-form-field>
+      <mat-select placeholder="Select Organization" [(ngModel)]="orgSelected" name="org" (ngModelChange)="orgChanged($event)">
+        <mat-option *ngFor="let org of organizations" [value]="org.organizationID">
+          {{ org.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div *ngIf='orgName'>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Organization" disabled value='{{orgName}}'>
+    </mat-form-field>
+  </div>
   <br>
   <mat-form-field>
     <!-- <input matInput placeholder="Description" value="" (keyup)="description$.next($event.target.value)"> -->

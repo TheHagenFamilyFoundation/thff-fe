@@ -36,6 +36,7 @@ export class CreateLetterOfIntentComponent implements OnInit {
   userName: any; //string
 
   org: any;
+  orgName: any;
   orgSelected: any;
 
   ShowMessage = false;
@@ -50,6 +51,10 @@ export class CreateLetterOfIntentComponent implements OnInit {
     private getUserService: GetUserService,
     public dialogRef: MatDialogRef<CreateLetterOfIntentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
+
+    console.log('data', data)
+
+    this.orgName = data.orgName;
 
     this.loiName$.pipe(
       debounceTime(400),
