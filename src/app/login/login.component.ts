@@ -103,24 +103,29 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
 
-          this.csrfToken = data._csrf;
-
-          console.log('csrfToken', this.csrfToken)
+          if (data._csrf) {
+            this.csrfToken = data._csrf;
+          }
 
           let urlString = this.API_URL + '/login';
 
           this.body = {
             username: this.userName,
             password: this.password,
-            _csrf: this.csrfToken
+            // _csrf: this.csrfToken //|| undefined
           }
 
-          console.log(this.body);
+          if (this.csrfToken) {
+            this.body._csrf = this.csrfToken;
+          }
+
+          console.log('this.body', this.body);
           console.log('urlString', urlString);
 
           this.Login = this.loginService.login(this.body, this.csrfToken)
             .subscribe(
               (data) => {
+
                 this.results = data;
 
                 if (this.results.user) {
@@ -139,10 +144,17 @@ export class LoginComponent implements OnInit {
                   this.ShowMessage = true;
                 }
 
-              })
+              },
+              error => {
+                this.message = error.error.message;
+                this.ShowMessage = true;
+              }
+            )
 
         })
-   
+
+
+
   }
 
   register(): void {
