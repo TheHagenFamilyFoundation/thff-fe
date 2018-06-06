@@ -14,14 +14,21 @@ export class LoginService {
 
     console.log('login', data, 'and', csrf);
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'x-csrf-token': csrf
-      })
-    };
+    if (csrf) {
 
-    return this.http.put(this.API_URL + '/login', data, httpOptions)
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'x-csrf-token': csrf
+        })
+      };
+
+      return this.http.put(this.API_URL + '/login', data, httpOptions)
+
+    }
+    else {
+      return this.http.put(this.API_URL + '/login', data)
+    }
 
   }
 
