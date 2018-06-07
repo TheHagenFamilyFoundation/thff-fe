@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-organization-info',
@@ -7,9 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganizationInfoComponent implements OnInit {
 
+  @Input()
+  org: any;
+
+  editing = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  edit() {
+    console.log('edit pressed')
+
+    this.editing = true;
+
+  }
+
+  save() {
+    console.log('save pressed')
+
+    this.editing = false;
   }
 
 }
