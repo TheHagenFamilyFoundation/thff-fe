@@ -5,14 +5,13 @@
       <mat-grid-tile [rowspan]="2">
         <mat-card>
           <mat-card-content>
-            card 1
+            <app-organization-info [org]='org'></app-organization-info>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-card>
           <mat-card-content>
-            Users
             <div *ngIf='org'>
               <app-organization-users [org]="org"></app-organization-users>
             </div>
@@ -22,7 +21,6 @@
       <mat-grid-tile>
         <mat-card>
           <mat-card-content>
-            Requests
             <div *ngIf='org'>
               <app-organization-requests [org]="org"></app-organization-requests>
             </div>
