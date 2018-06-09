@@ -22,6 +22,8 @@ export class OrganizationInfoComponent implements OnInit {
   legalNphoneame$ = new Subject<string>();
   phone$ = new Subject<string>();
   contactPerson$ = new Subject<string>();
+  contactPersonTitle$ = new Subject<string>();
+  contactPersonPhoneNumber$ = new Subject<string>();
   email$ = new Subject<string>();
   address$ = new Subject<string>();
   city$ = new Subject<string>();
@@ -35,6 +37,8 @@ export class OrganizationInfoComponent implements OnInit {
   director: string; // -Executive Director 
   phone: number; // -Phone Number 
   contactPerson: string; //-Contact person/title/phone number 
+  contactPersonTitle: string;
+  contactPersonPhoneNumber: number;
   email: string; // -Email Address 
   address: string; //-Address (principal/administrative office) 
   city: string; // -City 
@@ -101,6 +105,24 @@ export class OrganizationInfoComponent implements OnInit {
 
         this.contactPerson = term;
         this.contactPersonChange()
+      });
+
+    this.contactPersonTitle$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.contactPersonTitle = term;
+        this.contactPersonTitleChange()
+      });
+
+    this.contactPersonPhoneNumber$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.contactPersonPhoneNumber = Number(term);
+        this.contactPersonPhoneNumberChange()
       });
 
     this.email$.pipe(
@@ -233,6 +255,20 @@ export class OrganizationInfoComponent implements OnInit {
 
   contactPersonChange() {
     console.log("contactPersonChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  contactPersonTitleChange() {
+    console.log("contactPersonTitleChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  contactPersonPhoneNumberChange() {
+    console.log("contactPersonPhoneNumberChange");
 
     this.ShowMessage = false;
 
