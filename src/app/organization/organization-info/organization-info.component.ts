@@ -29,9 +29,6 @@ export class OrganizationInfoComponent implements OnInit {
   zip$ = new Subject<string>();
   fax$ = new Subject<string>();
 
-
-  editing = false;
-
   legalName: string; //  -Legal Name of Organization Applying: 
   yearFounded: number; // -Year Founded 
   currentOperatingBudget: number; // -Current Operating Budget 
@@ -45,7 +42,32 @@ export class OrganizationInfoComponent implements OnInit {
   zip: number;//-Zip 
   fax: number; //-Fax Number
 
-  constructor() { }
+  ShowMessage = false;
+  message: any;
+
+  editing = false;
+
+  constructor() {
+
+    this.legalName$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.legalName = term;
+        this.legalNameChange()
+      });
+
+    this.yearFounded$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.yearFounded = term;
+        this.yearFoundedChange()
+      });
+
+  }
 
   ngOnInit() {
   }
@@ -61,6 +83,20 @@ export class OrganizationInfoComponent implements OnInit {
     console.log('save pressed')
 
     this.editing = false;
+  }
+
+  legalNameChange() {
+    console.log("usernameChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  yearFoundedChange() {
+    console.log("passwordChange");
+
+    this.ShowMessage = false;
+
   }
 
 }
