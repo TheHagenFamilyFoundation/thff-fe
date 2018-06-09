@@ -33,7 +33,7 @@ export class OrganizationInfoComponent implements OnInit {
   yearFounded: number; // -Year Founded 
   currentOperatingBudget: number; // -Current Operating Budget 
   director: string; // -Executive Director 
-  phone: string; // -Phone Number 
+  phone: number; // -Phone Number 
   contactPerson: string; //-Contact person/title/phone number 
   email: string; // -Email Address 
   address: string; //-Address (principal/administrative office) 
@@ -63,11 +63,101 @@ export class OrganizationInfoComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.yearFounded = term;
+        this.yearFounded = Number(term);
         this.yearFoundedChange()
       });
 
-  }
+    this.currentOperatingBudget$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.currentOperatingBudget = Number(term);
+        this.currentOperatingBudgetChange()
+      });
+
+    this.director$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.director = term;
+        this.directorChange()
+      });
+
+    this.phone$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.phone = Number(term);
+        this.phoneChange()
+      });
+
+    this.contactPerson$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.contactPerson = term;
+        this.contactPersonChange()
+      });
+
+    this.email$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.email = term;
+        this.emailChange()
+      });
+
+    this.address$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.address = term;
+        this.addressChange()
+      });
+
+    this.city$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.city = term;
+        this.cityChange()
+      });
+
+    this.state$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.state = term;
+        this.stateChange()
+      });
+
+    this.zip$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.zip = Number(term);
+        this.zipChange()
+      });
+
+    this.fax$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        this.fax = Number(term);
+        this.faxChange()
+      });
+
+  }//end of constructor
 
   ngOnInit() {
   }
@@ -86,17 +176,90 @@ export class OrganizationInfoComponent implements OnInit {
   }
 
   legalNameChange() {
-    console.log("usernameChange");
+    console.log("legalNameChange");
 
     this.ShowMessage = false;
 
   }
 
   yearFoundedChange() {
-    console.log("passwordChange");
+    console.log("yearFoundedChange");
 
     this.ShowMessage = false;
 
   }
+
+  currentOperatingBudgetChange() {
+    console.log("currentOperatingBudgetChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  directorChange() {
+    console.log("directorChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  stateChange() {
+    console.log("stateChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  cityChange() {
+    console.log("cityChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  addressChange() {
+    console.log("addressChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  emailChange() {
+    console.log("emailChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  contactPersonChange() {
+    console.log("contactPersonChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  phoneChange() {
+    console.log("phoneChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  zipChange() {
+    console.log("zipChange");
+
+    this.ShowMessage = false;
+
+  }
+
+  faxChange() {
+    console.log("faxChange");
+
+    this.ShowMessage = false;
+
+  }
+
+
+
 
 }
