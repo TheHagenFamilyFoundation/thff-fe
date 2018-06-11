@@ -1,4 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { environment } from '../../../environments/environment';
+
+//Services
+import { CreateOrganizationInfoService } from '../../services/organization/organization-info/create-organization-info.service';
 
 //debounce
 import { Subject } from 'rxjs';
@@ -12,8 +18,12 @@ import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/op
 })
 export class OrganizationInfoComponent implements OnInit {
 
+  API_URL = environment.API_URL;
+
   @Input()
   org: any;
+
+  orgId: any;
 
   legalName$ = new Subject<string>();
   yearFounded$ = new Subject<string>();
@@ -51,7 +61,7 @@ export class OrganizationInfoComponent implements OnInit {
 
   editing = false;
 
-  constructor() {
+  constructor(private createOrganizationInfoService: CreateOrganizationInfoService, ) {
 
     this.legalName$.pipe(
       debounceTime(400),
@@ -182,6 +192,12 @@ export class OrganizationInfoComponent implements OnInit {
   }//end of constructor
 
   ngOnInit() {
+
+    console.log('this.org', this.org)
+
+    console.log('this.org.organizationID', this.org.organizationID)
+    this.orgId = this.org.id;
+
   }
 
   edit() {
@@ -193,8 +209,37 @@ export class OrganizationInfoComponent implements OnInit {
 
   save() {
     console.log('save pressed')
+    //the first time is create - the second time is just an update
 
     this.editing = false;
+
+    var body = {
+      legalName: this.legalName,
+      yearFounded: this.yearFounded,
+      currentOperatingBudget: this.currentOperatingBudget,
+      director: this.director,
+      phone: this.phone,
+      contactPerson: this.contactPerson,
+      contactPersonTitle: this.contactPersonTitle,
+      contactPersonPhoneNumber: this.contactPersonPhoneNumber,
+      email: this.email,
+      address: this.address,
+      city: this.city,
+      state: this.state,
+      zip: this.zip,
+      fax: this.fax,
+      organization: this.orgId
+    }
+
+    console.log('body', body)
+
+    //call the service
+    this.createOrganizationInfoService.createOrganizationInfo(body)
+      .subscribe(
+        () => { 'Org Info Created' },
+        err => console.log(err)
+      );
+
   }
 
   legalNameChange() {
