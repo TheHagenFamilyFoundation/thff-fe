@@ -26,7 +26,6 @@ export class OrganizationUsersComponent implements OnInit {
 
   ngOnInit() {
 
-
     console.log('this.org', this.org)
     console.log('this.org.users', this.org.users)
     this.users = this.org.users;
