@@ -9,9 +9,6 @@
   person/title/phone number -Email Address -Address (principal/administrative office) -City -State -Zip -Fax Number
 </div>
 <div *ngIf='editing'>
-  -Legal Name of Organization Applying: -Year Founded -Current Operating Budget -Executive Director -Phone Number -Contact
-  person/title/phone number -Email Address -Address (principal/administrative office) -City -State -Zip -Fax Number
-
   <div class="example-container">
     <mat-form-field>
       <input matInput placeholder="Legal Name" value="" (keyup)="legalName$.next($event.target.value)">
