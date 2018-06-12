@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 
 //Services
 import { CreateOrganizationInfoService } from '../../services/organization/organization-info/create-organization-info.service';
+import { GetOrganizationInfoService } from '../../services/organization/organization-info/get-organization-info.service';
 
 //debounce
 import { Subject } from 'rxjs';
@@ -23,7 +24,9 @@ export class OrganizationInfoComponent implements OnInit {
   @Input()
   org: any;
 
-  orgId: any;
+  orgID: any;
+
+  orgInfo: any;
 
   legalName$ = new Subject<string>();
   yearFounded$ = new Subject<string>();
@@ -61,7 +64,9 @@ export class OrganizationInfoComponent implements OnInit {
 
   editing = false;
 
-  constructor(private createOrganizationInfoService: CreateOrganizationInfoService, ) {
+  constructor(
+    private createOrganizationInfoService: CreateOrganizationInfoService,
+    private getOrganizationInfoService: GetOrganizationInfoService, ) {
 
     this.legalName$.pipe(
       debounceTime(400),
@@ -196,7 +201,49 @@ export class OrganizationInfoComponent implements OnInit {
     console.log('this.org', this.org)
 
     console.log('this.org.organizationID', this.org.organizationID)
-    this.orgId = this.org.id;
+    this.orgID = this.org.id;
+
+    this.getOrganizationInfo();
+
+  }
+
+  getOrganizationInfo() {
+
+    console.log('getting Organization Info')
+
+    this.getOrganizationInfoService.getOrgInfobyOrgID(this.orgID)
+      .subscribe(
+        (orgInfo) => {
+
+          console.log('orgInfo', orgInfo);
+          this.orgInfo = orgInfo[0];
+
+          this.setFields();
+
+        })
+
+  }
+
+  setFields() {
+
+    console.log('setting fields')
+
+    this.legalName = this.orgInfo.legalName;
+    this.yearFounded = this.orgInfo.yearFounded;
+    this.currentOperatingBudget = this.orgInfo.currentOperatingBudget;
+    this.director = this.orgInfo.director;
+    this.phone = this.orgInfo.phone;
+    this.contactPerson = this.orgInfo.contactPerson;
+    this.contactPersonTitle = this.orgInfo.contactPersonTitle;
+    this.contactPersonPhoneNumber = this.orgInfo.contactPersonPhoneNumber;
+    this.email = this.orgInfo.email;
+    this.address = this.orgInfo.address;
+    this.city = this.orgInfo.city;
+    this.state = this.orgInfo.state;
+    this.zip = this.orgInfo.zip;
+
+    console.log('zip', this.zip)
+    this.fax = this.orgInfo.fax;
 
   }
 
@@ -228,7 +275,7 @@ export class OrganizationInfoComponent implements OnInit {
       state: this.state,
       zip: this.zip,
       fax: this.fax,
-      organization: this.orgId
+      organization: this.orgID
     }
 
     console.log('body', body)
