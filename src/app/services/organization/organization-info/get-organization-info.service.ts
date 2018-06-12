@@ -15,6 +15,16 @@ export class GetOrganizationInfoService {
 
   constructor(private http: HttpClient) { }
 
+  getOrgInfobyOrgID(orgID: string): Observable<any> {
+
+    console.log('getOrgInfobyOrgID')
+
+    let urlString = this.API_URL + "/organizationInfo?organization=" + orgID;
+
+    return this.http.get(urlString);
+
+  }
+
   getOrgInfobyOrgInfoID(orgInfoID: string): Observable<any> {
 
     let urlString = this.API_URL + "/organizationInfo?organizationID=" + orgInfoID;
