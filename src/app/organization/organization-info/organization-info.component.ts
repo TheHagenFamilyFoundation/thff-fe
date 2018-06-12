@@ -59,6 +59,8 @@ export class OrganizationInfoComponent implements OnInit {
   zip: number;//-Zip 
   fax: number; //-Fax Number
 
+  loaded = false;
+
   ShowMessage = false;
   message: any;
 
@@ -194,7 +196,29 @@ export class OrganizationInfoComponent implements OnInit {
         this.faxChange()
       });
 
+    this.defaultValues();
+
   }//end of constructor
+
+  defaultValues() {
+
+    console.log('defaulting values')
+
+    this.legalName = ''
+    this.yearFounded = 0;
+    this.currentOperatingBudget = 0;
+    this.director = '';
+    this.phone = 0;
+    this.contactPerson = '';
+    this.contactPersonTitle = ''
+    this.contactPersonPhoneNumber = 0;
+    this.email = '';
+    this.address = '';
+    this.city = '';
+    this.state = '';
+    this.zip = 0;
+    this.fax = 0;
+  }
 
   ngOnInit() {
 
@@ -228,22 +252,79 @@ export class OrganizationInfoComponent implements OnInit {
 
     console.log('setting fields')
 
-    this.legalName = this.orgInfo.legalName;
-    this.yearFounded = this.orgInfo.yearFounded;
-    this.currentOperatingBudget = this.orgInfo.currentOperatingBudget;
-    this.director = this.orgInfo.director;
-    this.phone = this.orgInfo.phone;
-    this.contactPerson = this.orgInfo.contactPerson;
-    this.contactPersonTitle = this.orgInfo.contactPersonTitle;
-    this.contactPersonPhoneNumber = this.orgInfo.contactPersonPhoneNumber;
-    this.email = this.orgInfo.email;
-    this.address = this.orgInfo.address;
-    this.city = this.orgInfo.city;
-    this.state = this.orgInfo.state;
-    this.zip = this.orgInfo.zip;
+    // console.log(this.orgInfo)
 
-    console.log('zip', this.zip)
-    this.fax = this.orgInfo.fax;
+    if (this.orgInfo) {
+      console.log('yes')
+      // }
+      // else {
+      //   console.log('no')
+      // }
+
+      if (this.orgInfo.legalName) {
+        this.legalName = this.orgInfo.legalName;
+      }
+
+      if (this.orgInfo.yearFounded) {
+        this.yearFounded = this.orgInfo.yearFounded;
+      }
+
+      if (this.orgInfo.yearFounded) {
+        this.yearFounded = this.orgInfo.yearFounded;
+      }
+
+      if (this.orgInfo.currentOperatingBudget) {
+        this.currentOperatingBudget = this.orgInfo.currentOperatingBudget;
+      }
+
+      if (this.orgInfo.director) {
+        this.director = this.orgInfo.director;
+      }
+
+      if (this.orgInfo.phone) {
+        this.phone = this.orgInfo.phone;
+      }
+
+      if (this.orgInfo.contactPerson) {
+        this.contactPerson = this.orgInfo.contactPerson;
+      }
+
+      if (this.orgInfo.contactPersonTitle) {
+        this.contactPersonTitle = this.orgInfo.contactPersonTitle;
+      }
+
+      if (this.orgInfo.contactPersonPhoneNumber) {
+        this.contactPersonPhoneNumber = this.orgInfo.contactPersonPhoneNumber;
+      }
+
+      if (this.orgInfo.email) {
+        this.email = this.orgInfo.email;
+      }
+
+      if (this.orgInfo.address) {
+        this.address = this.orgInfo.address;
+      }
+
+      if (this.orgInfo.city) {
+        this.city = this.orgInfo.city;
+      }
+
+      if (this.orgInfo.state) {
+        this.state = this.orgInfo.state;
+      }
+
+      if (this.orgInfo.zip) {
+        this.zip = this.orgInfo.zip;
+      }
+
+      if (this.orgInfo.fax) {
+        this.fax = this.orgInfo.fax;
+      }
+
+    }
+    else {
+      console.log('default values')
+    }
 
   }
 

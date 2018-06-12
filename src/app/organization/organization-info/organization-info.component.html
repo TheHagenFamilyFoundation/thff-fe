@@ -4,12 +4,14 @@
 <div *ngIf="editing">
   <button mat-raised-button (click)="save()">Save</button>
 </div>
+<br>
 <div *ngIf='!editing'>
 
   <div class="example-container">
     <mat-form-field>
       <input matInput placeholder="Legal Name" value={{legalName}} disabled>
     </mat-form-field>
+
     <div>
       <mat-form-field>
         <input matInput placeholder="Year Founded" value={{yearFounded}} disabled>
@@ -63,7 +65,6 @@
         <td>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Zip" value={{zip}} disabled>
-            <!-- <mat-hint align="end">{{zip.value.length}} / 5</mat-hint> -->
           </mat-form-field>
         </td>
       </tr>
@@ -78,41 +79,41 @@
 <div *ngIf='editing'>
   <div class="example-container">
     <mat-form-field>
-      <input matInput placeholder="Legal Name" value="" (keyup)="legalName$.next($event.target.value)">
+      <input matInput placeholder="Legal Name" value={{legalName}} (keyup)="legalName$.next($event.target.value)">
     </mat-form-field>
     <div>
       <mat-form-field>
-        <input matInput placeholder="Year Founded" value="" (keyup)="yearFounded$.next($event.target.value)">
+        <input matInput placeholder="Year Founded" value={{yearFounded}} (keyup)="yearFounded$.next($event.target.value)">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Current Operating Budget" value="" (keyup)="currentOperatingBudget$.next($event.target.value)">
+        <input matInput placeholder="Current Operating Budget" value={{currentOperatingBudget}} (keyup)="currentOperatingBudget$.next($event.target.value)">
       </mat-form-field>
     </div>
     <mat-form-field>
-      <input matInput placeholder="Executive Director" value="" (keyup)="director$.next($event.target.value)">
+      <input matInput placeholder="Executive Director" value={{director}} (keyup)="director$.next($event.target.value)">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Phone Number" value="" (keyup)="phone$.next($event.target.value)">
+      <input matInput placeholder="Phone Number" value={{phone}} (keyup)="phone$.next($event.target.value)">
     </mat-form-field>
     <div>
       Contact Person
       <p>
         <mat-form-field>
-          <input matInput placeholder="Contact Person" value="" (keyup)="contactPerson$.next($event.target.value)">
+          <input matInput placeholder="Contact Person" value={{contactPerson}} (keyup)="contactPerson$.next($event.target.value)">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Title" value="" (keyup)="contactPersonTitle$.next($event.target.value)">
+          <input matInput placeholder="Title" value={{contactPersonTitle}} (keyup)="contactPersonTitle$.next($event.target.value)">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Phone Number" value="" (keyup)="contactPersonPhoneNumber$.next($event.target.value)">
+          <input matInput placeholder="Phone Number" value={{contactPersonPhoneNumber}} (keyup)="contactPersonPhoneNumber$.next($event.target.value)">
         </mat-form-field>
       </p>
     </div>
     <mat-form-field>
-      <input matInput placeholder="Email" value="" (keyup)="email$.next($event.target.value)">
+      <input matInput placeholder="Email" value={{email}} (keyup)="email$.next($event.target.value)">
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput placeholder="Address" value="" (keyup)="address$.next($event.target.value)"></textarea>
+      <textarea matInput placeholder="Address" value={{address}} (keyup)="address$.next($event.target.value)"></textarea>
       <mat-hint align="start">
         <strong>Principal/Administrative Office</strong>
       </mat-hint>
@@ -122,26 +123,25 @@
       <tr>
         <td>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="City" value="" (keyup)="city$.next($event.target.value)">
+            <input matInput placeholder="City" value={{city}} (keyup)="city$.next($event.target.value)">
           </mat-form-field>
         </td>
         <td>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="State" value="" (keyup)="state$.next($event.target.value)">
+            <input matInput placeholder="State" value={{state}} (keyup)="state$.next($event.target.value)">
           </mat-form-field>
         </td>
         <td>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Zip" #zip maxlength="5" value="" (keyup)="zip$.next($event.target.value)">
-            <mat-hint align="end">{{zip.value.length}} / 5</mat-hint>
+            <input matInput placeholder="Zip" maxlength="5" value={{zip}} (keyup)="zip$.next($event.target.value)">
+            <mat-hint align="end">{{zip?.toString().length}} / 5</mat-hint>
           </mat-form-field>
         </td>
       </tr>
     </table>
 
-
     <mat-form-field>
-      <input matInput placeholder="Fax" value="" (keyup)="fax$.next($event.target.value)">
+      <input matInput placeholder="Fax" value={{fax}} (keyup)="fax$.next($event.target.value)">
     </mat-form-field>
 
   </div>
