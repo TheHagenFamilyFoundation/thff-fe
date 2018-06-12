@@ -1,4 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { environment } from '../../../environments/environment';
+
+//Services
+import { CreateOrganizationInfoService } from '../../services/organization/organization-info/create-organization-info.service';
+import { GetOrganizationInfoService } from '../../services/organization/organization-info/get-organization-info.service';
 
 //debounce
 import { Subject } from 'rxjs';
@@ -12,8 +19,14 @@ import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/op
 })
 export class OrganizationInfoComponent implements OnInit {
 
+  API_URL = environment.API_URL;
+
   @Input()
   org: any;
+
+  orgID: any;
+
+  orgInfo: any;
 
   legalName$ = new Subject<string>();
   yearFounded$ = new Subject<string>();
@@ -46,12 +59,16 @@ export class OrganizationInfoComponent implements OnInit {
   zip: number;//-Zip 
   fax: number; //-Fax Number
 
+  loaded = false;
+
   ShowMessage = false;
   message: any;
 
   editing = false;
 
-  constructor() {
+  constructor(
+    private createOrganizationInfoService: CreateOrganizationInfoService,
+    private getOrganizationInfoService: GetOrganizationInfoService, ) {
 
     this.legalName$.pipe(
       debounceTime(400),
@@ -179,9 +196,136 @@ export class OrganizationInfoComponent implements OnInit {
         this.faxChange()
       });
 
+    this.defaultValues();
+
   }//end of constructor
 
+  defaultValues() {
+
+    console.log('defaulting values')
+
+    this.legalName = ''
+    this.yearFounded = 0;
+    this.currentOperatingBudget = 0;
+    this.director = '';
+    this.phone = 0;
+    this.contactPerson = '';
+    this.contactPersonTitle = ''
+    this.contactPersonPhoneNumber = 0;
+    this.email = '';
+    this.address = '';
+    this.city = '';
+    this.state = '';
+    this.zip = 0;
+    this.fax = 0;
+  }
+
   ngOnInit() {
+
+    console.log('this.org', this.org)
+
+    console.log('this.org.organizationID', this.org.organizationID)
+    this.orgID = this.org.id;
+
+    this.getOrganizationInfo();
+
+  }
+
+  getOrganizationInfo() {
+
+    console.log('getting Organization Info')
+
+    this.getOrganizationInfoService.getOrgInfobyOrgID(this.orgID)
+      .subscribe(
+        (orgInfo) => {
+
+          console.log('orgInfo', orgInfo);
+          this.orgInfo = orgInfo[0];
+
+          this.setFields();
+
+        })
+
+  }
+
+  setFields() {
+
+    console.log('setting fields')
+
+    // console.log(this.orgInfo)
+
+    if (this.orgInfo) {
+      console.log('yes')
+      // }
+      // else {
+      //   console.log('no')
+      // }
+
+      if (this.orgInfo.legalName) {
+        this.legalName = this.orgInfo.legalName;
+      }
+
+      if (this.orgInfo.yearFounded) {
+        this.yearFounded = this.orgInfo.yearFounded;
+      }
+
+      if (this.orgInfo.yearFounded) {
+        this.yearFounded = this.orgInfo.yearFounded;
+      }
+
+      if (this.orgInfo.currentOperatingBudget) {
+        this.currentOperatingBudget = this.orgInfo.currentOperatingBudget;
+      }
+
+      if (this.orgInfo.director) {
+        this.director = this.orgInfo.director;
+      }
+
+      if (this.orgInfo.phone) {
+        this.phone = this.orgInfo.phone;
+      }
+
+      if (this.orgInfo.contactPerson) {
+        this.contactPerson = this.orgInfo.contactPerson;
+      }
+
+      if (this.orgInfo.contactPersonTitle) {
+        this.contactPersonTitle = this.orgInfo.contactPersonTitle;
+      }
+
+      if (this.orgInfo.contactPersonPhoneNumber) {
+        this.contactPersonPhoneNumber = this.orgInfo.contactPersonPhoneNumber;
+      }
+
+      if (this.orgInfo.email) {
+        this.email = this.orgInfo.email;
+      }
+
+      if (this.orgInfo.address) {
+        this.address = this.orgInfo.address;
+      }
+
+      if (this.orgInfo.city) {
+        this.city = this.orgInfo.city;
+      }
+
+      if (this.orgInfo.state) {
+        this.state = this.orgInfo.state;
+      }
+
+      if (this.orgInfo.zip) {
+        this.zip = this.orgInfo.zip;
+      }
+
+      if (this.orgInfo.fax) {
+        this.fax = this.orgInfo.fax;
+      }
+
+    }
+    else {
+      console.log('default values')
+    }
+
   }
 
   edit() {
@@ -193,8 +337,37 @@ export class OrganizationInfoComponent implements OnInit {
 
   save() {
     console.log('save pressed')
+    //the first time is create - the second time is just an update
 
     this.editing = false;
+
+    var body = {
+      legalName: this.legalName,
+      yearFounded: this.yearFounded,
+      currentOperatingBudget: this.currentOperatingBudget,
+      director: this.director,
+      phone: this.phone,
+      contactPerson: this.contactPerson,
+      contactPersonTitle: this.contactPersonTitle,
+      contactPersonPhoneNumber: this.contactPersonPhoneNumber,
+      email: this.email,
+      address: this.address,
+      city: this.city,
+      state: this.state,
+      zip: this.zip,
+      fax: this.fax,
+      organization: this.orgID
+    }
+
+    console.log('body', body)
+
+    //call the service
+    this.createOrganizationInfoService.createOrganizationInfo(body)
+      .subscribe(
+        () => { 'Org Info Created' },
+        err => console.log(err)
+      );
+
   }
 
   legalNameChange() {

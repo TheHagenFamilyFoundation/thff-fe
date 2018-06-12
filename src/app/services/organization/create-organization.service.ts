@@ -27,10 +27,7 @@ export class CreateOrganizationService {
     //send to api
 
     return this.http.post(urlString, this.body)
-    // .subscribe(data => {
-    //   this.results = data;
 
-    // })
   }
 
 }

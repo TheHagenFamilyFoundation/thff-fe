@@ -33,7 +33,6 @@ export class OrganizationComponent implements OnInit {
 
     this.getOrganization(this.orgID);
 
-
   }
 
   getOrganization(orgID) {
@@ -48,12 +47,10 @@ export class OrganizationComponent implements OnInit {
 
           console.log('org', org);
 
-
           this.org = org[0];
 
         })
 
   }
-
 
 }

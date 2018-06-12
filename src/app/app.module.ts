@@ -52,18 +52,19 @@ import { SetNewPasswordService } from './services/user/set-new-password.service'
 import { GetUserService } from './services/user/get-user.service';
 import { ChangePasswordService } from './services/user/change-password.service';
 import { ChangeEmailService } from './services/user/change-email.service';
+import { ResetCodeService } from './services/user/reset-code.service';
 
 import { InOrgService } from './services/user/in-org.service';
 
 import { GetOrganizationService } from './services/organization/get-organization.service';
 import { CreateOrganizationService } from './services/organization/create-organization.service';
 
+import { CreateOrganizationInfoService } from './services/organization/organization-info/create-organization-info.service';
+
 import { GetLoiService } from './services/loi/get-loi.service';
 import { CreateLoiService } from './services/loi/create-loi.service';
 
 import { EmailService } from './services/user/email.service';
-
-import { ResetCodeService } from './services/user/reset-code.service';
 
 //Components
 
@@ -146,7 +147,7 @@ import { EmailComponent } from './test/email/email.component';
         UserLetterOfIntentComponent, SelectedLetterOfIntentComponent,
 
         //organization
-        OrganizationComponent, CreateOrganizationComponent, 
+        OrganizationComponent, CreateOrganizationComponent,
         OrganizationUsersComponent, OrganizationRequestsComponent,
         OrganizationInfoComponent,
 
@@ -185,7 +186,7 @@ import { EmailComponent } from './test/email/email.component';
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
         InOrgService,
-        GetOrganizationService, CreateOrganizationService,
+        GetOrganizationService, CreateOrganizationService, CreateOrganizationInfoService,
         GetLoiService, CreateLoiService
     ],
     entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent,

@@ -5,7 +5,9 @@
       <mat-grid-tile [rowspan]="2">
         <mat-card>
           <mat-card-content>
-            <app-organization-info [org]='org'></app-organization-info>
+            <div *ngIf='org'>
+              <app-organization-info [org]='org'></app-organization-info>
+            </div>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>

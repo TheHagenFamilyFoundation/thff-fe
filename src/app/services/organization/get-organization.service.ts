@@ -6,7 +6,6 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class GetOrganizationService {
 
-
   API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) { }
