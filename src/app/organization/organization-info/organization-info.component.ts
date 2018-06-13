@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../../../environments/environment';
 
 //Services
 import { CreateOrganizationInfoService } from '../../services/organization/organization-info/create-organization-info.service';
 import { GetOrganizationInfoService } from '../../services/organization/organization-info/get-organization-info.service';
+import { DeleteOrganizationInfoService } from '../../services/organization/organization-info/delete-organization-info.service';
 
 //debounce
 import { Subject } from 'rxjs';
@@ -68,7 +70,9 @@ export class OrganizationInfoComponent implements OnInit {
 
   constructor(
     private createOrganizationInfoService: CreateOrganizationInfoService,
-    private getOrganizationInfoService: GetOrganizationInfoService, ) {
+    private getOrganizationInfoService: GetOrganizationInfoService,
+    private deleteOrganizationInfoService: DeleteOrganizationInfoService,
+  ) {
 
     this.legalName$.pipe(
       debounceTime(400),
@@ -242,7 +246,36 @@ export class OrganizationInfoComponent implements OnInit {
           console.log('orgInfo', orgInfo);
           this.orgInfo = orgInfo[0];
 
+          console.log('this.orgInfo.id', this.orgInfo.id)
+
           this.setFields();
+
+        })
+
+  }
+
+  createOrganizationInfo(body) {
+
+    //call the service
+    this.createOrganizationInfoService.createOrganizationInfo(body)
+      .subscribe(
+        () => { 'Org Info Created' },
+        err => console.log(err)
+      );
+
+  }
+
+  deleteOrganizationInfo() {
+
+    console.log('getting Organization Info')
+
+    this.deleteOrganizationInfoService.deleteOrgInfobyOrgInfoID(this.orgInfo.id)
+      .subscribe(
+        (result) => {
+
+          console.log('result', result)
+
+          return result;
 
         })
 
@@ -361,12 +394,19 @@ export class OrganizationInfoComponent implements OnInit {
 
     console.log('body', body)
 
-    //call the service
-    this.createOrganizationInfoService.createOrganizationInfo(body)
+    this.deleteOrganizationInfoService.deleteOrgInfobyOrgInfoID(this.orgInfo.id)
       .subscribe(
-        () => { 'Org Info Created' },
-        err => console.log(err)
-      );
+        (result) => {
+
+          console.log('result', result)
+
+          this.createOrganizationInfo(body);
+
+        })
+
+    // this.deleteOrganizationInfo();
+
+    // this.createOrganizationInfo(body);
 
   }
 
