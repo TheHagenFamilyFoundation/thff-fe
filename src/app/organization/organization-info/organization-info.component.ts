@@ -266,7 +266,6 @@ export class OrganizationInfoComponent implements OnInit {
 
           console.log('new this.orgInfo.id', this.orgInfo.id);
 
-
         },
         err => console.log(err)
       );
