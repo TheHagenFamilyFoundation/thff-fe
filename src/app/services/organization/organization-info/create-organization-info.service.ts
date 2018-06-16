@@ -15,7 +15,7 @@ export class CreateOrganizationInfoService {
 
   constructor(private http: HttpClient) { }
 
-  createOrganizationInfo(body) {
+  createOrganizationInfo(body): Observable<any> {
 
     console.log('createOrganizationInfo');
 
