@@ -259,7 +259,15 @@ export class OrganizationInfoComponent implements OnInit {
     //call the service
     this.createOrganizationInfoService.createOrganizationInfo(body)
       .subscribe(
-        () => { 'Org Info Created' },
+        (result) => {
+
+          console.log('Org Info Created', result.result);
+          this.orgInfo.id = result.result.id;
+
+          console.log('new this.orgInfo.id', this.orgInfo.id);
+
+
+        },
         err => console.log(err)
       );
 
@@ -371,6 +379,8 @@ export class OrganizationInfoComponent implements OnInit {
   save() {
     console.log('save pressed')
     //the first time is create - the second time is just an update
+
+    console.log('this.orgInfo.id', this.orgInfo.id)
 
     this.editing = false;
 
