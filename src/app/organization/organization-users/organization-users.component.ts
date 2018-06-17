@@ -1,6 +1,7 @@
-import { Component,ViewChild, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { AddUsersComponent } from './add-users/add-users.component';
 
 @Component({
   selector: 'app-organization-users',
@@ -21,7 +22,7 @@ export class OrganizationUsersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
+  constructor(public dialog: MatDialog, ) {
   }
 
   ngOnInit() {
@@ -40,5 +41,36 @@ export class OrganizationUsersComponent implements OnInit {
 
   }
 
+  addUser() {
+
+    console.log('add Users');
+
+    //modal
+    this.openAddUsersDialog();
+
+  }
+
+  openAddUsersDialog(): void {
+    let dialogRef = this.dialog.open(AddUsersComponent, {
+      width: '700px',
+      height: '650px',
+      data: { users: this.org.users }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+
+      console.log('result', result); //debug4k monit
+
+      this.getUsers();
+    });
+  }
+
+  getUsers() {
+    //pulls list of users that organization has
+
+
+
+  }
 
 }
