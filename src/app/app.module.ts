@@ -120,6 +120,7 @@ import { OrganizationComponent } from './organization/organization.component';
 import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
 import { OrganizationInfoComponent } from './organization/organization-info/organization-info.component';
 import { OrganizationUsersComponent } from './organization/organization-users/organization-users.component';
+import { AddUsersComponent } from './organization/organization-users/add-users/add-users.component';
 import { OrganizationRequestsComponent } from './organization/organization-requests/organization-requests.component';
 
 //test email component
@@ -161,6 +162,8 @@ import { EmailComponent } from './test/email/email.component';
         //test component - email
         EmailComponent,
 
+        AddUsersComponent,
+
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
@@ -192,7 +195,7 @@ import { EmailComponent } from './test/email/email.component';
         GetOrganizationInfoService, DeleteOrganizationInfoService,
         GetLoiService, CreateLoiService
     ],
-    entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent,
+    entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent, AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent]
 })
 export class AppModule { }
