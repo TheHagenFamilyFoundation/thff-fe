@@ -25,5 +25,11 @@ export class GetUserService {
     return this.http.get(urlString);
   }
 
+  getAllUsers(): Observable<any> {
+    let urlString = this.API_URL + "/user";
+
+    return this.http.get(urlString);
+  }
+
 
 }
