@@ -15,6 +15,9 @@ export class OrganizationUsersComponent implements OnInit {
 
   users: any;
 
+  addUsersHeight: string;
+  addUsersWidth: string;
+
   // displayedColumns = ['id', 'name', 'progress', 'color'];
   displayedColumns = ['username'];
   dataSource: any;//MatTableDataSource<OrganizationData>;
@@ -23,6 +26,10 @@ export class OrganizationUsersComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(public dialog: MatDialog, ) {
+
+    this.addUsersHeight = '550';
+    this.addUsersWidth = '1000';
+
   }
 
   ngOnInit() {
@@ -51,9 +58,13 @@ export class OrganizationUsersComponent implements OnInit {
   }
 
   openAddUsersDialog(): void {
+
+    console.log('this.addUsersWidth', this.addUsersWidth)
+
     let dialogRef = this.dialog.open(AddUsersComponent, {
-      width: '700px',
-      height: '650px',
+      //width: '700px',
+      width: this.addUsersWidth + 'px',
+      height: this.addUsersHeight + 'px',
       data: { users: this.org.users }
     });
 
