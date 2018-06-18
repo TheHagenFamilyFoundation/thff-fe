@@ -114,8 +114,15 @@ export class AddUsersComponent implements OnInit {
 
     console.log('adding users')
 
-    this.dialogRef.close();
+    console.log('this.selectedUsers', this.selectedUsers)
 
+    //close the dialog and return the selectedUsers
+    this.dialogRef.close(this.selectedUsers);
+
+  }
+
+  cancel() {
+    this.dialogRef.close();
   }
 
   applyFilter(filterValue: string) {
