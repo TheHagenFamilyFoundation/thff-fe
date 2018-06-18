@@ -127,6 +127,7 @@ import { OrganizationRequestsComponent } from './organization/organization-reque
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
+import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-submit-check.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -165,6 +166,8 @@ import { EmailComponent } from './test/email/email.component';
         EmailComponent,
 
         AddUsersComponent,
+
+        LoiSubmitCheckComponent,
 
     ],
     imports: [BrowserModule,
