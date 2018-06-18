@@ -2,3 +2,8 @@ mat-grid-list {
   display: flex;
   justify-content: flex-start;
 }
+
+.allUsersDivider {
+  border-right: 1px solid black;
+  margin: 1px
+}
