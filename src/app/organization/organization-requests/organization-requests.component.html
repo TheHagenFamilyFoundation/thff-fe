@@ -13,11 +13,14 @@
                 <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
             </ng-container>
 
-            <!-- createdOn Column -->
-            <!-- <ng-container matColumnDef="createdOn">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Created On </mat-header-cell>
-              <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'MM/dd/yyyy'}} </mat-cell>
-            </ng-container> -->
+            <ng-container matColumnDef="submit">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Submit </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <button mat-button (click)="submitLOI(row)">
+                        <mat-icon>check_circle</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">

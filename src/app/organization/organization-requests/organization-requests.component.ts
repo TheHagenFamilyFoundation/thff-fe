@@ -29,7 +29,7 @@ export class OrganizationRequestsComponent implements OnInit {
   description: any;
 
   // displayedColumns = ['id', 'name', 'progress', 'color'];
-  displayedColumns = ['name'];
+  displayedColumns = ['name', 'submit'];
   dataSource: any;//MatTableDataSource<OrganizationData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -121,5 +121,11 @@ export class OrganizationRequestsComponent implements OnInit {
         })
 
   }//end of getLOIs
+
+  submitLOI(row) {
+
+    console.log('Submit LOI', row)
+
+  }
 
 }
