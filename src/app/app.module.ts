@@ -63,6 +63,8 @@ import { CreateOrganizationInfoService } from './services/organization/organizat
 import { GetOrganizationInfoService } from './services/organization/organization-info/get-organization-info.service';
 import { DeleteOrganizationInfoService } from './services/organization/organization-info/delete-organization-info.service';
 
+import { AddUserService } from './services/organization/add-user.service';
+
 import { GetLoiService } from './services/loi/get-loi.service';
 import { CreateLoiService } from './services/loi/create-loi.service';
 
@@ -191,8 +193,9 @@ import { EmailComponent } from './test/email/email.component';
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
         InOrgService,
-        GetOrganizationService, CreateOrganizationService, CreateOrganizationInfoService,
-        GetOrganizationInfoService, DeleteOrganizationInfoService,
+        GetOrganizationService, CreateOrganizationService, AddUserService,
+        CreateOrganizationInfoService,
+        GetOrganizationInfoService, DeleteOrganizationInfoService, 
         GetLoiService, CreateLoiService
     ],
     entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent, AddUsersComponent,

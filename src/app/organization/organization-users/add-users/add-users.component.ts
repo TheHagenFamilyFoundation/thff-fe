@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+
 import { GetUserService } from '../../../services/user/get-user.service';
 
 @Component({
@@ -13,6 +14,8 @@ export class AddUsersComponent implements OnInit {
   orgUsers: any;
   users: any;
   usersToBeAdded: any;
+
+  selectedUsers: any;
 
   displayedColumns = ['username'];
   dataSourceAllUsers: any;//MatTableDataSource<OrganizationData>;
@@ -28,6 +31,7 @@ export class AddUsersComponent implements OnInit {
   ) {
 
     this.users = [];
+    this.selectedUsers = [];
 
   }
 
@@ -49,6 +53,8 @@ export class AddUsersComponent implements OnInit {
 
     console.log('getting users')
 
+    let userAlreadyIn = false;
+
     this.getUserService.getAllUsers()
       .subscribe(
         (users) => {
@@ -57,17 +63,23 @@ export class AddUsersComponent implements OnInit {
 
           users.forEach(element => {
 
+            userAlreadyIn = false;
+
             this.orgUsers.forEach(inside => {
 
-              if (element.id != inside.id) {
-                this.users.push(element)
+              if (element.id == inside.id) {
+                userAlreadyIn = true;
               }
 
             });
 
+            if (!userAlreadyIn) {
+              this.users.push(element)
+            }
+
           });
 
-          console.log('this.users', this.users);
+          console.log('this.users - after', this.users);
           this.dataSourceAllUsers = new MatTableDataSource(this.users);
 
         })
@@ -76,10 +88,30 @@ export class AddUsersComponent implements OnInit {
 
   onRowClicked(row) {
     console.log('Row clicked: ', row);
+    console.log('user id', row.id)
 
-    //this.openSelectedOrgDialog(row); //pass in the org from row object
+    console.log('all users', this.dataSourceAllUsers)
 
-    this.updateSize();
+
+    this.dataSourceAllUsers.data.forEach((element, index) => {
+
+      console.log('user', element)
+
+      if (element.id == row.id) {
+        console.log('we have user', index);
+
+        //this.users. 
+        this.dataSourceAllUsers.data.splice(index, 1);
+
+        console.log('we have user', this.dataSourceAllUsers.data);
+        this.dataSourceAllUsers = new MatTableDataSource(this.dataSourceAllUsers.data);
+
+        this.selectedUsers.push(element);
+        this.dataSourceSelectedUsers = new MatTableDataSource(this.selectedUsers);
+
+      }
+
+    });
 
   }
 
@@ -91,8 +123,15 @@ export class AddUsersComponent implements OnInit {
 
     console.log('adding users')
 
-    this.dialogRef.close();
+    console.log('this.selectedUsers', this.selectedUsers)
 
+    //close the dialog and return the selectedUsers
+    this.dialogRef.close(this.selectedUsers);
+
+  }
+
+  cancel() {
+    this.dialogRef.close();
   }
 
   applyFilter(filterValue: string) {
