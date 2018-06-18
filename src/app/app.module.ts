@@ -119,15 +119,21 @@ import { SelectedLetterOfIntentComponent } from './user/user-letter-of-intent/se
 
 //organization
 import { OrganizationComponent } from './organization/organization.component';
+
 import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
+
 import { OrganizationInfoComponent } from './organization/organization-info/organization-info.component';
+
+//organization users
 import { OrganizationUsersComponent } from './organization/organization-users/organization-users.component';
 import { AddUsersComponent } from './organization/organization-users/add-users/add-users.component';
+
+//organization loi
 import { OrganizationRequestsComponent } from './organization/organization-requests/organization-requests.component';
+import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-submit-check.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
-import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-submit-check.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -154,7 +160,8 @@ import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-sub
 
         //organization
         OrganizationComponent, CreateOrganizationComponent,
-        OrganizationUsersComponent, OrganizationRequestsComponent,
+        OrganizationUsersComponent, AddUsersComponent,
+        OrganizationRequestsComponent, LoiSubmitCheckComponent,
         OrganizationInfoComponent,
 
         //letter of intent
@@ -164,10 +171,6 @@ import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-sub
 
         //test component - email
         EmailComponent,
-
-        AddUsersComponent,
-
-        LoiSubmitCheckComponent,
 
     ],
     imports: [BrowserModule,
@@ -198,7 +201,7 @@ import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-sub
         InOrgService,
         GetOrganizationService, CreateOrganizationService, AddUserService,
         CreateOrganizationInfoService,
-        GetOrganizationInfoService, DeleteOrganizationInfoService, 
+        GetOrganizationInfoService, DeleteOrganizationInfoService,
         GetLoiService, CreateLoiService
     ],
     entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent, AddUsersComponent,
