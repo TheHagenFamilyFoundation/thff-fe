@@ -33,6 +33,8 @@ export class AddUsersComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log('window size', window.innerWidth)
+
     console.log('addusers: data', this.data)
 
     this.orgUsers = this.data.users;
@@ -77,6 +79,12 @@ export class AddUsersComponent implements OnInit {
 
     //this.openSelectedOrgDialog(row); //pass in the org from row object
 
+    this.updateSize();
+
+  }
+
+  updateSize() {
+    this.dialogRef.updateSize("1000px", "200px");
   }
 
   addUsers() {

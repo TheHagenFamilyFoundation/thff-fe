@@ -1,21 +1,31 @@
 <div align="center">
   <h3>Add Users</h3>
 </div>
-<mat-grid-list cols="2" rowHeight="500px">
+<mat-grid-list cols="2" rowHeight="20px">
   <mat-grid-tile>
+    <div align="center">
+      <h4>All Users</h4>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div align="center">
+      <h4>Selected Users</h4>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="2" rowHeight="350px" gutterSize="50px">
+  <mat-grid-tile mat-elevation-z8>
     <span>
-      <div align="center">
-        <h4>All Users</h4>
-      </div>
+
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       </mat-form-field>
-      <div class="example-container mat-elevation-z8">
+      <div>
 
         <mat-table [dataSource]="dataSourceAllUsers" matSort>
 
           <ng-container matColumnDef="username">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
           </ng-container>
 
@@ -31,15 +41,12 @@
 
   <mat-grid-tile>
     <span>
-      <div align="center">
-        <h4>Selected Users</h4>
-      </div>
-      <div class="example-container mat-elevation-z8">
+      <div class="mat-elevation-z8">
 
         <mat-table [dataSource]="dataSourceSelectedUsers" matSort>
 
           <ng-container matColumnDef="username">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
           </ng-container>
 
