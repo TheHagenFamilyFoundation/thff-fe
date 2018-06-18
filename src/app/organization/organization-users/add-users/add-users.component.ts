@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+
 import { GetUserService } from '../../../services/user/get-user.service';
 
 @Component({
@@ -52,6 +53,8 @@ export class AddUsersComponent implements OnInit {
 
     console.log('getting users')
 
+    let userAlreadyIn = false;
+
     this.getUserService.getAllUsers()
       .subscribe(
         (users) => {
@@ -60,17 +63,23 @@ export class AddUsersComponent implements OnInit {
 
           users.forEach(element => {
 
+            userAlreadyIn = false;
+
             this.orgUsers.forEach(inside => {
 
-              if (element.id != inside.id) {
-                this.users.push(element)
+              if (element.id == inside.id) {
+                userAlreadyIn = true;
               }
 
             });
 
+            if (!userAlreadyIn) {
+              this.users.push(element)
+            }
+
           });
 
-          console.log('this.users', this.users);
+          console.log('this.users - after', this.users);
           this.dataSourceAllUsers = new MatTableDataSource(this.users);
 
         })
