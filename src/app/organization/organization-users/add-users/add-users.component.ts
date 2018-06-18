@@ -14,6 +14,8 @@ export class AddUsersComponent implements OnInit {
   users: any;
   usersToBeAdded: any;
 
+  selectedUsers: any;
+
   displayedColumns = ['username'];
   dataSourceAllUsers: any;//MatTableDataSource<OrganizationData>;
   dataSourceSelectedUsers: any;//MatTableDataSource<OrganizationData>;
@@ -28,6 +30,7 @@ export class AddUsersComponent implements OnInit {
   ) {
 
     this.users = [];
+    this.selectedUsers = [];
 
   }
 
@@ -76,10 +79,30 @@ export class AddUsersComponent implements OnInit {
 
   onRowClicked(row) {
     console.log('Row clicked: ', row);
+    console.log('user id', row.id)
 
-    //this.openSelectedOrgDialog(row); //pass in the org from row object
+    console.log('all users', this.dataSourceAllUsers)
 
-    this.updateSize();
+
+    this.dataSourceAllUsers.data.forEach((element, index) => {
+
+      console.log('user', element)
+
+      if (element.id == row.id) {
+        console.log('we have user', index);
+
+        //this.users. 
+        this.dataSourceAllUsers.data.splice(index, 1);
+
+        console.log('we have user', this.dataSourceAllUsers.data);
+        this.dataSourceAllUsers = new MatTableDataSource(this.dataSourceAllUsers.data);
+
+        this.selectedUsers.push(element);
+        this.dataSourceSelectedUsers = new MatTableDataSource(this.selectedUsers);
+
+      }
+
+    });
 
   }
 
