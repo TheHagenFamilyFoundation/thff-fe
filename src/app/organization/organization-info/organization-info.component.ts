@@ -292,8 +292,6 @@ export class OrganizationInfoComponent implements OnInit {
 
     console.log('setting fields')
 
-    // console.log(this.orgInfo)
-
     if (this.orgInfo) {
       console.log('yes')
       // }
@@ -413,9 +411,13 @@ export class OrganizationInfoComponent implements OnInit {
 
         })
 
-    // this.deleteOrganizationInfo();
+  }
 
-    // this.createOrganizationInfo(body);
+  //cancel changes, retrieve the old from the db
+  cancel() {
+    this.editing = false;
+
+    this.getOrganizationInfo();
 
   }
 
