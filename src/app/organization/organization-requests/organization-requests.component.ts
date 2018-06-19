@@ -30,7 +30,7 @@ export class OrganizationRequestsComponent implements OnInit {
   description: any;
 
   // displayedColumns = ['id', 'name', 'progress', 'color'];
-  displayedColumns = ['name', 'submit'];
+  displayedColumns = ['name'];
   dataSource: any;//MatTableDataSource<OrganizationData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -61,7 +61,7 @@ export class OrganizationRequestsComponent implements OnInit {
   onRowClicked(row) {
     console.log('Row clicked: ', row);
 
-    //this.openSelectedOrgDialog(row); //pass in the org from row object
+    this.openSubmitLOIDialog(row);
 
   }
 
@@ -123,18 +123,18 @@ export class OrganizationRequestsComponent implements OnInit {
 
   }//end of getLOIs
 
-  submitLOI(row) {
+  // submitLOI(row) {
 
-    console.log('Submit LOI', row)
+  //   console.log('Submit LOI', row)
 
-    this.openSubmitLOIDialog();
+  //   this.openSubmitLOIDialog();
 
-  }
+  // }
 
-  openSubmitLOIDialog(): void {
+  openSubmitLOIDialog(loi): void {
     let dialogRef = this.dialog.open(LoiSubmitCheckComponent, {
       width: '250px',
-      data: { orgId: this.orgID, orgName: this.orgName }
+      data: { name: loi.name, loiID: loi.loiID }
     });
 
     dialogRef.afterClosed().subscribe(result => {
