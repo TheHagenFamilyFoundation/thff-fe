@@ -204,7 +204,11 @@ import { EmailComponent } from './test/email/email.component';
         GetOrganizationInfoService, DeleteOrganizationInfoService,
         GetLoiService, CreateLoiService
     ],
-    entryComponents: [CreateOrganizationComponent, SelectedOrganizationComponent, AddUsersComponent,
-        CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent]
+    entryComponents: [
+        CreateOrganizationComponent, SelectedOrganizationComponent,
+        AddUsersComponent,
+        CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
+        LoiSubmitCheckComponent
+    ]
 })
 export class AppModule { }
