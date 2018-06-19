@@ -10,17 +10,18 @@
             <!-- Name Column -->
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                <mat-cell *matCellDef="let row" class="select"> {{row.name}} </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="submit">
+            <!-- will become the submit status-->
+            <!-- <ng-container matColumnDef="submit">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Submit </mat-header-cell>
                 <mat-cell *matCellDef="let row">
                     <button mat-button (click)="submitLOI(row)">
                         <mat-icon>check_circle</mat-icon>
                     </button>
                 </mat-cell>
-            </ng-container>
+            </ng-container> -->
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
