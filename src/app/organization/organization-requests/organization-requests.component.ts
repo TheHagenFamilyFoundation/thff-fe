@@ -3,6 +3,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
+import { LoiSubmitCheckComponent } from '../../organization/loi-submit-check/loi-submit-check.component';
 
 import { GetLoiService } from '../../services/loi/get-loi.service';
 
@@ -126,6 +127,22 @@ export class OrganizationRequestsComponent implements OnInit {
 
     console.log('Submit LOI', row)
 
+    this.openSubmitLOIDialog();
+
   }
+
+  openSubmitLOIDialog(): void {
+    let dialogRef = this.dialog.open(LoiSubmitCheckComponent, {
+      width: '250px',
+      data: { orgId: this.orgID, orgName: this.orgName }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+      //maybe pull the organizations again
+      console.log('result', result); //debug
+    });
+  }
+
 
 }
