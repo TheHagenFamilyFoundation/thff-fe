@@ -23,6 +23,12 @@
                 </mat-cell>
             </ng-container> -->
 
+            <ng-container matColumnDef="createdAt">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Created On </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'MM/dd/yyyy'}} </mat-cell>
+            </ng-container>
+
+
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
             </mat-row>
