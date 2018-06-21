@@ -30,7 +30,7 @@ export class OrganizationRequestsComponent implements OnInit {
   description: any;
 
   // displayedColumns = ['id', 'name', 'progress', 'color'];
-  displayedColumns = ['name'];
+  displayedColumns = ['name', 'createdAt'];
   dataSource: any;//MatTableDataSource<OrganizationData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
