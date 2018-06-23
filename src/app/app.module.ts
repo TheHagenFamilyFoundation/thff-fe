@@ -103,6 +103,8 @@ import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forg
 //letter of intent
 import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
 import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
+import { LetterOfIntentInfoComponent } from './letter-of-intent/letter-of-intent-info/letter-of-intent-info.component';
+
 import { LetintmenuComponent } from './letintmenu/letintmenu.component';
 
 import { LetintComponent } from './letintmenu/letint/letint.component';
@@ -142,6 +144,7 @@ import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-sub
 //test email component
 import { EmailComponent } from './test/email/email.component';
 
+
 @NgModule({
     declarations: [AppComponent,
         HeaderComponent,
@@ -175,6 +178,7 @@ import { EmailComponent } from './test/email/email.component';
         LetintmenuComponent, LetintComponent, LetintStatusComponent,
         LetterOfIntentComponent,
         CreateLetterOfIntentComponent,
+        LetterOfIntentInfoComponent,
 
         //test component - email
         EmailComponent,
