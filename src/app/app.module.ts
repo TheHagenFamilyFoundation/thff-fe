@@ -56,17 +56,24 @@ import { ResetCodeService } from './services/user/reset-code.service';
 
 import { InOrgService } from './services/user/in-org.service';
 
+//Organization
 import { GetOrganizationService } from './services/organization/get-organization.service';
 import { CreateOrganizationService } from './services/organization/create-organization.service';
-
+//org Info
 import { CreateOrganizationInfoService } from './services/organization/organization-info/create-organization-info.service';
 import { GetOrganizationInfoService } from './services/organization/organization-info/get-organization-info.service';
 import { DeleteOrganizationInfoService } from './services/organization/organization-info/delete-organization-info.service';
 
 import { AddUserService } from './services/organization/add-user.service';
 
+//LOI
 import { GetLoiService } from './services/loi/get-loi.service';
 import { CreateLoiService } from './services/loi/create-loi.service';
+
+//loiInfo
+import { CreateLoiInfoService } from './services/loi/loi-info/create-loi-info.service';
+import { GetLoiInfoService } from './services/loi/loi-info/get-loi-info.service';
+import { DeleteLoiInfoService } from './services/loi/loi-info/delete-loi-info.service';
 
 import { EmailService } from './services/user/email.service';
 
@@ -200,9 +207,9 @@ import { EmailComponent } from './test/email/email.component';
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
         InOrgService,
         GetOrganizationService, CreateOrganizationService, AddUserService,
-        CreateOrganizationInfoService,
-        GetOrganizationInfoService, DeleteOrganizationInfoService,
-        GetLoiService, CreateLoiService
+        CreateOrganizationInfoService, GetOrganizationInfoService, DeleteOrganizationInfoService,
+        GetLoiService, CreateLoiService,
+        CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
     ],
     entryComponents: [
         CreateOrganizationComponent, SelectedOrganizationComponent,
