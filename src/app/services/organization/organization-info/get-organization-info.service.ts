@@ -25,7 +25,7 @@ export class GetOrganizationInfoService {
 
   }
 
-  getOrgInfobyOrgInfoID(orgInfoID: string): Observable<any> {
+  getOrgInfobyID(orgInfoID: string): Observable<any> {
 
     let urlString = this.API_URL + "/organizationInfo?organizationID=" + orgInfoID;
 
