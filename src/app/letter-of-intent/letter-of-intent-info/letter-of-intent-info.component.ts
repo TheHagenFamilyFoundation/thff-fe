@@ -176,7 +176,7 @@ export class LetterOfIntentInfoComponent implements OnInit {
         (result) => {
 
           console.log('Org Info Created', result.result);
-          this.loiInfo.id = result.result.id;
+          this.loiInfo = result.result;
 
           console.log('new this.loiInfo.id', this.loiInfo.id);
 
@@ -249,9 +249,9 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
   save() {
     console.log('save pressed')
-    //the first time is create - the second time is just an update
+    //the first time is create - the second time is a delete and create
 
-    console.log('this.loiInfo.id', this.loiInfo.id)
+    //console.log('this.loiInfo.id', this.loiInfo.id)
 
     this.editing = false;
 
@@ -262,19 +262,29 @@ export class LetterOfIntentInfoComponent implements OnInit {
       projectEndDate: this.projectEndDate,
       amountRequested: this.amountRequested,
       totalProjectCost: this.totalProjectCost,
+      loi: this.loiID
     }
 
     console.log('body', body)
 
-    this.deleteLoiInfoService.deleteLoiInfobyLoiInfoID(this.loiInfo.id)
-      .subscribe(
-        (result) => {
+    if (this.loiInfo) {
 
-          console.log('result', result)
+      this.deleteLoiInfoService.deleteLoiInfobyLoiInfoID(this.loiInfo.id)
+        .subscribe(
+          (result) => {
 
-          this.createLoiInfo(body);
+            console.log('result', result)
 
-        })
+            this.createLoiInfo(body);
+
+          })
+
+    }
+    else {
+
+      this.createLoiInfo(body);
+
+    }
 
   }
 
