@@ -152,12 +152,17 @@ export class LetterOfIntentInfoComponent implements OnInit {
       .subscribe(
         (loiInfo) => {
 
-          console.log('loiInfo', loiInfo);
-          this.loiInfo = loiInfo[0];
+          if (loiInfo.length > 0) {
+            console.log('loiInfo', loiInfo);
+            this.loiInfo = loiInfo[0];
 
-          console.log('this.loiInfo.id', this.loiInfo.id)
+            console.log('this.loiInfo.id', this.loiInfo.id)
 
-          this.setFields();
+            this.setFields();
+          }
+          else {
+            //default values
+          }
 
         })
 
