@@ -222,6 +222,7 @@ export class OrganizationInfoComponent implements OnInit {
     this.state = '';
     this.zip = 0;
     this.fax = 0;
+
   }
 
   ngOnInit() {
@@ -294,10 +295,6 @@ export class OrganizationInfoComponent implements OnInit {
 
     if (this.orgInfo) {
       console.log('yes')
-      // }
-      // else {
-      //   console.log('no')
-      // }
 
       if (this.orgInfo.legalName) {
         this.legalName = this.orgInfo.legalName;
