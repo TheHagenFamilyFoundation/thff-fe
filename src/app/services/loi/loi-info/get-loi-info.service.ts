@@ -15,9 +15,9 @@ export class GetLoiInfoService {
 
   constructor(private http: HttpClient) { }
 
-  getLoiInfoByloiID(loiID: string): Observable<any> {
+  getLoiInfobyLoiID(loiID: string): Observable<any> {
 
-    console.log('getLoiInfoByloiID')
+    console.log('getLoiInfobyLoiID')
 
     let urlString = this.API_URL + "/loiInfo?loi=" + loiID;
 
