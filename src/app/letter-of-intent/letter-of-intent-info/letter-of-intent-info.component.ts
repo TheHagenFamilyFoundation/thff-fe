@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../../../environments/environment';
 
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+
 //Services
 import { CreateLoiInfoService } from '../../services/loi/loi-info/create-loi-info.service';
 import { GetLoiInfoService } from '../../services/loi/loi-info/get-loi-info.service';
@@ -51,6 +53,7 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
   editing = false;
 
+  events: string[] = [];
 
   constructor(
     private createLoiInfoService: CreateLoiInfoService,
@@ -134,7 +137,7 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
     console.log('this.loi', this.loi)
 
-    console.log('this.org.organizationID', this.loi.loiID)
+    console.log('this.loi.loiID', this.loi.loiID)
     this.loiID = this.loi.id;
 
     this.getLoiInfo();
@@ -149,7 +152,7 @@ export class LetterOfIntentInfoComponent implements OnInit {
       .subscribe(
         (loiInfo) => {
 
-          console.log('orgInfo', loiInfo);
+          console.log('loiInfo', loiInfo);
           this.loiInfo = loiInfo[0];
 
           console.log('this.loiInfo.id', this.loiInfo.id)
@@ -318,6 +321,10 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
     this.ShowMessage = false;
 
+  }
+
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.events.push(`${type}: ${event.value}`);
   }
 
 }
