@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Angular Material
 import { MatGridListModule } from '@angular/material';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatNativeDateModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatSidenavModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -27,6 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -199,7 +200,7 @@ import { EmailComponent } from './test/email/email.component';
         MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule,
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
         MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
-        MatPaginatorModule, MatDialogModule, MatSelectModule,
+        MatPaginatorModule, MatDialogModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
 
         ContentsModule, NgxPageScrollModule
     ],
