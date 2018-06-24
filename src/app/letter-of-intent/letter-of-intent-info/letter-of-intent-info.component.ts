@@ -270,8 +270,8 @@ export class LetterOfIntentInfoComponent implements OnInit {
     var body = {
       projectTitle: this.projectTitle,
       purpose: this.purpose,
-      projectStartDate: this.projectStartDate,
-      projectEndDate: this.projectEndDate,
+      projectStartDate: this.projectStartDate.value,
+      projectEndDate: this.projectEndDate.value,
       amountRequested: this.amountRequested,
       totalProjectCost: this.totalProjectCost,
       loi: this.loiID
