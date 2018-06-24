@@ -19,32 +19,32 @@
     <div>
       <mat-form-field>
         <textarea matInput placeholder="Purpose" value={{purpose}} disabled></textarea>
-        <!-- <mat-hint align="start">
+        <mat-hint align="start">
           2000 Characters Maximum
-        </mat-hint> -->
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <br>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Project Start Date" value={{startDate}} disabled>
       </mat-form-field>
     </div>
 
     <div>
       <mat-form-field>
-        <input matInput placeholder="Project Start Date" [value]="projectStartDate.value" disabled>
+        <input matInput placeholder="Project End Date" value={{endDate}} disabled>
       </mat-form-field>
     </div>
 
     <div>
       <mat-form-field>
-        <input matInput placeholder=" Project End Date " [value]="projectEndDate.value" disabled>
-      </mat-form-field>
-    </div>
-
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="Amount Requested " value={{amountRequested}} disabled>
+        <input matInput placeholder="Amount Requested" value={{amountRequested}} disabled>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field>
-        <input matInput placeholder="Total Project Cost " value={{totalProjectCost}} disabled>
+        <input matInput placeholder="Total Project Cost" value={{totalProjectCost}} disabled>
       </mat-form-field>
     </div>
   </div>
@@ -53,7 +53,7 @@
 <div *ngIf='editing'>
   <div>
     <mat-form-field>
-      <input matInput placeholder="Project Title " value={{projectTitle}} (keyup)="projectTitle$.next($event.target.value) ">
+      <input matInput placeholder="Project Title" value={{projectTitle}} (keyup)="projectTitle$.next($event.target.value) ">
     </mat-form-field>
   </div>
   <div>
@@ -61,25 +61,19 @@
       <textarea matInput placeholder="Purpose " value={{purpose}} (keyup)="purpose$.next($event.target.value) "></textarea>
       <!-- <mat-hint align="start "> -->
       <!-- <strong>2000 Characters Maximum</strong> -->
-      <mat-hint align="start">2000 Characters Maximum {{purpose?.toString().length}} / 2000</mat-hint>
+      <mat-hint align="start">{{purpose?.toString().length}} / 2000</mat-hint>
       <!-- </mat-hint> -->
     </mat-form-field>
   </div>
   <br>
-  <!-- <div>
+  <div>
     <mat-form-field>
-      <input matInput [matDatepicker]="projectStartDate " placeholder="Project Start Date" [formControl]=projectStartDate (dateInput)="projectStartDate$.next($event.target.value) "
+      <input matInput [matDatepicker]="picker3" placeholder="Project Start Date" [value]="projectStartDate.value" (dateInput)="projectStartDate$.next($event.target.value) "
         (dateChange)="projectStartDate$.next($event.target.value) ">
-      <mat-datepicker-toggle matSuffix [for]="projectStartDate "></mat-datepicker-toggle>
-      <mat-datepicker #projectStartDate></mat-datepicker>
+      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+      <mat-datepicker #picker3></mat-datepicker>
     </mat-form-field>
-  </div> -->
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker3" placeholder="Project Start Date" [value]="projectStartDate.value" (dateInput)="projectStartDate$.next($event.target.value) "
-      (dateChange)="projectStartDate$.next($event.target.value) ">
-    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-    <mat-datepicker #picker3></mat-datepicker>
-  </mat-form-field>
+  </div>
 
   <div>
     <mat-form-field>
