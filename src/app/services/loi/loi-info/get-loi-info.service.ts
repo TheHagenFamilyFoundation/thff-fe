@@ -6,7 +6,7 @@ import { environment } from '../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class GetOrganizationInfoService {
+export class GetLoiInfoService {
 
   API_URL = environment.API_URL;
 
@@ -15,23 +15,21 @@ export class GetOrganizationInfoService {
 
   constructor(private http: HttpClient) { }
 
-  getOrgInfobyOrgID(orgID: string): Observable<any> {
+  getLoiInfobyLoiID(loiID: string): Observable<any> {
 
-    console.log('getOrgInfobyOrgID')
+    console.log('getLoiInfobyLoiID')
 
-    let urlString = this.API_URL + "/organizationInfo?organization=" + orgID;
-
-    return this.http.get(urlString);
-
-  }
-
-  getOrgInfobyID(orgInfoID: string): Observable<any> {
-
-    let urlString = this.API_URL + "/organizationInfo?organizationID=" + orgInfoID;
+    let urlString = this.API_URL + "/loiInfo?loi=" + loiID;
 
     return this.http.get(urlString);
 
   }
 
+  getOrgInfobyID(loiInfoID: string): Observable<any> {
 
+    let urlString = this.API_URL + "/loiInfo?loiInfoID=" + loiInfoID;
+
+    return this.http.get(urlString);
+
+  }
 }

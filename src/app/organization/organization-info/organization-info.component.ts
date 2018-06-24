@@ -222,6 +222,7 @@ export class OrganizationInfoComponent implements OnInit {
     this.state = '';
     this.zip = 0;
     this.fax = 0;
+
   }
 
   ngOnInit() {
@@ -243,12 +244,21 @@ export class OrganizationInfoComponent implements OnInit {
       .subscribe(
         (orgInfo) => {
 
-          console.log('orgInfo', orgInfo);
-          this.orgInfo = orgInfo[0];
+          if (orgInfo.length > 0) {
 
-          console.log('this.orgInfo.id', this.orgInfo.id)
+            console.log('orgInfo', orgInfo);
+            this.orgInfo = orgInfo[0];
 
-          this.setFields();
+            console.log('this.orgInfo.id', this.orgInfo.id)
+
+            this.setFields();
+
+          }
+          else {
+
+            //default values
+
+          }
 
         })
 
@@ -262,7 +272,7 @@ export class OrganizationInfoComponent implements OnInit {
         (result) => {
 
           console.log('Org Info Created', result.result);
-          this.orgInfo.id = result.result.id;
+          this.orgInfo = result.result;
 
           console.log('new this.orgInfo.id', this.orgInfo.id);
 
@@ -294,10 +304,6 @@ export class OrganizationInfoComponent implements OnInit {
 
     if (this.orgInfo) {
       console.log('yes')
-      // }
-      // else {
-      //   console.log('no')
-      // }
 
       if (this.orgInfo.legalName) {
         this.legalName = this.orgInfo.legalName;
@@ -375,9 +381,7 @@ export class OrganizationInfoComponent implements OnInit {
 
   save() {
     console.log('save pressed')
-    //the first time is create - the second time is just an update
-
-    console.log('this.orgInfo.id', this.orgInfo.id)
+    //the first time is create - the second time is a delete and create
 
     this.editing = false;
 
@@ -401,15 +405,23 @@ export class OrganizationInfoComponent implements OnInit {
 
     console.log('body', body)
 
-    this.deleteOrganizationInfoService.deleteOrgInfobyOrgInfoID(this.orgInfo.id)
-      .subscribe(
-        (result) => {
+    if (this.orgInfo) {
+      this.deleteOrganizationInfoService.deleteOrgInfobyOrgInfoID(this.orgInfo.id)
+        .subscribe(
+          (result) => {
 
-          console.log('result', result)
+            console.log('result', result)
 
-          this.createOrganizationInfo(body);
+            this.createOrganizationInfo(body);
 
-        })
+          })
+
+    }
+    else {
+
+      this.createOrganizationInfo(body);
+
+    }
 
   }
 

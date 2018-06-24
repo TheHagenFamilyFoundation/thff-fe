@@ -3,3 +3,33 @@
     {{loi?.name}}
   </h3>
 </div>
+
+<mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+  <mat-grid-tile [rowspan]="2">
+    <mat-card>
+      <mat-card-content>
+        <div *ngIf='loi'>
+          <app-letter-of-intent-info [loi]='loi'></app-letter-of-intent-info>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-content>
+        <div *ngIf='loi'>
+          <!-- <app-organization-users [org]="org"></app-organization-users> -->
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-content>
+        <div *ngIf='loi'>
+          <!-- <app-organization-requests [org]="org"></app-organization-requests> -->
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

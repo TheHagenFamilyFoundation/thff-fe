@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { AppComponent } from './app.component';
 import 'hammerjs';
 
@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Angular Material
 import { MatGridListModule } from '@angular/material';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatNativeDateModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatSidenavModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -27,6 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -56,17 +57,24 @@ import { ResetCodeService } from './services/user/reset-code.service';
 
 import { InOrgService } from './services/user/in-org.service';
 
+//Organization
 import { GetOrganizationService } from './services/organization/get-organization.service';
 import { CreateOrganizationService } from './services/organization/create-organization.service';
-
+//org Info
 import { CreateOrganizationInfoService } from './services/organization/organization-info/create-organization-info.service';
 import { GetOrganizationInfoService } from './services/organization/organization-info/get-organization-info.service';
 import { DeleteOrganizationInfoService } from './services/organization/organization-info/delete-organization-info.service';
 
 import { AddUserService } from './services/organization/add-user.service';
 
+//LOI
 import { GetLoiService } from './services/loi/get-loi.service';
 import { CreateLoiService } from './services/loi/create-loi.service';
+
+//loiInfo
+import { CreateLoiInfoService } from './services/loi/loi-info/create-loi-info.service';
+import { GetLoiInfoService } from './services/loi/loi-info/get-loi-info.service';
+import { DeleteLoiInfoService } from './services/loi/loi-info/delete-loi-info.service';
 
 import { EmailService } from './services/user/email.service';
 
@@ -96,6 +104,8 @@ import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forg
 //letter of intent
 import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
 import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
+import { LetterOfIntentInfoComponent } from './letter-of-intent/letter-of-intent-info/letter-of-intent-info.component';
+
 import { LetintmenuComponent } from './letintmenu/letintmenu.component';
 
 import { LetintComponent } from './letintmenu/letint/letint.component';
@@ -135,6 +145,7 @@ import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-sub
 //test email component
 import { EmailComponent } from './test/email/email.component';
 
+
 @NgModule({
     declarations: [AppComponent,
         HeaderComponent,
@@ -168,6 +179,7 @@ import { EmailComponent } from './test/email/email.component';
         LetintmenuComponent, LetintComponent, LetintStatusComponent,
         LetterOfIntentComponent,
         CreateLetterOfIntentComponent,
+        LetterOfIntentInfoComponent,
 
         //test component - email
         EmailComponent,
@@ -180,7 +192,7 @@ import { EmailComponent } from './test/email/email.component';
         }),
 
         FormsModule, BrowserAnimationsModule,
-        AppRoutingModule,
+        AppRoutingModule, ReactiveFormsModule, 
 
         FlexLayoutModule,
 
@@ -188,7 +200,7 @@ import { EmailComponent } from './test/email/email.component';
         MatGridListModule, MatButtonModule, MatCheckboxModule, MatInputModule,
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
         MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
-        MatPaginatorModule, MatDialogModule, MatSelectModule,
+        MatPaginatorModule, MatDialogModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
 
         ContentsModule, NgxPageScrollModule
     ],
@@ -200,9 +212,9 @@ import { EmailComponent } from './test/email/email.component';
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
         InOrgService,
         GetOrganizationService, CreateOrganizationService, AddUserService,
-        CreateOrganizationInfoService,
-        GetOrganizationInfoService, DeleteOrganizationInfoService,
-        GetLoiService, CreateLoiService
+        CreateOrganizationInfoService, GetOrganizationInfoService, DeleteOrganizationInfoService,
+        GetLoiService, CreateLoiService,
+        CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
     ],
     entryComponents: [
         CreateOrganizationComponent, SelectedOrganizationComponent,
