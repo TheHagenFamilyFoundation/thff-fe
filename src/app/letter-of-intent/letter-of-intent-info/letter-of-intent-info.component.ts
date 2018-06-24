@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../../../environments/environment';
@@ -39,12 +40,12 @@ export class LetterOfIntentInfoComponent implements OnInit {
   amountRequested$ = new Subject<string>();
   totalProjectCost$ = new Subject<string>();
 
-  projectTitle: string; //  -Legal Name of Organization Applying: 
-  purpose: string; // -Year Founded 
-  projectStartDate: string; // -Current Operating Budget 
-  projectEndDate: string; // -Executive Director 
-  amountRequested: string; // -Phone Number 
-  totalProjectCost: string; //-Contact person/title/phone number 
+  projectTitle: string;
+  purpose: string;
+  projectStartDate: any;
+  projectEndDate: any;
+  amountRequested: string;
+  totalProjectCost: string;
 
   loaded = false;
 
@@ -84,7 +85,10 @@ export class LetterOfIntentInfoComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.projectStartDate = term;
+        this.projectStartDate = new FormControl(new Date(term).toISOString());
+
+        console.log('this.projectStartDate.value', this.projectStartDate.value)
+
         this.projectStartDateChange()
       });
 
@@ -93,7 +97,10 @@ export class LetterOfIntentInfoComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.projectEndDate = term;
+        this.projectEndDate = new FormControl(new Date(term).toISOString());
+
+        console.log('this.projectEndDate.value', this.projectEndDate.value)
+
         this.projectEndDateChange()
       });
 
@@ -125,8 +132,11 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
     this.projectTitle = ''
     this.purpose = '';
-    this.projectStartDate = '';
-    this.projectEndDate = '';
+
+    this.projectStartDate = new FormControl(new Date().toISOString());
+
+    this.projectEndDate = new FormControl(new Date().toISOString());
+
     this.amountRequested = '';
     this.totalProjectCost = '';
 
@@ -162,6 +172,9 @@ export class LetterOfIntentInfoComponent implements OnInit {
           }
           else {
             //default values
+
+            this.defaultValues();
+
           }
 
         })
@@ -207,7 +220,6 @@ export class LetterOfIntentInfoComponent implements OnInit {
     console.log('setting fields')
 
     if (this.loiInfo) {
-      console.log('yes')
 
       if (this.loiInfo.legalName) {
         this.projectTitle = this.loiInfo.projectTitle;
@@ -218,11 +230,11 @@ export class LetterOfIntentInfoComponent implements OnInit {
       }
 
       if (this.loiInfo.projectStartDate) {
-        this.projectStartDate = this.loiInfo.projectStartDate;
+        this.projectStartDate = new FormControl(new Date(this.loiInfo.projectStartDate));
       }
 
       if (this.loiInfo.projectEndDate) {
-        this.projectEndDate = this.loiInfo.projectEndDate;
+        this.projectEndDate = new FormControl(new Date(this.loiInfo.projectEndDate));
       }
 
       if (this.loiInfo.amountRequested) {
