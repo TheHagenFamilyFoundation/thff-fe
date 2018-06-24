@@ -19,9 +19,9 @@
     <div>
       <mat-form-field>
         <textarea matInput placeholder="Purpose" value={{purpose}} disabled></textarea>
-        <mat-hint align="start">
-          <strong>2000 Characters Maximum</strong>
-        </mat-hint>
+        <!-- <mat-hint align="start">
+          2000 Characters Maximum
+        </mat-hint> -->
       </mat-form-field>
     </div>
 
@@ -59,11 +59,13 @@
   <div>
     <mat-form-field>
       <textarea matInput placeholder="Purpose " value={{purpose}} (keyup)="purpose$.next($event.target.value) "></textarea>
-      <mat-hint align="start ">
-        <strong>2000 Characters Maximum</strong>
-      </mat-hint>
+      <!-- <mat-hint align="start "> -->
+      <!-- <strong>2000 Characters Maximum</strong> -->
+      <mat-hint align="start">2000 Characters Maximum {{purpose?.toString().length}} / 2000</mat-hint>
+      <!-- </mat-hint> -->
     </mat-form-field>
   </div>
+  <br>
   <!-- <div>
     <mat-form-field>
       <input matInput [matDatepicker]="projectStartDate " placeholder="Project Start Date" [formControl]=projectStartDate (dateInput)="projectStartDate$.next($event.target.value) "
