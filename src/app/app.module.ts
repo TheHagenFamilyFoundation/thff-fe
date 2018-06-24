@@ -144,6 +144,7 @@ import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-sub
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
+import { LetterOfIntentStatusComponent } from './letter-of-intent/letter-of-intent-status/letter-of-intent-status.component';
 
 
 @NgModule({
@@ -183,6 +184,8 @@ import { EmailComponent } from './test/email/email.component';
 
         //test component - email
         EmailComponent,
+
+        LetterOfIntentStatusComponent,
 
     ],
     imports: [BrowserModule,
