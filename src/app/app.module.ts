@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { AppComponent } from './app.component';
 import 'hammerjs';
 
@@ -192,7 +192,7 @@ import { EmailComponent } from './test/email/email.component';
         }),
 
         FormsModule, BrowserAnimationsModule,
-        AppRoutingModule,
+        AppRoutingModule, ReactiveFormsModule, 
 
         FlexLayoutModule,
 
