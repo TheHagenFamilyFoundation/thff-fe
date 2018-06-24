@@ -54,7 +54,8 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
   editing = false;
 
-  events: string[] = [];
+  startDate: any;
+  endDate: any;
 
   constructor(
     private createLoiInfoService: CreateLoiInfoService,
@@ -87,7 +88,8 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
         this.projectStartDate = new FormControl(new Date(term).toISOString());
 
-        console.log('this.projectStartDate.value', this.projectStartDate.value)
+        this.startDate = this.projectStartDate.value;
+        this.startDate = this.getFormattedDate(this.startDate);
 
         this.projectStartDateChange()
       });
@@ -99,7 +101,8 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
         this.projectEndDate = new FormControl(new Date(term).toISOString());
 
-        console.log('this.projectEndDate.value', this.projectEndDate.value)
+        this.endDate = this.projectEndDate.value;
+        this.endDate = this.getFormattedDate(this.endDate);
 
         this.projectEndDateChange()
       });
@@ -133,9 +136,23 @@ export class LetterOfIntentInfoComponent implements OnInit {
     this.projectTitle = ''
     this.purpose = '';
 
-    this.projectStartDate = new FormControl(new Date().toISOString());
+    //Start Date Formatting
+    this.projectStartDate = new FormControl(new Date().toISOString())
 
-    this.projectEndDate = new FormControl(new Date().toISOString());
+    console.log('this.projectStartDate', this.projectStartDate.value);
+
+    this.startDate = this.projectStartDate.value;
+    this.startDate = this.getFormattedDate(this.startDate);
+
+    //End Date Formatting
+    this.projectEndDate = new FormControl(new Date().toISOString())
+
+    console.log('this.projectEndDate', this.projectEndDate.value);
+
+    this.endDate = this.projectEndDate.value;
+    this.endDate = this.getFormattedDate(this.endDate);
+
+    console.log('this.endDate', this.endDate)
 
     this.amountRequested = '';
     this.totalProjectCost = '';
@@ -231,10 +248,22 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
       if (this.loiInfo.projectStartDate) {
         this.projectStartDate = new FormControl(new Date(this.loiInfo.projectStartDate));
+
+        console.log('this.projectStartDate', this.projectStartDate.value);
+
+        this.startDate = this.projectStartDate.value;
+        this.startDate = this.getFormattedDate(this.startDate);
+
       }
 
       if (this.loiInfo.projectEndDate) {
         this.projectEndDate = new FormControl(new Date(this.loiInfo.projectEndDate));
+
+        console.log('this.projectEndDate', this.projectEndDate.value);
+
+        this.endDate = this.projectEndDate.value;
+        this.endDate = this.getFormattedDate(this.endDate);
+
       }
 
       if (this.loiInfo.amountRequested) {
@@ -350,8 +379,21 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
   }
 
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.events.push(`${type}: ${event.value}`);
+  getFormattedDate(date) {
+
+    var d = new Date(date);
+
+    var year = d.getFullYear();
+
+    var month = (1 + d.getMonth()).toString();
+    // month = month.length > 1 ? month : '0' + month;
+    month = month.length > 1 ? month : month;
+
+    var day = d.getDate().toString();
+    //day = day.length > 1 ? day : '0' + day;
+    day = day.length > 1 ? day : day;
+
+    return month + '/' + day + '/' + year;
   }
 
 }
