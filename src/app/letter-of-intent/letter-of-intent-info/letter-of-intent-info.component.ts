@@ -154,7 +154,6 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
     console.log('this.endDate', this.endDate)
 
-
     this.amountRequested = '';
     this.totalProjectCost = '';
 
