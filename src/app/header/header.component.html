@@ -4,14 +4,32 @@
     <button mat-button routerLink="/" fxHide="false">
       <mat-icon>home</mat-icon>
     </button>
-
     <div *ngIf="!authService.authenticated">
       <button mat-button routerLink="/login" fxHide="false">Login</button>
     </div>
     <div *ngIf="!authService.authenticated" fxHide="false">
       <button mat-button routerLink="/register">Register</button>
     </div>
+
+    <div *ngIf="authService.authenticated">
+      <div *ngIf="!InOrganization">
+        <button mat-button (click)="hello()" fxHide="false">Create Organization</button>
+      </div>
+      <div *ngIf="InOrganization">
+        <button mat-button [matMenuTriggerFor]="orgMenu">Organizations</button>
+        <mat-menu #orgMenu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </div>
+      <div>
+        {{InOrganization}}
+      </div>
+    </div>
+
   </div>
+
+
 
   <button mat-button [matMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
     <mat-icon>menu</mat-icon>
