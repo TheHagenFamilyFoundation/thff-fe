@@ -51,7 +51,6 @@ export class UserLetterOfIntentComponent implements OnInit {
 
     this.inOrg.currentInOrg.subscribe(message => {
 
-
       this.inOrgCheck = message;
 
       console.log('inOrgCheck change', this.inOrgCheck)

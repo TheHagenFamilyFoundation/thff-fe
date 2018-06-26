@@ -25,6 +25,13 @@ export class GetUserService {
     return this.http.get(urlString);
   }
 
+  getUserbyID(userID: string): Observable<any> {
+
+    let urlString = this.API_URL + "/user?id=" + userID;
+
+    return this.http.get(urlString);
+  }
+
   getAllUsers(): Observable<any> {
     let urlString = this.API_URL + "/user";
 
