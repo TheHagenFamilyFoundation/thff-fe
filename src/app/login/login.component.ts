@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
   ) {
 
     this.userName$.pipe(
-      debounceTime(400),
+      debounceTime(100),
       distinctUntilChanged())
       .subscribe(term => {
 
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
       });
 
     this.password$.pipe(
-      debounceTime(400),
+      debounceTime(100),
       distinctUntilChanged())
       .subscribe(term => {
 
