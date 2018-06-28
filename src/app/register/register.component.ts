@@ -129,14 +129,6 @@ export class RegisterComponent implements OnInit {
       .subscribe(data => {
         this.results = data;
 
-        /*debug
-  
-        console.log(data);
-        console.log("this.results");
-        console.log(this.results);
-        console.log(this.results.token);
-        */
-
         localStorage.setItem('token', this.results.token);
         localStorage.setItem('currentUser', JSON.stringify(this.results.user));
 
@@ -144,16 +136,20 @@ export class RegisterComponent implements OnInit {
         console.log("currentUser = " + localStorage.getItem('currentUser'));
 
         this.emailService.sendRegisterUserEmail({
-          from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+          //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
           to: this.email,
           name: this.userName,
         })
           .subscribe(
-            () => { },
+            (data) => {
+
+              console.log('now login', data)
+
+              this.authService.login();
+
+            },
             err => console.log(err)
           );
-
-        this.authService.login();
 
       });
 
