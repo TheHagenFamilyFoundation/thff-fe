@@ -2,11 +2,11 @@
   <h2>{{title}}</h2>
 </div>
 <div align="center">
-  <mat-form-field>
+  <mat-form-field class="quarter-width">
     <input matInput placeholder="Username" value="" (keyup)="userName$.next($event.target.value)">
   </mat-form-field>
   <br>
-  <mat-form-field>
+  <mat-form-field class="quarter-width">
     <input matInput placeholder="Password" type="password" value="" (keyup)="password$.next($event.target.value)">
   </mat-form-field>
   <br>
