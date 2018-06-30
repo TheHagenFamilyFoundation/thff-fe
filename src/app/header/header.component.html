@@ -13,7 +13,7 @@
 
     <div *ngIf="authService.authenticated">
       <div *ngIf="!InOrganization">
-        <button mat-button (click)="hello()" fxHide="false">Create Organization</button>
+        <button mat-button (click)="createOrg()" fxHide="false">Create Organization</button>
       </div>
       <div *ngIf="InOrganization">
         <button mat-button [matMenuTriggerFor]="orgMenu">Organizations</button>
