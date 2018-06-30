@@ -124,4 +124,16 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  hello2() {
+
+    console.log('clicked on hello 2');
+
+  }
+
+  hello3() {
+
+    console.log('clicked on hello 3');
+
+  }
+
 }
