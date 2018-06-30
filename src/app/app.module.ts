@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import 'hammerjs';
 
@@ -105,11 +105,13 @@ import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forg
 import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
 import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 import { LetterOfIntentInfoComponent } from './letter-of-intent/letter-of-intent-info/letter-of-intent-info.component';
+import { LetterOfIntentStatusComponent } from './letter-of-intent/letter-of-intent-status/letter-of-intent-status.component';
 
 import { LetintmenuComponent } from './letintmenu/letintmenu.component';
 
 import { LetintComponent } from './letintmenu/letint/letint.component';
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component';
+
 
 import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
 
@@ -131,6 +133,8 @@ import { SelectedLetterOfIntentComponent } from './user/user-letter-of-intent/se
 import { OrganizationComponent } from './organization/organization.component';
 
 import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
+import { CreateOrganizationFullComponent } from './organization/create-organization-full/create-organization-full.component';
+import { CreateOrganizationHeaderComponent } from './organization/create-organization-header/create-organization-header.component';
 
 import { OrganizationInfoComponent } from './organization/organization-info/organization-info.component';
 
@@ -144,7 +148,7 @@ import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-sub
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
-import { LetterOfIntentStatusComponent } from './letter-of-intent/letter-of-intent-status/letter-of-intent-status.component';
+
 
 
 @NgModule({
@@ -172,6 +176,11 @@ import { LetterOfIntentStatusComponent } from './letter-of-intent/letter-of-inte
 
         //organization
         OrganizationComponent, CreateOrganizationComponent,
+
+        CreateOrganizationFullComponent,
+
+        CreateOrganizationHeaderComponent,
+
         OrganizationUsersComponent, AddUsersComponent,
         OrganizationRequestsComponent, LoiSubmitCheckComponent,
         OrganizationInfoComponent,
@@ -180,12 +189,11 @@ import { LetterOfIntentStatusComponent } from './letter-of-intent/letter-of-inte
         LetintmenuComponent, LetintComponent, LetintStatusComponent,
         LetterOfIntentComponent,
         CreateLetterOfIntentComponent,
-        LetterOfIntentInfoComponent,
+        LetterOfIntentInfoComponent, 
+        LetterOfIntentStatusComponent,
 
         //test component - email
         EmailComponent,
-
-        LetterOfIntentStatusComponent,
 
     ],
     imports: [BrowserModule,
@@ -195,7 +203,7 @@ import { LetterOfIntentStatusComponent } from './letter-of-intent/letter-of-inte
         }),
 
         FormsModule, BrowserAnimationsModule,
-        AppRoutingModule, ReactiveFormsModule, 
+        AppRoutingModule, ReactiveFormsModule,
 
         FlexLayoutModule,
 
@@ -220,7 +228,8 @@ import { LetterOfIntentStatusComponent } from './letter-of-intent/letter-of-inte
         CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
     ],
     entryComponents: [
-        CreateOrganizationComponent, SelectedOrganizationComponent,
+        CreateOrganizationComponent, CreateOrganizationHeaderComponent, 
+        SelectedOrganizationComponent,
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
         LoiSubmitCheckComponent
