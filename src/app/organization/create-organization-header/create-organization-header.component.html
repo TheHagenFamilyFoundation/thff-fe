@@ -1,3 +1,22 @@
-<p>
-  create-organization-header works!
-</p>
+<h3>Create Organization</h3>
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Organization Name" value="" (keyup)="orgName$.next($event.target.value)">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" (keyup)="description$.next($event.target.value)"></textarea>
+  </mat-form-field>
+</div>
+<div *ngIf="ShowMessage">
+  {{message}}
+  <br>
+</div>
+<br>
+<div *ngIf="CanCreateOrg">
+  <button mat-raised-button (click)="createOrg()">Create Organization</button>
+</div>
+<br>
+<div>
+  <button mat-raised-button (click)="cancel()" mat-dialog-close>Cancel</button>
+</div>
