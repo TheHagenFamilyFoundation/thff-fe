@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { AuthService } from '../auth/auth.service';
 
 import { GetUserService } from '../services/user/get-user.service'; //used for getting organizations
 import { InOrgService } from "../services/user/in-org.service";
+
+import { CreateOrganizationHeaderComponent } from '../organization/create-organization-header/create-organization-header.component';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +24,12 @@ export class HeaderComponent implements OnInit {
 
   inOrgCheck: boolean;
 
-  constructor(public authService: AuthService, private getUserService: GetUserService, private inOrg: InOrgService) {
+  constructor(
+    public authService: AuthService,
+    private getUserService: GetUserService,
+    private inOrg: InOrgService,
+    public dialog: MatDialog,
+  ) {
 
     if (this.authService.authenticated) {
       console.log("currentUser");
@@ -118,11 +126,29 @@ export class HeaderComponent implements OnInit {
 
   }//end of getOrganizations
 
-  hello() {
+  createOrg() {
 
-    console.log('clicked on hello');
+    console.log('clicked on createOrg');
+
+    this.openCreateOrgDialog();
 
   }
+
+  openCreateOrgDialog(): void {
+    let dialogRef = this.dialog.open(CreateOrganizationHeaderComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+      //maybe pull the organizations again
+      console.log('result', result); //debug
+
+    });
+  }
+
+
 
   hello2() {
 
