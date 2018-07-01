@@ -36,6 +36,8 @@ import { UserComponent } from './user/user.component';
 //organization
 import { OrganizationComponent } from './organization/organization.component';
 
+import { CreateOrganizationFullComponent } from './organization/create-organization-full/create-organization-full.component';
+
 //testing the email
 import { EmailComponent } from './test/email/email.component';
 
@@ -66,6 +68,7 @@ const appRoutes: Routes = [
     { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
 
     { path: 'organization/:id', component: OrganizationComponent, canActivate: [AuthGuard] },
+    { path: 'create-organization/:name', component: CreateOrganizationFullComponent, canActivate: [AuthGuard] },
 
     { path: 'loi/:id', component: LetterOfIntentComponent, canActivate: [AuthGuard] },
 
