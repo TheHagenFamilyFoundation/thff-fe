@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 //debounce
 import { Subject } from 'rxjs';
@@ -14,10 +15,10 @@ import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/op
 export class CreateOrganizationHeaderComponent implements OnInit {
 
   orgName$ = new Subject<string>();
-  description$ = new Subject<string>();
+  //description$ = new Subject<string>();
 
   orgName: any; //string
-  description: any; //string
+  //description: any; //string
 
   message: any; //string
 
@@ -25,7 +26,9 @@ export class CreateOrganizationHeaderComponent implements OnInit {
 
   CanCreateOrg = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    public dialogRef: MatDialogRef<CreateOrganizationHeaderComponent>
+  ) {
 
     this.orgName$.pipe(
       debounceTime(400),
@@ -36,14 +39,14 @@ export class CreateOrganizationHeaderComponent implements OnInit {
         this.orgNameChange()
       });
 
-    this.description$.pipe(
-      debounceTime(400),
-      distinctUntilChanged())
-      .subscribe(term => {
+    // this.description$.pipe(
+    //   debounceTime(400),
+    //   distinctUntilChanged())
+    //   .subscribe(term => {
 
-        this.description = term;
-        this.descriptionChange()
-      });
+    //     this.description = term;
+    //     this.descriptionChange()
+    //   });
 
   }
 
@@ -58,7 +61,9 @@ export class CreateOrganizationHeaderComponent implements OnInit {
     //pass in the orgname and the description
     //pull the user
 
-    this.router.navigate(['/register']);
+    this.dialogRef.close();
+
+    this.router.navigate(['/create-organization', this.orgName]);
 
   }//end of createOrg
 
@@ -74,11 +79,11 @@ export class CreateOrganizationHeaderComponent implements OnInit {
   }
 
   //description is not required
-  descriptionChange() {
+  // descriptionChange() {
 
-    console.log('description change')
+  //   console.log('description change')
 
-  }
+  // }
 
   cancel() {
 
