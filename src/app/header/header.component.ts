@@ -142,8 +142,7 @@ export class HeaderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed'); //debug
-      //maybe pull the organizations again
-      console.log('result', result); //debug
+      //console.log('result', result); //debug
 
     });
   }
