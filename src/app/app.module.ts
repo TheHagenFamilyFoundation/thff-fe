@@ -132,6 +132,8 @@ import { SelectedLetterOfIntentComponent } from './user/user-letter-of-intent/se
 //organization
 import { OrganizationComponent } from './organization/organization.component';
 
+import { ViewOrganizationsComponent } from './organization/view-organizations/view-organizations.component';
+
 import { CreateOrganizationComponent } from './organization/create-organization/create-organization.component';
 import { CreateOrganizationFullComponent } from './organization/create-organization-full/create-organization-full.component';
 import { CreateOrganizationHeaderComponent } from './organization/create-organization-header/create-organization-header.component';
@@ -148,8 +150,6 @@ import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-sub
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
-
-
 
 @NgModule({
     declarations: [AppComponent,
@@ -175,10 +175,10 @@ import { EmailComponent } from './test/email/email.component';
         UserLetterOfIntentComponent, SelectedLetterOfIntentComponent,
 
         //organization
-        OrganizationComponent, CreateOrganizationComponent,
-
+        OrganizationComponent, 
+        ViewOrganizationsComponent,
+        CreateOrganizationComponent,
         CreateOrganizationFullComponent,
-
         CreateOrganizationHeaderComponent,
 
         OrganizationUsersComponent, AddUsersComponent,
