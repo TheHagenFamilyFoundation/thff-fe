@@ -13,13 +13,13 @@
 
     <div *ngIf="authService.authenticated">
       <div *ngIf="!InOrganization">
-        <button mat-button (click)="hello()" fxHide="false">Create Organization</button>
+        <button mat-button (click)="createOrg()" fxHide="false">Create Organization</button>
       </div>
       <div *ngIf="InOrganization">
         <button mat-button [matMenuTriggerFor]="orgMenu">Organizations</button>
         <mat-menu #orgMenu="matMenu">
-          <button mat-menu-item (click)="hello2()">Item 1</button>
-          <button mat-menu-item (click)="hello3()">Item 2</button>
+          <button mat-menu-item (click)="viewOrgs()">View Organizations</button>
+          <button mat-menu-item (click)="createOrg()">Create Organization</button>
         </mat-menu>
       </div>
     </div>

@@ -1,0 +1,103 @@
+<div align="center">
+  <h3>Create Organization</h3>
+</div>
+
+<div align="center">
+  <mat-form-field>
+    <input matInput placeholder="Organization Name" value="" required (keyup)="orgName$.next($event.target.value)">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" (keyup)="description$.next($event.target.value)"></textarea>
+  </mat-form-field>
+</div>
+<div *ngIf="ShowMessage">
+  {{message}}
+  <br>
+</div>
+<br>
+
+<div align="center">
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Legal Name" value={{legalName}} required (keyup)="legalName$.next($event.target.value)">
+    </mat-form-field>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Year Founded" value={{yearFounded}} required (keyup)="yearFounded$.next($event.target.value)">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Current Operating Budget" value={{currentOperatingBudget}} required (keyup)="currentOperatingBudget$.next($event.target.value)">
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <input matInput placeholder="Executive Director" value={{director}} required (keyup)="director$.next($event.target.value)">
+    </mat-form-field>
+    <div>
+      Contact Person
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Contact Person" value={{contactPerson}} required (keyup)="contactPerson$.next($event.target.value)">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Title" value={{contactPersonTitle}} required (keyup)="contactPersonTitle$.next($event.target.value)">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Phone Number" value={{contactPersonPhoneNumber}} required (keyup)="contactPersonPhoneNumber$.next($event.target.value)">
+        </mat-form-field>
+      </p>
+    </div>
+    <div>Principal/Administrative Office
+      <div>
+        <mat-form-field>
+          <textarea matInput placeholder="Address" value={{address}} required (keyup)="address$.next($event.target.value)"></textarea>
+          <!-- <mat-hint align="start">
+        <strong>Principal/Administrative Office</strong>
+      </mat-hint> -->
+        </mat-form-field>
+
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="City" value={{city}} required (keyup)="city$.next($event.target.value)">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="State" value={{state}} required (keyup)="state$.next($event.target.value)">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput placeholder="Zip" maxlength="5" value={{zip}} required (keyup)="zip$.next($event.target.value)">
+                <mat-hint align="end">{{zip?.toString().length}} / 5</mat-hint>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Email" value={{email}} required (keyup)="email$.next($event.target.value)">
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <input matInput placeholder="Fax" value={{fax}} (keyup)="fax$.next($event.target.value)">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Phone Number" value={{phone}} required (keyup)="phone$.next($event.target.value)">
+    </mat-form-field>
+  </div>
+
+</div>
+
+<br>
+
+<div align="center">
+  <div *ngIf="CanCreateOrg">
+    <button mat-raised-button (click)="createOrg()">Create Organization</button>
+  </div>
+</div>
