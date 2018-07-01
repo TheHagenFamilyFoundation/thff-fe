@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { AuthService } from '../auth/auth.service';
@@ -25,6 +27,7 @@ export class HeaderComponent implements OnInit {
   inOrgCheck: boolean;
 
   constructor(
+    private router: Router,
     public authService: AuthService,
     private getUserService: GetUserService,
     private inOrg: InOrgService,
@@ -147,17 +150,11 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  viewOrgs() {
 
+    console.log('clicked on view Orgs');
 
-  hello2() {
-
-    console.log('clicked on hello 2');
-
-  }
-
-  hello3() {
-
-    console.log('clicked on hello 3');
+    this.router.navigate(['/view-organizations']);
 
   }
 
