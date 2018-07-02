@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { environment } from '../../../environments/environment';
@@ -55,7 +56,8 @@ export class CreateLetterOfIntentComponent implements OnInit {
     private createLoiService: CreateLoiService,
     private getUserService: GetUserService,
     public dialogRef: MatDialogRef<CreateLetterOfIntentComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private router: Router) {
 
     console.log('data', data)
 
@@ -204,6 +206,8 @@ export class CreateLetterOfIntentComponent implements OnInit {
   createLOIFull() {
 
     //route to the full LOI
+
+    this.router.navigate(['/create-loi-full']);
 
   }
 
