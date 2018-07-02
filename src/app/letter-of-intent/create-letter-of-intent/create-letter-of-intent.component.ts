@@ -43,6 +43,11 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
   CanCreateLOI = false;
 
+  ValidLOIName = false;
+  ValidOrgName = false;
+
+  CreateShort = false;
+
   organizations = [];
 
   constructor(
@@ -63,8 +68,6 @@ export class CreateLetterOfIntentComponent implements OnInit {
     }
 
     console.log('this.org', this.org)
-
-
 
     this.loiName$.pipe(
       debounceTime(400),
@@ -130,8 +133,13 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
     if (this.loiName != "") {
 
-      this.CanCreateLOI = true;
+      this.ValidLOIName = true;
     }
+    else {
+      this.ValidLOIName = false;
+    }
+
+    this.verifyInput();
 
   }
 
@@ -145,7 +153,14 @@ export class CreateLetterOfIntentComponent implements OnInit {
   orgChanged(newObj) {
     console.log('org change', newObj)
 
+    //if the first one is selected from default
+    //user has selected something
+    //cannot select the default
+    this.ValidOrgName = true; //always true after first select
+
     this.org = newObj;
+
+    this.verifyInput();
 
   }
 
@@ -174,5 +189,28 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
         })
   }//end of checkOrganization
+
+  verifyInput() {
+
+    if (this.ValidLOIName && this.ValidOrgName) {
+      this.CanCreateLOI = true;
+    }
+    else {
+      this.CanCreateLOI = false;
+    }
+
+  }
+
+  createLOIFull() {
+
+    //route to the full LOI
+
+  }
+
+  createLOIShort() {
+
+    this.CreateShort = true;
+
+  }
 
 }
