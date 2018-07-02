@@ -1,9 +1,10 @@
 <h3>Create LOI</h3>
-<div>
-  <button mat-raised-button (click)="createLOIFull()">Full LOI</button>
+<div *ngIf="!CreateShort">
   <button mat-raised-button (click)="createLOIShort()">Short LOI</button>
+  <button mat-raised-button (click)="createLOIFull()" mat-dialog-close>Full LOI</button>
+  <br>
 </div>
-<br>
+
 <div *ngIf="CreateShort">
   <mat-form-field class="full-width">
     <input matInput placeholder="LOI Name" value="" (keyup)="loiName$.next($event.target.value)">
