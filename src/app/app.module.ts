@@ -104,6 +104,9 @@ import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forg
 //letter of intent
 import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
 import { CreateLetterOfIntentComponent } from './letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
+
+import { CreateLetterOfIntentFullComponent } from './letter-of-intent/create-letter-of-intent-full/create-letter-of-intent-full.component';
+
 import { LetterOfIntentInfoComponent } from './letter-of-intent/letter-of-intent-info/letter-of-intent-info.component';
 import { LetterOfIntentStatusComponent } from './letter-of-intent/letter-of-intent-status/letter-of-intent-status.component';
 
@@ -175,7 +178,7 @@ import { EmailComponent } from './test/email/email.component';
         UserLetterOfIntentComponent, SelectedLetterOfIntentComponent,
 
         //organization
-        OrganizationComponent, 
+        OrganizationComponent,
         ViewOrganizationsComponent,
         CreateOrganizationComponent,
         CreateOrganizationFullComponent,
@@ -189,11 +192,13 @@ import { EmailComponent } from './test/email/email.component';
         LetintmenuComponent, LetintComponent, LetintStatusComponent,
         LetterOfIntentComponent,
         CreateLetterOfIntentComponent,
-        LetterOfIntentInfoComponent, 
+        LetterOfIntentInfoComponent,
         LetterOfIntentStatusComponent,
 
         //test component - email
         EmailComponent,
+
+        CreateLetterOfIntentFullComponent,
 
     ],
     imports: [BrowserModule,
@@ -228,7 +233,7 @@ import { EmailComponent } from './test/email/email.component';
         CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
     ],
     entryComponents: [
-        CreateOrganizationComponent, CreateOrganizationHeaderComponent, 
+        CreateOrganizationComponent, CreateOrganizationHeaderComponent,
         SelectedOrganizationComponent,
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
