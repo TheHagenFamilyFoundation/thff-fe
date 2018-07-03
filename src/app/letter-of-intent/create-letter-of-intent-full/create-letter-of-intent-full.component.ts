@@ -61,8 +61,17 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
   CanCreateLOI = false;
 
+  //loi create
   ValidLOIName = false;
   ValidOrgName = false;
+
+  //loi info
+  ValidProjectTitle = false;
+  ValidPurpose = false;
+  ValidProjectStartDate = false;
+  ValidProjectEndDate = false;
+  ValidAmountRequested = false;
+  ValidTotalProjectCost = false;
 
   CreateShort = false;
 
