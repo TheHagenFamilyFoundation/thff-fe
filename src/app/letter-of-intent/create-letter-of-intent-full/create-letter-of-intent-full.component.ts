@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 //debounce
 import { Subject } from 'rxjs';
@@ -77,9 +78,12 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
   organizations = [];
 
-  constructor(private createLoiService: CreateLoiService,
+  constructor(
+    private router: Router,
+    private createLoiService: CreateLoiService,
     private getUserService: GetUserService,
-    private createLoiInfoService: CreateLoiInfoService, ) {
+    private createLoiInfoService: CreateLoiInfoService
+  ) {
 
     this.loiName$.pipe(
       debounceTime(400),
@@ -225,6 +229,8 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
     console.log('description change')
 
+    this.verifyInput();
+
   }
 
   orgChanged(newObj) {
@@ -269,7 +275,11 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
   verifyInput() {
 
-    if (this.ValidLOIName && this.ValidOrgName) {
+    if (this.ValidLOIName && this.ValidOrgName &&
+      this.ValidProjectTitle && this.ValidPurpose &&
+      this.ValidProjectStartDate && this.ValidProjectEndDate &&
+      this.ValidAmountRequested && this.ValidTotalProjectCost) {
+
       this.CanCreateLOI = true;
     }
     else {
@@ -283,12 +293,32 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
     this.ShowMessage = false;
 
+    if (this.projectTitle != "") {
+
+      this.ValidProjectTitle = true;
+    }
+    else {
+      this.ValidProjectTitle = false;
+    }
+
+    this.verifyInput();
+
   }
 
   purposeChange() {
     console.log("purposeChange");
 
     this.ShowMessage = false;
+
+    if (this.purpose != "") {
+
+      this.ValidPurpose = true;
+    }
+    else {
+      this.ValidPurpose = false;
+    }
+
+    this.verifyInput();
 
   }
 
@@ -297,12 +327,20 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
     this.ShowMessage = false;
 
+    this.ValidProjectStartDate = true;
+
+    this.verifyInput();
+
   }
 
   projectEndDateChange() {
     console.log("projectEndDateChange");
 
     this.ShowMessage = false;
+
+    this.ValidProjectEndDate = true;
+
+    this.verifyInput();
 
   }
 
@@ -311,6 +349,16 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
     this.ShowMessage = false;
 
+    if (this.amountRequested != "") {
+
+      this.ValidAmountRequested = true;
+    }
+    else {
+      this.ValidAmountRequested = false;
+    }
+
+    this.verifyInput();
+
   }
 
   totalProjectCostChange() {
@@ -318,36 +366,15 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
     this.ShowMessage = false;
 
-  }
+    if (this.totalProjectCost != "") {
 
-  createLOIInfo() {
-    console.log('createLOIInfo')
-
-    var body = {
-      projectTitle: this.projectTitle,
-      purpose: this.purpose,
-      projectStartDate: this.projectStartDate.value,
-      projectEndDate: this.projectEndDate.value,
-      amountRequested: this.amountRequested,
-      totalProjectCost: this.totalProjectCost,
-      loi: this.loiID
+      this.ValidTotalProjectCost = true;
+    }
+    else {
+      this.ValidTotalProjectCost = false;
     }
 
-    console.log('body', body)
-
-    //call the service
-    this.createLoiInfoService.createLoiInfo(body)
-      .subscribe(
-        (result) => {
-
-          console.log('Org Info Created', result.result);
-          this.loiInfo = result.result;
-
-          console.log('new this.loiInfo.id', this.loiInfo.id);
-
-        },
-        err => console.log(err)
-      );
+    this.verifyInput();
 
   }
 
@@ -367,5 +394,64 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
     return month + '/' + day + '/' + year;
   }
+
+  createLOI() {
+
+    var loiBody = {
+      name: this.loiName,
+      description: this.description,
+      username: this.userName,
+      userid: this.userId,//userid of user who created the loi
+      //need to add org
+      org: this.org
+    }
+
+    console.log('body', loiBody)
+
+    //call the service
+    this.createLoiService.createLOI(loiBody)
+      .subscribe(
+        (result) => {
+
+          console.log('result', result)
+          this.loiID = result.result.id;
+
+          console.log('loi Created');
+
+          console.log('now creating LOIInfo')
+
+          let infoBody = {
+            projectTitle: this.projectTitle,
+            purpose: this.purpose,
+            projectStartDate: this.projectStartDate.value,
+            projectEndDate: this.projectEndDate.value,
+            amountRequested: this.amountRequested,
+            totalProjectCost: this.totalProjectCost,
+            loi: this.loiID
+          }
+
+          //call the service
+          this.createLoiInfoService.createLoiInfo(infoBody)
+            .subscribe(
+              (result) => {
+
+                console.log('Org Info Created', result.result);
+                this.loiInfo = result.result;
+
+                console.log('new this.loiInfo.id', this.loiInfo.id);
+
+                //route to user page
+                this.router.navigate(['/user']);
+
+              },
+              err => console.log(err)
+            );
+
+
+        },
+        err => console.log(err)
+      );
+
+  }//end of createLOI
 
 }
