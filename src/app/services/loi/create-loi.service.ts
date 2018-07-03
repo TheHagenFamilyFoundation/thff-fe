@@ -15,7 +15,7 @@ export class CreateLoiService {
 
   constructor(private http: HttpClient) { }
 
-  createLOI(body) {
+  createLOI(body): Observable<any> {
 
     console.log('createLOI');
 

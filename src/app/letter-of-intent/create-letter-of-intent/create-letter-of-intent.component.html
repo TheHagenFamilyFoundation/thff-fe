@@ -1,11 +1,17 @@
 <h3>Create LOI</h3>
-<div>
-  <mat-form-field>
+<div *ngIf="!CreateShort">
+  <button mat-raised-button (click)="createLOIShort()">Short LOI</button>
+  <button mat-raised-button (click)="createLOIFull()" mat-dialog-close>Full LOI</button>
+  <br>
+</div>
+
+<div *ngIf="CreateShort">
+  <mat-form-field class="full-width">
     <input matInput placeholder="LOI Name" value="" (keyup)="loiName$.next($event.target.value)">
   </mat-form-field>
   <br>
   <div *ngIf='!orgName'>
-    <mat-form-field>
+    <mat-form-field class="full-width">
       <mat-select placeholder="Select Organization" [(ngModel)]="orgSelected" name="org" (ngModelChange)="orgChanged($event)">
         <mat-option *ngFor="let org of organizations" [value]="org.organizationID">
           {{ org.name }}
@@ -18,21 +24,23 @@
       <input matInput placeholder="Organization" disabled value='{{orgName}}'>
     </mat-form-field>
   </div>
-  <br>
-  <mat-form-field>
+  <mat-form-field class="full-width">
     <!-- <input matInput placeholder="Description" value="" (keyup)="description$.next($event.target.value)"> -->
     <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" (keyup)="description$.next($event.target.value)"></textarea>
   </mat-form-field>
 </div>
+
 <div *ngIf="ShowMessage">
   {{message}}
   <br>
 </div>
 <br>
-<div *ngIf="CanCreateLOI">
-  <button mat-raised-button (click)="createLOI()">Create LOI</button>
-</div>
-<br>
 <div>
-  <button mat-raised-button (click)="cancel()" mat-dialog-close>Cancel</button>
+  <div *ngIf="CanCreateLOI">
+    <button mat-raised-button (click)="createLOI()">Create LOI</button>
+  </div>
+  <br>
+  <div>
+    <button mat-raised-button (click)="cancel()" mat-dialog-close>Cancel</button>
+  </div>
 </div>

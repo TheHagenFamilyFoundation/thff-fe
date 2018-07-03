@@ -30,6 +30,8 @@ import { LetintComponent } from './letintmenu/letint/letint.component'
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component'
 import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
 
+import { CreateLetterOfIntentFullComponent } from './letter-of-intent/create-letter-of-intent-full/create-letter-of-intent-full.component';
+
 //user
 import { UserComponent } from './user/user.component';
 
@@ -74,6 +76,8 @@ const appRoutes: Routes = [
     { path: 'view-organizations', component: ViewOrganizationsComponent, canActivate: [AuthGuard] },
 
     { path: 'loi/:id', component: LetterOfIntentComponent, canActivate: [AuthGuard] },
+    { path: 'create-loi-full', component: CreateLetterOfIntentFullComponent, canActivate: [AuthGuard] },
+
 
     { path: 'email', component: EmailComponent },
 

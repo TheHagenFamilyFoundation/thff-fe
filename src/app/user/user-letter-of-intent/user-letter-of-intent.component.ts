@@ -189,7 +189,7 @@ export class UserLetterOfIntentComponent implements OnInit {
 
   openCreateLOIDialog(): void {
     let dialogRef = this.dialog.open(CreateLetterOfIntentComponent, {
-      width: '250px',
+      width: '300px',
       data: { name: this.loiName, description: this.description }
     });
 
