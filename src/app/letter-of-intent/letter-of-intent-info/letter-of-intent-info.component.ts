@@ -238,7 +238,7 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
     if (this.loiInfo) {
 
-      if (this.loiInfo.legalName) {
+      if (this.loiInfo.projectTitle) {
         this.projectTitle = this.loiInfo.projectTitle;
       }
 
