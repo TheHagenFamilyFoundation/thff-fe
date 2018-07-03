@@ -21,7 +21,7 @@
       <input matInput placeholder="Organization" disabled value='{{orgName}}'>
     </mat-form-field>
   </div>
-  <mat-form-field class="full-width">
+  <mat-form-field class="text-a">
     <!-- <input matInput placeholder="Description" value="" (keyup)="description$.next($event.target.value)"> -->
     <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" (keyup)="description$.next($event.target.value)"></textarea>
   </mat-form-field>
@@ -29,12 +29,12 @@
 
 <div align="center">
   <div>
-    <mat-form-field class="full-width">
+    <mat-form-field class="title-width">
       <input matInput placeholder="Project Title" value={{projectTitle}} required (keyup)="projectTitle$.next($event.target.value) ">
     </mat-form-field>
   </div>
   <div>
-    <mat-form-field class="full-width">
+    <mat-form-field class="text-a">
       <textarea matInput placeholder="Purpose " value={{purpose}} required (keyup)="purpose$.next($event.target.value) "></textarea>
       <!-- <mat-hint align="start "> -->
       <!-- <strong>2000 Characters Maximum</strong> -->
@@ -69,5 +69,11 @@
     <mat-form-field class="full-width">
       <input matInput placeholder="Total Project Cost " value={{totalProjectCost}} required (keyup)="totalProjectCost$.next($event.target.value) ">
     </mat-form-field>
+  </div>
+</div>
+<br>
+<div *ngIf="CanCreateLOI">
+  <div align="center">
+    <button mat-raised-button (click)="createLOI()">Create Letter Of Intent</button>
   </div>
 </div>
