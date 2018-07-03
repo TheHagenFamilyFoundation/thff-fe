@@ -121,7 +121,7 @@ export class CreateLetterOfIntentComponent implements OnInit {
         err => console.log(err)
       );
 
-  }//end of createOrg
+  }//end of createLOI
 
   cancel() {
 
