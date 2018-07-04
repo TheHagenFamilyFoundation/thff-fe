@@ -65,6 +65,8 @@ import { CreateOrganizationInfoService } from './services/organization/organizat
 import { GetOrganizationInfoService } from './services/organization/organization-info/get-organization-info.service';
 import { DeleteOrganizationInfoService } from './services/organization/organization-info/delete-organization-info.service';
 
+import { Upload501c3Service } from './services/organization/upload-501c3.service';
+
 import { AddUserService } from './services/organization/add-user.service';
 
 //LOI
@@ -229,6 +231,7 @@ import { EmailComponent } from './test/email/email.component';
         InOrgService,
         GetOrganizationService, CreateOrganizationService, AddUserService,
         CreateOrganizationInfoService, GetOrganizationInfoService, DeleteOrganizationInfoService,
+        Upload501c3Service,
         GetLoiService, CreateLoiService,
         CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
     ],
