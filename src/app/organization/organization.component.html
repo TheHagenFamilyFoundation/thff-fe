@@ -31,7 +31,12 @@
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2">
         <mat-card-title align="center">
-          501c3 Upload
+          <mat-card>
+            <mat-card-content>
+              <div>501c3 Upload</div>
+              <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">
+            </mat-card-content>
+          </mat-card>
         </mat-card-title>
       </mat-grid-tile>
     </mat-grid-list>
