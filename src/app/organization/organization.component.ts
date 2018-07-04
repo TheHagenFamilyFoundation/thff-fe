@@ -3,7 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 
 import { GetOrganizationService } from '../services/organization/get-organization.service';
 
-import { Upload501c3Service } from '../services/organization/upload-501c3.service';
+import { Upload501c3Service } from '../services/organization/501c3/upload-501c3.service';
 
 @Component({
   selector: 'app-organization',
@@ -70,17 +70,6 @@ export class OrganizationComponent implements OnInit {
 
       this.CanUpload501c3 = true;
 
-      // let formData: FormData = new FormData();
-      // formData.append('uploadFile', file, file.name);
-
-      // this.upload501c3Service.upload501c3(file)
-      //   .subscribe(
-      //     () => { '501c3 uploaded' },
-      //     err => console.log(err)
-      //   );
-
-      //enable upload button
-
     }
     else {
       this.CanUpload501c3 = false;
@@ -95,7 +84,7 @@ export class OrganizationComponent implements OnInit {
         (result) => {
 
           console.log('result', result);
-          //'501c3 uploaded'
+
         },
         err => console.log(err)
       );
