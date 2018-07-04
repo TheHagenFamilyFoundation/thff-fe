@@ -65,7 +65,7 @@ import { CreateOrganizationInfoService } from './services/organization/organizat
 import { GetOrganizationInfoService } from './services/organization/organization-info/get-organization-info.service';
 import { DeleteOrganizationInfoService } from './services/organization/organization-info/delete-organization-info.service';
 
-import { Upload501c3Service } from './services/organization/upload-501c3.service';
+import { Upload501c3Service } from './services/organization/501c3/upload-501c3.service';
 
 import { AddUserService } from './services/organization/add-user.service';
 
