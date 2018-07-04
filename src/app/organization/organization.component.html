@@ -35,6 +35,9 @@
             <mat-card-content>
               <div>501c3 Upload</div>
               <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">
+              <div *ngIf="CanUpload501c3">
+                <button mat-raised-button (click)="upload()">Upload</button>
+              </div>
             </mat-card-content>
           </mat-card>
         </mat-card-title>
