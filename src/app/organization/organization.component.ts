@@ -19,6 +19,10 @@ export class OrganizationComponent implements OnInit {
   //check basic row height
   basicRowHeight = 400;
 
+  file: File;
+
+  CanUpload501c3 = false; //true when a file is selected
+
   constructor(
     private route: ActivatedRoute,
     public getOrgService: GetOrganizationService,
@@ -62,17 +66,40 @@ export class OrganizationComponent implements OnInit {
 
     let fileList: FileList = event.target.files;
     if (fileList.length > 0) {
-      let file: File = fileList[0];
+      this.file = fileList[0];
+
+      this.CanUpload501c3 = true;
+
       // let formData: FormData = new FormData();
       // formData.append('uploadFile', file, file.name);
 
-      this.upload501c3Service.upload501c3(file)
-        .subscribe(
-          () => { '501c3 uploaded' },
-          err => console.log(err)
-        );
+      // this.upload501c3Service.upload501c3(file)
+      //   .subscribe(
+      //     () => { '501c3 uploaded' },
+      //     err => console.log(err)
+      //   );
+
+      //enable upload button
 
     }
+    else {
+      this.CanUpload501c3 = false;
+    }
+
+  }
+
+  upload() {
+
+    this.upload501c3Service.upload501c3(this.file)
+      .subscribe(
+        (result) => {
+
+          console.log('result', result);
+          //'501c3 uploaded'
+        },
+        err => console.log(err)
+      );
+
   }
 
 }
