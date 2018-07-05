@@ -25,6 +25,7 @@ export class OrganizationComponent implements OnInit {
   file: File;
 
   CanUpload501c3 = false; //true when a file is selected
+  HasUpload501c3 = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -62,6 +63,17 @@ export class OrganizationComponent implements OnInit {
 
           this.organizationID = this.org.id;
 
+          //get organization s3 501c3 if exists
+
+          if (this.org.doc501c3.length > 0) {
+
+            console.log('has 501c3')
+            this.HasUpload501c3 = true;
+
+
+          }
+
+
         })
 
   }
@@ -96,7 +108,7 @@ export class OrganizationComponent implements OnInit {
 
             let body = {
               url: result.body.files[0].extra.Location,
-              fileName: result.body.files[0].filename,
+              fileName: result.body.files[0].fd,
               organization: this.organizationID
             }
 
