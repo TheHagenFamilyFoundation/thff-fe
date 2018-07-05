@@ -16,7 +16,7 @@ export class Upload501c3Service {
   constructor(private http: HttpClient) { }
 
   // file from event.target.files[0]
-  upload501c3(file: File): Observable<HttpEvent<any>> {
+  upload501c3(file: File, orgID: string): Observable<any> {
 
     console.log('upload501c3');
 
@@ -25,7 +25,7 @@ export class Upload501c3Service {
     let formData = new FormData();
     formData.append('avatar', file);
 
-    let params = new HttpParams();
+    let params = new HttpParams()
 
     const options = {
       params: params,
@@ -33,6 +33,9 @@ export class Upload501c3Service {
     };
 
     const req = new HttpRequest('POST', urlString, formData, options);
+
+    console.log('req', req)
+
     return this.http.request(req);
 
   }
