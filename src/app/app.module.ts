@@ -65,7 +65,8 @@ import { CreateOrganizationInfoService } from './services/organization/organizat
 import { GetOrganizationInfoService } from './services/organization/organization-info/get-organization-info.service';
 import { DeleteOrganizationInfoService } from './services/organization/organization-info/delete-organization-info.service';
 
-import { Upload501c3Service } from './services/organization/501c3/upload-501c3.service';
+import { Upload501c3Service } from './services/organization/501c3/upload-501c3.service'; //upload the file
+import { Create501c3Service } from './services/organization/501c3/create-501c3.service'; //create the object in the mongo db that contains the url
 import { Get501c3Service } from './services/organization/501c3/get-501c3.service';
 import { Delete501c3Service } from './services/organization/501c3/delete-501c3.service'; //for updating the 501c3 if there are any changes
 
@@ -233,7 +234,7 @@ import { EmailComponent } from './test/email/email.component';
         InOrgService,
         GetOrganizationService, CreateOrganizationService, AddUserService,
         CreateOrganizationInfoService, GetOrganizationInfoService, DeleteOrganizationInfoService,
-        Upload501c3Service, Get501c3Service, Delete501c3Service,
+        Upload501c3Service, Create501c3Service, Get501c3Service, Delete501c3Service,
         GetLoiService, CreateLoiService,
         CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
     ],
