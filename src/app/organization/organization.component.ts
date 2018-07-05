@@ -25,6 +25,7 @@ export class OrganizationComponent implements OnInit {
   file: File;
 
   CanUpload501c3 = false; //true when a file is selected
+  HasUpload501c3 = false;
 
   constructor(
     private route: ActivatedRoute,
