@@ -3,6 +3,9 @@ import { ActivatedRoute } from "@angular/router";
 
 import { GetOrganizationService } from '../services/organization/get-organization.service';
 
+import { Upload501c3Service } from '../services/organization/501c3/upload-501c3.service';
+import { Create501c3Service } from '../services/organization/501c3/create-501c3.service';
+
 @Component({
   selector: 'app-organization',
   templateUrl: './organization.component.html',
@@ -12,14 +15,22 @@ export class OrganizationComponent implements OnInit {
 
   orgID: any;
 
+  organizationID: any;
+
   org: any; //the Organization object
 
   //check basic row height
   basicRowHeight = 400;
 
+  file: File;
+
+  CanUpload501c3 = false; //true when a file is selected
+
   constructor(
     private route: ActivatedRoute,
     public getOrgService: GetOrganizationService,
+    private upload501c3Service: Upload501c3Service,
+    private create501c3Service: Create501c3Service,
   ) {
     this.route.params.subscribe(params => {
       console.log(params);
@@ -49,8 +60,70 @@ export class OrganizationComponent implements OnInit {
 
           this.org = org[0];
 
+          this.organizationID = this.org.id;
+
         })
 
   }
+
+  fileChange(event) {
+
+    console.log('fileChange', event)
+
+    let fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      this.file = fileList[0];
+
+      this.CanUpload501c3 = true;
+
+    }
+    else {
+      this.CanUpload501c3 = false;
+    }
+
+  }
+
+  upload() {
+
+    this.upload501c3Service.upload501c3(this.file, this.orgID)
+      .subscribe(
+        (result) => {
+
+          console.log('result', result);
+
+          if (result.body) {
+            console.log('result has body')
+
+            let body = {
+              url: result.body.files[0].extra.Location,
+              fileName: result.body.files[0].filename,
+              organization: this.organizationID
+            }
+
+            this.create501c3Service.create501c3(body)
+              .subscribe(
+                (result) => {
+
+                  console.log('result', result);
+
+                  if (result.body) {
+                    console.log('result has body')
+                  }
+
+                },
+                err => console.log(err)
+              );
+
+
+          }
+
+        },
+        err => console.log(err)
+      );
+
+  }
+
+
+
 
 }
