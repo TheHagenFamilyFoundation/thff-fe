@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import 'hammerjs';
 
-import { Router } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -156,8 +155,12 @@ import { AddUsersComponent } from './organization/organization-users/add-users/a
 import { OrganizationRequestsComponent } from './organization/organization-requests/organization-requests.component';
 import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-submit-check.component';
 
+
 //test email component
 import { EmailComponent } from './test/email/email.component';
+
+//Utility
+import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -204,6 +207,8 @@ import { EmailComponent } from './test/email/email.component';
         EmailComponent,
 
         CreateLetterOfIntentFullComponent,
+
+        NotFoundComponent,
 
     ],
     imports: [BrowserModule,
