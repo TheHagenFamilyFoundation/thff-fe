@@ -127,6 +127,8 @@ export class OrganizationComponent implements OnInit {
                     console.log('result has body')
                   }
 
+                  this.get501c3();
+
                 },
                 err => console.log(err)
               );
