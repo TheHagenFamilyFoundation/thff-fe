@@ -1,12 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from "@angular/router";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+//services
 import { GetOrganizationService } from '../../services/organization/get-organization.service';
 
 import { Upload501c3Service } from '../../services/organization/501c3/upload-501c3.service';
 import { Get501c3Service } from '../../services/organization/501c3/get-501c3.service'; //query db and get from AWS
+import { Delete501c3Service } from '../../services/organization/501c3/delete-501c3.service'; //query db and get from AWS
 
 import { Create501c3Service } from '../../services/organization/501c3/create-501c3.service'; //create from DB
+
+//components
+import { DeleteDoc501c3CheckComponent } from './delete-doc501c3-check/delete-doc501c3-check.component';
 
 @Component({
   selector: 'app-organization-doc501c3',
@@ -15,8 +21,10 @@ import { Create501c3Service } from '../../services/organization/501c3/create-501
 })
 export class OrganizationDoc501c3Component implements OnInit {
 
+  //5 character string
   orgID: any;
 
+  //mongodb id
   organizationID: any;
 
   @Input()
@@ -31,7 +39,10 @@ export class OrganizationDoc501c3Component implements OnInit {
     public getOrgService: GetOrganizationService,
     private upload501c3Service: Upload501c3Service,
     private get501c3Service: Get501c3Service,
-    private create501c3Service: Create501c3Service, ) {
+    private create501c3Service: Create501c3Service,
+    private delete501c3Service: Delete501c3Service,
+    public dialog: MatDialog,
+  ) {
 
   }
 
@@ -155,18 +166,59 @@ export class OrganizationDoc501c3Component implements OnInit {
             skipLocationChange: true,
           });
 
+        })
+
+  }
+
+  delete501c3check() {
+
+    console.log('delete 501c3')
+
+    this.openDelete501c3Check()
+
+  }
+
+  openDelete501c3Check(): void {
+    let dialogRef = this.dialog.open(DeleteDoc501c3CheckComponent, {
+      width: '400px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+      //maybe pull the organizations again
+      console.log('result', result); //debug
+
+      if (result.delete == true) {
+        console.log('delete the 501c3')
+
+        //delete the 501c3
+        this.delete501c3();
+
+      }
+
+    });
+  }
+
+  delete501c3() {
+
+    console.log('deleting 501c3')
+
+    // console.log('orgID', this.orgID)
+
+    //call the delete 501c3 service
+    this.delete501c3Service.delete501c3byOrgID(this.orgID)
+      .subscribe(
+        (result) => {
+
+          console.log('result', result)
+
+          //refresh the organization
+          this.getOrganization(this.orgID);
 
         })
 
   }
-  delete501c3() {
-
-    console.log('delete 501c3')
-
-
-
-  }
-
 
 
 }
