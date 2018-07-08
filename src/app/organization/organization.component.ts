@@ -143,7 +143,7 @@ export class OrganizationComponent implements OnInit {
 
   get501c3() {
 
-    console.log('getting Loi Info')
+    console.log('getting 501c3')
 
     this.get501c3Service.get501c3(this.orgID)
       .subscribe(
