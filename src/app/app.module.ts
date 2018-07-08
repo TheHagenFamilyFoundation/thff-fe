@@ -157,6 +157,7 @@ import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-sub
 
 //organization 501c3
 import { OrganizationDoc501c3Component } from './organization/organization-doc501c3/organization-doc501c3.component';
+import { DeleteDoc501c3CheckComponent } from './organization/organization-doc501c3/delete-doc501c3-check/delete-doc501c3-check.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
@@ -197,6 +198,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         OrganizationUsersComponent, AddUsersComponent,
         OrganizationRequestsComponent, LoiSubmitCheckComponent,
         OrganizationInfoComponent, OrganizationDoc501c3Component,
+        DeleteDoc501c3CheckComponent,
 
         //letter of intent
         LetintmenuComponent, LetintComponent, LetintStatusComponent,
@@ -250,7 +252,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         SelectedOrganizationComponent,
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
-        LoiSubmitCheckComponent
+        LoiSubmitCheckComponent, DeleteDoc501c3CheckComponent
     ]
 })
 export class AppModule { }
