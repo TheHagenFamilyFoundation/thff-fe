@@ -74,9 +74,6 @@ export class OrganizationComponent implements OnInit {
             console.log('has 501c3')
             this.HasUpload501c3 = true;
 
-            // //get the 501c3 and create the link
-            // this.get501c3();
-
           }
 
         })
@@ -164,7 +161,14 @@ export class OrganizationComponent implements OnInit {
 
         })
 
+  }
+  delete501c3() {
+
+    console.log('delete 501c3')
+
+    
 
   }
+
 
 }
