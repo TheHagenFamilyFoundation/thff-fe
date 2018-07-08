@@ -70,9 +70,7 @@ export class OrganizationComponent implements OnInit {
             console.log('has 501c3')
             this.HasUpload501c3 = true;
 
-
           }
-
 
         })
 
@@ -126,7 +124,6 @@ export class OrganizationComponent implements OnInit {
                 err => console.log(err)
               );
 
-
           }
 
         },
@@ -134,8 +131,5 @@ export class OrganizationComponent implements OnInit {
       );
 
   }
-
-
-
 
 }
