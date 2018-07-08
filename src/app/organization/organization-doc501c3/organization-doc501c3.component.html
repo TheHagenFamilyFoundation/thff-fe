@@ -4,7 +4,9 @@
 <div *ngIf="!HasUpload501c3">
   <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">
   <div *ngIf="CanUpload501c3">
-    <button mat-raised-button (click)="upload()">Upload</button>
+    <div align="center">
+      <button mat-raised-button (click)="upload()">Upload</button>
+    </div>
   </div>
 </div>
 <div *ngIf="HasUpload501c3">
