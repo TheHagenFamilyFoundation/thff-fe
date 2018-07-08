@@ -114,7 +114,8 @@ export class OrganizationComponent implements OnInit {
             let body = {
               url: result.body.files[0].extra.Location,
               fileName: result.body.files[0].fd,
-              organization: this.organizationID
+              organization: this.organizationID,
+              orgID: this.orgID
             }
 
             this.create501c3Service.create501c3(body)
@@ -127,7 +128,8 @@ export class OrganizationComponent implements OnInit {
                     console.log('result has body')
                   }
 
-                  this.get501c3();
+                  //refresh the organization
+                  this.getOrganization(this.orgID);
 
                 },
                 err => console.log(err)
