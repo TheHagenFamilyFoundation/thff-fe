@@ -83,6 +83,10 @@ export class OrganizationDoc501c3Component implements OnInit {
             this.HasUpload501c3 = true;
 
           }
+          else {
+            this.HasUpload501c3 = false;
+            this.CanUpload501c3 = false;
+          }
 
         })
 
