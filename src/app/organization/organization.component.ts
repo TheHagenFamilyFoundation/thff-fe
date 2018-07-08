@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 import { GetOrganizationService } from '../services/organization/get-organization.service';
 
 import { Upload501c3Service } from '../services/organization/501c3/upload-501c3.service';
-import { Create501c3Service } from '../services/organization/501c3/create-501c3.service';
+import { Get501c3Service } from '../services/organization/501c3/get-501c3.service'; //query db and get from AWS
+
+import { Create501c3Service } from '../services/organization/501c3/create-501c3.service'; //create from DB
 
 @Component({
   selector: 'app-organization',
@@ -29,8 +31,10 @@ export class OrganizationComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     public getOrgService: GetOrganizationService,
     private upload501c3Service: Upload501c3Service,
+    private get501c3Service: Get501c3Service,
     private create501c3Service: Create501c3Service,
   ) {
     this.route.params.subscribe(params => {
@@ -70,9 +74,10 @@ export class OrganizationComponent implements OnInit {
             console.log('has 501c3')
             this.HasUpload501c3 = true;
 
+            // //get the 501c3 and create the link
+            // this.get501c3();
 
           }
-
 
         })
 
@@ -126,7 +131,6 @@ export class OrganizationComponent implements OnInit {
                 err => console.log(err)
               );
 
-
           }
 
         },
@@ -135,7 +139,28 @@ export class OrganizationComponent implements OnInit {
 
   }
 
+  get501c3() {
+
+    console.log('getting Loi Info')
+
+    this.get501c3Service.get501c3(this.orgID)
+      .subscribe(
+        (result) => {
+
+          console.log('result', result)
+
+          //route to the s3 image url
+          let url = result.url;
+
+          //this.router.navigate([result.url]);
+          this.router.navigate(['/externalRedirect', { externalUrl: url }], {
+            skipLocationChange: true,
+          });
 
 
+        })
+
+
+  }
 
 }

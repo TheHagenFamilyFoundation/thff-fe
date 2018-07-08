@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core'
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule, InjectionToken } from '@angular/core'
+import { Routes, RouterModule, ActivatedRouteSnapshot } from '@angular/router';
 
 import { AuthGuard } from './_guards/auth.guard';
 
@@ -45,6 +45,11 @@ import { ViewOrganizationsComponent } from './organization/view-organizations/vi
 //testing the email
 import { EmailComponent } from './test/email/email.component';
 
+//Utility
+import { NotFoundComponent } from './utilities/not-found/not-found.component';
+
+const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
+
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     //login
@@ -79,6 +84,15 @@ const appRoutes: Routes = [
     { path: 'create-loi-full', component: CreateLetterOfIntentFullComponent, canActivate: [AuthGuard] },
 
 
+    {
+        path: 'externalRedirect',
+        resolve: {
+            url: externalUrlProvider,
+        },
+        // We need a component here because we cannot define the route otherwise
+        component: NotFoundComponent,
+    },
+
     { path: 'email', component: EmailComponent },
 
     { path: '**', redirectTo: '' }
@@ -90,7 +104,18 @@ const appRoutes: Routes = [
     ],
     exports: [
         RouterModule
+    ],
+    providers: [
+        {
+            provide: externalUrlProvider,
+            useValue: (route: ActivatedRouteSnapshot) => {
+                const externalUrl = route.paramMap.get('externalUrl');
+                window.open(externalUrl, '_self');
+            },
+        },
     ]
+
+
 })
 
 export class AppRoutingModule { }
