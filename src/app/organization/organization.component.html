@@ -30,24 +30,13 @@
         </mat-card>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2">
-        <mat-card-title align="center">
-          <mat-card>
-            <mat-card-content>
-
-              <h3>501c3</h3>
-              <div *ngIf="!HasUpload501c3">
-                <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">
-                <div *ngIf="CanUpload501c3">
-                  <button mat-raised-button (click)="upload()">Upload</button>
-                </div>
-              </div>
-              <div *ngIf="HasUpload501c3">
-                {{HasUpload501c3}}
-                <button mat-raised-button (click)="get501c3()">View 501c3</button>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </mat-card-title>
+        <mat-card>
+          <mat-card-content>
+            <div *ngIf='org'>
+              <app-organization-doc501c3 [org]="org"></app-organization-doc501c3>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-card-content>

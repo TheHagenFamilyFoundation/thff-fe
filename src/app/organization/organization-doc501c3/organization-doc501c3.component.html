@@ -1,0 +1,15 @@
+<div align="center">
+  <h3>501c3</h3>
+</div>
+<div *ngIf="!HasUpload501c3">
+  <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">
+  <div *ngIf="CanUpload501c3">
+    <div align="center">
+      <button mat-raised-button (click)="upload()">Upload</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="HasUpload501c3">
+  <button mat-raised-button (click)="get501c3()">View 501c3</button>
+  <button mat-raised-button (click)="delete501c3check()">Delete 501c3</button>
+</div>
