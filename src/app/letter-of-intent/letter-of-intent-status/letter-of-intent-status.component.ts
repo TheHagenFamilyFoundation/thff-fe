@@ -13,12 +13,14 @@ export class LetterOfIntentStatusComponent implements OnInit {
   status: any;
 
   constructor() {
-
-    this.status = this.loi.status;
-
   }
 
   ngOnInit() {
+
+    console.log('loi', this.loi)
+
+    this.status = this.loi.status;
+
   }
 
 }
