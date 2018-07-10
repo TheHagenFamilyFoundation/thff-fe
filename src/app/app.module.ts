@@ -118,6 +118,7 @@ import { LetintmenuComponent } from './letintmenu/letintmenu.component';
 
 import { LetintComponent } from './letintmenu/letint/letint.component';
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component';
+import { LetterOfIntentSubmitComponent } from './letter-of-intent/letter-of-intent-submit/letter-of-intent-submit.component';
 
 
 import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
@@ -165,6 +166,7 @@ import { EmailComponent } from './test/email/email.component';
 //Utility
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
+
 @NgModule({
     declarations: [AppComponent,
         HeaderComponent,
@@ -204,13 +206,13 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         LetintmenuComponent, LetintComponent, LetintStatusComponent,
         LetterOfIntentComponent,
         CreateLetterOfIntentComponent,
+        CreateLetterOfIntentFullComponent,
         LetterOfIntentInfoComponent,
         LetterOfIntentStatusComponent,
+        LetterOfIntentSubmitComponent,
 
         //test component - email
         EmailComponent,
-
-        CreateLetterOfIntentFullComponent,
 
         NotFoundComponent,
 
