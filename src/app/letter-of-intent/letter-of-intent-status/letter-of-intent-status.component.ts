@@ -10,7 +10,13 @@ export class LetterOfIntentStatusComponent implements OnInit {
   @Input()
   loi: any;
 
-  constructor() { }
+  status: any;
+
+  constructor() {
+
+    this.status = this.loi.status;
+
+  }
 
   ngOnInit() {
   }
