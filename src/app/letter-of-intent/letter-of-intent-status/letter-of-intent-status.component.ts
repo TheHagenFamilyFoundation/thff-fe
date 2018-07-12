@@ -51,5 +51,8 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
   }
 
+  //check if org has 501c3
+  //check if org has org info as well
+
 
 }
