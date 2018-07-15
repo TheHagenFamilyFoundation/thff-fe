@@ -32,7 +32,7 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Submitted </mat-header-cell>
                 <mat-cell *matCellDef="let row">
                     <div *ngIf="row.submitted">
-                        {{row.submitted | date: 'MM/dd/yyyy'}}
+                        {{row.submittedOn | date: 'MM/dd/yyyy'}}
                     </div>
                     <div *ngIf="!row.submitted">
                        Has not been submitted.
