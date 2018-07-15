@@ -54,4 +54,12 @@ export class LetterOfIntentComponent implements OnInit {
 
   }
 
+  onVoted(agreed: boolean) {
+    console.log("agreed")
+
+    this.getLOI(this.loiID);
+
+
+  }
+
 }
