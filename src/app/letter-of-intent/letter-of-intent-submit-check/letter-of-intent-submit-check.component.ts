@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +14,7 @@ export class LetterOfIntentSubmitCheckComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<LetterOfIntentSubmitCheckComponent>,
     private router: Router,
   ) {
 
@@ -34,6 +36,12 @@ export class LetterOfIntentSubmitCheckComponent implements OnInit {
   submit() {
 
     console.log('submit pressed')
+
+    var body = {
+      submit: true
+    }
+
+    this.dialogRef.close(body);
 
   }
 }
