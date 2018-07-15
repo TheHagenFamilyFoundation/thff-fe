@@ -3,11 +3,11 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-loi-submit-check',
-  templateUrl: './loi-submit-check.component.html',
-  styleUrls: ['./loi-submit-check.component.css']
+  selector: 'app-org-selected-letter-of-intent',
+  templateUrl: './org-selected-letter-of-intent.component.html',
+  styleUrls: ['./org-selected-letter-of-intent.component.css']
 })
-export class LoiSubmitCheckComponent implements OnInit {
+export class OrgSelectedLetterOfIntentComponent implements OnInit {
 
   loiLink = '/loi/'
   link: string;
@@ -36,4 +36,6 @@ export class LoiSubmitCheckComponent implements OnInit {
     console.log('cancel pressed');
 
   }
+
+
 }

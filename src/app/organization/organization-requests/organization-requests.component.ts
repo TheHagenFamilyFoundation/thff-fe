@@ -3,7 +3,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
-import { LoiSubmitCheckComponent } from '../../organization/loi-submit-check/loi-submit-check.component';
+import { OrgSelectedLetterOfIntentComponent } from '../../organization/org-selected-letter-of-intent/org-selected-letter-of-intent.component';
 
 import { GetLoiService } from '../../services/loi/get-loi.service';
 
@@ -30,7 +30,7 @@ export class OrganizationRequestsComponent implements OnInit {
   description: any;
 
   // displayedColumns = ['id', 'name', 'progress', 'color'];
-  displayedColumns = ['name', 'createdAt'];
+  displayedColumns = ['name', 'createdAt', 'submitted'];
   dataSource: any;//MatTableDataSource<OrganizationData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -132,7 +132,7 @@ export class OrganizationRequestsComponent implements OnInit {
   // }
 
   openSubmitLOIDialog(loi): void {
-    let dialogRef = this.dialog.open(LoiSubmitCheckComponent, {
+    let dialogRef = this.dialog.open(OrgSelectedLetterOfIntentComponent, {
       width: '250px',
       data: { name: loi.name, loiID: loi.loiID }
     });

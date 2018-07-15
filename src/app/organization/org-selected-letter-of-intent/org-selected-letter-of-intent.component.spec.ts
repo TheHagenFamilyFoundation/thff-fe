@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoiSubmitCheckComponent } from './loi-submit-check.component';
+import { OrgSelectedLetterOfIntentComponent } from './org-selected-letter-of-intent.component';
 
 describe('LoiSubmitCheckComponent', () => {
-  let component: LoiSubmitCheckComponent;
-  let fixture: ComponentFixture<LoiSubmitCheckComponent>;
+  let component: OrgSelectedLetterOfIntentComponent;
+  let fixture: ComponentFixture<OrgSelectedLetterOfIntentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoiSubmitCheckComponent ]
+      declarations: [ OrgSelectedLetterOfIntentComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoiSubmitCheckComponent);
+    fixture = TestBed.createComponent(OrgSelectedLetterOfIntentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

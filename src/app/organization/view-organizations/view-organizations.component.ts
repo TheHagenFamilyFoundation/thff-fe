@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { GetUserService } from '../../services/user/get-user.service';
 import { InOrgService } from "../../services/user/in-org.service"; //organization cross components
 
-import { CreateOrganizationComponent } from '../../organization/create-organization/create-organization.component';
+import { CreateOrganizationComponent } from '../create-organization/create-organization.component';
 import { SelectedOrganizationComponent } from '../../user/user-organization/selected-organization/selected-organization.component';
 
 @Component({
