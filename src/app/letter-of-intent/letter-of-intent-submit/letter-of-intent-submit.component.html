@@ -2,4 +2,6 @@
   <h3>Letter of Intent Submit</h3>
 </div>
 <p>{{LOISubmitted}}</p>
-<button mat-raised-button (click)="submitLOI()">Submit</button>
+<div *ngIf="CanSubmit">
+  <button mat-raised-button (click)="submitLOI()">Submit</button>
+</div>
