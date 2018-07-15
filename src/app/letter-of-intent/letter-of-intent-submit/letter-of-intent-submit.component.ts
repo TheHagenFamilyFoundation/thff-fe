@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Router } from '@angular/router';
 
 import { LetterOfIntentSubmitCheckComponent } from '../../letter-of-intent/letter-of-intent-submit-check/letter-of-intent-submit-check.component';
 
@@ -25,7 +24,7 @@ export class LetterOfIntentSubmitComponent implements OnInit {
   loiLink = '/loi/'
   link: string;
 
-  constructor(public dialog: MatDialog, private submitLoiService: SubmitLoiService, private router: Router, ) {
+  constructor(public dialog: MatDialog, private submitLoiService: SubmitLoiService) {
 
     //this.CanSubmit = false; //for prod
     this.CanSubmit = true; //for testing
