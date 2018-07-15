@@ -119,7 +119,7 @@ import { LetintmenuComponent } from './letintmenu/letintmenu.component';
 import { LetintComponent } from './letintmenu/letint/letint.component';
 import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component';
 import { LetterOfIntentSubmitComponent } from './letter-of-intent/letter-of-intent-submit/letter-of-intent-submit.component';
-
+import { LetterOfIntentSubmitCheckComponent } from './letter-of-intent/letter-of-intent-submit-check/letter-of-intent-submit-check.component';
 
 import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
 
@@ -154,7 +154,8 @@ import { AddUsersComponent } from './organization/organization-users/add-users/a
 
 //organization loi
 import { OrganizationRequestsComponent } from './organization/organization-requests/organization-requests.component';
-import { LoiSubmitCheckComponent } from './organization/loi-submit-check/loi-submit-check.component';
+import { OrgSelectedLetterOfIntentComponent } from './organization/org-selected-letter-of-intent/org-selected-letter-of-intent.component';
+
 
 //organization 501c3
 import { OrganizationDoc501c3Component } from './organization/organization-doc501c3/organization-doc501c3.component';
@@ -198,7 +199,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         CreateOrganizationHeaderComponent,
 
         OrganizationUsersComponent, AddUsersComponent,
-        OrganizationRequestsComponent, LoiSubmitCheckComponent,
+        OrganizationRequestsComponent, OrgSelectedLetterOfIntentComponent,
         OrganizationInfoComponent, OrganizationDoc501c3Component,
         DeleteDoc501c3CheckComponent,
 
@@ -210,11 +211,13 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         LetterOfIntentInfoComponent,
         LetterOfIntentStatusComponent,
         LetterOfIntentSubmitComponent,
+        LetterOfIntentSubmitCheckComponent,
 
         //test component - email
         EmailComponent,
 
         NotFoundComponent,
+
 
     ],
     imports: [BrowserModule,
@@ -254,7 +257,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         SelectedOrganizationComponent,
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
-        LoiSubmitCheckComponent, DeleteDoc501c3CheckComponent
+        OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent
     ]
 })
 export class AppModule { }
