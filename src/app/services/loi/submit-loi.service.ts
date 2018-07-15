@@ -13,7 +13,10 @@ export class SubmitLoiService {
   constructor(private http: HttpClient) { }
 
   submitLOI(loiID: string): Observable<any> {
-    return this.http.get(this.API_URL + '/submitLOI' + loiID)
+
+    console.log('loiID', loiID)
+
+    return this.http.get(this.API_URL + '/submitLOI/' + loiID)
   }
 
 }
