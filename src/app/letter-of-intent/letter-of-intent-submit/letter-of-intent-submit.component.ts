@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
 
 import { LetterOfIntentSubmitCheckComponent } from '../../letter-of-intent/letter-of-intent-submit-check/letter-of-intent-submit-check.component';
 
@@ -21,7 +22,10 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   CanSubmit: boolean;
 
-  constructor(public dialog: MatDialog, private submitLoiService: SubmitLoiService) {
+  loiLink = '/loi/'
+  link: string;
+
+  constructor(public dialog: MatDialog, private submitLoiService: SubmitLoiService, private router: Router, ) {
 
     //this.CanSubmit = false; //for prod
     this.CanSubmit = true; //for testing
@@ -35,6 +39,8 @@ export class LetterOfIntentSubmitComponent implements OnInit {
     this.LOISubmitted = this.loi.submitted;
 
     this.loiID = this.loi.loiID;
+
+    this.link = this.loiLink + this.loiID;
 
   }
 
@@ -84,6 +90,13 @@ export class LetterOfIntentSubmitComponent implements OnInit {
         (loi) => {
 
           console.log('loi', loi);
+
+          console.log('this.link', this.link)
+
+          //pull the loi again
+
+          //try routing to loi page again
+
 
         })
 
