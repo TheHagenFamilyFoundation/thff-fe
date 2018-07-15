@@ -27,7 +27,7 @@
     <mat-card>
       <mat-card-content>
         <div *ngIf='loi'>
-          <app-letter-of-intent-submit [loi]="loi"></app-letter-of-intent-submit>
+          <app-letter-of-intent-submit [loi]="loi" (voted)="onVoted($event)"></app-letter-of-intent-submit>
         </div>
       </mat-card-content>
     </mat-card>
