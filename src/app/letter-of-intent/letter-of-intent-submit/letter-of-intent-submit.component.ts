@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LetterOfIntentSubmitCheckComponent } from '../../letter-of-intent/letter-of-intent-submit-check/letter-of-intent-submit-check.component';
@@ -14,6 +14,8 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   @Input()
   loi: any;
+
+  @Output() voted = new EventEmitter<boolean>();
 
   loiID: string;
 
@@ -92,9 +94,11 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
           console.log('this.link', this.link)
 
-          //pull the loi again
+          let pullLOI = true;
 
-          //try routing to loi page again
+          this.voted.emit(pullLOI);
+
+          this.LOISubmitted = true;
 
 
         })
