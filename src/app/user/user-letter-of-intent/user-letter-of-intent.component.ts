@@ -8,7 +8,7 @@ import { GetLoiService } from '../../services/loi/get-loi.service';
 import { InOrgService } from "../../services/user/in-org.service";
 
 import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
-import { SelectedLetterOfIntentComponent } from '../../user/user-letter-of-intent/selected-letter-of-intent/selected-letter-of-intent.component';
+import { SelectedLetterOfIntentComponent } from './selected-letter-of-intent/selected-letter-of-intent.component';
 
 @Component({
   selector: 'app-user-letter-of-intent',
