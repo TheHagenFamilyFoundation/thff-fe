@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LetterOfIntentSubmitCheckComponent } from '../letter-of-intent-submit-check/letter-of-intent-submit-check.component';
@@ -15,8 +15,6 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   @Input()
   loi: any;
-
-  @Output() voted = new EventEmitter<boolean>();
 
   status: string;
 
@@ -44,8 +42,8 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
     //this.checkIfSubmit();
 
-    //check if loi info is created
-    this.checkIfHasInfo();
+
+    this.checkCanSubmit();
 
     this.LOISubmitted = this.loi.submitted;
 
@@ -54,6 +52,16 @@ export class LetterOfIntentSubmitComponent implements OnInit {
     this.link = this.loiLink + this.loiID;
 
     this.loiStatus.currentStatus.subscribe(status => this.status = status)
+
+  }
+
+  checkCanSubmit() {
+
+    //check if loi info is created
+    this.checkIfHasInfo();
+
+    //check if org has 501c3
+    //check if org has org info as well
 
   }
 
@@ -118,19 +126,17 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
           console.log('this.link', this.link)
 
-          let pullLOI = true;
-
-          this.voted.emit(pullLOI);
-
           this.LOISubmitted = true;
 
+          this.updateStatus('Submitted')
 
         })
 
   }
 
-  newMessage() {
-    this.loiStatus.changeStatus("Hello from Sibling 2")
+  //s as in status variable
+  updateStatus(s: string) {
+    this.loiStatus.changeStatus(s)
   }
 
 }

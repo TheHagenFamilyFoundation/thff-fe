@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class LOIStatusService {
 
-  private statusSource = new BehaviorSubject('default message');
+  private statusSource = new BehaviorSubject('created'); //default to the first status
   currentStatus = this.statusSource.asObservable();
 
   constructor() { }
