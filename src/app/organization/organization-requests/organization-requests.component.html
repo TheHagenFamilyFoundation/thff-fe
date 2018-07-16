@@ -35,10 +35,16 @@
                         {{row.submittedOn | date: 'MM/dd/yyyy'}}
                     </div>
                     <div *ngIf="!row.submitted">
-                       Has not been submitted.
+                        Has not been submitted.
                     </div>
                 </mat-cell>
             </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+            </ng-container>
+
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
