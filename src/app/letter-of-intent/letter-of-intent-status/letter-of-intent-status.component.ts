@@ -12,8 +12,6 @@ export class LetterOfIntentStatusComponent implements OnInit {
   @Input()
   loi: any;
 
-  // message: string;
-
   status: any;
 
   constructor(private loiStatus: LOIStatusService) {
@@ -35,14 +33,6 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
     this.status = this.loi.status;
 
-  }
-
-  //check if org has 501c3
-  //check if org has org info as well
-
-
-  newMessage() {
-    this.loiStatus.changeStatus("Hello from Sibling")
   }
 
 }
