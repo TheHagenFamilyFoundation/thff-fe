@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { LOIStatusService } from "../../services/loi/loi-status.service";
+
 @Component({
   selector: 'app-letter-of-intent-status',
   templateUrl: './letter-of-intent-status.component.html',
@@ -10,13 +12,11 @@ export class LetterOfIntentStatusComponent implements OnInit {
   @Input()
   loi: any;
 
+  // message: string;
+
   status: any;
 
-  HasInfo: boolean;
-
-  constructor() {
-
-    this.HasInfo = false;
+  constructor(private loiStatus: LOIStatusService) {
 
   }
 
@@ -27,8 +27,7 @@ export class LetterOfIntentStatusComponent implements OnInit {
     //set status
     this.setStatus();
 
-    //check if loi info is created
-    this.checkIfHasInfo();
+    this.loiStatus.currentStatus.subscribe(status => this.status = status)
 
   }
 
@@ -38,21 +37,12 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
   }
 
-
-  checkIfHasInfo() {
-
-    if (this.loi.info.length > 0) {
-      this.HasInfo = true;
-    }
-    else {
-      //set it back to false just in case
-      this.HasInfo = false;
-    }
-
-  }
-
   //check if org has 501c3
   //check if org has org info as well
 
+
+  newMessage() {
+    this.loiStatus.changeStatus("Hello from Sibling")
+  }
 
 }
