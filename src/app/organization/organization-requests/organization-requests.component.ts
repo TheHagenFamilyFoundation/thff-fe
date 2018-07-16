@@ -3,7 +3,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
-import { OrgSelectedLetterOfIntentComponent } from '../../organization/org-selected-letter-of-intent/org-selected-letter-of-intent.component';
+import { OrgSelectedLetterOfIntentComponent } from '../org-selected-letter-of-intent/org-selected-letter-of-intent.component';
 
 import { GetLoiService } from '../../services/loi/get-loi.service';
 
