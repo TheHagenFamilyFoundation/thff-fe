@@ -74,6 +74,7 @@ import { AddUserService } from './services/organization/add-user.service';
 //LOI
 import { GetLoiService } from './services/loi/get-loi.service';
 import { CreateLoiService } from './services/loi/create-loi.service';
+import { LOIStatusService } from './services/loi/loi-status.service';
 
 //loiInfo
 import { CreateLoiInfoService } from './services/loi/loi-info/create-loi-info.service';
@@ -249,7 +250,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         GetOrganizationService, CreateOrganizationService, AddUserService,
         CreateOrganizationInfoService, GetOrganizationInfoService, DeleteOrganizationInfoService,
         Upload501c3Service, Create501c3Service, Get501c3Service, Delete501c3Service,
-        GetLoiService, CreateLoiService,
+        GetLoiService, CreateLoiService, LOIStatusService,
         CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
     ],
     entryComponents: [

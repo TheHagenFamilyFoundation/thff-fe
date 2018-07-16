@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
 import { GetLoiService } from '../services/loi/get-loi.service';
+import { LOIStatusService } from "../services/loi/loi-status.service";
 
 @Component({
   selector: 'app-letter-of-intent',
@@ -17,9 +18,12 @@ export class LetterOfIntentComponent implements OnInit {
   //check basic row height
   basicRowHeight = 400;
 
+  status: string;
+
   constructor(
     private route: ActivatedRoute,
     public getLoiService: GetLoiService,
+    private loiStatus: LOIStatusService
   ) {
     this.route.params.subscribe(params => {
       console.log(params);
@@ -33,6 +37,7 @@ export class LetterOfIntentComponent implements OnInit {
 
     this.getLOI(this.loiID);
 
+    this.loiStatus.currentStatus.subscribe(status => this.status = status)
 
   }
 
