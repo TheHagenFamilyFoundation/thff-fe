@@ -3,8 +3,12 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LetterOfIntentSubmitCheckComponent } from '../letter-of-intent-submit-check/letter-of-intent-submit-check.component';
 
+//LOI
 import { SubmitLoiService } from '../../services/loi/submit-loi.service';
 import { LOIStatusService } from "../../services/loi/loi-status.service";
+
+//organization
+import { GetOrganizationService } from '../../services/organization/get-organization.service';
 
 @Component({
   selector: 'app-letter-of-intent-submit',
@@ -19,6 +23,7 @@ export class LetterOfIntentSubmitComponent implements OnInit {
   status: string;
 
   loiID: string;
+  orgID: string;
 
   LOISubmitted: boolean;
 
@@ -27,11 +32,18 @@ export class LetterOfIntentSubmitComponent implements OnInit {
   loiLink = '/loi/'
   link: string;
 
-  HasInfo: boolean;
+  HasLOIInfo: boolean;
+  HasOrgInfo: boolean;
 
-  constructor(public dialog: MatDialog, private submitLoiService: SubmitLoiService, private loiStatus: LOIStatusService) {
+  constructor(
+    public dialog: MatDialog,
+    private submitLoiService: SubmitLoiService,
+    private loiStatus: LOIStatusService,
+    public getOrgService: GetOrganizationService
+  ) {
 
-    this.HasInfo = false;
+    this.HasLOIInfo = false;
+    this.HasOrgInfo = false;
 
     //this.CanSubmit = false; //for prod
     this.CanSubmit = true; //for testing
@@ -39,9 +51,6 @@ export class LetterOfIntentSubmitComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    //this.checkIfSubmit();
-
 
     this.checkCanSubmit();
 
@@ -58,24 +67,48 @@ export class LetterOfIntentSubmitComponent implements OnInit {
   checkCanSubmit() {
 
     //check if loi info is created
-    this.checkIfHasInfo();
+    this.checkIfHasLOIInfo();
 
     //check if org has 501c3
+
     //check if org has org info as well
+    this.checkIfHasOrgInfo();
 
   }
 
-  checkIfHasInfo() {
+  checkIfHasLOIInfo() {
 
     if (this.loi.info.length > 0) {
-      this.HasInfo = true;
+      this.HasLOIInfo = true;
     }
     else {
       //set it back to false just in case
-      this.HasInfo = false;
+      this.HasLOIInfo = false;
     }
 
   }
+
+  checkIfHasOrgInfo() {
+
+    let orgID = this.loi.org;
+
+    this.getOrgService.getOrgbyID(orgID)
+      .subscribe(
+        (org) => {
+
+          console.log('org', org);
+
+          if (org[0].info.length > 0) {
+            this.HasOrgInfo = true;
+          }
+          else {
+            this.HasOrgInfo = false;
+          }
+
+        })
+
+  }
+
 
   submitLOI() {
 
