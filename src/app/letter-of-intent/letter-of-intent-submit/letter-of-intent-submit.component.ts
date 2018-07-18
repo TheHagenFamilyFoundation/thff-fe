@@ -34,6 +34,7 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   HasLOIInfo: boolean;
   HasOrgInfo: boolean;
+  HasValid501c3: boolean;
 
   constructor(
     public dialog: MatDialog,
@@ -70,6 +71,7 @@ export class LetterOfIntentSubmitComponent implements OnInit {
     this.checkIfHasLOIInfo();
 
     //check if org has 501c3
+    this.check501c3();
 
     //check if org has org info as well
     this.checkIfHasOrgInfo();
@@ -109,6 +111,11 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   }
 
+  check501c3() {
+
+    
+
+  }
 
   submitLOI() {
 
@@ -170,6 +177,19 @@ export class LetterOfIntentSubmitComponent implements OnInit {
   //s as in status variable
   updateStatus(s: string) {
     this.loiStatus.changeStatus(s)
+  }
+
+  canSubmitCheck() {
+
+    if (this.HasLOIInfo && this.HasOrgInfo && this.HasValid501c3) {
+      this.CanSubmit = true;
+    }
+    else {
+
+      this.CanSubmit = false;
+
+    }
+
   }
 
 }
