@@ -80,7 +80,9 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   checkIfHasLOIInfo() {
 
-    if (this.loi.info.length > 0) {
+    console.log('checking if loi info', this.loi)
+
+    if (this.loi.info[0].validLOIInfo) {
       this.HasLOIInfo = true;
     }
     else {
@@ -92,6 +94,8 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   checkIfHasOrgInfo() {
 
+    console.log('checking if org info')
+
     let orgID = this.loi.org;
 
     this.getOrgService.getOrgbyID(orgID)
@@ -100,7 +104,7 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
           console.log('org', org);
 
-          if (org[0].info.length > 0) {
+          if (org[0].info[0].validOrgInfo) {
             this.HasOrgInfo = true;
           }
           else {
@@ -113,7 +117,7 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   check501c3() {
 
-    
+
 
   }
 
