@@ -30,6 +30,9 @@ export class OrganizationDoc501c3Component implements OnInit {
   @Input()
   org: any;
 
+  //check basic row height
+  basicRowHeight = 200;
+
   file: File;
 
   CanUpload501c3 = false; //true when a file is selected
