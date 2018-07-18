@@ -7,23 +7,43 @@
 </p>
 <ul>
   <li>
-    LOI Info filled out.
+    <div *ngIf="!HasLOIInfo">
+      LOI Info filled out.
+    </div>
+    <div *ngIf="HasLOIInfo">
+      LOI Info filled out.
+      <mat-icon>done</mat-icon>
+    </div>
   </li>
+  <br>
   <li>
-    Org Info filled out.
+    <div *ngIf="!HasOrgInfo">
+      Org Info filled out.
+    </div>
+    <div *ngIf="HasOrgInfo">
+      Org Info filled out.
+      <mat-icon>done</mat-icon>
+    </div>
   </li>
+  <br>
   <li>
-    501c3 Submitted and reviewed
+    <div *ngIf="!HasValid501c3">
+      501c3 Submitted and reviewed.
+    </div>
+    <div *ngIf="HasValid501c3">
+      501c3 Submitted and reviewed.
+      <mat-icon>done</mat-icon>
+    </div>
   </li>
 </ul>
-<p>
+<!-- <p>
   {{HasLOIInfo}} - Does Not have LOI info
 </p>
 <p>
   {{HasOrgInfo}} - Does Not have Org info
-</p>
+</p> -->
 
-<p>{{LOISubmitted}}</p>
+<!-- <p>{{LOISubmitted}}</p> -->
 <div *ngIf="!LOISubmitted">
   <div *ngIf="CanSubmit">
     <button mat-raised-button (click)="submitLOI()">Submit</button>
