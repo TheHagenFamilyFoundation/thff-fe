@@ -53,8 +53,6 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   ngOnInit() {
 
-    this.checkCanSubmit();
-
     this.LOISubmitted = this.loi.submitted;
 
     this.loiID = this.loi.loiID;
@@ -62,6 +60,10 @@ export class LetterOfIntentSubmitComponent implements OnInit {
     this.link = this.loiLink + this.loiID;
 
     this.loiStatus.currentStatus.subscribe(status => this.status = Number(status))
+
+    this.configureStatus(this.status);
+
+    this.checkCanSubmit();
 
   }
 
@@ -193,6 +195,13 @@ export class LetterOfIntentSubmitComponent implements OnInit {
       this.CanSubmit = false;
 
     }
+
+  }
+
+  //takes in a status s that is a number
+  configureStatus(s: number): string {
+
+    return this.loiStatus.getStatus(s)
 
   }
 
