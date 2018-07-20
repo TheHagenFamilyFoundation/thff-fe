@@ -20,7 +20,7 @@ export class LetterOfIntentSubmitComponent implements OnInit {
   @Input()
   loi: any;
 
-  status: string;
+  status: number;
 
   loiID: string;
   orgID: string;
@@ -61,7 +61,7 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
     this.link = this.loiLink + this.loiID;
 
-    this.loiStatus.currentStatus.subscribe(status => this.status = status)
+    this.loiStatus.currentStatus.subscribe(status => this.status = Number(status))
 
   }
 

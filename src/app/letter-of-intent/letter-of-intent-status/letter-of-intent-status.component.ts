@@ -12,7 +12,7 @@ export class LetterOfIntentStatusComponent implements OnInit {
   @Input()
   loi: any;
 
-  status: any;
+  status: number;
 
   constructor(private loiStatus: LOIStatusService) {
 
@@ -25,7 +25,7 @@ export class LetterOfIntentStatusComponent implements OnInit {
     //set status
     this.setStatus();
 
-    this.loiStatus.currentStatus.subscribe(status => this.status = status)
+    this.loiStatus.currentStatus.subscribe(status => this.status = Number(status))
 
   }
 

@@ -18,7 +18,7 @@ export class LetterOfIntentComponent implements OnInit {
   //check basic row height
   basicRowHeight = 400;
 
-  status: string;
+  status: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +37,7 @@ export class LetterOfIntentComponent implements OnInit {
 
     this.getLOI(this.loiID);
 
-    this.loiStatus.currentStatus.subscribe(status => this.status = status)
+    this.loiStatus.currentStatus.subscribe(status => this.status = Number(status))
 
   }
 
