@@ -6,6 +6,7 @@ import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-let
 import { OrgSelectedLetterOfIntentComponent } from '../org-selected-letter-of-intent/org-selected-letter-of-intent.component';
 
 import { GetLoiService } from '../../services/loi/get-loi.service';
+import { LOIStatusService } from '../../services/loi/loi-status.service';
 
 @Component({
   selector: 'app-organization-requests',
@@ -37,14 +38,20 @@ export class OrganizationRequestsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    public dialog: MatDialog, public getLoiService: GetLoiService) { }
+    public dialog: MatDialog,
+    public getLoiService: GetLoiService,
+    private loiStatusService: LOIStatusService) { }
 
   ngOnInit() {
 
     console.log('this.org', this.org)
     console.log('this.org.users', this.org.users)
     this.lois = this.org.lois;
+
+    this.setStatuses();
+
     this.dataSource = this.lois;
+
     this.orgID = this.org.organizationID;
     this.orgName = this.org.name;
 
@@ -123,13 +130,23 @@ export class OrganizationRequestsComponent implements OnInit {
 
   }//end of getLOIs
 
-  // submitLOI(row) {
+  setStatuses() {
 
-  //   console.log('Submit LOI', row)
+    console.log('setting status')
 
-  //   this.openSubmitLOIDialog();
+    this.lois.forEach(loi => {
 
-  // }
+      console.log('before LOI', loi)
+
+      console.log('status', loi.status)
+
+      loi.status = this.configureStatus(loi.status);
+
+      console.log('after LOI', loi)
+
+    });
+
+  }
 
   openSubmitLOIDialog(loi): void {
     let dialogRef = this.dialog.open(OrgSelectedLetterOfIntentComponent, {
@@ -144,5 +161,11 @@ export class OrganizationRequestsComponent implements OnInit {
     });
   }
 
+  //takes in a status s that is a number
+  configureStatus(s: number): string {
+
+    return this.loiStatusService.getStatus(s)
+
+  }
 
 }
