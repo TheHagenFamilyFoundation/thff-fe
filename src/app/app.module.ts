@@ -126,8 +126,12 @@ import { LetterOfIntentSubmitCheckComponent } from './letter-of-intent/letter-of
 //director
 import { DirectorsMenuComponent } from './director/directors-menu/directors-menu.component';
 import { DirectorOrganizationsComponent } from './director/director-organizations/director-organizations.component';
-import { DirectorViewOrganizationComponent } from './director/director-organizations/director-view-organization/director-view-organization.component';
 import { DirectorSelectedOrganizationComponent } from './director/director-organizations/director-selected-organization/director-selected-organization.component';
+
+import { DirectorViewOrganizationComponent } from './director/director-organizations/director-view-organization/director-view-organization.component';
+import { DirectorViewOrganizationInfoComponent } from './director/director-organizations/director-view-organization/director-view-organization-info/director-view-organization-info.component';
+import { DirectorViewOrganizationLoisComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-view-organization-lois.component';
+import { DirectorViewOrganizationDoc501c3Component } from './director/director-organizations/director-view-organization/director-view-organization-doc501c3/director-view-organization-doc501c3.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
@@ -223,6 +227,12 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         EmailComponent,
 
         NotFoundComponent,
+
+        DirectorViewOrganizationInfoComponent,
+
+        DirectorViewOrganizationLoisComponent,
+
+        DirectorViewOrganizationDoc501c3Component,
 
     ],
     imports: [BrowserModule,
