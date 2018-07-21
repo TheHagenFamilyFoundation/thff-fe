@@ -126,6 +126,8 @@ import { LetterOfIntentSubmitCheckComponent } from './letter-of-intent/letter-of
 //director
 import { DirectorsMenuComponent } from './director/directors-menu/directors-menu.component';
 import { DirectorOrganizationsComponent } from './director/director-organizations/director-organizations.component';
+import { DirectorViewOrganizationComponent } from './director/director-organizations/director-view-organization/director-view-organization.component';
+import { DirectorSelectedOrganizationComponent } from './director/director-organizations/director-selected-organization/director-selected-organization.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
@@ -170,7 +172,6 @@ import { EmailComponent } from './test/email/email.component';
 //Utility
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
-
 @NgModule({
     declarations: [AppComponent,
         HeaderComponent,
@@ -180,12 +181,12 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         InthenewsComponent, FrequentlyAskedQuestionsComponent, ProcessComponent,
         GrantsAwardedComponent, GrantsByYearComponent,
         //login
-        LoginComponent, RegisterComponent
-        , ResetPasswordOrUsernameComponent,
+        LoginComponent, RegisterComponent, ResetPasswordOrUsernameComponent,
 
         //Director
         DirectorsMenuComponent,
         DirectorOrganizationsComponent,
+        DirectorViewOrganizationComponent, DirectorSelectedOrganizationComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
