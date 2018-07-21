@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   currentUser: any;
 
   userName: string;
+  accessLevel: string; //debug
 
   organizations: any;
 
@@ -64,6 +65,7 @@ export class HomeComponent implements OnInit {
 
       console.log(this.currentUser.username);
       this.userName = this.currentUser.username;
+      this.accessLevel = this.currentUser.accessLevel;
 
       this.getOrganizations();
 
