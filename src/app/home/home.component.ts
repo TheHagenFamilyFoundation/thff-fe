@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   currentUser: any;
 
   userName: string;
-  accessLevel: string; //debug
+  accessLevel: number; //debug
 
   organizations: any;
 
@@ -30,6 +30,8 @@ export class HomeComponent implements OnInit {
   InOrganization: boolean;
 
   inOrgCheck: boolean;
+
+  IsDirector: boolean;
 
   /* Constructor */
   constructor(public authService: AuthService, private inOrg: InOrgService, private getUserService: GetUserService) {
@@ -66,6 +68,13 @@ export class HomeComponent implements OnInit {
       console.log(this.currentUser.username);
       this.userName = this.currentUser.username;
       this.accessLevel = this.currentUser.accessLevel;
+
+      if (this.accessLevel > 1) {
+        this.IsDirector = true;
+      }
+      else {
+        this.IsDirector = false;
+      }
 
       this.getOrganizations();
 
