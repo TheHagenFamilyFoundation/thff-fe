@@ -19,12 +19,15 @@ export class HeaderComponent implements OnInit {
 
   currentUser: any;
   userName: string;
+  accessLevel: number;
 
   organizations: any;
 
   InOrganization: boolean;
 
   inOrgCheck: boolean;
+
+  IsDirector: boolean;
 
   constructor(
     private router: Router,
@@ -42,6 +45,15 @@ export class HeaderComponent implements OnInit {
 
       console.log(this.currentUser.username);
       this.userName = this.currentUser.username;
+      this.accessLevel = this.currentUser.accessLevel;
+
+      if (this.accessLevel > 1) {
+        this.IsDirector = true;
+      }
+      else {
+        this.IsDirector = false;
+      }
+
 
       this.getOrganizations();
 
