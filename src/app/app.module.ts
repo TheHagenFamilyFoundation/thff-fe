@@ -259,7 +259,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
     ],
     entryComponents: [
         CreateOrganizationComponent, CreateOrganizationHeaderComponent,
-        SelectedOrganizationComponent,
+        SelectedOrganizationComponent, DirectorSelectedOrganizationComponent,
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
         OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent
