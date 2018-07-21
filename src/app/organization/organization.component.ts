@@ -3,11 +3,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 import { GetOrganizationService } from '../services/organization/get-organization.service';
 
-// import { Upload501c3Service } from '../services/organization/501c3/upload-501c3.service';
-// import { Get501c3Service } from '../services/organization/501c3/get-501c3.service'; //query db and get from AWS
-
-// import { Create501c3Service } from '../services/organization/501c3/create-501c3.service'; //create from DB
-
 @Component({
   selector: 'app-organization',
   templateUrl: './organization.component.html',
