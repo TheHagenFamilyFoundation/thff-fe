@@ -160,7 +160,6 @@ import { AddUsersComponent } from './organization/organization-users/add-users/a
 import { OrganizationRequestsComponent } from './organization/organization-requests/organization-requests.component';
 import { OrgSelectedLetterOfIntentComponent } from './organization/org-selected-letter-of-intent/org-selected-letter-of-intent.component';
 
-
 //organization 501c3
 import { OrganizationDoc501c3Component } from './organization/organization-doc501c3/organization-doc501c3.component';
 import { DeleteDoc501c3CheckComponent } from './organization/organization-doc501c3/delete-doc501c3-check/delete-doc501c3-check.component';
