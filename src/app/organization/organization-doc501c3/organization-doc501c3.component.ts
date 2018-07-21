@@ -38,6 +38,8 @@ export class OrganizationDoc501c3Component implements OnInit {
   CanUpload501c3 = false; //true when a file is selected
   HasUpload501c3 = false;
 
+  Reviewed = false;
+
   constructor(private router: Router,
     public getOrgService: GetOrganizationService,
     private upload501c3Service: Upload501c3Service,
@@ -226,6 +228,5 @@ export class OrganizationDoc501c3Component implements OnInit {
         })
 
   }
-
 
 }
