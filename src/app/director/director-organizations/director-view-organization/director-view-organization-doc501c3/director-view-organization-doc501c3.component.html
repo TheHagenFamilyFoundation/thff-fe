@@ -1,3 +1,19 @@
-<p>
-  director-view-organization-doc501c3 works!
-</p>
+<div align="center">
+  <h3>501c3</h3>
+</div>
+
+<mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+  <mat-grid-tile>
+    <div *ngIf="!HasUpload501c3">
+      No 501c3 uploaded.
+    </div>
+    <div *ngIf="HasUpload501c3">
+      <button mat-raised-button (click)="get501c3()">View 501c3</button>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <h4>Status</h4>
+    Validate the 501c3
+  </mat-grid-tile>
+
+</mat-grid-list>
