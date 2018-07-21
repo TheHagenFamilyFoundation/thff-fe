@@ -1,3 +1,70 @@
-<p>
-  director-view-organization-info works!
-</p>
+<div align="center">
+  <h3>Organization Information</h3>
+</div>
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Legal Name" value={{legalName}} disabled>
+  </mat-form-field>
+
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Year Founded" value={{yearFounded}} disabled>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Current Operating Budget" value={{currentOperatingBudget}} disabled>
+    </mat-form-field>
+  </div>
+  <mat-form-field>
+    <input matInput placeholder="Executive Director" value={{director}} disabled>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Phone Number" value={{phone}} disabled>
+  </mat-form-field>
+  <div>
+    Contact Person
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Contact Person" value={{contactPerson}} disabled>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Title" value={{contactPersonTitle}} disabled>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Phone Number" value={{contactPersonPhoneNumber}} disabled>
+      </mat-form-field>
+    </p>
+  </div>
+  <mat-form-field>
+    <input matInput placeholder="Email" value={{email}} disabled>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Address" value={{address}} disabled></textarea>
+    <mat-hint align="start">
+      <strong>Principal/Administrative Office</strong>
+    </mat-hint>
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="City" value={{city}} disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="State" value={{state}} disabled>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Zip" value={{zip}} disabled>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <mat-form-field>
+    <input matInput placeholder="Fax" value={{fax}} disabled>
+  </mat-form-field>
+</div>
