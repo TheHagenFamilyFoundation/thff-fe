@@ -12,6 +12,8 @@ export class DirectorViewOrganizationComponent implements OnInit {
 
   org: any;
 
+  orgName: string;
+
   orgID: string;
 
   organizationID: string;
@@ -48,6 +50,7 @@ export class DirectorViewOrganizationComponent implements OnInit {
           console.log('org', org);
 
           this.org = org[0];
+          this.orgName = this.org.name;
 
           this.organizationID = this.org.id;
 
