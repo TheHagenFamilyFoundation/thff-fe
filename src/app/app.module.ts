@@ -123,7 +123,9 @@ import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.
 import { LetterOfIntentSubmitComponent } from './letter-of-intent/letter-of-intent-submit/letter-of-intent-submit.component';
 import { LetterOfIntentSubmitCheckComponent } from './letter-of-intent/letter-of-intent-submit-check/letter-of-intent-submit-check.component';
 
-import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
+//director
+import { DirectorsMenuComponent } from './director/directors-menu/directors-menu.component';
+import { DirectorOrganizationsComponent } from './director/director-organizations/director-organizations.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
@@ -182,7 +184,9 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         LoginComponent, RegisterComponent
         , ResetPasswordOrUsernameComponent,
 
+        //Director
         DirectorsMenuComponent,
+        DirectorOrganizationsComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
@@ -219,7 +223,6 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         EmailComponent,
 
         NotFoundComponent,
-
 
     ],
     imports: [BrowserModule,
