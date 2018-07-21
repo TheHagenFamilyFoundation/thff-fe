@@ -11,7 +11,9 @@
   <mat-grid-tile [rowspan]="2">
     <mat-card>
       <mat-card-content>
-        <app-director-view-organization-info></app-director-view-organization-info>
+        <div *ngIf="org">
+          <app-director-view-organization-info [org]="org"></app-director-view-organization-info>
+        </div>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
