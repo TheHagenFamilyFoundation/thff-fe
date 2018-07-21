@@ -6,3 +6,27 @@
     <h4>Viewing Organization: {{orgName}}</h4>
   </div>
 </div>
+
+<mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+  <mat-grid-tile [rowspan]="2">
+    <mat-card>
+      <mat-card-content>
+        <app-director-view-organization-info></app-director-view-organization-info>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-content>
+        <app-director-view-organization-lois></app-director-view-organization-lois>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-content>
+        <app-director-view-organization-doc501c3></app-director-view-organization-doc501c3>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
