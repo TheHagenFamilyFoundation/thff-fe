@@ -4,7 +4,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { GetOrganizationService } from '../../services/organization/get-organization.service';
-import { SelectedOrganizationComponent } from '../../user/user-organization/selected-organization/selected-organization.component';
+import { DirectorSelectedOrganizationComponent } from '../../director/director-organizations/director-selected-organization/director-selected-organization.component';
 
 @Component({
   selector: 'app-director-organizations',
@@ -65,7 +65,7 @@ export class DirectorOrganizationsComponent implements OnInit {
 
     console.log('org.organizationID', org.organizationID);
 
-    let dialogRef = this.dialog.open(SelectedOrganizationComponent, {
+    let dialogRef = this.dialog.open(DirectorSelectedOrganizationComponent, {
       width: '400px',
       data: { name: org.name, orgID: org.organizationID }
     });
