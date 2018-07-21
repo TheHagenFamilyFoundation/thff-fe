@@ -123,7 +123,15 @@ import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.
 import { LetterOfIntentSubmitComponent } from './letter-of-intent/letter-of-intent-submit/letter-of-intent-submit.component';
 import { LetterOfIntentSubmitCheckComponent } from './letter-of-intent/letter-of-intent-submit-check/letter-of-intent-submit-check.component';
 
-import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
+//director
+import { DirectorsMenuComponent } from './director/directors-menu/directors-menu.component';
+import { DirectorOrganizationsComponent } from './director/director-organizations/director-organizations.component';
+import { DirectorSelectedOrganizationComponent } from './director/director-organizations/director-selected-organization/director-selected-organization.component';
+
+import { DirectorViewOrganizationComponent } from './director/director-organizations/director-view-organization/director-view-organization.component';
+import { DirectorViewOrganizationInfoComponent } from './director/director-organizations/director-view-organization/director-view-organization-info/director-view-organization-info.component';
+import { DirectorViewOrganizationLoisComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-view-organization-lois.component';
+import { DirectorViewOrganizationDoc501c3Component } from './director/director-organizations/director-view-organization/director-view-organization-doc501c3/director-view-organization-doc501c3.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
@@ -158,7 +166,6 @@ import { AddUsersComponent } from './organization/organization-users/add-users/a
 import { OrganizationRequestsComponent } from './organization/organization-requests/organization-requests.component';
 import { OrgSelectedLetterOfIntentComponent } from './organization/org-selected-letter-of-intent/org-selected-letter-of-intent.component';
 
-
 //organization 501c3
 import { OrganizationDoc501c3Component } from './organization/organization-doc501c3/organization-doc501c3.component';
 import { DeleteDoc501c3CheckComponent } from './organization/organization-doc501c3/delete-doc501c3-check/delete-doc501c3-check.component';
@@ -169,7 +176,6 @@ import { EmailComponent } from './test/email/email.component';
 //Utility
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
-
 @NgModule({
     declarations: [AppComponent,
         HeaderComponent,
@@ -179,10 +185,12 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         InthenewsComponent, FrequentlyAskedQuestionsComponent, ProcessComponent,
         GrantsAwardedComponent, GrantsByYearComponent,
         //login
-        LoginComponent, RegisterComponent
-        , ResetPasswordOrUsernameComponent,
+        LoginComponent, RegisterComponent, ResetPasswordOrUsernameComponent,
 
+        //Director
         DirectorsMenuComponent,
+        DirectorOrganizationsComponent,
+        DirectorViewOrganizationComponent, DirectorSelectedOrganizationComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
@@ -220,6 +228,11 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
         NotFoundComponent,
 
+        DirectorViewOrganizationInfoComponent,
+
+        DirectorViewOrganizationLoisComponent,
+
+        DirectorViewOrganizationDoc501c3Component,
 
     ],
     imports: [BrowserModule,
@@ -256,7 +269,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
     ],
     entryComponents: [
         CreateOrganizationComponent, CreateOrganizationHeaderComponent,
-        SelectedOrganizationComponent,
+        SelectedOrganizationComponent, DirectorSelectedOrganizationComponent,
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
         OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent

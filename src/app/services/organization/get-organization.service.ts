@@ -32,4 +32,12 @@ export class GetOrganizationService {
     return this.http.get(urlString);
   }
 
+  getAllOrgs(): Observable<any> {
+
+    let urlString = this.API_URL + "/organization";
+
+    return this.http.get(urlString);
+
+  }
+
 }

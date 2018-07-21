@@ -1,0 +1,38 @@
+<div align="center">
+  <div>
+    <h3>View Organization</h3>
+  </div>
+  <div>
+    <h4>Viewing Organization: {{orgName}}</h4>
+  </div>
+</div>
+
+<mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+  <mat-grid-tile [rowspan]="2">
+    <mat-card>
+      <mat-card-content>
+        <div *ngIf="org">
+          <app-director-view-organization-info [org]="org"></app-director-view-organization-info>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-content>
+        <div *ngIf="org">
+          <app-director-view-organization-lois></app-director-view-organization-lois>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="doc501c3width">
+      <mat-card-content>
+        <div *ngIf="org">
+          <app-director-view-organization-doc501c3 [org]="org"></app-director-view-organization-doc501c3>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

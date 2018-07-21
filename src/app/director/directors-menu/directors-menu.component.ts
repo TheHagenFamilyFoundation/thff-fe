@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { AuthService } from '../auth/auth.service';
-import { DirectorService } from "../services/user/director.service";
+import { AuthService } from '../../auth/auth.service';
+import { DirectorService } from "../../services/user/director.service";
 
 @Component({
   selector: 'directors-menu',
@@ -17,6 +17,9 @@ export class DirectorsMenuComponent implements OnInit {
   accessLevel: number;
 
   IsDirector: boolean;
+
+  //check basic row height
+  basicRowHeight = 400;
 
   constructor(
     public authService: AuthService,
