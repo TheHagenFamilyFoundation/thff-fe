@@ -20,14 +20,18 @@
   <mat-grid-tile>
     <mat-card>
       <mat-card-content>
-        <app-director-view-organization-lois></app-director-view-organization-lois>
+        <div *ngIf="org">
+          <app-director-view-organization-lois></app-director-view-organization-lois>
+        </div>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
   <mat-grid-tile>
-    <mat-card>
+    <mat-card class="doc501c3width">
       <mat-card-content>
-        <app-director-view-organization-doc501c3></app-director-view-organization-doc501c3>
+        <div *ngIf="org">
+          <app-director-view-organization-doc501c3 [org]="org"></app-director-view-organization-doc501c3>
+        </div>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
