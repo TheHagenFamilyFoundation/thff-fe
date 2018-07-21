@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 
 import { GetUserService } from '../services/user/get-user.service'; //used for getting organizations
 import { InOrgService } from "../services/user/in-org.service";
+import { DirectorService } from "../services/user/director.service";
 
 @Component({
   selector: 'home',
@@ -34,7 +35,11 @@ export class HomeComponent implements OnInit {
   IsDirector: boolean;
 
   /* Constructor */
-  constructor(public authService: AuthService, private inOrg: InOrgService, private getUserService: GetUserService) {
+  constructor(
+    public authService: AuthService,
+    private inOrg: InOrgService,
+    private getUserService: GetUserService,
+    private directorService: DirectorService) {
 
     console.log("Home Constructor")
 
@@ -51,6 +56,23 @@ export class HomeComponent implements OnInit {
       else {
         this.InOrganization = false;
       }
+
+    })
+
+    this.directorService.currentIsDirector.subscribe(message => {
+
+      this.IsDirector = message;
+
+      // console.log('accessLevel change', this.accessLevel)
+
+      // if (this.accessLevel) {
+      //   console.log('is Director')
+      //   this.IsDirector = true;
+
+      // }
+      // else {
+      //   this.IsDirector = false;
+      // }
 
     })
 
@@ -71,9 +93,15 @@ export class HomeComponent implements OnInit {
 
       if (this.accessLevel > 1) {
         this.IsDirector = true;
+
+        this.directorService.changeMessage(this.IsDirector)
+
       }
       else {
         this.IsDirector = false;
+
+        this.directorService.changeMessage(this.IsDirector)
+
       }
 
       this.getOrganizations();
@@ -96,6 +124,21 @@ export class HomeComponent implements OnInit {
 
       console.log(this.currentUser.username);
       this.userName = this.currentUser.username;
+      this.accessLevel = this.currentUser.accessLevel;
+
+      if (this.accessLevel > 1) {
+        this.IsDirector = true;
+
+        this.directorService.changeMessage(this.IsDirector)
+
+      }
+      else {
+        this.IsDirector = false;
+
+        this.directorService.changeMessage(this.IsDirector)
+
+      }
+
 
       this.getOrganizations();
 
