@@ -55,6 +55,7 @@ import { ChangeEmailService } from './services/user/change-email.service';
 import { ResetCodeService } from './services/user/reset-code.service';
 
 import { InOrgService } from './services/user/in-org.service';
+import { DirectorService } from './services/user/director.service';
 
 //Organization
 import { GetOrganizationService } from './services/organization/get-organization.service';
@@ -246,7 +247,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
-        InOrgService,
+        InOrgService, DirectorService,
         GetOrganizationService, CreateOrganizationService, AddUserService,
         CreateOrganizationInfoService, GetOrganizationInfoService, DeleteOrganizationInfoService,
         Upload501c3Service, Create501c3Service, Get501c3Service, Delete501c3Service,

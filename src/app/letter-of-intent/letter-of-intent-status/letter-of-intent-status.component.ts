@@ -12,7 +12,8 @@ export class LetterOfIntentStatusComponent implements OnInit {
   @Input()
   loi: any;
 
-  status: any;
+  status: number;
+  outputStatus: string;
 
   constructor(private loiStatus: LOIStatusService) {
 
@@ -22,17 +23,27 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
     console.log('loi', this.loi)
 
-    //set status
-    this.setStatus();
-
-    this.loiStatus.currentStatus.subscribe(status => this.status = status)
-
-  }
-
-  setStatus() {
-
     this.status = this.loi.status;
 
+    //set status
+    this.setStatus(this.status);
+
+    this.loiStatus.currentStatus.subscribe(status => this.status = Number(status))
+
   }
+
+  setStatus(s: number) {
+
+    this.outputStatus = this.configureStatus(s);
+
+  }
+
+  //takes in a status s that is a number
+  configureStatus(s: number): string {
+
+    return this.loiStatus.getStatus(s)
+
+  }
+
 
 }

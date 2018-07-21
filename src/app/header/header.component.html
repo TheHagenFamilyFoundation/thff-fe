@@ -22,6 +22,12 @@
           <button mat-menu-item (click)="createOrg()">Create Organization</button>
         </mat-menu>
       </div>
+
+    </div>
+    <div *ngIf="authService.authenticated">
+      <div *ngIf="IsDirector">
+        <button mat-button routerLink="/director" fxHide="false">Directors</button>
+      </div>
     </div>
 
   </div>

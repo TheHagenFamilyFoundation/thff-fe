@@ -35,6 +35,8 @@ import { CreateLetterOfIntentFullComponent } from './letter-of-intent/create-let
 //user
 import { UserComponent } from './user/user.component';
 
+import { DirectorsMenuComponent } from './directors-menu/directors-menu.component';
+
 //organization
 import { OrganizationComponent } from './organization/organization.component';
 
@@ -83,6 +85,7 @@ const appRoutes: Routes = [
     { path: 'loi/:id', component: LetterOfIntentComponent, canActivate: [AuthGuard] },
     { path: 'create-loi-full', component: CreateLetterOfIntentFullComponent, canActivate: [AuthGuard] },
 
+    { path: 'director', component: DirectorsMenuComponent, canActivate: [AuthGuard] },
 
     {
         path: 'externalRedirect',

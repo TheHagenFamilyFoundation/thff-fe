@@ -8,6 +8,8 @@ import { AuthService } from '../auth/auth.service';
 import { GetUserService } from '../services/user/get-user.service'; //used for getting organizations
 import { InOrgService } from "../services/user/in-org.service";
 
+import { DirectorService } from "../services/user/director.service";
+
 import { CreateOrganizationHeaderComponent } from '../organization/create-organization-header/create-organization-header.component';
 
 @Component({
@@ -19,6 +21,7 @@ export class HeaderComponent implements OnInit {
 
   currentUser: any;
   userName: string;
+  accessLevel: number;
 
   organizations: any;
 
@@ -26,11 +29,14 @@ export class HeaderComponent implements OnInit {
 
   inOrgCheck: boolean;
 
+  IsDirector: boolean;
+
   constructor(
     private router: Router,
     public authService: AuthService,
     private getUserService: GetUserService,
     private inOrg: InOrgService,
+    private directorService: DirectorService,
     public dialog: MatDialog,
   ) {
 
@@ -42,6 +48,20 @@ export class HeaderComponent implements OnInit {
 
       console.log(this.currentUser.username);
       this.userName = this.currentUser.username;
+      this.accessLevel = this.currentUser.accessLevel;
+
+      if (this.accessLevel > 1) {
+        this.IsDirector = true;
+
+        this.directorService.changeMessage(this.IsDirector)
+
+      }
+      else {
+        this.IsDirector = false;
+
+        this.directorService.changeMessage(this.IsDirector)
+
+      }
 
       this.getOrganizations();
 
@@ -68,7 +88,23 @@ export class HeaderComponent implements OnInit {
 
     })
 
+    this.directorService.currentIsDirector.subscribe(message => {
 
+      this.IsDirector = message;
+
+      // console.log('isdirector change', this.accessLevel)
+
+      // if (this.accessLevel > 1) {
+
+      //   console.log('isDirector')
+
+      //   this.IsDirector = true;
+      // }
+      // else {
+      //   this.IsDirector = false;
+      // }
+
+    })
 
     if (this.authService.authenticated) {
       console.log("currentUser");
@@ -78,6 +114,22 @@ export class HeaderComponent implements OnInit {
 
       console.log(this.currentUser.username);
       this.userName = this.currentUser.username;
+      this.accessLevel = this.currentUser.accessLevel;
+
+      console.log('this.accessLevel', this.accessLevel)
+
+      if (this.accessLevel > 1) {
+        this.IsDirector = true;
+
+        this.directorService.changeMessage(this.IsDirector)
+
+      }
+      else {
+        this.IsDirector = false;
+
+        this.directorService.changeMessage(this.IsDirector)
+
+      }
 
       this.getOrganizations();
 
