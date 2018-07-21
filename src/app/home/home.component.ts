@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
+
 import { environment } from '../../environments/environment';
+
+import { AuthService } from '../auth/auth.service';
 
 import { GetUserService } from '../services/user/get-user.service'; //used for getting organizations
 import { InOrgService } from "../services/user/in-org.service";
@@ -62,17 +64,6 @@ export class HomeComponent implements OnInit {
     this.directorService.currentIsDirector.subscribe(message => {
 
       this.IsDirector = message;
-
-      // console.log('accessLevel change', this.accessLevel)
-
-      // if (this.accessLevel) {
-      //   console.log('is Director')
-      //   this.IsDirector = true;
-
-      // }
-      // else {
-      //   this.IsDirector = false;
-      // }
 
     })
 
