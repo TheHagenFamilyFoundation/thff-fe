@@ -6,12 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DirectorService {
 
-  private isDirector = new BehaviorSubject(1); //initialize to false
+  private isDirector = new BehaviorSubject(false); //initialize to false
   currentIsDirector = this.isDirector.asObservable();
 
   constructor() { }
 
-  changeMessage(isDir: number) {
+  changeMessage(isDir: boolean) {
     this.isDirector.next(isDir)
   }
 
