@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+import { GetOrganizationService } from '../../services/organization/get-organization.service';
+import { SelectedOrganizationComponent } from '../../user/user-organization/selected-organization/selected-organization.component';
 
 @Component({
   selector: 'app-director-organizations',
@@ -7,9 +13,76 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectorOrganizationsComponent implements OnInit {
 
-  constructor() { }
+  organizations: any;
+
+  displayedColumns = ['name', 'createdOn'];
+  dataSource: MatTableDataSource<OrganizationData>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(public getOrgService: GetOrganizationService, public dialog: MatDialog, ) { }
 
   ngOnInit() {
+
+    this.getOrganizations();
+
   }
 
+  getOrganizations() {
+
+    this.getOrgService.getAllOrgs()
+      .subscribe(
+        (orgs) => {
+
+          console.log('orgs', orgs);
+
+          this.organizations = orgs;
+
+          this.dataSource = new MatTableDataSource(this.organizations);
+
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+
+        })
+
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
+  onRowClicked(row) {
+    console.log('Row clicked: ', row);
+
+    this.openSelectedOrgDialog(row); //pass in the org from row object
+
+  }
+
+  openSelectedOrgDialog(org): void {
+
+    console.log('org.organizationID', org.organizationID);
+
+    let dialogRef = this.dialog.open(SelectedOrganizationComponent, {
+      width: '400px',
+      data: { name: org.name, orgID: org.organizationID }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+      console.log('result', result); //debug
+
+    });
+  }
+
+}
+
+//old
+export interface OrganizationData {
+  id: string;
+  name: string;
+  progress: string;
+  color: string;
 }
