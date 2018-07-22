@@ -24,7 +24,7 @@ export class DirectorViewOrganizationDoc501c3Component implements OnInit {
   org: any;
 
   //check basic row height
-  basicRowHeight = 200;
+  basicRowHeight = 150;
 
   HasUpload501c3 = false;
 
