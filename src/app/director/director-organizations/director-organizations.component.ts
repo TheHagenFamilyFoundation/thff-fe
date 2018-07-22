@@ -4,7 +4,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { GetOrganizationService } from '../../services/organization/get-organization.service';
-import { DirectorSelectedOrganizationComponent } from '../../director/director-organizations/director-selected-organization/director-selected-organization.component';
+import { DirectorSelectedOrganizationComponent } from './director-selected-organization/director-selected-organization.component';
 
 @Component({
   selector: 'app-director-organizations',

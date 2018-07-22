@@ -68,6 +68,7 @@ import { DeleteOrganizationInfoService } from './services/organization/organizat
 import { Upload501c3Service } from './services/organization/501c3/upload-501c3.service'; //upload the file
 import { Create501c3Service } from './services/organization/501c3/create-501c3.service'; //create the object in the mongo db that contains the url
 import { Get501c3Service } from './services/organization/501c3/get-501c3.service';
+import { Doc501c3StatusService } from './services/organization/501c3/doc501c3-status.service';
 import { Delete501c3Service } from './services/organization/501c3/delete-501c3.service'; //for updating the 501c3 if there are any changes
 
 import { AddUserService } from './services/organization/add-user.service';
@@ -132,6 +133,7 @@ import { DirectorViewOrganizationComponent } from './director/director-organizat
 import { DirectorViewOrganizationInfoComponent } from './director/director-organizations/director-view-organization/director-view-organization-info/director-view-organization-info.component';
 import { DirectorViewOrganizationLoisComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-view-organization-lois.component';
 import { DirectorViewOrganizationDoc501c3Component } from './director/director-organizations/director-view-organization/director-view-organization-doc501c3/director-view-organization-doc501c3.component';
+import { Validate501c3CheckComponent } from './director/director-organizations/director-view-organization/director-view-organization-doc501c3/validate501c3-check/validate501c3-check.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
@@ -191,6 +193,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         DirectorsMenuComponent,
         DirectorOrganizationsComponent,
         DirectorViewOrganizationComponent, DirectorSelectedOrganizationComponent,
+        DirectorViewOrganizationInfoComponent, DirectorViewOrganizationLoisComponent,
+        DirectorViewOrganizationDoc501c3Component, Validate501c3CheckComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
@@ -228,12 +232,6 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
         NotFoundComponent,
 
-        DirectorViewOrganizationInfoComponent,
-
-        DirectorViewOrganizationLoisComponent,
-
-        DirectorViewOrganizationDoc501c3Component,
-
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
@@ -263,13 +261,13 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         InOrgService, DirectorService,
         GetOrganizationService, CreateOrganizationService, AddUserService,
         CreateOrganizationInfoService, GetOrganizationInfoService, DeleteOrganizationInfoService,
-        Upload501c3Service, Create501c3Service, Get501c3Service, Delete501c3Service,
+        Upload501c3Service, Create501c3Service, Get501c3Service, Delete501c3Service, Doc501c3StatusService,
         GetLoiService, CreateLoiService, LOIStatusService,
         CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
     ],
     entryComponents: [
         CreateOrganizationComponent, CreateOrganizationHeaderComponent,
-        SelectedOrganizationComponent, DirectorSelectedOrganizationComponent,
+        SelectedOrganizationComponent, DirectorSelectedOrganizationComponent, Validate501c3CheckComponent,
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
         OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent

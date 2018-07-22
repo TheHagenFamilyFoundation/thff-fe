@@ -12,8 +12,21 @@
     </div>
   </mat-grid-tile>
   <mat-grid-tile>
-    <h4>Status</h4>
-    Validate the 501c3
+    <div>
+      <h4>Status</h4>
+      <div>{{outputStatus}}</div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2">
+    <div>
+      <h4>Validate</h4>
+      <div *ngIf="HasUpload501c3">
+        <button mat-raised-button (click)="checkValidate501c3()">Validate</button>
+      </div>
+      <div *ngIf="!HasUpload501c3">
+        No 501c3 uploaded to validate.
+      </div>
+    </div>
   </mat-grid-tile>
 
 </mat-grid-list>
