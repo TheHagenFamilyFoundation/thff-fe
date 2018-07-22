@@ -68,6 +68,7 @@ import { DeleteOrganizationInfoService } from './services/organization/organizat
 import { Upload501c3Service } from './services/organization/501c3/upload-501c3.service'; //upload the file
 import { Create501c3Service } from './services/organization/501c3/create-501c3.service'; //create the object in the mongo db that contains the url
 import { Get501c3Service } from './services/organization/501c3/get-501c3.service';
+import { Doc501c3StatusService } from './services/organization/501c3/doc501c3-status.service';
 import { Delete501c3Service } from './services/organization/501c3/delete-501c3.service'; //for updating the 501c3 if there are any changes
 
 import { AddUserService } from './services/organization/add-user.service';
@@ -260,7 +261,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         InOrgService, DirectorService,
         GetOrganizationService, CreateOrganizationService, AddUserService,
         CreateOrganizationInfoService, GetOrganizationInfoService, DeleteOrganizationInfoService,
-        Upload501c3Service, Create501c3Service, Get501c3Service, Delete501c3Service,
+        Upload501c3Service, Create501c3Service, Get501c3Service, Delete501c3Service, Doc501c3StatusService,
         GetLoiService, CreateLoiService, LOIStatusService,
         CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
     ],
