@@ -19,7 +19,7 @@ export class DirectorViewOrganizationComponent implements OnInit {
   organizationID: string;
 
   //check basic row height
-  basicRowHeight = 400;
+  basicRowHeight = 500;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
