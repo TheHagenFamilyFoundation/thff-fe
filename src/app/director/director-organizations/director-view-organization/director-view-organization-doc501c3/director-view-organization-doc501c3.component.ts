@@ -111,7 +111,7 @@ export class DirectorViewOrganizationDoc501c3Component implements OnInit {
 
   }
 
-  validate501c3() {
+  checkValidate501c3() {
 
     this.openSelectedOrgDialog(this.doc501c3);
 
@@ -131,6 +131,14 @@ export class DirectorViewOrganizationDoc501c3Component implements OnInit {
       console.log('result', result); //debug
 
     });
+  }
+
+  validate501c3() {
+
+    //call the backend to update the status
+
+    
+
   }
 
 
