@@ -7,6 +7,10 @@ import { GetOrganizationService } from '../../../../services/organization/get-or
 
 import { Get501c3Service } from '../../../../services/organization/501c3/get-501c3.service'; //query db and get from AWS
 
+import { Validate501c3Service } from '../../../../services/organization/501c3/validate-501c3.service'; //query db and get from AWS
+
+import { Validate501c3CheckComponent } from '../../../../director/director-organizations/director-view-organization/director-view-organization-doc501c3/validate501c3-check/validate501c3-check.component';
+
 @Component({
   selector: 'app-director-view-organization-doc501c3',
   templateUrl: './director-view-organization-doc501c3.component.html',
@@ -14,14 +18,16 @@ import { Get501c3Service } from '../../../../services/organization/501c3/get-501
 })
 export class DirectorViewOrganizationDoc501c3Component implements OnInit {
 
+  @Input()
+  org: any;
+
   //5 character string
   orgID: any;
 
   //mongodb id
   organizationID: any;
 
-  @Input()
-  org: any;
+  doc501c3: any;
 
   //check basic row height
   basicRowHeight = 150;
@@ -32,6 +38,7 @@ export class DirectorViewOrganizationDoc501c3Component implements OnInit {
     private router: Router,
     public getOrgService: GetOrganizationService,
     private get501c3Service: Get501c3Service,
+    private validate501c3Service: Validate501c3Service,
     public dialog: MatDialog,
   ) { }
 
@@ -71,6 +78,8 @@ export class DirectorViewOrganizationDoc501c3Component implements OnInit {
             console.log('has 501c3')
             this.HasUpload501c3 = true;
 
+            this.doc501c3 = this.org.doc501c3[0];
+
           }
           else {
             this.HasUpload501c3 = false;
@@ -101,5 +110,28 @@ export class DirectorViewOrganizationDoc501c3Component implements OnInit {
         })
 
   }
+
+  validate501c3() {
+
+    this.openSelectedOrgDialog(this.doc501c3);
+
+  }
+
+  openSelectedOrgDialog(doc501c3): void {
+
+    console.log('doc501c3', this.doc501c3);
+
+    let dialogRef = this.dialog.open(Validate501c3CheckComponent, {
+      width: '400px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+      console.log('result', result); //debug
+
+    });
+  }
+
 
 }
