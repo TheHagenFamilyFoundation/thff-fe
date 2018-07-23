@@ -10,10 +10,14 @@
 <div>
   <mat-grid-list cols="2" [rowHeight]="basicRowHeight">
     <mat-grid-tile>
-      1
+      <div *ngIf="loi">
+        <app-director-org-view-letter-of-intent-info [loi]="loi"></app-director-org-view-letter-of-intent-info>
+      </div>
     </mat-grid-tile>
     <mat-grid-tile>
-      2
+      <div *ngIf="loi">
+        <app-director-org-view-letter-of-intent-status [loi]="loi"></app-director-org-view-letter-of-intent-status>
+      </div>
     </mat-grid-tile>
 
   </mat-grid-list>
