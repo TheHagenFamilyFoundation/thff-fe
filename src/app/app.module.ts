@@ -117,10 +117,6 @@ import { CreateLetterOfIntentFullComponent } from './letter-of-intent/create-let
 import { LetterOfIntentInfoComponent } from './letter-of-intent/letter-of-intent-info/letter-of-intent-info.component';
 import { LetterOfIntentStatusComponent } from './letter-of-intent/letter-of-intent-status/letter-of-intent-status.component';
 
-import { LetintmenuComponent } from './letintmenu/letintmenu.component';
-
-import { LetintComponent } from './letintmenu/letint/letint.component';
-import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component';
 import { LetterOfIntentSubmitComponent } from './letter-of-intent/letter-of-intent-submit/letter-of-intent-submit.component';
 import { LetterOfIntentSubmitCheckComponent } from './letter-of-intent/letter-of-intent-submit-check/letter-of-intent-submit-check.component';
 
@@ -232,7 +228,6 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         DeleteDoc501c3CheckComponent,
 
         //letter of intent
-        LetintmenuComponent, LetintComponent, LetintStatusComponent,
         LetterOfIntentComponent,
         CreateLetterOfIntentComponent,
         CreateLetterOfIntentFullComponent,
