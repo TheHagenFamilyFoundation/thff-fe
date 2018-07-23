@@ -18,10 +18,10 @@
     </mat-card>
   </mat-grid-tile>
   <mat-grid-tile>
-    <mat-card>
+    <mat-card class="loiswidth">
       <mat-card-content>
         <div *ngIf="org">
-          <app-director-view-organization-lois></app-director-view-organization-lois>
+          <app-director-view-organization-lois [org]="org"></app-director-view-organization-lois>
         </div>
       </mat-card-content>
     </mat-card>

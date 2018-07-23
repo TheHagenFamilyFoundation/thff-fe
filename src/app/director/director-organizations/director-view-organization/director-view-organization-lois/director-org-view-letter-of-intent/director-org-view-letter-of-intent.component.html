@@ -1,0 +1,24 @@
+<div align="center">
+  <div>
+    <h3>View Letter of Intent</h3>
+  </div>
+  <div>
+    <h4>Viewing Letter of Intent: {{loi?.name}}</h4>
+    <h5>Organization: {{orgName}}</h5>
+  </div>
+</div>
+<div>
+  <mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+    <mat-grid-tile>
+      <div *ngIf="loi">
+        <app-director-org-view-letter-of-intent-info [loi]="loi"></app-director-org-view-letter-of-intent-info>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div *ngIf="loi">
+        <app-director-org-view-letter-of-intent-status [loi]="loi"></app-director-org-view-letter-of-intent-status>
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</div>
