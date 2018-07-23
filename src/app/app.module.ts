@@ -135,6 +135,8 @@ import { DirectorViewOrganizationLoisComponent } from './director/director-organ
 import { DirectorViewOrganizationDoc501c3Component } from './director/director-organizations/director-view-organization/director-view-organization-doc501c3/director-view-organization-doc501c3.component';
 import { Validate501c3CheckComponent } from './director/director-organizations/director-view-organization/director-view-organization-doc501c3/validate501c3-check/validate501c3-check.component';
 
+import { DirectorOrgSelectedLetterOfIntentComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-selected-letter-of-intent/director-org-selected-letter-of-intent.component';
+
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
@@ -195,6 +197,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         DirectorViewOrganizationComponent, DirectorSelectedOrganizationComponent,
         DirectorViewOrganizationInfoComponent, DirectorViewOrganizationLoisComponent,
         DirectorViewOrganizationDoc501c3Component, Validate501c3CheckComponent,
+        DirectorOrgSelectedLetterOfIntentComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
