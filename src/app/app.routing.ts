@@ -22,12 +22,6 @@ import { RegisterComponent } from './register/register.component'
 import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forgot-username/reset-password-or-forgot-username.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
 
-//letintmenu
-import { LetintmenuComponent } from './letintmenu/letintmenu.component'
-
-//Letint and LetintStatus
-import { LetintComponent } from './letintmenu/letint/letint.component'
-import { LetintStatusComponent } from './letintmenu/letint-status/letint-status.component'
 import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
 
 import { CreateLetterOfIntentFullComponent } from './letter-of-intent/create-letter-of-intent-full/create-letter-of-intent-full.component';
@@ -73,10 +67,6 @@ const appRoutes: Routes = [
 
     { path: 'grants-awarded', component: GrantsAwardedComponent },
     { path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent },
-
-    { path: 'loimenu', component: LetintmenuComponent, canActivate: [AuthGuard] },
-    { path: 'letint', component: LetintComponent, canActivate: [AuthGuard] },
-    { path: 'status', component: LetintStatusComponent, canActivate: [AuthGuard] },
 
     { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
 
