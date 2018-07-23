@@ -240,7 +240,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         EmailComponent,
 
         NotFoundComponent,
-        
+
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
@@ -279,7 +279,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         SelectedOrganizationComponent, DirectorSelectedOrganizationComponent, Validate501c3CheckComponent,
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
-        OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent
+        OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent,
+        DirectorOrgSelectedLetterOfIntentComponent
     ]
 })
 export class AppModule { }
