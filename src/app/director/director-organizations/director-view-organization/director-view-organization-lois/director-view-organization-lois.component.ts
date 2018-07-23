@@ -8,7 +8,7 @@ import { GetLoiService } from '../../../../services/loi/get-loi.service';
 import { LOIStatusService } from '../../../../services/loi/loi-status.service';
 
 //components
-import { OrgSelectedLetterOfIntentComponent } from '../../../../organization/org-selected-letter-of-intent/org-selected-letter-of-intent.component';
+import { DirectorOrgSelectedLetterOfIntentComponent } from './director-org-selected-letter-of-intent/director-org-selected-letter-of-intent.component';
 
 @Component({
   selector: 'app-director-view-organization-lois',
@@ -74,7 +74,7 @@ export class DirectorViewOrganizationLoisComponent implements OnInit {
   }
 
   openSubmitLOIDialog(loi): void {
-    let dialogRef = this.dialog.open(OrgSelectedLetterOfIntentComponent, {
+    let dialogRef = this.dialog.open(DirectorOrgSelectedLetterOfIntentComponent, {
       width: '250px',
       data: { name: loi.name, loiID: loi.loiID }
     });
