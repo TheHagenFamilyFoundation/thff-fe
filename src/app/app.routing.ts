@@ -37,6 +37,7 @@ import { UserComponent } from './user/user.component';
 
 import { DirectorsMenuComponent } from './director/directors-menu/directors-menu.component';
 import { DirectorViewOrganizationComponent } from './director/director-organizations/director-view-organization/director-view-organization.component';
+import { DirectorOrgViewLetterOfIntentComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent.component';
 
 //organization
 import { OrganizationComponent } from './organization/organization.component';
@@ -88,6 +89,7 @@ const appRoutes: Routes = [
 
     { path: 'director', component: DirectorsMenuComponent, canActivate: [AuthGuard] },
     { path: 'director-organization/:id', component: DirectorViewOrganizationComponent, canActivate: [AuthGuard] },
+    { path: 'director-loi/:id', component: DirectorOrgViewLetterOfIntentComponent, canActivate: [AuthGuard] },
 
     {
         path: 'externalRedirect',
