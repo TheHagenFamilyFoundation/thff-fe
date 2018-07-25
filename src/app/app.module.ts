@@ -137,6 +137,7 @@ import { DirectorOrgViewLetterOfIntentInfoComponent } from './director/director-
 import { DirectorOrgViewLetterOfIntentStatusComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent-status/director-org-view-letter-of-intent-status.component';
 
 import { DirectorLoisComponent } from './director/director-lois/director-lois.component';
+import { DirectorSelectedLoiComponent } from './director/director-lois/director-selected-loi/director-selected-loi.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
@@ -244,6 +245,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         EmailComponent,
 
         NotFoundComponent,
+
+        DirectorSelectedLoiComponent,
 
     ],
     imports: [BrowserModule,
