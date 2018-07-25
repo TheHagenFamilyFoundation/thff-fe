@@ -287,7 +287,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
         OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent,
-        DirectorOrgSelectedLetterOfIntentComponent
+        DirectorOrgSelectedLetterOfIntentComponent, DirectorSelectedLoiComponent
     ]
 })
 export class AppModule { }
