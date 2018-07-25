@@ -71,7 +71,7 @@ export class DirectorLoisComponent implements OnInit {
 
     let dialogRef = this.dialog.open(DirectorSelectedLoiComponent, {
       width: '400px',
-      data: { name: loi.name }
+      data: { name: loi.name, loiID: loi.loiID }
     });
 
     dialogRef.afterClosed().subscribe(result => {
