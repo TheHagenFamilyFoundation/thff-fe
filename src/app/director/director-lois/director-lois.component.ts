@@ -39,8 +39,6 @@ export class DirectorLoisComponent implements OnInit {
 
           this.lois = lois;
 
-          console.log('lois[0].organization.name', lois[0].organization.name)
-
           this.dataSource = new MatTableDataSource(this.lois);
 
           this.dataSource.paginator = this.paginator;
