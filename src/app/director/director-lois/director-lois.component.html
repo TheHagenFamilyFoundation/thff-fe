@@ -24,6 +24,18 @@
         <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'MM/dd/yyyy'}} </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="submitted">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Submitted </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.submitted}} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+      </ng-container>
+
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
       </mat-row>
