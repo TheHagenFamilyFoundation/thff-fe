@@ -136,6 +136,9 @@ import { DirectorOrgViewLetterOfIntentComponent } from './director/director-orga
 import { DirectorOrgViewLetterOfIntentInfoComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent-info/director-org-view-letter-of-intent-info.component';
 import { DirectorOrgViewLetterOfIntentStatusComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent-status/director-org-view-letter-of-intent-status.component';
 
+import { DirectorLoisComponent } from './director/director-lois/director-lois.component';
+import { DirectorSelectedLoiComponent } from './director/director-lois/director-selected-loi/director-selected-loi.component';
+
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
@@ -206,6 +209,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         DirectorOrgViewLetterOfIntentInfoComponent,
         DirectorOrgViewLetterOfIntentStatusComponent,
 
+        DirectorLoisComponent,
+
         ResetPasswordComponent,
         TypeNewPasswordComponent,
         ForgotUsernameComponent,
@@ -240,6 +245,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         EmailComponent,
 
         NotFoundComponent,
+
+        DirectorSelectedLoiComponent,
 
     ],
     imports: [BrowserModule,
@@ -280,7 +287,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
         OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent,
-        DirectorOrgSelectedLetterOfIntentComponent
+        DirectorOrgSelectedLetterOfIntentComponent, DirectorSelectedLoiComponent
     ]
 })
 export class AppModule { }

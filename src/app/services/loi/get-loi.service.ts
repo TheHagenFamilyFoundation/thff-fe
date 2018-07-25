@@ -35,4 +35,12 @@ export class GetLoiService {
     return this.http.get(urlString);
   }
 
+  getAllLOIs(): Observable<any> {
+
+    let urlString = this.API_URL + "/loi";
+
+    return this.http.get(urlString);
+
+  }
+
 }
