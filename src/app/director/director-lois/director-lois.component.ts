@@ -5,7 +5,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { GetLoiService } from '../../services/loi/get-loi.service';
 import { LOIStatusService } from '../../services/loi/loi-status.service';
-//import { DirectorSelectedLOIComponent } from './director-selected-loi/director-selected-loi.component';
+import { DirectorSelectedLoiComponent } from './director-selected-loi/director-selected-loi.component';
 
 @Component({
   selector: 'app-director-lois',
@@ -63,24 +63,22 @@ export class DirectorLoisComponent implements OnInit {
   onRowClicked(row) {
     console.log('Row clicked: ', row);
 
-    this.openSelectedOrgDialog(row); //pass in the org from row object
+    this.openSelectedLOIDialog(row); //pass in the org from row object
 
   }
 
-  openSelectedOrgDialog(org): void {
+  openSelectedLOIDialog(loi): void {
 
-    console.log('org.organizationID', org.organizationID);
+    let dialogRef = this.dialog.open(DirectorSelectedLoiComponent, {
+      width: '400px',
+      data: { name: loi.name }
+    });
 
-    // let dialogRef = this.dialog.open(DirectorSelectedLOIComponent, {
-    //   width: '400px',
-    //   data: { name: loi.name }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+      console.log('result', result); //debug
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed'); //debug
-    //   console.log('result', result); //debug
-
-    // });
+    });
   }
 
   setStatuses() {
