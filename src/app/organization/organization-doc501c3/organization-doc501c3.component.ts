@@ -11,6 +11,8 @@ import { Delete501c3Service } from '../../services/organization/501c3/delete-501
 
 import { Create501c3Service } from '../../services/organization/501c3/create-501c3.service'; //create from DB
 
+import { Doc501c3StatusService } from '../../services/organization/501c3/doc501c3-status.service';
+
 //components
 import { DeleteDoc501c3CheckComponent } from './delete-doc501c3-check/delete-doc501c3-check.component';
 
@@ -40,10 +42,15 @@ export class OrganizationDoc501c3Component implements OnInit {
 
   Reviewed = false;
 
+  doc501c3: any;
+  status: any; //for the 501c3 doc
+  outputStatus: any;
+
   constructor(private router: Router,
     public getOrgService: GetOrganizationService,
     private upload501c3Service: Upload501c3Service,
     private get501c3Service: Get501c3Service,
+    private doc501c3StatusService: Doc501c3StatusService,
     private create501c3Service: Create501c3Service,
     private delete501c3Service: Delete501c3Service,
     public dialog: MatDialog,
@@ -84,8 +91,15 @@ export class OrganizationDoc501c3Component implements OnInit {
 
           if (this.org.doc501c3.length > 0) {
 
-            console.log('has 501c3')
+            console.log('has 501c3', this.org.doc501c3[0])
             this.HasUpload501c3 = true;
+
+            this.doc501c3 = this.org.doc501c3[0];
+
+            this.status = this.doc501c3.status;
+
+            //set status
+            this.setStatus(this.status);
 
           }
           else {
@@ -226,6 +240,25 @@ export class OrganizationDoc501c3Component implements OnInit {
           this.getOrganization(this.orgID);
 
         })
+
+  }
+
+  setStatus(s: number) {
+
+    console.log('setStatus', s)
+
+    this.outputStatus = this.configureStatus(s);
+
+    console.log('outputStatus', this.outputStatus)
+
+  }
+
+  //takes in a status s that is a number
+  configureStatus(s: number): string {
+
+    console.log('configureStatus', s)
+
+    return this.doc501c3StatusService.getStatus(s)
 
   }
 
