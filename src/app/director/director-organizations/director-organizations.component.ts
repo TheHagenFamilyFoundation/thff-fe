@@ -67,7 +67,7 @@ export class DirectorOrganizationsComponent implements OnInit {
 
     let dialogRef = this.dialog.open(DirectorSelectedOrganizationComponent, {
       width: '400px',
-      data: { name: org.name, orgID: org.organizationID }
+      data: { name: org.name, orgID: org.organizationID, org: org }
     });
 
     dialogRef.afterClosed().subscribe(result => {
