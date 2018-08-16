@@ -21,6 +21,17 @@
     <div>
       <h4>Status</h4>
       <div>{{outputStatus}}</div>
+      <div *ngIf="Rejected501c3">
+        <div>
+          Please upload another.
+        </div>
+        <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">
+        <div *ngIf="CanUpload501c3">
+          <div align="center">
+            <button mat-raised-button (click)="uploadReplacement()">Upload</button>
+          </div>
+        </div>
+      </div>
     </div>
   </mat-grid-tile>
 
