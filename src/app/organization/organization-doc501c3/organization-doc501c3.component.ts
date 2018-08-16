@@ -46,6 +46,8 @@ export class OrganizationDoc501c3Component implements OnInit {
   status: any; //for the 501c3 doc
   outputStatus: any;
 
+  Rejected501c3: boolean;
+
   constructor(private router: Router,
     public getOrgService: GetOrganizationService,
     private upload501c3Service: Upload501c3Service,
@@ -55,6 +57,8 @@ export class OrganizationDoc501c3Component implements OnInit {
     private delete501c3Service: Delete501c3Service,
     public dialog: MatDialog,
   ) {
+
+    this.Rejected501c3 = true;
 
   }
 
@@ -171,6 +175,61 @@ export class OrganizationDoc501c3Component implements OnInit {
 
   }
 
+  uploadReplacement() {
+
+    console.log('upload replacement')
+
+    //delete the old one
+    console.log('deleting 501c3')
+
+    //call the delete 501c3 service
+    this.delete501c3Service.delete501c3byOrgID(this.orgID)
+      .subscribe(
+        (result) => {
+
+          this.upload501c3Service.upload501c3(this.file, this.orgID)
+            .subscribe(
+              (result) => {
+
+                console.log('result', result);
+
+                if (result.body) {
+                  console.log('result has body')
+
+                  let body = {
+                    url: result.body.files[0].extra.Location,
+                    fileName: result.body.files[0].fd,
+                    organization: this.organizationID,
+                    orgID: this.orgID
+                  }
+
+                  this.create501c3Service.create501c3(body)
+                    .subscribe(
+                      (result) => {
+
+                        console.log('result', result);
+
+                        if (result.body) {
+                          console.log('result has body')
+                        }
+
+                        //refresh the organization
+                        this.getOrganization(this.orgID);
+
+                      },
+                      err => console.log(err)
+                    );
+
+                }
+
+              },
+              err => console.log(err)
+            );
+
+        })
+
+  }
+
   get501c3() {
 
     console.log('getting 501c3')
@@ -221,13 +280,12 @@ export class OrganizationDoc501c3Component implements OnInit {
       }
 
     });
+
   }
 
   delete501c3() {
 
     console.log('deleting 501c3')
-
-    // console.log('orgID', this.orgID)
 
     //call the delete 501c3 service
     this.delete501c3Service.delete501c3byOrgID(this.orgID)
@@ -250,6 +308,13 @@ export class OrganizationDoc501c3Component implements OnInit {
     this.outputStatus = this.configureStatus(s);
 
     console.log('outputStatus', this.outputStatus)
+
+    if (s == 3) {
+      this.Rejected501c3 = true;
+    }
+    else {
+      this.Rejected501c3 = false;
+    }
 
   }
 
