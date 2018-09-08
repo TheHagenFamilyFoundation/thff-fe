@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Application Timeline - {{previousYear}}/{{currentYear}} Cycle</h1>
+  <h1>Application Timeline</h1>
 </div>
 <div>
   <mat-grid-list cols="1" rowHeight="500px">
@@ -19,15 +19,31 @@
           <tr>
             <td>
               <div>
-                Deadline for Letters of Intent
+                Letter of Intent Submission Portal Opens
               </div>
+              <br>
               <div>
-                If your organization wishes to apply for funding, you must begin by completing the <span><a [routerLink]="['/letintmenu']">Letter of Intent</a></span>.
+                If your organization wishes to apply for funding, you must begin by completing the <span><a
+                    [routerLink]="['/letintmenu']">Letter
+                    of Intent</a></span>.
               </div>
             </td>
             <td>
-              April {{currentYear}}
+              January 15
             </td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <span><a [routerLink]="['/letintmenu']">Letter
+                    of Intent</a></span> Submission Deadline
+              </div>
+              <br>
+              <div>
+                No requests will be considered after this date.
+              </div>
+            </td>
+            <td>April 1</td>
           </tr>
           <tr>
             <td>
@@ -36,75 +52,54 @@
               </div>
               <br>
               <div>
-                After a first round of deliberations, we will request full proposals from those organizations who best meet our objectives
-                and criteria. A notification will be sent via email to the primary contact named on the letter of intent.
+                After a first round of deliberations, we will request full proposals from those organizations who best
+                meet our objectives
+                and criteria. A notification will be sent via email to the primary contact named on the letter of
+                intent.
               </div>
               <br>
               <div>
-                <span style="font-weight:bold">Due to the large volume of requests we receive each year, we DO NOT send out notifications of rejection.</span>
+                <span style="font-weight:bold">Due to the large volume of requests we receive each year, we DO NOT send
+                  out
+                  notifications of rejection.</span>
               </div>
             </td>
             <td>
-              May {{currentYear}}
+              May 1
             </td>
           </tr>
           <tr>
             <td>
               <div>
-                Deadline for Full Proposals
+                Full Proposal Submission Deadline
               </div>
+              <br>
               <div>
-                If your organization has been asked to submit a full proposal, we ask that this be completed online as soon as possible.
+                Full Proposals must be submitted online by this date. Late submissions will not be considered.
               </div>
             </td>
             <td>
-              June {{currentYear}}
+              June 15
             </td>
-            <tr>
-              <td>
-                Notification of grants to be funded by The Hagen Family Foundation
-              </td>
-              <td>
-                August {{currentYear}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Awards distributed
-              </td>
-              <td>
-                Sept. - Oct. {{currentYear}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Announcement of {{nextYear}} timeline.
-              </td>
-              <td>
-                November {{currentYear}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Progess Reports due from {{previousYear}} grantees
-              </td>
-              <td>
-                February {{currentYear}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Final Status Reports due from {{previousYear}} grantees
-              </td>
-              <td>
-                June {{currentYear}}
-              </td>
-            </tr>
-
+          <tr>
+            <td>
+              Notification of grants to be funded
+            </td>
+            <td>
+              August 15
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Distribution of Awards
+            </td>
+            <td>
+              October 15
+            </td>
+          </tr>
         </tbody>
       </table>
     </mat-grid-tile>
   </mat-grid-list>
-
 
 </div>

@@ -2,6 +2,26 @@
   <h2>{{data.name}}</h2>
 </div>
 <div>
+  <mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+    <mat-grid-tile>
+      <mat-card-content>
+        <div>Number of Users: {{users}}</div>
+        <div>Has Org Info: {{hasInfo}}</div>
+        <div>Has 501(c)3: {{uploaded501c3}}</div>
+        <div>Number of Letter of Intents: {{lois}}</div>
+        <div>Pending Review?</div>
+      </mat-card-content>
+    </mat-grid-tile>
+    <!-- <mat-grid-tile>
+      <mat-card>
+        <mat-card-content>
+          Help 2
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile> -->
+  </mat-grid-list>
+</div>
+<div>
   <button mat-raised-button [routerLink]="[link]" mat-dialog-close>Org</button>
 
   <button mat-raised-button (click)="cancel() " mat-dialog-close>Cancel</button>
