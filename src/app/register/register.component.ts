@@ -194,7 +194,7 @@ export class RegisterComponent implements OnInit {
   emailChange() {
     console.log("EmailChange");
 
-    if (this.email != "") {
+    if (this.email != "" && !this.emailFormControl.hasError('email')) {
       //this.ValidEmail = true;
       this.ValidEmailCheck();
     }
