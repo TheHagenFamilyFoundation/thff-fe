@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { tokenNotExpired } from 'angular2-jwt';
+import { tokenNotExpired } from 'angular-jwt';
 
 @Injectable()
 export class AuthService {
