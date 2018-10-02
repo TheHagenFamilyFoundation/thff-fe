@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   envName: 'prod',
-  API_URL: 'https://hagenfoundationbackend.herokuapp.com'
+  API_URL: process.env.BE_API || 'https://hagenfoundationbackend.herokuapp.com'
 };
