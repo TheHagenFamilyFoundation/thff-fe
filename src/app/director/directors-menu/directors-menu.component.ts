@@ -27,7 +27,7 @@ export class DirectorsMenuComponent implements OnInit {
     public directorService: DirectorService) {
 
     //check if authenticated
-    if (this.authService.authenticated) {
+    if (!this.authService.isExpired()) {
       console.log("currentUser");
       console.log(localStorage.getItem('currentUser'));
       //console.log(localStorage.getItem('currentUser.username'));
