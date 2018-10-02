@@ -70,32 +70,36 @@ export class HomeComponent implements OnInit {
     this.env = environment.envName;
     this.API = environment.API_URL;
 
-    console.log(this.authService.authenticated)
+    console.log("this.authService.isExpired()", this.authService.isExpired())
 
-    if (this.authService.authenticated) {
+    if (!this.authService.isExpired()) {
       console.log("currentUser");
       console.log(localStorage.getItem('currentUser'));
-      //console.log(localStorage.getItem('currentUser.username'));
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-      console.log(this.currentUser.username);
-      this.userName = this.currentUser.username;
-      this.accessLevel = this.currentUser.accessLevel;
+      if (localStorage.getItem('currentUser')) {
 
-      if (this.accessLevel > 1) {
-        this.IsDirector = true;
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-        this.directorService.changeMessage(this.IsDirector)
+        console.log(this.currentUser.username);
+        this.userName = this.currentUser.username;
+        this.accessLevel = this.currentUser.accessLevel;
+
+        if (this.accessLevel > 1) {
+          this.IsDirector = true;
+
+          this.directorService.changeMessage(this.IsDirector)
+
+        }
+        else {
+          this.IsDirector = false;
+
+          this.directorService.changeMessage(this.IsDirector)
+
+        }
+
+        this.getOrganizations();
 
       }
-      else {
-        this.IsDirector = false;
-
-        this.directorService.changeMessage(this.IsDirector)
-
-      }
-
-      this.getOrganizations();
 
     }
 
@@ -107,31 +111,35 @@ export class HomeComponent implements OnInit {
 
     console.log("ngOnInit")
 
-    if (this.authService.authenticated) {
+    if (!this.authService.isExpired()) {
       console.log("currentUser");
       console.log(localStorage.getItem('currentUser'));
-      //console.log(localStorage.getItem('currentUser.username'));
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-      console.log(this.currentUser.username);
-      this.userName = this.currentUser.username;
-      this.accessLevel = this.currentUser.accessLevel;
+      if (localStorage.getItem('currentUser')) {
 
-      if (this.accessLevel > 1) {
-        this.IsDirector = true;
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-        this.directorService.changeMessage(this.IsDirector)
+        console.log(this.currentUser.username);
+        this.userName = this.currentUser.username;
+        this.accessLevel = this.currentUser.accessLevel;
+
+        if (this.accessLevel > 1) {
+          this.IsDirector = true;
+
+          this.directorService.changeMessage(this.IsDirector)
+
+        }
+        else {
+          this.IsDirector = false;
+
+          this.directorService.changeMessage(this.IsDirector)
+
+        }
+
+
+        this.getOrganizations();
 
       }
-      else {
-        this.IsDirector = false;
-
-        this.directorService.changeMessage(this.IsDirector)
-
-      }
-
-
-      this.getOrganizations();
 
     }
 

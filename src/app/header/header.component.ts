@@ -40,30 +40,33 @@ export class HeaderComponent implements OnInit {
     public dialog: MatDialog,
   ) {
 
-    if (this.authService.authenticated) {
+    if (!this.authService.isExpired()) {
       console.log("currentUser");
       console.log(localStorage.getItem('currentUser'));
-      //console.log(localStorage.getItem('currentUser.username'));
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-      console.log(this.currentUser.username);
-      this.userName = this.currentUser.username;
-      this.accessLevel = this.currentUser.accessLevel;
+      if (localStorage.getItem('currentUser')) {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-      if (this.accessLevel > 1) {
-        this.IsDirector = true;
+        console.log(this.currentUser.username);
+        this.userName = this.currentUser.username;
+        this.accessLevel = this.currentUser.accessLevel;
 
-        this.directorService.changeMessage(this.IsDirector)
+        if (this.accessLevel > 1) {
+          this.IsDirector = true;
+
+          this.directorService.changeMessage(this.IsDirector)
+
+        }
+        else {
+          this.IsDirector = false;
+
+          this.directorService.changeMessage(this.IsDirector)
+
+        }
+
+        this.getOrganizations();
 
       }
-      else {
-        this.IsDirector = false;
-
-        this.directorService.changeMessage(this.IsDirector)
-
-      }
-
-      this.getOrganizations();
 
     }
 
@@ -104,36 +107,47 @@ export class HeaderComponent implements OnInit {
       //   this.IsDirector = false;
       // }
 
+
+
     })
 
-    if (this.authService.authenticated) {
+    console.log('expired', this.authService.isExpired())
+
+    if (!this.authService.isExpired()) {
       console.log("currentUser");
       console.log(localStorage.getItem('currentUser'));
-      //console.log(localStorage.getItem('currentUser.username'));
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-      console.log(this.currentUser.username);
-      this.userName = this.currentUser.username;
-      this.accessLevel = this.currentUser.accessLevel;
+      if (localStorage.getItem('currentUser')) {
 
-      console.log('this.accessLevel', this.accessLevel)
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-      if (this.accessLevel > 1) {
-        this.IsDirector = true;
+        console.log(this.currentUser.username);
+        this.userName = this.currentUser.username;
+        this.accessLevel = this.currentUser.accessLevel;
 
-        this.directorService.changeMessage(this.IsDirector)
+        console.log('this.accessLevel', this.accessLevel)
+
+        if (this.accessLevel > 1) {
+          this.IsDirector = true;
+
+          this.directorService.changeMessage(this.IsDirector)
+
+        }
+        else {
+          this.IsDirector = false;
+
+          this.directorService.changeMessage(this.IsDirector)
+
+        }
+
+        this.getOrganizations();
 
       }
-      else {
-        this.IsDirector = false;
-
-        this.directorService.changeMessage(this.IsDirector)
-
-      }
-
-      this.getOrganizations();
 
     }
+
+
+    console.log('end of ngoninit')
 
   }
 
