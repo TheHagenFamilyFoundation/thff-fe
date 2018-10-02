@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 //Environment
 import { environment } from '../../environments/environment';
@@ -164,7 +164,7 @@ export class RegisterComponent implements OnInit {
 
               console.log('now login', data)
 
-              this.authService.login();
+              this.router.navigate(['/home']);
 
             },
             err => console.log(err)

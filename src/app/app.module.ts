@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -8,6 +8,9 @@ import 'hammerjs';
 import { AppRoutingModule } from './app.routing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
 
 //Angular Material
 import { MatGridListModule } from '@angular/material';
@@ -271,6 +274,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
     bootstrap: [AppComponent],
     providers: [
         AuthGuard, AuthService, LoginService, GetCSRFTokenService,
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,

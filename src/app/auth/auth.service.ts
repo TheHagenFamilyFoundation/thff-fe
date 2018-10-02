@@ -1,33 +1,32 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { tokenNotExpired } from 'angular2-jwt';
+import { map } from 'rxjs/operators';
 
-@Injectable()
+import { environment } from '../../environments/environment';
+
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+@Injectable({ providedIn: 'root' })
 export class AuthService {
 
-    // Create a stream of logged in status to communicate throughout app
-    loggedIn: boolean;
-    loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn);
+    API_URL = environment.API_URL;
 
-    constructor(private router: Router) {
-        // If authenticated, set local profile property and update login status subject
-        if (this.authenticated) {
-            this.setLoggedIn(true);
-        }
-    }
+    jwtHelper = new JwtHelperService();
 
-    login() {
-        console.log("auth service login");
+    constructor(private http: HttpClient, private router: Router) { }
 
-        this.router.navigate(['/home']);
+    login(data, csrf) {
+        return this.http.put<any>(`${this.API_URL}/login`, data)
+            .pipe(map(result => {
+                // login successful if there's a jwt token in the response
+                // if (result && result.token) {
+                //     // store user details and jwt token in local storage to keep user logged in between page refreshes
+                //     localStorage.setItem('currentUser', JSON.stringify(result.user));
+                // }
 
-    }
-
-    setLoggedIn(value: boolean) {
-        // Update login status subject
-        this.loggedIn$.next(value);
-        this.loggedIn = value;
+                return result;
+            }));
     }
 
     logout() {
@@ -37,14 +36,16 @@ export class AuthService {
         localStorage.removeItem('token');
         localStorage.removeItem('currentUser');
 
-        this.router.navigate(['']);
+        this.router.navigate(['/home']);
 
-        this.setLoggedIn(false);
     }
 
-    get authenticated() {
-        // Check if there's an unexpired access token
-        return tokenNotExpired('token');
+    tokenGetter() {
+        return localStorage.getItem('token');
+    }
+
+    isExpired() {
+        return this.jwtHelper.isTokenExpired(this.tokenGetter());
     }
 
 }

@@ -35,9 +35,6 @@ export class LoginComponent implements OnInit {
 
   body;
 
-  data;
-  results: any;
-
   ShowMessage = false;
   message: any;
 
@@ -122,25 +119,29 @@ export class LoginComponent implements OnInit {
           console.log('this.body', this.body);
           console.log('urlString', urlString);
 
-          this.Login = this.loginService.login(this.body, this.csrfToken)
+          this.Login = this.authService.login(this.body, this.csrfToken)
             .subscribe(
               (data) => {
 
-                this.results = data;
+                console.log('data', data)
+                let user = data.user
+                console.log('user', user)
 
-                if (this.results.user) {
-                  console.log("this.results.user = " + this.results.user)
 
-                  localStorage.setItem('token', this.results.token);
-                  localStorage.setItem('currentUser', JSON.stringify(this.results.user));
+                if (user) {
+                  console.log("this.results.user = ", user)
+
+                  localStorage.setItem('token', data.token);
+                  localStorage.setItem('currentUser', JSON.stringify(user));
 
                   console.log("token = " + localStorage.getItem('token'));
                   console.log("currentUser = " + localStorage.getItem('currentUser'));
 
-                  this.authService.login();
+                  this.router.navigate(['/home']);
+
                 }
                 else {
-                  this.message = this.results.message;
+                  this.message = data.message;
                   this.ShowMessage = true;
                 }
 
@@ -152,7 +153,7 @@ export class LoginComponent implements OnInit {
             )
 
         })
-        
+
   }
 
   register(): void {

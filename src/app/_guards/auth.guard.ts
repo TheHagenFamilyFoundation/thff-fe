@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
 
     constructor(private router: Router, public snackBar: MatSnackBar) {
@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
 
     }
 
-    canActivate() {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
         console.log("this is the canActivate function");
 
@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
         });
 
         // not logged in so redirect to login page
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
         return false;
     }
 }
