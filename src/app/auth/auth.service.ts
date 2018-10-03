@@ -53,7 +53,7 @@ export class AuthService {
 
         if (environment.production == true) {
 
-            console.log('getting backend URL')
+            console.log('getting backend URL', window.location.origin + '/backend')
 
             this.http.get(window.location.origin + '/backend')
                 .pipe(map(urlBackend => {
