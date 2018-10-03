@@ -4,7 +4,7 @@ const targetPath = `./src/environments/environment.ts`;
 const envConfigFile = `
 export const environment = {
   production: "${process.env.PRODUCTION}",
-  API_BASE_URL: "${process.env.BE_API}"
+  API_BASE_URL: "${process.env.API_BASE_URL}"
 };
 `;
 
