@@ -70,9 +70,6 @@
           "configurations": {
             "production": {
               "browserTarget": "thff-fe:build:production"
-            },
-            "staging": {
-              "browserTarget": "ng-configuration:build:staging"
             }
           }
         },
