@@ -45,6 +45,8 @@ export class HomeComponent implements OnInit {
 
     console.log("Home Constructor")
 
+    this.authService.getBackendURL();
+
     this.inOrg.currentInOrg.subscribe(message => {
 
       this.inOrgCheck = message;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import 'rxjs/add/operator/map';
 
 import { environment } from '../../environments/environment';
 
@@ -46,6 +47,33 @@ export class AuthService {
 
     isExpired() {
         return this.jwtHelper.isTokenExpired(this.tokenGetter());
+    }
+
+    getBackendURL() {
+
+        if (environment.production == true) {
+
+            console.log('getting backend URL')
+
+            this.http.get(window.location.origin + '/backend')
+                .pipe(map(urlBackend => {
+
+                    console.log('urlBackend', urlBackend)
+
+                    // if (urlBackend) {
+                    //     sessionStorage.setItem('url_backend', urlBackend.url);
+                    // }
+                    // else {
+                    //     console.log('Can´t find the backend URL, using a failover value');
+                    //     sessionStorage.setItem('url_backend', 'https://failover-url.com');
+                    // }
+
+                    return urlBackend;
+
+                }))
+
+        }
+
     }
 
 }
