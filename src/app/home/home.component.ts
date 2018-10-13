@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
 
     console.log("Home Constructor")
 
-    this.authService.getBackendURL();
+    this.getBackendURL();
 
     this.inOrg.currentInOrg.subscribe(message => {
 
@@ -190,6 +190,15 @@ export class HomeComponent implements OnInit {
         })
 
   }//end of getOrganizations
+
+  getBackendURL() {
+    this.authService.getBackendURL().subscribe(
+      (backendUrl) => {
+
+        console.log('backendUrl', backendUrl.url);
+
+      })
+  }
 
 
 }

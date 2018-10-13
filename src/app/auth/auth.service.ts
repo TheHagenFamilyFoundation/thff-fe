@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs'
 
 import { environment } from '../../environments/environment';
 
@@ -49,30 +50,33 @@ export class AuthService {
         return this.jwtHelper.isTokenExpired(this.tokenGetter());
     }
 
-    getBackendURL() {
+    getBackendURL(): Observable<any> {
 
         if (environment.production == true) {
 
             console.log('getting backend URL', window.location.origin + '/backend')
 
-            this.http.get(window.location.origin + '/backend')
-                .subscribe(
-                    (urlBackend) => {
+            return this.http.get(window.location.origin + '/backend')
 
-                        console.log('urlBackend', urlBackend)
+            // .subscribe(
+            //     urlBackend => {
 
-                        if (urlBackend) {
-                            sessionStorage.setItem('url_backend', urlBackend.url);
-                        }
-                        else {
-                            console.log('Can´t find the backend URL, using a failover value');
-                            sessionStorage.setItem('url_backend', 'https://failover-url.com');
-                        }
+            //         console.log('urlBackend', urlBackend)
 
-                    })
+            //         if (urlBackend) {
+            //             sessionStorage.setItem('url_backend', urlBackend.url);
+            //         }
+            //         else {
+            //             console.log('Can´t find the backend URL, using a failover value');
+            //             sessionStorage.setItem('url_backend', 'https://failover-url.com');
+            //         }
+
+            //     })
 
         }
 
     }
+
+
 
 }
