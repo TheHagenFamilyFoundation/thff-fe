@@ -197,22 +197,27 @@ export class HomeComponent implements OnInit {
   }//end of getOrganizations
 
   getBackendURL() {
-    this.authService.initializeBackendURL().subscribe(
-      (backendUrl) => {
 
-        console.log('backendUrl', backendUrl.url);
+    if (environment.production) {
 
-        if (backendUrl) {
-          sessionStorage.setItem('backend_url', backendUrl.url);
-        }
-        else {
-          console.log('Can´t find the backend URL, using a failover value');
-          sessionStorage.setItem('backend_url', 'https://failover-url.com');
-        }
+      this.authService.initializeBackendURL().subscribe(
+        (backendUrl) => {
 
-        this.API = backendUrl.url;
+          console.log('backendUrl', backendUrl.url);
 
-      })
+          if (backendUrl) {
+            sessionStorage.setItem('backend_url', backendUrl.url);
+          }
+          else {
+            console.log('Can´t find the backend URL, using a failover value');
+            sessionStorage.setItem('backend_url', 'https://failover-url.com');
+          }
+
+          this.API = backendUrl.url;
+
+        })
+    }
+    
   }
 
 }
