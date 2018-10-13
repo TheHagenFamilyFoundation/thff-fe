@@ -59,6 +59,7 @@ export class AuthService {
                 .pipe(map(urlBackend => {
 
                     console.log('urlBackend', urlBackend)
+                    console.log('urlBackend 2')
 
                     // if (urlBackend) {
                     //     sessionStorage.setItem('url_backend', urlBackend.url);
@@ -68,7 +69,7 @@ export class AuthService {
                     //     sessionStorage.setItem('url_backend', 'https://failover-url.com');
                     // }
 
-                    return urlBackend;
+                    //return urlBackend;
 
                 }))
 
