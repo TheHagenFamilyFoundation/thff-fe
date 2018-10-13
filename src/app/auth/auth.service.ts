@@ -50,7 +50,7 @@ export class AuthService {
         return this.jwtHelper.isTokenExpired(this.tokenGetter());
     }
 
-    getBackendURL(): Observable<any> {
+    initializeBackendURL(): Observable<any> {
 
         if (environment.production == true) {
 
@@ -58,22 +58,13 @@ export class AuthService {
 
             return this.http.get(window.location.origin + '/backend')
 
-            // .subscribe(
-            //     urlBackend => {
-
-            //         console.log('urlBackend', urlBackend)
-
-            //         if (urlBackend) {
-            //             sessionStorage.setItem('url_backend', urlBackend.url);
-            //         }
-            //         else {
-            //             console.log('Can´t find the backend URL, using a failover value');
-            //             sessionStorage.setItem('url_backend', 'https://failover-url.com');
-            //         }
-
-            //     })
-
         }
+
+    }
+
+    getBackendURL(): string {
+
+        return sessionStorage.getItem('backend_url');
 
     }
 
