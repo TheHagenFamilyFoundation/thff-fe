@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/dist/'));
 
 // Nice and done!
 app.get('/backend', (req, res) => {
-  res.json({ url: process.env.BE_API })
+  res.send({ url: process.env.BE_API })
 });
 
 

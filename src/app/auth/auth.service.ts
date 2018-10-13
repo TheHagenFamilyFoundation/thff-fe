@@ -60,17 +60,14 @@ export class AuthService {
                     (urlBackend) => {
 
                         console.log('urlBackend', urlBackend)
-                        console.log('urlBackend 2')
 
-                        // if (urlBackend) {
-                        //     sessionStorage.setItem('url_backend', urlBackend.url);
-                        // }
-                        // else {
-                        //     console.log('Can´t find the backend URL, using a failover value');
-                        //     sessionStorage.setItem('url_backend', 'https://failover-url.com');
-                        // }
-
-                        //return urlBackend;
+                        if (urlBackend) {
+                            sessionStorage.setItem('url_backend', urlBackend.url);
+                        }
+                        else {
+                            console.log('Can´t find the backend URL, using a failover value');
+                            sessionStorage.setItem('url_backend', 'https://failover-url.com');
+                        }
 
                     })
 
