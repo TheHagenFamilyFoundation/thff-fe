@@ -197,6 +197,14 @@ export class HomeComponent implements OnInit {
 
         console.log('backendUrl', backendUrl.url);
 
+        if (backendUrl) {
+          sessionStorage.setItem('backend_url', backendUrl.url);
+        }
+        else {
+          console.log('Can´t find the backend URL, using a failover value');
+          sessionStorage.setItem('backend_url', 'https://failover-url.com');
+        }
+
       })
   }
 
