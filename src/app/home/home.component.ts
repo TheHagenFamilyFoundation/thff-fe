@@ -70,7 +70,12 @@ export class HomeComponent implements OnInit {
     })
 
     this.env = environment.envName;
-    this.API = environment.API_URL;
+
+    //if not production get the localhost from the environment file
+    if (!environment.production) {
+      this.API = environment.API_URL;
+    }
+    //else it doesn't need to be set
 
     console.log("this.authService.isExpired()", this.authService.isExpired())
 
@@ -192,7 +197,7 @@ export class HomeComponent implements OnInit {
   }//end of getOrganizations
 
   getBackendURL() {
-    this.authService.getBackendURL().subscribe(
+    this.authService.initializeBackendURL().subscribe(
       (backendUrl) => {
 
         console.log('backendUrl', backendUrl.url);
@@ -205,8 +210,9 @@ export class HomeComponent implements OnInit {
           sessionStorage.setItem('backend_url', 'https://failover-url.com');
         }
 
+        this.API = backendUrl.url;
+
       })
   }
-
 
 }
