@@ -12,6 +12,8 @@ import { CreateLoiInfoService } from '../../services/loi/loi-info/create-loi-inf
 import { GetLoiInfoService } from '../../services/loi/loi-info/get-loi-info.service';
 import { DeleteLoiInfoService } from '../../services/loi/loi-info/delete-loi-info.service';
 
+import { AuthService } from '../../auth/auth.service';
+
 //debounce
 import { Subject } from 'rxjs';
 
@@ -24,7 +26,7 @@ import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/op
 })
 export class LetterOfIntentInfoComponent implements OnInit {
 
-  API_URL = environment.API_URL;
+  API_URL: string;
 
   @Input()
   loi: any;
@@ -61,6 +63,7 @@ export class LetterOfIntentInfoComponent implements OnInit {
     private createLoiInfoService: CreateLoiInfoService,
     private getLoiInfoService: GetLoiInfoService,
     private deleteLoiInfoService: DeleteLoiInfoService,
+    private authService: AuthService,
   ) {
 
     this.projectTitle$.pipe(
@@ -126,6 +129,17 @@ export class LetterOfIntentInfoComponent implements OnInit {
       });
 
     this.defaultValues();
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+    }
+
+    console.log('this.API_URL', this.API_URL)
+
 
   }
 

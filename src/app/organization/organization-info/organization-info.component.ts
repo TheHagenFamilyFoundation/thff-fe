@@ -9,6 +9,8 @@ import { CreateOrganizationInfoService } from '../../services/organization/organ
 import { GetOrganizationInfoService } from '../../services/organization/organization-info/get-organization-info.service';
 import { DeleteOrganizationInfoService } from '../../services/organization/organization-info/delete-organization-info.service';
 
+import { AuthService } from '../../auth/auth.service';
+
 //debounce
 import { Subject } from 'rxjs';
 
@@ -21,7 +23,7 @@ import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/op
 })
 export class OrganizationInfoComponent implements OnInit {
 
-  API_URL = environment.API_URL;
+  API_URL: string;
 
   @Input()
   org: any;
@@ -72,6 +74,7 @@ export class OrganizationInfoComponent implements OnInit {
     private createOrganizationInfoService: CreateOrganizationInfoService,
     private getOrganizationInfoService: GetOrganizationInfoService,
     private deleteOrganizationInfoService: DeleteOrganizationInfoService,
+    private authService: AuthService,
   ) {
 
     this.legalName$.pipe(
@@ -201,6 +204,16 @@ export class OrganizationInfoComponent implements OnInit {
       });
 
     this.defaultValues();
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+    }
+
+    console.log('this.API_URL', this.API_URL)
 
   }//end of constructor
 
