@@ -7,6 +7,8 @@ import { environment } from '../../../environments/environment';
 //Services
 import { CreateOrganizationService } from '../../services/organization/create-organization.service';
 
+import { AuthService } from '../../auth/auth.service';
+
 //debounce
 import { Subject } from 'rxjs';
 
@@ -19,7 +21,7 @@ import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/op
 })
 export class CreateOrganizationComponent implements OnInit {
 
-  API_URL = environment.API_URL;
+  API_URL: string;
 
   orgName$ = new Subject<string>();
   description$ = new Subject<string>();
@@ -41,6 +43,7 @@ export class CreateOrganizationComponent implements OnInit {
     private http: HttpClient,
     private createOrganizationService: CreateOrganizationService,
     public dialogRef: MatDialogRef<CreateOrganizationComponent>,
+    private authService: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
     this.orgName$.pipe(
@@ -60,6 +63,16 @@ export class CreateOrganizationComponent implements OnInit {
         this.description = term;
         this.descriptionChange()
       });
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+    }
+
+    console.log('this.API_URL', this.API_URL)
 
   }
 

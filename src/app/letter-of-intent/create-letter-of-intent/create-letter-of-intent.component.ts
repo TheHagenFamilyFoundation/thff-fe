@@ -5,6 +5,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { environment } from '../../../environments/environment';
 
+import { AuthService } from '../../auth/auth.service';
+
 //Services
 import { CreateLoiService } from '../../services/loi/create-loi.service';
 import { GetUserService } from '../../services/user/get-user.service'; //used for getting organizations
@@ -22,7 +24,7 @@ import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/op
 
 export class CreateLetterOfIntentComponent implements OnInit {
 
-  API_URL = environment.API_URL;
+  API_URL: string;
 
   loiName$ = new Subject<string>();
   description$ = new Subject<string>();
@@ -53,6 +55,7 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
+    public authService: AuthService,
     private createLoiService: CreateLoiService,
     private getUserService: GetUserService,
     public dialogRef: MatDialogRef<CreateLetterOfIntentComponent>,
@@ -88,6 +91,16 @@ export class CreateLetterOfIntentComponent implements OnInit {
         this.description = term;
         this.descriptionChange()
       });
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+    }
+
+    console.log('this.API_URL', this.API_URL)
 
   }
 

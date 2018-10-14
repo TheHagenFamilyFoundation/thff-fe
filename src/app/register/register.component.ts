@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
 
   title = "Register";
 
-  API_URL = environment.API_URL;
+  API_URL: string;
 
   body;
 
@@ -121,6 +121,16 @@ export class RegisterComponent implements OnInit {
         this.confirmPassword = term;
         this.confirmPasswordChange()
       });
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+    }
+
+    console.log('this.API_URL', this.API_URL)
 
   }
 

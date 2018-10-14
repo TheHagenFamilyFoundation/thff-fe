@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   title = "Login"
 
-  API_URL = environment.API_URL;
+  API_URL: string;
 
   csrfToken: any;
   CSRF: any;
@@ -65,6 +65,17 @@ export class LoginComponent implements OnInit {
         this.password = term;
         this.passwordChange()
       });
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+    }
+
+    console.log('this.API_URL', this.API_URL)
+
 
   }
 

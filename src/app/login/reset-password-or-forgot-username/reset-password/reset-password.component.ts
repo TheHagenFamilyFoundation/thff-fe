@@ -10,6 +10,8 @@ import { ValidUserNameService } from '../../../services/user/valid-username.serv
 import { EmailService } from '../../../services/user/email.service';
 import { ResetCodeService } from '../../../services/user/reset-code.service';
 
+import { AuthService } from '../../../auth/auth.service';
+
 //debounce
 import { Subject } from 'rxjs';
 
@@ -24,7 +26,7 @@ export class ResetPasswordComponent implements OnInit {
 
   title = "Reset Password"
 
-  API_URL = environment.API_URL;
+  API_URL: string;
 
   userName$ = new Subject<string>();
   email$ = new Subject<string>();
@@ -48,7 +50,8 @@ export class ResetPasswordComponent implements OnInit {
     private validEmailService: ValidEmailService,
     private validUserNameService: ValidUserNameService,
     private _emailService: EmailService,
-    private _resetService: ResetCodeService
+    private _resetService: ResetCodeService,
+    private authService: AuthService,
   ) {
 
     this.userName$.pipe(
@@ -68,6 +71,16 @@ export class ResetPasswordComponent implements OnInit {
         this.email = term;
         this.emailChange()
       });
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+    }
+
+    console.log('this.API_URL', this.API_URL)
 
   }
 
