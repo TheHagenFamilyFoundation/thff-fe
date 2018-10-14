@@ -12,11 +12,23 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-    API_URL = environment.API_URL;
+    API_URL: string;
 
     jwtHelper = new JwtHelperService();
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private router: Router) {
+
+        if (!environment.production) {
+            this.API_URL = environment.API_URL;
+        }
+        else {
+            this.API_URL = this.getBackendURL();
+            console.log('this.API_URL', this.API_URL)
+        }
+
+        console.log('this.API_URL', this.API_URL)
+
+    }
 
     login(data, csrf) {
         return this.http.put<any>(`${this.API_URL}/login`, data)
