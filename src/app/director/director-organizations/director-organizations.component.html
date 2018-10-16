@@ -18,6 +18,18 @@
         <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'MM/dd/yyyy'}} </mat-cell>
       </ng-container>
 
+      <!-- users Column -->
+      <ng-container matColumnDef="users">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Users </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.users.length}} </mat-cell>
+      </ng-container>
+
+      <!-- lois Column -->
+      <ng-container matColumnDef="lois">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> LOIs </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.lois.length}} </mat-cell>
+      </ng-container>
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
       </mat-row>
