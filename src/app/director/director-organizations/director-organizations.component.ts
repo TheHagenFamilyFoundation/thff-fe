@@ -15,7 +15,7 @@ export class DirectorOrganizationsComponent implements OnInit {
 
   organizations: any;
 
-  displayedColumns = ['name', 'createdOn'];
+  displayedColumns = ['name', 'createdOn', 'users', 'lois'];
   dataSource: MatTableDataSource<OrganizationData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,6 +38,12 @@ export class DirectorOrganizationsComponent implements OnInit {
           console.log('orgs', orgs);
 
           this.organizations = orgs;
+          this.organizations.forEach(org => {
+
+            console.log('org.users', org.users.length)
+            console.log('org.lois', org.lois.length)
+
+          });
 
           this.dataSource = new MatTableDataSource(this.organizations);
 
