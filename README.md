@@ -9,7 +9,7 @@
 
 
 ### Letter of Intent Test
-[need link]
+[LOI Test](https://github.com/TheHagenFamilyFoundation/thff-fe/blob/master/documentation/director/tests/loitest.md)
 
 
 ### Full Proposal Test
