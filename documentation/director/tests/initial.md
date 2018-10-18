@@ -46,5 +46,7 @@ Check your email again. You have received another email. This one is about the o
 
 ## Edit Organization Info
 
+## Edit Users
+
 ## Upload 501(c)3
 
