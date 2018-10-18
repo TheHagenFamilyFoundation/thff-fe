@@ -35,49 +35,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ### Initial Test
 #### Due by Nov. 15th
 
-Register as a director user. Use your name and your email. This will be your director account for when we go live.
-Request access for director page from Logan. He will edit your access level.
+[Initial Test](https://github.com/TheHagenFamilyFoundation/thff-fe/blob/master/documentation/director/tests/initial.md)
 
-Create an organization user. This can be made up. Add a mailinator.com email. For example, test@mailinator.com.
-
-Check your email. You should have received an email: 
-  
-    Dear (Your Name),
-    
-    Thank You for Registering An User Account at THFF
-
-    You can login here: LINK
-   
-    You can view your user dashboard here: LINK
-    
-    If you haven't created an organization, please do so here: LINK
-    
-    From the THFF team
-
-You should be able to login with either account. Director User should be able to see the director's menu. 
-The organization user should not be able to. 
-
-With the organization user, create an organization. 
-
-Check your email again. You have received another email. This one about the organization. 
-
-    Dear (Your Name),
-    
-    Thank You for Registering An Organization at THFF
-    
-    You can view your organization dashboard here: LINK
-    
-    You can add users there. Upload a 501(c)3 file. Add organization info. And start a Letter of Intent submission.
-    
-    From the THFF team
-
-After uploading the 501(c)3 file. Login to your director account and you should be able to review it and validate it. 
 
 ### Letter of Intent Test
-
+[need link]
 
 
 ### Full Proposal Test
+[need link]
 
 
 ## Deployment Notes
