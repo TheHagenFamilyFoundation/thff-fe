@@ -31,6 +31,10 @@ export class AuthService {
     }
 
     login(data, csrf) {
+
+        console.log('login', data)
+        console.log('this.API_URL', this.API_URL)
+
         return this.http.put<any>(`${this.API_URL}/login`, data)
             .pipe(map(result => {
                 // login successful if there's a jwt token in the response
