@@ -37,6 +37,11 @@ export class AuthService {
 
         return this.http.put<any>(`${this.API_URL}/login`, data)
             .pipe(map(result => {
+
+                //new 
+                //sends the result to the login component which thens add to localStorage
+
+                // old
                 // login successful if there's a jwt token in the response
                 // if (result && result.token) {
                 //     // store user details and jwt token in local storage to keep user logged in between page refreshes
