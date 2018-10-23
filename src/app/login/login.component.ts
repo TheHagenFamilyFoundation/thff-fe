@@ -111,6 +111,8 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
 
+          console.log('after CSRF', this.API_URL)
+
           if (data._csrf) {
             this.csrfToken = data._csrf;
           }
