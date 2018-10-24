@@ -40,6 +40,10 @@ export class EmailService {
     return this.http.post(this.API_URL + '/sendRegisterUserEmail', data)
   }
 
+  sendRegisterOrganizationEmail(data) {
+    return this.http.post(this.API_URL + '/sendRegisterOrgEmail', data)
+  }
+
   sendResetEmailConfirmation(data) {
     return this.http.post(this.API_URL + '/sendResetEmailConfirmation', data)
   }
