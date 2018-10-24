@@ -5,9 +5,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { environment } from '../../../environments/environment';
 
 //Services
-import { CreateOrganizationService } from '../../services/organization/create-organization.service';
-
 import { AuthService } from '../../auth/auth.service';
+import { EmailService } from '../../services/user/email.service';
+
+import { CreateOrganizationService } from '../../services/organization/create-organization.service';
 
 //debounce
 import { Subject } from 'rxjs';
@@ -34,6 +35,7 @@ export class CreateOrganizationComponent implements OnInit {
   user: any; //object
   userId: any; //string
   userName: any; //string
+  email;
 
   ShowMessage = false;
 
@@ -44,6 +46,7 @@ export class CreateOrganizationComponent implements OnInit {
     private createOrganizationService: CreateOrganizationService,
     public dialogRef: MatDialogRef<CreateOrganizationComponent>,
     private authService: AuthService,
+    private emailService: EmailService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
     this.orgName$.pipe(
@@ -95,8 +98,25 @@ export class CreateOrganizationComponent implements OnInit {
 
     //call the service
     this.createOrganizationService.createOrganization(body)
-      .subscribe(
-        () => { 'Org Created' },
+      .subscribe(data => {
+
+        console.log('data', data)
+
+        this.emailService.sendRegisterOrganizationEmail({
+          //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+          to: this.email,
+          name: this.userName,
+          orgName: data.result.organizationID
+        })
+          .subscribe(
+            (data) => {
+
+            },
+            err => console.log(err)
+          );
+
+
+      },
         err => console.log(err)
       );
 
@@ -133,6 +153,7 @@ export class CreateOrganizationComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem('currentUser'));
       this.userName = this.user.username
       this.userId = this.user.id;
+      this.email = this.user.email;
     }
 
   }//end of getUserName
