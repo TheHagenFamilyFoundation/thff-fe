@@ -12,11 +12,13 @@ Check your email. You should have received an email. The user register email:
     
     Thank You for Registering An User Account at THFF
 
-    You can login here: LINK
+    You can login here: LINK: Login
+    Example Link: http://www.hagen.foundation/login
    
-    You can view your user dashboard here: LINK
+    You can view your user dashboard here: LINK: User Dashboard
+    Example Link: http://www.hagen.foundation/user
     
-    If you haven't created an organization, please do so here: LINK
+    If you haven't created an organization, you can create one on the user page.
     
     From the THFF team
 
@@ -59,9 +61,10 @@ Check your email again. You have received another email. This one is about the o
 
     Dear (Your Name),
     
-    Thank You for Registering An Organization at THFF
+    Thank You for Creating An Organization at THFF
     
-    You can view your organization dashboard here: LINK
+    You can view your organization dashboard here: 
+    Example Link: http://www.hagen.foundation/organization/<OrganizationID>
     
     You can add users there. Upload a 501(c)3 file. Add organization info. 
     And start a Letter of Intent submission.
