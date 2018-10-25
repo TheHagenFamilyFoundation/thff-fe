@@ -4,11 +4,12 @@
 
 <div align="center">
   <mat-form-field>
-    <input matInput placeholder="Organization Name" value="" required (keyup)="orgName$.next($event.target.value)">
+    <input matInput placeholder="Organization Name" value={{orgName}} required (keyup)="orgName$.next($event.target.value)">
   </mat-form-field>
   <br>
   <mat-form-field>
-    <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" (keyup)="description$.next($event.target.value)"></textarea>
+    <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+      (keyup)="description$.next($event.target.value)"></textarea>
   </mat-form-field>
 </div>
 <div *ngIf="ShowMessage">
