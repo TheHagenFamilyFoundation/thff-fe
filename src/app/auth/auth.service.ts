@@ -38,6 +38,8 @@ export class AuthService {
         return this.http.put<any>(`${this.API_URL}/login`, data)
             .pipe(map(result => {
 
+                console.log('result', result)
+
                 //new 
                 //sends the result to the login component which thens add to localStorage
 
