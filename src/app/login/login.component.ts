@@ -160,7 +160,13 @@ export class LoginComponent implements OnInit {
 
               },
               error => {
-                this.message = error.error.message;
+
+                console.log('error', error)
+
+                this.message = error;
+
+                console.log('message', this.message)
+
                 this.ShowMessage = true;
               }
             )
