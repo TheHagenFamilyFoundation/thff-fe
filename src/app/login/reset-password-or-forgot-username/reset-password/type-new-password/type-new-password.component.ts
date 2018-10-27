@@ -279,7 +279,7 @@ export class TypeNewPasswordComponent implements OnInit {
                   console.log(user[0].email)
                   this.email = user[0].email;
 
-                  this.emailService.sendResetEmailConfirmation({
+                  this.emailService.sendResetPasswordConfirmationEmail({
                     from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
                     to: this.email,
                     name: this.userName,

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { ChangePasswordService } from '../../services/user/change-password.service';
+import { EmailService } from '../../services/user/email.service';
 
 //debounce
 import { Subject } from 'rxjs';
@@ -46,7 +47,9 @@ export class ChangePasswordComponent implements OnInit {
 
   CLEAR_TIMER = 5000;
 
-  constructor(private changePasswordService: ChangePasswordService) {
+  constructor(
+    private changePasswordService: ChangePasswordService,
+    private emailService: EmailService) {
 
     //debounce
     this.currentPassword$.pipe(
@@ -115,6 +118,8 @@ export class ChangePasswordComponent implements OnInit {
 
             //only reset on successful change
             this.resetComponent();
+
+            this.sendResetPasswordEmail(this.user);
 
           }
           else {
@@ -314,6 +319,20 @@ export class ChangePasswordComponent implements OnInit {
     this.message = '';
 
     this.ShowMessage = false;
+
+  }
+
+  sendResetPasswordEmail(user) {
+
+    this.emailService.sendResetPasswordConfirmationEmail({
+      from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+      to: user.email,
+      name: user.username
+    })
+      .subscribe(
+        () => { },
+        err => console.log(err)
+      );
 
   }
 
