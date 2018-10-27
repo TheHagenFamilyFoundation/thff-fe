@@ -110,7 +110,7 @@ export class ResetPasswordComponent implements OnInit {
           if (data.resetCodeCreated) {
             let message = "Your password is reset"
             console.log("after")
-            this._emailService.sendResetEmail({
+            this._emailService.sendResetPasswordEmail({
               from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
               to: this.email,
               name: this.userName,
