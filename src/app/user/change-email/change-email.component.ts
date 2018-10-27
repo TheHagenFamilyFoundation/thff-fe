@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 
 import { ChangeEmailService } from '../../services/user/change-email.service';
+import { EmailService } from '../../services/user/email.service';
 
 //debounce
 import { Subject } from 'rxjs';
@@ -18,6 +19,7 @@ export class ChangeEmailComponent implements OnInit {
 
   email: any;
   newEmail: any;
+  oldEmail: any;
   nE: any;
 
   @Input()
@@ -34,7 +36,9 @@ export class ChangeEmailComponent implements OnInit {
   ShowMessage = false;
   message: any;
 
-  constructor(private changeEmailService: ChangeEmailService) {
+  constructor(
+    private changeEmailService: ChangeEmailService,
+    private emailService: EmailService) {
 
     this.newEmail$.pipe(
       debounceTime(400),
@@ -68,9 +72,13 @@ export class ChangeEmailComponent implements OnInit {
         (response) => {
 
           this.results = response;
+          this.oldEmail = this.email;
+
+          console.log('this.oldEmail', this.oldEmail)
 
           //edit local storage
           this.email = this.newEmail;
+
           this.newEmail = '';
           //set the subject to '' as well
           this.nE = '';
@@ -93,6 +101,8 @@ export class ChangeEmailComponent implements OnInit {
             setTimeout(() => {
               this.clearMessage();
             }, 3000);
+
+            this.sendUserEmailChangeEmail(this.user);
 
           }
           else {
@@ -127,5 +137,25 @@ export class ChangeEmailComponent implements OnInit {
     this.ShowMessage = false;
 
   }
+
+  sendUserEmailChangeEmail(user) {
+
+    console.log('new email = ', this.email);
+    console.log('old email = ', this.oldEmail);
+
+    this.emailService.sendUserEmailChangeEmail({
+      from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+      to: this.oldEmail,
+      name: user.username,
+      oldEmail: this.oldEmail,
+      newEmail: this.email
+    })
+      .subscribe(
+        () => { },
+        err => console.log(err)
+      );
+
+  }
+
 
 }
