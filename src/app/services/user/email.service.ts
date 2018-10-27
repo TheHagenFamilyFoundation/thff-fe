@@ -32,20 +32,27 @@ export class EmailService {
     //.catch(this._errorHandler);
   }
 
-  sendResetEmail(data) {
-    return this.http.post(this.API_URL + '/sendResetEmail', data)
-  }
-
+  //Register User - Created User
   sendRegisterUserEmail(data) {
     return this.http.post(this.API_URL + '/sendRegisterUserEmail', data)
   }
 
+  //Register Organization - Created Organization
   sendRegisterOrganizationEmail(data) {
     return this.http.post(this.API_URL + '/sendRegisterOrgEmail', data)
   }
 
-  sendResetEmailConfirmation(data) {
-    return this.http.post(this.API_URL + '/sendResetEmailConfirmation', data)
+  //sends the confirmation email - can be from the type new password component and also from the within the user page
+  sendResetPasswordConfirmationEmail(data) {
+    return this.http.post(this.API_URL + '/sendResetPasswordConfirmationEmail', data)
+  }
+
+  sendResetPasswordEmail(data) {
+    return this.http.post(this.API_URL + '/sendResetPasswordEmail', data)
+  }
+
+  sendUserEmailChangeEmail(data) {
+    return this.http.post(this.API_URL + '/sendUserEmailChangeEmail', data)
   }
 
   sendUserNameEmail(data) {
