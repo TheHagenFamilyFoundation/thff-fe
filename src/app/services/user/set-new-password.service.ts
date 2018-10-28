@@ -26,6 +26,8 @@ export class SetNewPasswordService {
 
   setNewPassword(data): Observable<any> {
 
+    console.log('this.API_URL', this.API_URL)
+
     //console.log(data);
     //data is the user current, new, and confirm passwords
     return this.http.put(this.API_URL + '/setNewPassword', data)
