@@ -91,4 +91,8 @@ export class AuthService {
 
     }
 
+    clearBackendURL() {
+        sessionStorage.removeItem('backend_url');
+    }
+
 }
