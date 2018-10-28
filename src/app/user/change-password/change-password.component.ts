@@ -126,12 +126,27 @@ export class ChangePasswordComponent implements OnInit {
             console.log('fail')
 
             //output fail message
-            this.message = 'Password Change was unsuccessful. Try Again.';
+
+            if (this.results.message) {
+              this.message = this.results.message;
+            }
+            else {
+              this.message = 'Password Change was unsuccessful. Try Again.';
+            }
+
             this.ShowMessage = true;
+
+            setTimeout(() => {
+              this.clearMessage();
+            }, 3000);
 
           }
 
-        });
+        },
+        (err) => {
+          console.log('err', err)
+        }
+      );
 
   }
 

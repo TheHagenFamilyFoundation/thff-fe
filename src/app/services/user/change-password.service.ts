@@ -24,7 +24,7 @@ export class ChangePasswordService {
 
   }
 
-  changePassword(data) {
+  changePassword(data): Observable<any> {
     return this.http.put(this.API_URL + '/changePassword', data)
   }
 
