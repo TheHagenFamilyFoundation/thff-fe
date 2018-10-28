@@ -33,11 +33,11 @@ export class DirectorSelectedOrganizationComponent implements OnInit {
     // will log the entire data object
     console.log('this.data', this.data)
 
-    this.orgID = this.data.orgID;
+    this.orgID = this.data.org.organizationID;
 
     this.org = this.data.org;
 
-    this.link = this.orgLink + this.data.orgID;
+    this.link = this.orgLink + this.orgID;
 
     console.log('this is the link', this.link);
 
