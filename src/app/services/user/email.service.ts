@@ -59,6 +59,14 @@ export class EmailService {
     return this.http.post(this.API_URL + '/sendUserNameEmail', data)
   }
 
+  sendUser501c3Status(data) {
+    return this.http.post(this.API_URL + '/send501c3Status', data)
+  }
+
+  sendValidate501c3(data) {
+    return this.http.post(this.API_URL + '/sendValidate501c3', data)
+  }
+
   private _errorHandler(error: Response) {
     console.error(error);
     return observableThrowError(error || 'Server Error')
