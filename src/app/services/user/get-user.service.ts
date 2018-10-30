@@ -52,5 +52,11 @@ export class GetUserService {
     return this.http.get(urlString);
   }
 
+  getDirectors(): Observable<any> {
+    let urlString = this.API_URL + "/directors";
+
+    return this.http.get(urlString);
+  }
+
 
 }
