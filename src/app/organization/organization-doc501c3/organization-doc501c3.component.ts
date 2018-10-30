@@ -13,6 +13,10 @@ import { Create501c3Service } from '../../services/organization/501c3/create-501
 
 import { Doc501c3StatusService } from '../../services/organization/501c3/doc501c3-status.service';
 
+import { EmailService } from '../../services/user/email.service';
+
+import { GetUserService } from '../../services/user/get-user.service'; //used for getting organizations
+
 //components
 import { DeleteDoc501c3CheckComponent } from './delete-doc501c3-check/delete-doc501c3-check.component';
 
@@ -31,6 +35,8 @@ export class OrganizationDoc501c3Component implements OnInit {
 
   @Input()
   org: any;
+
+  user: any;
 
   //check basic row height
   basicRowHeight = 200;
@@ -56,9 +62,11 @@ export class OrganizationDoc501c3Component implements OnInit {
     private create501c3Service: Create501c3Service,
     private delete501c3Service: Delete501c3Service,
     public dialog: MatDialog,
+    private emailService: EmailService,
+    private getUserService: GetUserService,
   ) {
 
-    this.Rejected501c3 = true;
+    this.Rejected501c3 = false;
 
   }
 
@@ -159,6 +167,40 @@ export class OrganizationDoc501c3Component implements OnInit {
                   if (result.body) {
                     console.log('result has body')
                   }
+
+                  //get the logged in user
+                  this.user = JSON.parse(localStorage.getItem('currentUser'));
+
+                  this.getUserService.getDirectors()
+                    .subscribe(
+                      (directors) => {
+
+                        console.log('directors', directors)
+
+                        console.log('user', this.user)
+
+                        console.log('organization', this.org)
+
+                        directors.forEach(director => {
+
+                          //send the email to the directors that a 501c3 has been uploaded
+                          this.emailService.sendValidate501c3({
+                            //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+                            to: director.email,
+                            name: this.user.username,
+                            director: director.name,
+                            orgName: this.org.name
+                          })
+                            .subscribe(
+                              (data) => {
+
+                              },
+                              err => console.log(err)
+                            );
+
+                        });
+
+                      })
 
                   //refresh the organization
                   this.getOrganization(this.orgID);
