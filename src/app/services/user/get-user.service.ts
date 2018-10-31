@@ -58,5 +58,12 @@ export class GetUserService {
     return this.http.get(urlString);
   }
 
+  getOrgUsers(orgID: string): Observable<any> {
+    let urlString = this.API_URL + "/orgUsers/" + orgID;
+
+    return this.http.get(urlString);
+  }
+
+
 
 }

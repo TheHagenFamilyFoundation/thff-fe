@@ -13,6 +13,10 @@ import { Doc501c3StatusService } from '../../../../services/organization/501c3/d
 
 import { Validate501c3CheckComponent } from './validate501c3-check/validate501c3-check.component';
 
+import { EmailService } from '../../../../services/user/email.service';
+
+import { GetUserService } from '../../../../services/user/get-user.service'; //used for getting organization's users
+
 @Component({
   selector: 'app-director-view-organization-doc501c3',
   templateUrl: './director-view-organization-doc501c3.component.html',
@@ -46,6 +50,8 @@ export class DirectorViewOrganizationDoc501c3Component implements OnInit {
     private doc501c3StatusService: Doc501c3StatusService,
     private validate501c3Service: Validate501c3Service,
     public dialog: MatDialog,
+    private emailService: EmailService,
+    private getUserService: GetUserService,
   ) { }
 
   ngOnInit() {
@@ -169,6 +175,39 @@ export class DirectorViewOrganizationDoc501c3Component implements OnInit {
           console.log('result.message', result.message)
 
           this.setStatus(Number(result.message))
+
+
+          console.log('this.orgID', this.orgID)
+
+          this.getUserService.getOrgUsers(this.orgID)
+            .subscribe(
+              (users) => {
+
+                users.forEach(user => {
+
+                  //send email
+                  console.log('send email')
+
+                  //send the email to the users of the organization their 501c3 status
+                  this.emailService.sendUser501c3Status({
+                    //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+                    to: user.email,
+                    name: user.username,
+                    orgName: this.org.name,
+                    orgID: this.orgID,
+                    status: result.message
+
+                  })
+                    .subscribe(
+                      (data) => {
+
+                      },
+                      err => console.log(err)
+                    );
+
+                })
+
+              })
 
         })
 

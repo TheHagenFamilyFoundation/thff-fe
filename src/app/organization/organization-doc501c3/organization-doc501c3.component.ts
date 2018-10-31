@@ -255,6 +255,40 @@ export class OrganizationDoc501c3Component implements OnInit {
                           console.log('result has body')
                         }
 
+                        //get the logged in user
+                        this.user = JSON.parse(localStorage.getItem('currentUser'));
+
+                        this.getUserService.getDirectors()
+                          .subscribe(
+                            (directors) => {
+
+                              console.log('directors', directors)
+
+                              console.log('user', this.user)
+
+                              console.log('organization', this.org)
+
+                              directors.forEach(director => {
+
+                                //send the email to the directors that a 501c3 has been uploaded
+                                this.emailService.sendValidate501c3({
+                                  //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+                                  to: director.email,
+                                  name: this.user.username,
+                                  director: director.name,
+                                  orgName: this.org.name
+                                })
+                                  .subscribe(
+                                    (data) => {
+
+                                    },
+                                    err => console.log(err)
+                                  );
+
+                              });
+
+                            })
+
                         //refresh the organization
                         this.getOrganization(this.orgID);
 
