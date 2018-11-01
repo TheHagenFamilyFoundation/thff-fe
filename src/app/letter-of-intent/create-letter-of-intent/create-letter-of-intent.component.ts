@@ -66,6 +66,9 @@ export class CreateLetterOfIntentComponent implements OnInit {
 
     if (data.orgName) {
       this.orgName = data.orgName;
+
+      //if an loi short was used to create
+      this.ValidOrgName = true;
     }
 
     if (data.orgName) {
