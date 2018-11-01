@@ -180,6 +180,7 @@ export class OrganizationDoc501c3Component implements OnInit {
                         console.log('user', this.user)
 
                         console.log('organization', this.org)
+                        console.log('organizationID', this.org.organizationID)
 
                         directors.forEach(director => {
 
@@ -189,7 +190,8 @@ export class OrganizationDoc501c3Component implements OnInit {
                             to: director.email,
                             name: this.user.username,
                             director: director.name,
-                            orgName: this.org.name
+                            orgName: this.org.name,
+                            orgID: this.org.organizationID
                           })
                             .subscribe(
                               (data) => {
@@ -267,6 +269,7 @@ export class OrganizationDoc501c3Component implements OnInit {
                               console.log('user', this.user)
 
                               console.log('organization', this.org)
+                              console.log('organizationID', this.org.organizationID)
 
                               directors.forEach(director => {
 
@@ -276,7 +279,8 @@ export class OrganizationDoc501c3Component implements OnInit {
                                   to: director.email,
                                   name: this.user.username,
                                   director: director.name,
-                                  orgName: this.org.name
+                                  orgName: this.org.name,
+                                  orgID: this.org.organizationID
                                 })
                                   .subscribe(
                                     (data) => {
