@@ -123,6 +123,15 @@ import { LetterOfIntentStatusComponent } from './letter-of-intent/letter-of-inte
 import { LetterOfIntentSubmitComponent } from './letter-of-intent/letter-of-intent-submit/letter-of-intent-submit.component';
 import { LetterOfIntentSubmitCheckComponent } from './letter-of-intent/letter-of-intent-submit-check/letter-of-intent-submit-check.component';
 
+//full proposal
+import { FullProposalComponent } from './full-proposal/full-proposal.component';
+import { CreateFullProposalComponent } from './full-proposal/create-full-proposal/create-full-proposal.component';
+import { CreateFullProposalFullComponent } from './full-proposal/create-full-proposal-full/create-full-proposal-full.component';
+import { FullProposalInfoComponent } from './full-proposal/full-proposal-info/full-proposal-info.component';
+import { FullProposalStatusComponent } from './full-proposal/full-proposal-status/full-proposal-status.component';
+import { FullProposalSubmitComponent } from './full-proposal/full-proposal-submit/full-proposal-submit.component';
+import { FullProposalSubmitCheckComponent } from './full-proposal/full-proposal-submit-check/full-proposal-submit-check.component';
+
 //director
 import { DirectorsMenuComponent } from './director/directors-menu/directors-menu.component';
 import { DirectorOrganizationsComponent } from './director/director-organizations/director-organizations.component';
@@ -209,10 +218,12 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         DirectorOrgSelectedLetterOfIntentComponent,
         DirectorOrgViewLetterOfIntentComponent,
 
+        DirectorSelectedLoiComponent,
         DirectorOrgViewLetterOfIntentInfoComponent,
         DirectorOrgViewLetterOfIntentStatusComponent,
 
         DirectorLoisComponent,
+
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
@@ -244,12 +255,20 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         LetterOfIntentSubmitComponent,
         LetterOfIntentSubmitCheckComponent,
 
+        //full proposals
+
+        FullProposalComponent,
+        CreateFullProposalComponent,
+        CreateFullProposalFullComponent,
+        FullProposalInfoComponent,
+        FullProposalStatusComponent,
+        FullProposalSubmitComponent,
+        FullProposalSubmitCheckComponent,
+
         //test component - email
         EmailComponent,
 
         NotFoundComponent,
-
-        DirectorSelectedLoiComponent,
 
     ],
     imports: [BrowserModule,
