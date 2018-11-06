@@ -379,6 +379,8 @@ export class OrganizationDoc501c3Component implements OnInit {
 
           this.outputStatus = '';
 
+          this.status = null;
+
         })
 
   }
