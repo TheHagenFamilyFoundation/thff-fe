@@ -377,6 +377,8 @@ export class OrganizationDoc501c3Component implements OnInit {
           //refresh the organization
           this.getOrganization(this.orgID);
 
+          this.outputStatus = '';
+
         })
 
   }
