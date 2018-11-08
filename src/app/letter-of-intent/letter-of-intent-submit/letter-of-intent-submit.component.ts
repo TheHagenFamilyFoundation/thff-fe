@@ -10,6 +10,10 @@ import { LOIStatusService } from "../../services/loi/loi-status.service";
 //organization
 import { GetOrganizationService } from '../../services/organization/get-organization.service';
 
+import { EmailService } from '../../services/user/email.service';
+
+import { GetUserService } from '../../services/user/get-user.service'; //used for getting organizations
+
 @Component({
   selector: 'app-letter-of-intent-submit',
   templateUrl: './letter-of-intent-submit.component.html',
@@ -24,6 +28,10 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   loiID: string;
   orgID: string;
+
+  org: any;
+
+  user: any;
 
   LOISubmitted: boolean;
 
@@ -40,7 +48,9 @@ export class LetterOfIntentSubmitComponent implements OnInit {
     public dialog: MatDialog,
     private submitLoiService: SubmitLoiService,
     private loiStatus: LOIStatusService,
-    public getOrgService: GetOrganizationService
+    public getOrgService: GetOrganizationService,
+    private emailService: EmailService,
+    private getUserService: GetUserService,
   ) {
 
     this.HasLOIInfo = false;
@@ -105,6 +115,8 @@ export class LetterOfIntentSubmitComponent implements OnInit {
         (org) => {
 
           console.log('org', org);
+
+          this.org = org[0];
 
           if (org[0].info[0].validOrgInfo) {
             this.HasOrgInfo = true;
@@ -173,6 +185,44 @@ export class LetterOfIntentSubmitComponent implements OnInit {
           console.log('this.link', this.link)
 
           this.LOISubmitted = true;
+
+          //send email
+          //get the logged in user
+          this.user = JSON.parse(localStorage.getItem('currentUser'));
+
+          this.getUserService.getDirectors()
+            .subscribe(
+              (directors) => {
+
+                console.log('directors', directors)
+
+                console.log('user', this.user)
+
+                console.log('organization', this.org)
+                console.log('organizationID', this.org.organizationID)
+
+                directors.forEach(director => {
+
+                  //send the email to the directors that a 501c3 has been uploaded
+                  this.emailService.sendViewLOI({
+                    //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+                    to: director.email,
+                    name: this.user.username,
+                    director: director.name,
+                    orgName: this.org.name,
+                    orgID: this.org.organizationID
+                  })
+                    .subscribe(
+                      (data) => {
+
+                      },
+                      err => console.log(err)
+                    );
+
+                });
+
+              })
+
 
           this.updateStatus('Submitted')
 

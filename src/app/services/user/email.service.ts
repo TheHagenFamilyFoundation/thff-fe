@@ -67,6 +67,10 @@ export class EmailService {
     return this.http.post(this.API_URL + '/sendValidate501c3', data)
   }
 
+  sendViewLOI(data) {
+    return this.http.post(this.API_URL + '/sendViewLOI', data)
+  }
+
   private _errorHandler(error: Response) {
     console.error(error);
     return observableThrowError(error || 'Server Error')
