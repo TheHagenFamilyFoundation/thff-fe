@@ -163,6 +163,8 @@ export class RegisterComponent implements OnInit {
 
         console.log("token = " + localStorage.getItem('token'));
         console.log("currentUser = " + localStorage.getItem('currentUser'));
+        console.log("this.userName = " + this.userName);
+        console.log("this.email = " + this.email);
 
         this.emailService.sendRegisterUserEmail({
           //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
