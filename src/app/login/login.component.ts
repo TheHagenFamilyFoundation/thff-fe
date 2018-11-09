@@ -107,71 +107,71 @@ export class LoginComponent implements OnInit {
     console.log("userName = " + this.userName);
     console.log("password = " + this.password);
 
-    this.CSRF = this.getCSRFTokenService.getCSRF()
+    // this.CSRF = this.getCSRFTokenService.getCSRF()
+    //   .subscribe(
+    //     (data) => {
+
+    // console.log('after CSRF', this.API_URL)
+
+    // if (data._csrf) {
+    //   this.csrfToken = data._csrf;
+    // }
+
+    let urlString = this.API_URL + '/login';
+
+    this.body = {
+      username: this.userName,
+      password: this.password,
+      // _csrf: this.csrfToken //|| undefined
+    }
+
+    // if (this.csrfToken) {
+    //   this.body._csrf = this.csrfToken;
+    // }
+
+    console.log('this.body', this.body);
+    console.log('urlString', urlString);
+
+    this.Login = this.authService.login(this.body, null)//, this.csrfToken)
       .subscribe(
         (data) => {
 
-          console.log('after CSRF', this.API_URL)
+          console.log('data', data)
+          let user = data.user
+          console.log('user', user)
 
-          if (data._csrf) {
-            this.csrfToken = data._csrf;
+
+          if (user) {
+            console.log("this.results.user = ", user)
+
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('currentUser', JSON.stringify(user));
+
+            console.log("token = " + localStorage.getItem('token'));
+            console.log("currentUser = " + localStorage.getItem('currentUser'));
+
+            this.router.navigate(['/home']);
+
+          }
+          else {
+            this.message = data.message;
+            this.ShowMessage = true;
           }
 
-          let urlString = this.API_URL + '/login';
+        },
+        error => {
 
-          this.body = {
-            username: this.userName,
-            password: this.password,
-            // _csrf: this.csrfToken //|| undefined
-          }
+          console.log('error', error)
 
-          if (this.csrfToken) {
-            this.body._csrf = this.csrfToken;
-          }
+          this.message = error;
 
-          console.log('this.body', this.body);
-          console.log('urlString', urlString);
+          console.log('message', this.message)
 
-          this.Login = this.authService.login(this.body, this.csrfToken)
-            .subscribe(
-              (data) => {
+          this.ShowMessage = true;
+        }
+      )
 
-                console.log('data', data)
-                let user = data.user
-                console.log('user', user)
-
-
-                if (user) {
-                  console.log("this.results.user = ", user)
-
-                  localStorage.setItem('token', data.token);
-                  localStorage.setItem('currentUser', JSON.stringify(user));
-
-                  console.log("token = " + localStorage.getItem('token'));
-                  console.log("currentUser = " + localStorage.getItem('currentUser'));
-
-                  this.router.navigate(['/home']);
-
-                }
-                else {
-                  this.message = data.message;
-                  this.ShowMessage = true;
-                }
-
-              },
-              error => {
-
-                console.log('error', error)
-
-                this.message = error;
-
-                console.log('message', this.message)
-
-                this.ShowMessage = true;
-              }
-            )
-
-        })
+    //})
 
   }
 
