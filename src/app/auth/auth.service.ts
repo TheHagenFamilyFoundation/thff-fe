@@ -32,9 +32,13 @@ export class AuthService {
 
     login(data, csrf) {
 
-        console.log('login', data)
-        this.API_URL = this.getBackendURL();
-        console.log('this.API_URL', this.API_URL)
+        if (!environment.production) {
+            this.API_URL = environment.API_URL;
+        }
+        else {
+            this.API_URL = this.getBackendURL();
+            console.log('this.API_URL', this.API_URL)
+        }
 
         return this.http.put<any>(this.API_URL + `/login`, data)
             .pipe(map(result => {
