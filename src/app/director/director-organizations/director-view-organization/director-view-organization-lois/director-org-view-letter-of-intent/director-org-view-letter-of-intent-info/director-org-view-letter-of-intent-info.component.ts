@@ -38,7 +38,12 @@ export class DirectorOrgViewLetterOfIntentInfoComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log('ngOnInit', this.loi)
+
     this.loiName = this.loi.name;
+    this.loiID = this.loi.id;
+
+    this.getLoiInfo();
 
   }
 
@@ -74,14 +79,16 @@ export class DirectorOrgViewLetterOfIntentInfoComponent implements OnInit {
 
   getLoiInfo() {
 
-    console.log('getting Loi Info')
+    console.log('getting Loi Info', this.loiID)
 
     this.getLoiInfoService.getLoiInfobyLoiID(this.loiID)
       .subscribe(
         (loiInfo) => {
 
+          console.log('loiInfo', loiInfo);
+
           if (loiInfo.length > 0) {
-            console.log('loiInfo', loiInfo);
+
             this.loiInfo = loiInfo[0];
 
             console.log('this.loiInfo.id', this.loiInfo.id)
