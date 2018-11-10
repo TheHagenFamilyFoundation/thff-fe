@@ -31,7 +31,7 @@ export class GetLoiInfoService {
 
   getLoiInfobyLoiID(loiID: string): Observable<any> {
 
-    console.log('getLoiInfobyLoiID')
+    console.log('getLoiInfobyLoiID', loiID)
 
     let urlString = this.API_URL + "/loiInfo?loi=" + loiID;
 
