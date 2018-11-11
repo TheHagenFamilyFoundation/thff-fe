@@ -36,4 +36,13 @@ export class Get501c3Service {
     return this.http.get(urlString);
   }
 
+  get501c3Info(orgID: string): Observable<any> {
+
+    let urlString = this.API_URL + "/org501c3?orgID=" + orgID;
+
+    console.log('urlString', urlString)
+
+    return this.http.get(urlString);
+  }
+
 }
