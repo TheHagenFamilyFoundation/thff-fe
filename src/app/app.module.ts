@@ -312,7 +312,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
         OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent,
         DirectorOrgSelectedLetterOfIntentComponent, DirectorSelectedLoiComponent,
-        FullProposalSubmitCheckComponent
+        CreateFullProposalComponent, FullProposalSubmitCheckComponent
     ]
 })
 export class AppModule { }

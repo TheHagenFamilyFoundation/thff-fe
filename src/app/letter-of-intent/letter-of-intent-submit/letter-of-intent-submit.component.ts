@@ -14,6 +14,10 @@ import { EmailService } from '../../services/user/email.service';
 
 import { GetUserService } from '../../services/user/get-user.service'; //used for getting organizations
 
+import { Get501c3Service } from '../../services/organization/501c3/get-501c3.service'; //query db and get from AWS
+
+import { Doc501c3StatusService } from '../../services/organization/501c3/doc501c3-status.service';
+
 @Component({
   selector: 'app-letter-of-intent-submit',
   templateUrl: './letter-of-intent-submit.component.html',
@@ -44,6 +48,9 @@ export class LetterOfIntentSubmitComponent implements OnInit {
   HasOrgInfo: boolean;
   HasValid501c3: boolean;
 
+  doc501c3status: any; //for the 501c3 doc
+  outputStatus: any;
+
   constructor(
     public dialog: MatDialog,
     private submitLoiService: SubmitLoiService,
@@ -51,6 +58,8 @@ export class LetterOfIntentSubmitComponent implements OnInit {
     public getOrgService: GetOrganizationService,
     private emailService: EmailService,
     private getUserService: GetUserService,
+    private get501c3Service: Get501c3Service,
+    private doc501c3StatusService: Doc501c3StatusService,
   ) {
 
     this.HasLOIInfo = false;
@@ -108,9 +117,9 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
     console.log('checking if org info')
 
-    let orgID = this.loi.org;
+    this.orgID = this.loi.org;
 
-    this.getOrgService.getOrgbyID(orgID)
+    this.getOrgService.getOrgbyID(this.orgID)
       .subscribe(
         (org) => {
 
@@ -131,7 +140,37 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
   check501c3() {
 
+    console.log('check501c3')
 
+    this.orgID = this.loi.org;
+
+    this.get501c3Service.get501c3Info(this.orgID)
+      .subscribe(
+        (result) => {
+
+          console.log('result', result)
+
+          if (result.length > 0) {
+
+            if (result[0].status == 2) {
+              this.HasValid501c3 = true;
+              this.setStatus(result[0].status);
+            }
+            else {
+
+              this.HasValid501c3 = false;
+              if (result[0].status == 3) {
+                this.setStatus(result[0].status);
+              }
+
+            }
+
+          }
+          else {
+            this.HasValid501c3 = false;
+          }
+
+        })
 
   }
 
@@ -252,6 +291,25 @@ export class LetterOfIntentSubmitComponent implements OnInit {
   configureStatus(s: number): string {
 
     return this.loiStatus.getStatus(s)
+
+  }
+
+  setStatus(s: number) {
+
+    console.log('setStatus', s)
+
+    this.outputStatus = this.configureStatus(s);
+
+    console.log('outputStatus', this.outputStatus)
+
+  }
+
+  //takes in a status s that is a number
+  configure501c3Status(s: number): string {
+
+    console.log('configure501c3Status', s)
+
+    return this.doc501c3StatusService.getStatus(s)
 
   }
 
