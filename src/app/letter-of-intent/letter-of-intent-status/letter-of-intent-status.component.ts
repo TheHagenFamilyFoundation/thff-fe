@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LOIStatusService } from "../../services/loi/loi-status.service";
+
+import { CreateFullProposalComponent } from '../../full-proposal/create-full-proposal/create-full-proposal.component';
 
 @Component({
   selector: 'app-letter-of-intent-status',
@@ -12,16 +15,24 @@ export class LetterOfIntentStatusComponent implements OnInit {
   @Input()
   loi: any;
 
+  org: any;
+
   status: number;
   outputStatus: string;
 
-  constructor(private loiStatus: LOIStatusService) {
+  fullProposal: boolean;
+
+  constructor(private loiStatus: LOIStatusService, public dialog: MatDialog) {
+    //for testing purposes
+    this.fullProposal = true;
 
   }
 
   ngOnInit() {
 
-    console.log('loi', this.loi)
+    console.log('loi status - loi', this.loi)
+
+    this.org = this.loi.organization;
 
     this.status = this.loi.status;
 
@@ -43,6 +54,31 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
     return this.loiStatus.getStatus(s)
 
+  }
+
+  createFP() {
+
+    console.log('create full proposal');
+
+    //modal
+    this.openCreateFPDialog();
+
+  }
+
+  //full proposal
+  openCreateFPDialog(): void {
+    let dialogRef = this.dialog.open(CreateFullProposalComponent, {
+      width: '250px',
+      data: { org: this.org }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+      //maybe pull the organizations again
+      console.log('result', result); //debug
+      // //this.checkLOIs(this.user);
+      // this.getLOIs();
+    });
   }
 
 
