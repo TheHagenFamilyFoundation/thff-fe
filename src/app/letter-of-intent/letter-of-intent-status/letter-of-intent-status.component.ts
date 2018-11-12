@@ -69,7 +69,7 @@ export class LetterOfIntentStatusComponent implements OnInit {
   openCreateFPDialog(): void {
     let dialogRef = this.dialog.open(CreateFullProposalComponent, {
       width: '250px',
-      data: { org: this.org }
+      data: { org: this.org, loi: this.loi }
     });
 
     dialogRef.afterClosed().subscribe(result => {

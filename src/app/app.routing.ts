@@ -22,9 +22,13 @@ import { RegisterComponent } from './register/register.component'
 import { ResetPasswordOrUsernameComponent } from './login/reset-password-or-forgot-username/reset-password-or-forgot-username.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
 
+//letter of intent
 import { LetterOfIntentComponent } from './letter-of-intent/letter-of-intent.component';
-
 import { CreateLetterOfIntentFullComponent } from './letter-of-intent/create-letter-of-intent-full/create-letter-of-intent-full.component';
+
+//full proposal
+import { FullProposalComponent } from './full-proposal/full-proposal.component';
+import { CreateFullProposalFullComponent } from './full-proposal/create-full-proposal-full/create-full-proposal-full.component';
 
 //user
 import { UserComponent } from './user/user.component';
@@ -74,8 +78,14 @@ const appRoutes: Routes = [
     { path: 'create-organization/:name', component: CreateOrganizationFullComponent, canActivate: [AuthGuard] },
     { path: 'view-organizations', component: ViewOrganizationsComponent, canActivate: [AuthGuard] },
 
+    //Letter of Intent
     { path: 'loi/:id', component: LetterOfIntentComponent, canActivate: [AuthGuard] },
     { path: 'create-loi-full', component: CreateLetterOfIntentFullComponent, canActivate: [AuthGuard] },
+
+    //Full Proposal
+    { path: 'fp/:id', component: FullProposalComponent, canActivate: [AuthGuard] },
+    { path: 'create-fp-full', component: CreateFullProposalFullComponent, canActivate: [AuthGuard] },
+    { path: 'create-fp-full/:orgID/:loiID', component: CreateFullProposalFullComponent, canActivate: [AuthGuard] },
 
     { path: 'director', component: DirectorsMenuComponent, canActivate: [AuthGuard] },
     { path: 'director-organization/:id', component: DirectorViewOrganizationComponent, canActivate: [AuthGuard] },

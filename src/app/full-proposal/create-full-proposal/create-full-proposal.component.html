@@ -2,5 +2,41 @@
 <div *ngIf="!CreateShort">
   <button mat-raised-button (click)="createFPShort()">Short Full Proposal</button>
   <button mat-raised-button (click)="createFPFull()" mat-dialog-close>Full - Full Proposal</button>
+</div>
+
+<div *ngIf="CreateShort">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Full Proposal Name" value="" (keyup)="fpName$.next($event.target.value)">
+  </mat-form-field>
   <br>
+
+  <div *ngIf='orgName'>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Organization" disabled value='{{orgName}}'>
+    </mat-form-field>
+  </div>
+  <div *ngIf='loiName'>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Letter of Intent" disabled value='{{loiName}}'>
+    </mat-form-field>
+  </div>
+  <mat-form-field class="full-width">
+    <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+      (keyup)="description$.next($event.target.value)"></textarea>
+  </mat-form-field>
+</div>
+
+<div *ngIf="ShowMessage">
+  {{message}}
+  <br>
+</div>
+<br>
+<div>
+  <div *ngIf="CanCreateFP">
+    <button mat-raised-button (click)="createFP()">Create Full Proposal</button>
+  </div>
+  <br>
+  <div>
+    <button mat-raised-button (click)="cancel()" mat-dialog-close>Cancel</button>
+  </div>
 </div>
