@@ -16,12 +16,16 @@ export class CreateFullProposalFullComponent implements OnInit {
   loi: any;
   loiID: any;
 
+  org: any;
+  orgID: any;
+
   constructor(private route: ActivatedRoute,
     private router: Router, ) {
 
     //retreive the parameter
     this.route.params.subscribe(params => {
       console.log(params);
+      this.orgID = params.orgID;
       this.loiID = params.loiID;
     });
 
