@@ -125,9 +125,9 @@ import { LetterOfIntentSubmitCheckComponent } from './letter-of-intent/letter-of
 
 //full proposal
 import { FullProposalComponent } from './full-proposal/full-proposal.component';
-import { CreateFullProposalComponent } from './full-proposal/create-full-proposal/create-full-proposal.component';
-import { CreateFullProposalFullComponent } from './full-proposal/create-full-proposal-full/create-full-proposal-full.component';
-import { FullProposalInfoComponent } from './full-proposal/full-proposal-info/full-proposal-info.component';
+import { FullProposalItemsComponent } from './full-proposal/full-proposal-items/full-proposal-items.component';
+import { CreateFullProposalFullComponent } from './full-proposal/create-full-proposal-full/create-full-proposal-full.component'; //create proposal component
+import { CreateFullProposalItemsComponent } from './full-proposal/create-full-proposal-items/create-full-proposal-items.component';
 import { FullProposalStatusComponent } from './full-proposal/full-proposal-status/full-proposal-status.component';
 import { FullProposalSubmitComponent } from './full-proposal/full-proposal-submit/full-proposal-submit.component';
 import { FullProposalSubmitCheckComponent } from './full-proposal/full-proposal-submit-check/full-proposal-submit-check.component';
@@ -258,9 +258,9 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         //full proposals
 
         FullProposalComponent,
-        CreateFullProposalComponent,
+        FullProposalItemsComponent,
         CreateFullProposalFullComponent,
-        FullProposalInfoComponent,
+        CreateFullProposalItemsComponent,
         FullProposalStatusComponent,
         FullProposalSubmitComponent,
         FullProposalSubmitCheckComponent,
@@ -312,7 +312,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
         OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent,
         DirectorOrgSelectedLetterOfIntentComponent, DirectorSelectedLoiComponent,
-        CreateFullProposalComponent, FullProposalSubmitCheckComponent
+        FullProposalSubmitCheckComponent
     ]
 })
 export class AppModule { }
