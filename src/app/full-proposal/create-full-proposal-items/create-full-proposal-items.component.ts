@@ -24,7 +24,7 @@ export class CreateFullProposalItemsComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private createFpItemService: CreateFpItemService) {
 
-    this.createFPItemHeight = '300';
+    this.createFPItemHeight = '350';
     this.createFPItemWidth = '700';
 
   }
