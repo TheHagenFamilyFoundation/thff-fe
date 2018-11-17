@@ -9,5 +9,7 @@
 <div>Amount Pending or Requested from Other Organizations, if any:</div>
 <div>INPUT</div>
 <div>Total:</div>
-<!-- <div>INPUT</div> -->
-calculated
+<div>{{getTotal()}}</div>
+<div *ngIf="canCreateFPItem">
+  <button mat-raised-button (click)="createFPItem()">Create Item</button>
+</div>
