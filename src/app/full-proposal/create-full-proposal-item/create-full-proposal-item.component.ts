@@ -9,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateFullProposalItemComponent implements OnInit {
 
-  constructor() { }
+  canCreateFPItem: boolean;
+
+  constructor() {
+
+    this.canCreateFPItem = false; //initialize to false
+
+  }
 
   ngOnInit() {
   }
+
+  getTotal() {
+
+    return 5; //placeholder
+
+  }
+
+  createFPItem() {
+    console.log('createFPItem')
+  }
+
 
 }
