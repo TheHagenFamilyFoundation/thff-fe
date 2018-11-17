@@ -1,3 +1,137 @@
-<p>
-  create-full-proposal-full works!
-</p>
+<div align="center">
+  <h3>Create Full Proposal</h3>
+</div>
+<div>
+  <mat-card>
+    <div>
+      <h4>Executive Summary</h4>
+
+      <div>
+        Briefly explain why your agency is requesting this grant, what outcomes you hope to achieve, and how you will
+        spend
+        the funds if the grant is made (2000 characters max).
+      </div>
+      <div>
+        Input
+      </div>
+    </div>
+    <div>
+      <h4>Purpose:</h4>
+      <div>
+        Describe the target population and how they will benefit (2000 characters max).
+      </div>
+      <div>
+        Input
+      </div>
+      <div>
+        Describe the project goals, measurable objectives, and action plans (2000 characters max).
+      </div>
+      <div>
+        Input
+      </div>
+      <div>
+        SELECT Is this a new or ongoing activity for the organization?
+        New or Ongoing
+      </div>
+      <div>
+        Input
+      </div>
+      <div>
+        Provide a timetable for implementation: (2000 characters max)
+      </div>
+      <div>
+        Input
+      </div>
+      <div>
+        If there are any other partners in the project, describe them and indicate how you will cooperate on the
+        project
+        (2000 characters max).
+      </div>
+      <div>
+        Input
+      </div>
+      <div>
+        How does your proposed project differ from the work of other existing projects (in your organization or in
+        other
+        similar organizations; 2000 characters max))?
+      </div>
+      <div>
+        Input
+      </div>
+      <div>
+        Describe the active involvement of constituents in defining problems to be addressed, making policy, and
+        planning
+        the program (2000 characters max).
+      </div>
+      <div>
+        Input
+      </div>
+      <div>
+        Describe the qualifications of key staff and volunteers that will ensure the success of the program, and any
+        staff
+        training that will be needed (2000 characters max).
+      </div>
+      <div>
+        Input
+      </div>
+      <div>
+        Describe your long-term strategies for funding this project at end of grant period (2000 characters max).
+      </div>
+      <div>
+        Input
+      </div>
+    </div>
+    <div>
+      <h4>Evaluation</h4>
+      <div>
+        Describe your plans for evaluation of the project, including how success will be defined and measured (2000
+        characters max).
+      </div>
+      <div>
+        Input
+      </div>
+      <div>
+        How will the evaluation results be used and/or disseminated? If appropriate, how will the project be
+        replicated?
+        (2000 characters max).
+      </div>
+      <div>
+        Input
+      </div>
+      <div>
+        Describe the active involvement of constituents in evaluating the program, if any (2000 characters max).
+      </div>
+      <div>
+        Input
+      </div>
+    </div>
+    <div>
+      <app-create-full-proposal-items></app-create-full-proposal-items>
+      <br>
+      <div>
+        In the event that you are not able to secure full funding, what are the priority items in the budget above?
+        (2000
+        characters max)
+      </div>
+      <div>
+        Input
+      </div>
+    </div>
+    <div>
+      <h4>Your Organization</h4>
+      <div>
+        Provide a brief history and overview of your organization (2000 characters max).
+      </div>
+      <div>
+        If your organization has a website, provide the link here:
+        input
+      </div>
+    </div>
+    <div align="center">
+      <div *ngIf="canCreateFP">
+        <button mat-raised-button (click)="createFullProposal()">Create Full Proposal</button>
+      </div>
+    </div>
+
+  </mat-card>
+</div>
