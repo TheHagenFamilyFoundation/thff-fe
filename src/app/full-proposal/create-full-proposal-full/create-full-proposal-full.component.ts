@@ -19,6 +19,8 @@ export class CreateFullProposalFullComponent implements OnInit {
   org: any;
   orgID: any;
 
+  canCreateFP: boolean;
+
   constructor(private route: ActivatedRoute,
     private router: Router, ) {
 
@@ -29,10 +31,17 @@ export class CreateFullProposalFullComponent implements OnInit {
       this.loiID = params.loiID;
     });
 
+    this.canCreateFP = false;
 
   }
 
   ngOnInit() {
+  }
+
+  createFullProposal() {
+
+    console.log('create full proposal')
+
   }
 
 }
