@@ -12,7 +12,9 @@
         the funds if the grant is made (2000 characters max).
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Executive Summary" value={{executiveSummary}} (keyup)="executiveSummary$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
     </div>
     <div>
@@ -21,26 +23,32 @@
         Describe the target population and how they will benefit (2000 characters max).
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Target Population" value={{targetPopulation}} (keyup)="targetPopulation$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
       <div>
         Describe the project goals, measurable objectives, and action plans (2000 characters max).
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Goals" value={{goals}} (keyup)="goals$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
       <div>
         SELECT Is this a new or ongoing activity for the organization?
         New or Ongoing
       </div>
       <div>
-        Input
+        SELECT
       </div>
       <div>
         Provide a timetable for implementation: (2000 characters max)
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Time Table" value={{timeTable}} (keyup)="timeTable$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
       <div>
         If there are any other partners in the project, describe them and indicate how you will cooperate on the
@@ -48,7 +56,9 @@
         (2000 characters max).
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Partners" value={{partners}} (keyup)="partners$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
       <div>
         How does your proposed project differ from the work of other existing projects (in your organization or in
@@ -56,7 +66,9 @@
         similar organizations; 2000 characters max))?
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Differ" value={{differ}} (keyup)="differ$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
       <div>
         Describe the active involvement of constituents in defining problems to be addressed, making policy, and
@@ -64,7 +76,9 @@
         the program (2000 characters max).
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Involvment" value={{involve}} (keyup)="involve$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
       <div>
         Describe the qualifications of key staff and volunteers that will ensure the success of the program, and any
@@ -72,13 +86,17 @@
         training that will be needed (2000 characters max).
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Staff" value={{staff}} (keyup)="staff$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
       <div>
         Describe your long-term strategies for funding this project at end of grant period (2000 characters max).
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Strategy" value={{strategy}} (keyup)="strategy$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
     </div>
     <div>
@@ -88,7 +106,9 @@
         characters max).
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Evaluation" value={{evaluation}} (keyup)="evaluation$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
       <div>
         How will the evaluation results be used and/or disseminated? If appropriate, how will the project be
@@ -96,13 +116,17 @@
         (2000 characters max).
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Dissemination" value={{dissemination}} (keyup)="dissemination$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
       <div>
         Describe the active involvement of constituents in evaluating the program, if any (2000 characters max).
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Active" value={{active}} (keyup)="active$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
     </div>
     <div>
@@ -114,7 +138,9 @@
         characters max)
       </div>
       <div>
-        Input
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Priority" value={{priority}} (keyup)="priority$.next($event.target.value) "></textarea>
+        </mat-form-field>
       </div>
     </div>
     <div>
@@ -123,8 +149,17 @@
         Provide a brief history and overview of your organization (2000 characters max).
       </div>
       <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="History" value={{history}} (keyup)="history$.next($event.target.value) "></textarea>
+        </mat-form-field>
+      </div>
+      <div>
         If your organization has a website, provide the link here:
-        input
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Website" value={{website}} (keyup)="website$.next($event.target.value) ">
+        </mat-form-field>
       </div>
     </div>
     <div align="center">
