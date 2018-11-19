@@ -57,6 +57,9 @@ export class CreateFullProposalFullComponent implements OnInit {
     { value: '2', viewValue: 'Ongoing' }
   ];
 
+  activitySelected: any;
+  newOrOngoing: any;
+
   canCreateFP: boolean;
 
   //not sure
@@ -226,6 +229,15 @@ export class CreateFullProposalFullComponent implements OnInit {
   createFullProposal() {
 
     console.log('create full proposal')
+
+  }
+
+  newOrOngoingChange(newObj) {
+    console.log('newOrOngoing change', newObj)
+
+    this.newOrOngoing = newObj;
+
+    //this.verifyInput();
 
   }
 
