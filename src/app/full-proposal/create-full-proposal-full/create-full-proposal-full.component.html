@@ -43,11 +43,11 @@
       </div>
       <div>
         <mat-form-field>
-          <mat-select placeholder="New or Ongoing">
-            <mat-option *ngFor="let selection of activities" [value]="selection.value">
-              {{selection.viewValue}}
-            </mat-option>
-          </mat-select>
+          <mat-select placeholder="New or Ongoing" required [(ngModel)]="activitySelected" (ngModelChange)="newOrOngoingChange($event)">
+              <mat-option *ngFor="let selection of activities" [value]="selection.value">
+                {{ selection.viewValue }}
+              </mat-option>
+            </mat-select>
         </mat-form-field>
       </div>
       <div>
