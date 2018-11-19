@@ -84,7 +84,6 @@ const appRoutes: Routes = [
 
     //Full Proposal
     { path: 'fp/:id', component: FullProposalComponent, canActivate: [AuthGuard] },
-    { path: 'create-fp-full', component: CreateFullProposalFullComponent, canActivate: [AuthGuard] },
     { path: 'create-fp-full/:orgID/:loiID', component: CreateFullProposalFullComponent, canActivate: [AuthGuard] },
 
     { path: 'director', component: DirectorsMenuComponent, canActivate: [AuthGuard] },

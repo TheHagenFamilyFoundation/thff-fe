@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FullProposalInfoComponent } from './full-proposal-info.component';
+import { FullProposalItemsComponent } from './full-proposal-items.component';
 
-describe('FullProposalInfoComponent', () => {
-  let component: FullProposalInfoComponent;
-  let fixture: ComponentFixture<FullProposalInfoComponent>;
+describe('FullProposalItemsComponent', () => {
+  let component: FullProposalItemsComponent;
+  let fixture: ComponentFixture<FullProposalItemsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FullProposalInfoComponent ]
+      declarations: [ FullProposalItemsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FullProposalInfoComponent);
+    fixture = TestBed.createComponent(FullProposalItemsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

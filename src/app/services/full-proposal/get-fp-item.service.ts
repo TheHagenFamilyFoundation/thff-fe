@@ -8,7 +8,7 @@ import { AuthService } from '../../auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class GetFullProposalService {
+export class GetFpItemService {
 
   API_URL: string;
 
@@ -26,12 +26,18 @@ export class GetFullProposalService {
 
   }
 
-  getFullProposalByID(fpID: string): Observable<any> {
+  getFullProposalByID(fpItemID: string): Observable<any> {
 
-    let urlString = this.API_URL + "/fullproposal?fpID=" + fpID;
+    let urlString = this.API_URL + "/fullproposalitem?fpItemID=" + fpItemID;
 
     return this.http.get(urlString);
   }
 
+  getFullProposalByFPID(fp: string): Observable<any> {
+
+    let urlString = this.API_URL + "/fullproposalitem?fp=" + fp;
+
+    return this.http.get(urlString);
+  }
 
 }

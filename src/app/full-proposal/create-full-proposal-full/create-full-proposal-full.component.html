@@ -1,3 +1,191 @@
-<p>
-  create-full-proposal-full works!
-</p>
+<div align="center">
+  <h3>Create Full Proposal</h3>
+</div>
+<div>
+  <mat-card>
+    <div>
+      <h4>Executive Summary</h4>
+
+      <div>
+        Briefly explain why your agency is requesting this grant, what outcomes you hope to achieve, and how you will
+        spend
+        the funds if the grant is made (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Executive Summary" maxlength="2000" value={{executiveSummary}} (keyup)="executiveSummary$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{executiveSummary?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <h4>Purpose:</h4>
+      <div>
+        Describe the target population and how they will benefit (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Target Population" maxlength="2000" value={{targetPopulation}} (keyup)="targetPopulation$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{targetPopulation?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Describe the project goals, measurable objectives, and action plans (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Goals" maxlength="2000" value={{goals}} (keyup)="goals$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{goals?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Is this a new or ongoing activity for the organization?
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-select placeholder="New or Ongoing" required [(ngModel)]="activitySelected" (ngModelChange)="newOrOngoingChange($event)">
+              <mat-option *ngFor="let selection of activities" [value]="selection.value">
+                {{ selection.viewValue }}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        Provide a timetable for implementation: (2000 characters max)
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Time Table" maxlength="2000" value={{timeTable}} (keyup)="timeTable$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{timeTable?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        If there are any other partners in the project, describe them and indicate how you will cooperate on the
+        project
+        (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Partners" maxlength="2000" value={{partners}} (keyup)="partners$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{partners?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        How does your proposed project differ from the work of other existing projects (in your organization or in
+        other
+        similar organizations; 2000 characters max))?
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Differ" maxlength="2000" value={{differ}} (keyup)="differ$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{differ?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Describe the active involvement of constituents in defining problems to be addressed, making policy, and
+        planning
+        the program (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Involvment" maxlength="2000" value={{involve}} (keyup)="involve$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{involve?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Describe the qualifications of key staff and volunteers that will ensure the success of the program, and any
+        staff
+        training that will be needed (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Staff" maxlength="2000" value={{staff}} (keyup)="staff$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{staff?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Describe your long-term strategies for funding this project at end of grant period (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Strategy" maxlength="2000" value={{strategy}} (keyup)="strategy$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{strategy?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <h4>Evaluation</h4>
+      <div>
+        Describe your plans for evaluation of the project, including how success will be defined and measured (2000
+        characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Evaluation" maxlength="2000" value={{evaluation}} (keyup)="evaluation$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{evaluation?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        How will the evaluation results be used and/or disseminated? If appropriate, how will the project be
+        replicated?
+        (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Dissemination" maxlength="2000" value={{dissemination}} (keyup)="dissemination$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{dissemination?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Describe the active involvement of constituents in evaluating the program, if any (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Active" maxlength="2000" value={{active}} (keyup)="active$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{active?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <app-create-full-proposal-items></app-create-full-proposal-items>
+      <br>
+      <div>
+        In the event that you are not able to secure full funding, what are the priority items in the budget above?
+        (2000 characters max)
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Priority" maxlength="2000" value={{priority}} (keyup)="priority$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{priority?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <h4>Your Organization</h4>
+      <div>
+        Provide a brief history and overview of your organization (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="History" maxlength="2000" value={{history}} (keyup)="history$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{history?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        If your organization has a website, provide the link here:
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Website" maxlength="255" value={{website}} (keyup)="website$.next($event.target.value) ">
+          <!-- <mat-hint align="end">{{website?.toString().length}} / 255</mat-hint> -->
+        </mat-form-field>
+      </div>
+    </div>
+    <div align="center">
+      <div *ngIf="canCreateFP">
+        <button mat-raised-button (click)="createFullProposal()">Create Full Proposal</button>
+      </div>
+    </div>
+
+  </mat-card>
+</div>

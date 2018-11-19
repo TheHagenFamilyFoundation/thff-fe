@@ -8,9 +8,11 @@ import { AuthService } from '../../auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class GetFullProposalService {
+export class CreateFpItemService {
 
   API_URL: string;
+
+  data: any;
 
   constructor(private http: HttpClient, private authService: AuthService, ) {
 
@@ -26,12 +28,13 @@ export class GetFullProposalService {
 
   }
 
-  getFullProposalByID(fpID: string): Observable<any> {
+  createFPItem(fpItem): Observable<any> {
 
-    let urlString = this.API_URL + "/fullproposal?fpID=" + fpID;
+    let data = fpItem;
 
-    return this.http.get(urlString);
+    console.log('data', data)
+
+    return this.http.post(this.API_URL + '/fullproposalitem', data)
   }
-
 
 }

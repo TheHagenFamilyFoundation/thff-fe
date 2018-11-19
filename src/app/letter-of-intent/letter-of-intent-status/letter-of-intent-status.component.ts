@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
 
 import { LOIStatusService } from "../../services/loi/loi-status.service";
-
-import { CreateFullProposalComponent } from '../../full-proposal/create-full-proposal/create-full-proposal.component';
 
 @Component({
   selector: 'app-letter-of-intent-status',
@@ -14,15 +13,25 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
   @Input()
   loi: any;
+  loiID: any;
 
   org: any;
+  orgName: any;
+  orgID: any; //string
+
+  user: any; //object
+  userId: any; //string
+  userName: any; //string
 
   status: number;
   outputStatus: string;
 
   fullProposal: boolean;
 
-  constructor(private loiStatus: LOIStatusService, public dialog: MatDialog) {
+  constructor(
+    private loiStatus: LOIStatusService,
+    public dialog: MatDialog,
+    private router: Router) {
     //for testing purposes
     this.fullProposal = true;
 
@@ -33,6 +42,10 @@ export class LetterOfIntentStatusComponent implements OnInit {
     console.log('loi status - loi', this.loi)
 
     this.org = this.loi.organization;
+    this.orgID = this.org.organizationID;
+    this.orgName = this.org.name;
+
+    this.loiID = this.loi.loiID;
 
     this.status = this.loi.status;
 
@@ -60,26 +73,25 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
     console.log('create full proposal');
 
-    //modal
-    this.openCreateFPDialog();
+    this.router.navigate(['/create-fp-full/', this.orgID, this.loiID]);
 
   }
 
-  //full proposal
-  openCreateFPDialog(): void {
-    let dialogRef = this.dialog.open(CreateFullProposalComponent, {
-      width: '250px',
-      data: { org: this.org, loi: this.loi }
-    });
+  // //full proposal
+  // openCreateFPDialog(): void {
+  //   let dialogRef = this.dialog.open(CreateFullProposalComponent, {
+  //     width: '250px',
+  //     data: { org: this.org, loi: this.loi }
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed'); //debug
-      //maybe pull the organizations again
-      console.log('result', result); //debug
-      // //this.checkLOIs(this.user);
-      // this.getLOIs();
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed'); //debug
+  //     //maybe pull the organizations again
+  //     console.log('result', result); //debug
+  //     // //this.checkLOIs(this.user);
+  //     // this.getLOIs();
+  //   });
+  // }
 
 
 }
