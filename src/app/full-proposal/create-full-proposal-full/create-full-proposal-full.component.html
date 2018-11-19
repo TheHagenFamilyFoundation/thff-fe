@@ -13,7 +13,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Executive Summary" value={{executiveSummary}} (keyup)="executiveSummary$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Executive Summary" maxlength="2000" value={{executiveSummary}} (keyup)="executiveSummary$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{executiveSummary?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -24,7 +25,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Target Population" value={{targetPopulation}} (keyup)="targetPopulation$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Target Population" maxlength="2000" value={{targetPopulation}} (keyup)="targetPopulation$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{targetPopulation?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -32,22 +34,29 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Goals" value={{goals}} (keyup)="goals$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Goals" maxlength="2000" value={{goals}} (keyup)="goals$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{goals?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
-        SELECT Is this a new or ongoing activity for the organization?
-        New or Ongoing
+        Is this a new or ongoing activity for the organization?
       </div>
       <div>
-        SELECT
+        <mat-form-field>
+          <mat-select placeholder="New or Ongoing">
+            <mat-option *ngFor="let selection of activities" [value]="selection.value">
+              {{selection.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
       <div>
         Provide a timetable for implementation: (2000 characters max)
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Time Table" value={{timeTable}} (keyup)="timeTable$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Time Table" maxlength="2000" value={{timeTable}} (keyup)="timeTable$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{timeTable?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -57,7 +66,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Partners" value={{partners}} (keyup)="partners$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Partners" maxlength="2000" value={{partners}} (keyup)="partners$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{partners?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -67,7 +77,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Differ" value={{differ}} (keyup)="differ$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Differ" maxlength="2000" value={{differ}} (keyup)="differ$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{differ?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -77,7 +88,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Involvment" value={{involve}} (keyup)="involve$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Involvment" maxlength="2000" value={{involve}} (keyup)="involve$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{involve?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -87,7 +99,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Staff" value={{staff}} (keyup)="staff$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Staff" maxlength="2000" value={{staff}} (keyup)="staff$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{staff?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -95,7 +108,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Strategy" value={{strategy}} (keyup)="strategy$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Strategy" maxlength="2000" value={{strategy}} (keyup)="strategy$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{strategy?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -107,7 +121,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Evaluation" value={{evaluation}} (keyup)="evaluation$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Evaluation" maxlength="2000" value={{evaluation}} (keyup)="evaluation$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{evaluation?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -117,7 +132,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Dissemination" value={{dissemination}} (keyup)="dissemination$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Dissemination" maxlength="2000" value={{dissemination}} (keyup)="dissemination$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{dissemination?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -125,7 +141,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Active" value={{active}} (keyup)="active$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Active" maxlength="2000" value={{active}} (keyup)="active$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{active?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -139,7 +156,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Priority" value={{priority}} (keyup)="priority$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="Priority" maxlength="2000" value={{priority}} (keyup)="priority$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{priority?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -150,7 +168,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="History" value={{history}} (keyup)="history$.next($event.target.value) "></textarea>
+          <textarea matInput placeholder="History" maxlength="2000" value={{history}} (keyup)="history$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{history?.toString().length}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -158,7 +177,8 @@
       </div>
       <div>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Website" value={{website}} (keyup)="website$.next($event.target.value) ">
+          <input matInput placeholder="Website" maxlength="255" value={{website}} (keyup)="website$.next($event.target.value) ">
+          <!-- <mat-hint align="end">{{website?.toString().length}} / 255</mat-hint> -->
         </mat-form-field>
       </div>
     </div>
