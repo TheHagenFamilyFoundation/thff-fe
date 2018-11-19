@@ -57,8 +57,6 @@ export class CreateFullProposalFullComponent implements OnInit {
     { value: '2', viewValue: 'Ongoing' }
   ];
 
-
-
   canCreateFP: boolean;
 
   //not sure
