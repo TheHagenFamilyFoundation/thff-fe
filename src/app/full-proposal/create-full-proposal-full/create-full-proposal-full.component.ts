@@ -52,6 +52,13 @@ export class CreateFullProposalFullComponent implements OnInit {
   history: string;
   website: string;
 
+  activities = [
+    { value: '1', viewValue: 'New' },
+    { value: '2', viewValue: 'Ongoing' }
+  ];
+
+
+
   canCreateFP: boolean;
 
   //not sure
