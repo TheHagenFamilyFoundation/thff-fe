@@ -54,11 +54,13 @@ export class ValidUserNameService {
 
           let urlString = this.API_URL + "/UserNameExists?username=" + username;
 
+          console.log('urlString', urlString)
+
           return this.http.get(urlString);
 
         })
     }
-    
+
   }
 
 
