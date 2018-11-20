@@ -27,12 +27,40 @@ export class GetUserService {
   //maybe make a getUser by ID
   getUserbyUsername(username: string): Observable<any> {
 
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+
+      this.authService.initializeBackendURL();
+
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+
+      this.authService.clearBackendURL();
+
+    }
+
     let urlString = this.API_URL + "/user?username=" + username;
 
     return this.http.get(urlString);
   }
 
   getUserbyEmail(email: string): Observable<any> {
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+
+      this.authService.initializeBackendURL();
+
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+
+      this.authService.clearBackendURL();
+
+    }
 
     let urlString = this.API_URL + "/user?email=" + email;
 
@@ -41,24 +69,83 @@ export class GetUserService {
 
   getUserbyID(userID: string): Observable<any> {
 
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+
+      this.authService.initializeBackendURL();
+
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+
+      this.authService.clearBackendURL();
+
+    }
+
     let urlString = this.API_URL + "/user?id=" + userID;
 
     return this.http.get(urlString);
   }
 
   getAllUsers(): Observable<any> {
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+
+      this.authService.initializeBackendURL();
+
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+
+      this.authService.clearBackendURL();
+
+    }
+
     let urlString = this.API_URL + "/user";
 
     return this.http.get(urlString);
   }
 
   getDirectors(): Observable<any> {
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+
+      this.authService.initializeBackendURL();
+
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+
+      this.authService.clearBackendURL();
+
+    }
+
     let urlString = this.API_URL + "/directors";
 
     return this.http.get(urlString);
   }
 
   getOrgUsers(orgID: string): Observable<any> {
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+
+      this.authService.initializeBackendURL();
+
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+
+      this.authService.clearBackendURL();
+
+    }
+
     let urlString = this.API_URL + "/orgUsers/" + orgID;
 
     return this.http.get(urlString);
