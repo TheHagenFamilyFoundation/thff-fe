@@ -37,28 +37,32 @@ export class ValidUserNameService {
     }
     else {
 
-      this.authService.initializeBackendURL().subscribe(
-        (backendUrl) => {
+      if (this.authService.getBackendURL() == '') {
 
-          console.log('backendUrl', backendUrl.url);
+        this.authService.initializeBackendURL().subscribe(
+          (backendUrl) => {
 
-          if (backendUrl) {
-            sessionStorage.setItem('backend_url', backendUrl.url);
-          }
-          else {
-            console.log('Can´t find the backend URL, using a failover value');
-            sessionStorage.setItem('backend_url', 'https://failover-url.com');
-          }
+            console.log('backendUrl', backendUrl.url);
 
-          this.API_URL = backendUrl.url;
+            if (backendUrl) {
+              sessionStorage.setItem('backend_url', backendUrl.url);
+            }
+            else {
+              console.log('Can´t find the backend URL, using a failover value');
+              sessionStorage.setItem('backend_url', 'https://failover-url.com');
+            }
 
-          let urlString = this.API_URL + "/UserNameExists?username=" + username;
+            this.API_URL = backendUrl.url;
 
-          console.log('urlString', urlString)
+            let urlString = this.API_URL + "/UserNameExists?username=" + username;
 
-          return this.http.get(urlString);
+            console.log('urlString', urlString)
 
-        })
+            return this.http.get(urlString);
+
+          })
+
+      }
     }
 
   }
