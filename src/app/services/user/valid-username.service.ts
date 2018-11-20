@@ -41,7 +41,7 @@ export class ValidUserNameService {
 
       let backendURL = sessionStorage.getItem('backend_url');
 
-      if (backendURL == '') {
+      if (backendURL == null) {
         console.log('no backendurl')
 
         this.authService.initializeBackendURL().subscribe(
