@@ -12,6 +12,14 @@ export class GetUserService {
 
   constructor(private http: HttpClient, private authService: AuthService, ) {
 
+    this.getBackendURL();
+
+    console.log('this.API_URL', this.API_URL)
+
+  }
+
+  getBackendURL() {
+
     if (!environment.production) {
       this.API_URL = environment.API_URL;
     }
@@ -19,27 +27,13 @@ export class GetUserService {
       this.API_URL = this.authService.getBackendURL();
       console.log('this.API_URL', this.API_URL)
     }
-
-    console.log('this.API_URL', this.API_URL)
 
   }
 
   //maybe make a getUser by ID
   getUserbyUsername(username: string): Observable<any> {
 
-    if (!environment.production) {
-      this.API_URL = environment.API_URL;
-    }
-    else {
-
-      this.authService.initializeBackendURL();
-
-      this.API_URL = this.authService.getBackendURL();
-      console.log('this.API_URL', this.API_URL)
-
-      this.authService.clearBackendURL();
-
-    }
+    this.getBackendURL();
 
     let urlString = this.API_URL + "/user?username=" + username;
 
@@ -48,19 +42,7 @@ export class GetUserService {
 
   getUserbyEmail(email: string): Observable<any> {
 
-    if (!environment.production) {
-      this.API_URL = environment.API_URL;
-    }
-    else {
-
-      this.authService.initializeBackendURL();
-
-      this.API_URL = this.authService.getBackendURL();
-      console.log('this.API_URL', this.API_URL)
-
-      this.authService.clearBackendURL();
-
-    }
+    this.getBackendURL();
 
     let urlString = this.API_URL + "/user?email=" + email;
 
@@ -69,19 +51,7 @@ export class GetUserService {
 
   getUserbyID(userID: string): Observable<any> {
 
-    if (!environment.production) {
-      this.API_URL = environment.API_URL;
-    }
-    else {
-
-      this.authService.initializeBackendURL();
-
-      this.API_URL = this.authService.getBackendURL();
-      console.log('this.API_URL', this.API_URL)
-
-      this.authService.clearBackendURL();
-
-    }
+    this.getBackendURL();
 
     let urlString = this.API_URL + "/user?id=" + userID;
 
@@ -90,19 +60,7 @@ export class GetUserService {
 
   getAllUsers(): Observable<any> {
 
-    if (!environment.production) {
-      this.API_URL = environment.API_URL;
-    }
-    else {
-
-      this.authService.initializeBackendURL();
-
-      this.API_URL = this.authService.getBackendURL();
-      console.log('this.API_URL', this.API_URL)
-
-      this.authService.clearBackendURL();
-
-    }
+    this.getBackendURL();
 
     let urlString = this.API_URL + "/user";
 
@@ -111,19 +69,7 @@ export class GetUserService {
 
   getDirectors(): Observable<any> {
 
-    if (!environment.production) {
-      this.API_URL = environment.API_URL;
-    }
-    else {
-
-      this.authService.initializeBackendURL();
-
-      this.API_URL = this.authService.getBackendURL();
-      console.log('this.API_URL', this.API_URL)
-
-      this.authService.clearBackendURL();
-
-    }
+    this.getBackendURL();
 
     let urlString = this.API_URL + "/directors";
 
@@ -132,19 +78,7 @@ export class GetUserService {
 
   getOrgUsers(orgID: string): Observable<any> {
 
-    if (!environment.production) {
-      this.API_URL = environment.API_URL;
-    }
-    else {
-
-      this.authService.initializeBackendURL();
-
-      this.API_URL = this.authService.getBackendURL();
-      console.log('this.API_URL', this.API_URL)
-
-      this.authService.clearBackendURL();
-
-    }
+    this.getBackendURL();
 
     let urlString = this.API_URL + "/orgUsers/" + orgID;
 
