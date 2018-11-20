@@ -37,6 +37,14 @@ export class ValidUserNameService {
     }
     else {
 
+      console.log('backendURL', sessionStorage.getItem('backend_url'))
+
+      let backendURL = sessionStorage.getItem('backend_url');
+
+      if (backendURL == '') {
+        console.log('no backendurl')
+      }
+
       this.authService.initializeBackendURL().subscribe(
         (backendUrl) => {
 
@@ -59,6 +67,7 @@ export class ValidUserNameService {
           return this.http.get(urlString);
 
         })
+
     }
 
   }
