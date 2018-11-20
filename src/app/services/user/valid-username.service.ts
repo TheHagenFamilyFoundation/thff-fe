@@ -43,30 +43,43 @@ export class ValidUserNameService {
 
       if (backendURL == '') {
         console.log('no backendurl')
+
+        this.authService.initializeBackendURL().subscribe(
+          (backendUrl) => {
+
+            console.log('backendUrl', backendUrl.url);
+
+            if (backendUrl) {
+              sessionStorage.setItem('backend_url', backendUrl.url);
+            }
+            else {
+              console.log('Can´t find the backend URL, using a failover value');
+              sessionStorage.setItem('backend_url', 'https://failover-url.com');
+            }
+
+            this.API_URL = backendUrl.url;
+
+            let urlString = this.API_URL + "/UserNameExists?username=" + username;
+
+            console.log('urlString', urlString)
+
+            return this.http.get(urlString);
+
+          })
+
       }
+      else {
 
-      this.authService.initializeBackendURL().subscribe(
-        (backendUrl) => {
+        this.API_URL = this.authService.getBackendURL();
+        console.log('this.API_URL', this.API_URL)
 
-          console.log('backendUrl', backendUrl.url);
+        let urlString = this.API_URL + "/UserNameExists?username=" + username;
 
-          if (backendUrl) {
-            sessionStorage.setItem('backend_url', backendUrl.url);
-          }
-          else {
-            console.log('Can´t find the backend URL, using a failover value');
-            sessionStorage.setItem('backend_url', 'https://failover-url.com');
-          }
+        console.log('urlString', urlString)
 
-          this.API_URL = backendUrl.url;
+        return this.http.get(urlString);
 
-          let urlString = this.API_URL + "/UserNameExists?username=" + username;
-
-          console.log('urlString', urlString)
-
-          return this.http.get(urlString);
-
-        })
+      }
 
     }
 
