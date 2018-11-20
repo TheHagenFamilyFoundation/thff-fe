@@ -27,24 +27,38 @@ export class ValidUserNameService {
   checkValidUserName(username: string): Observable<any> {
 
     if (!environment.production) {
+
       this.API_URL = environment.API_URL;
+
+      let urlString = this.API_URL + "/UserNameExists?username=" + username;
+
+      return this.http.get(urlString);
+
     }
     else {
 
-      console.log('get url -1')
+      this.authService.initializeBackendURL().subscribe(
+        (backendUrl) => {
 
-      this.authService.initializeBackendURL();
+          console.log('backendUrl', backendUrl.url);
 
-      this.API_URL = this.authService.getBackendURL();
-      console.log('this.API_URL', this.API_URL)
+          if (backendUrl) {
+            sessionStorage.setItem('backend_url', backendUrl.url);
+          }
+          else {
+            console.log('Can´t find the backend URL, using a failover value');
+            sessionStorage.setItem('backend_url', 'https://failover-url.com');
+          }
 
-      this.authService.clearBackendURL();
+          this.API_URL = backendUrl.url;
 
+          let urlString = this.API_URL + "/UserNameExists?username=" + username;
+
+          return this.http.get(urlString);
+
+        })
     }
-
-    let urlString = this.API_URL + "/UserNameExists?username=" + username;
-
-    return this.http.get(urlString);
+    
   }
 
 
