@@ -26,6 +26,20 @@ export class ValidResetCodeService {
 
   checkValidResetCode(resetCode: string): Observable<any> {
 
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+
+      this.authService.initializeBackendURL();
+
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+
+      this.authService.clearBackendURL();
+
+    }
+
     let urlString = this.API_URL + "/ResetCodeCheck?resetCode=" + resetCode;
 
     return this.http.get(urlString);
