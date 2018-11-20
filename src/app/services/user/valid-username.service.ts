@@ -45,7 +45,9 @@ export class ValidUserNameService {
       if (!backendURL) {
         console.log('no backendurl')
 
-        this.authService.initializeBackendURL().subscribe(
+        let backendURL = this.authService.initializeBackendURL()
+
+        backendURL.subscribe(
           (backendUrl) => {
 
             console.log('backendUrl', backendUrl.url);
