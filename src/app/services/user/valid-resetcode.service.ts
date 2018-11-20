@@ -31,6 +31,8 @@ export class ValidResetCodeService {
     }
     else {
 
+      console.log('get url')
+
       this.authService.initializeBackendURL();
 
       this.API_URL = this.authService.getBackendURL();
