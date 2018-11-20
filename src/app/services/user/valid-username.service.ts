@@ -31,6 +31,8 @@ export class ValidUserNameService {
     }
     else {
 
+      console.log('get url -1')
+
       this.authService.initializeBackendURL();
 
       this.API_URL = this.authService.getBackendURL();
