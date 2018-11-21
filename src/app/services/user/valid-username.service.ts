@@ -10,6 +10,8 @@ export class ValidUserNameService {
 
   API_URL: string;
 
+  BackendURL: any;
+
   constructor(private http: HttpClient, private authService: AuthService, ) {
 
     if (!environment.production) {
@@ -45,9 +47,9 @@ export class ValidUserNameService {
       if (!backendURL) {
         console.log('no backendurl')
 
-        let backendURL = this.authService.initializeBackendURL()
+        this.BackendURL = this.authService.initializeBackendURL()
 
-        backendURL.subscribe(
+        this.BackendURL.subscribe(
           (backendUrl) => {
 
             console.log('backendUrl', backendUrl.url);
