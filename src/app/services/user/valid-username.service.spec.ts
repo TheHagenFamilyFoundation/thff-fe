@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ValidUsernameService } from './valid-username.service';
+import { ValidUserNameService } from './valid-username.service';
 
 describe('ValidUsernameService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ValidUsernameService]
+      providers: [ValidUserNameService]
     });
   });
 
-  it('should be created', inject([ValidUsernameService], (service: ValidUsernameService) => {
+  it('should be created', inject([ValidUserNameService], (service: ValidUserNameService) => {
     expect(service).toBeTruthy();
   }));
 });
