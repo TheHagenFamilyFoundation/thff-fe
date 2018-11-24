@@ -26,64 +26,9 @@ export class ValidEmailService {
 
   checkValidEmail(email: string): Observable<any> {
 
-    if (!environment.production) {
+    let urlString = this.API_URL + "/EmailExists?email=" + email;
 
-      this.API_URL = environment.API_URL;
-
-      let urlString = this.API_URL + "/EmailExists?email=" + email;
-
-      return this.http.get(urlString);
-    }
-    else {
-
-      console.log('backendURL', sessionStorage.getItem('backend_url'))
-
-      let backendURL = sessionStorage.getItem('backend_url');
-
-      //null
-      if (!backendURL) {
-        console.log('no backendurl')
-
-        let backendURL = this.authService.initializeBackendURL()
-
-        backendURL.subscribe(
-          (backendUrl) => {
-
-            console.log('backendUrl', backendUrl.url);
-
-            if (backendUrl) {
-              sessionStorage.setItem('backend_url', backendUrl.url);
-            }
-            else {
-              console.log('Can´t find the backend URL, using a failover value');
-              sessionStorage.setItem('backend_url', 'https://failover-url.com');
-            }
-
-            this.API_URL = backendUrl.url;
-
-            let urlString = this.API_URL + "/EmailExists?email=" + email;
-
-            console.log('urlString', urlString)
-
-            return this.http.get(urlString);
-
-          })
-
-      }
-      else {
-
-        this.API_URL = this.authService.getBackendURL();
-        console.log('this.API_URL', this.API_URL)
-
-        let urlString = this.API_URL + "/EmailExists?email=" + email;
-
-        console.log('urlString', urlString)
-
-        return this.http.get(urlString);
-
-      }
-
-    }
+    return this.http.get(urlString);
 
   }
 
