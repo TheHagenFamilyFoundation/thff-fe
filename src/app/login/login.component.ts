@@ -69,10 +69,8 @@ export class LoginComponent implements OnInit {
     if (!environment.production) {
       this.API_URL = environment.API_URL;
     }
-    else {
-      this.API_URL = this.authService.getBackendURL();
-      console.log('this.API_URL', this.API_URL)
-    }
+
+    this.getBackendURL();
 
     console.log('this.API_URL', this.API_URL)
 
@@ -191,6 +189,31 @@ export class LoginComponent implements OnInit {
     console.log("passwordChange");
 
     this.ShowMessage = false;
+
+  }
+
+  getBackendURL() {
+
+    if (environment.production) {
+
+      this.authService.initializeBackendURL().subscribe(
+        (backendUrl) => {
+
+          console.log('backendUrl', backendUrl.url);
+
+          if (backendUrl) {
+            sessionStorage.setItem('backend_url', backendUrl.url);
+          }
+          else {
+            console.log('Can´t find the backend URL, using a failover value');
+            sessionStorage.setItem('backend_url', 'https://failover-url.com');
+          }
+
+          this.API_URL = backendUrl.url;
+
+        })
+
+    }
 
   }
 

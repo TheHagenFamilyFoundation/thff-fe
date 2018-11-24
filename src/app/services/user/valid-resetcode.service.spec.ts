@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ValidResetcodeService } from './valid-resetcode.service';
+import { ValidResetCodeService } from './valid-resetcode.service';
 
 describe('ValidResetcodeService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ValidResetcodeService]
+      providers: [ValidResetCodeService]
     });
   });
 
-  it('should be created', inject([ValidResetcodeService], (service: ValidResetcodeService) => {
+  it('should be created', inject([ValidResetCodeService], (service: ValidResetCodeService) => {
     expect(service).toBeTruthy();
   }));
 });
