@@ -154,3 +154,19 @@
   </div>
 
 </div>
+
+<div class="container mt-5 mb-5 pl-5 ">
+  <div class="row">
+    <form [formGroup]="form">
+
+      <div class="form-group">
+        <label for="phone-number">Phone Number</label>
+
+        <input class="form-control" type="text" appPhoneMask formControlName="phone" id="phone-number">
+      </div>
+
+
+
+    </form>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, FormsModule, NgControl, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -70,12 +71,19 @@ export class OrganizationInfoComponent implements OnInit {
 
   editing = false;
 
+  form: FormGroup;
+
   constructor(
     private createOrganizationInfoService: CreateOrganizationInfoService,
     private getOrganizationInfoService: GetOrganizationInfoService,
     private deleteOrganizationInfoService: DeleteOrganizationInfoService,
     private authService: AuthService,
+    fb: FormBuilder
   ) {
+
+    this.form = fb.group({
+      phone: ['']
+    })
 
     this.legalName$.pipe(
       debounceTime(400),
