@@ -49,20 +49,24 @@ export class OrganizationInfoComponent implements OnInit {
   zip$ = new Subject<string>();
   fax$ = new Subject<string>();
 
+  testphone$ = new Subject<string>();
+
   legalName: string; //  -Legal Name of Organization Applying: 
   yearFounded: number; // -Year Founded 
   currentOperatingBudget: number; // -Current Operating Budget 
   director: string; // -Executive Director 
-  phone: number; // -Phone Number 
+  phone: string; // -Phone Number 
   contactPerson: string; //-Contact person/title/phone number 
   contactPersonTitle: string;
-  contactPersonPhoneNumber: number;
+  contactPersonPhoneNumber: string;
   email: string; // -Email Address 
   address: string; //-Address (principal/administrative office) 
   city: string; // -City 
   state: string;// -State 
-  zip: number;//-Zip 
-  fax: number; //-Fax Number
+  zip: number;//-Zip - 5 length
+  fax: string; //-Fax Number
+
+  testphone: any;
 
   loaded = false;
 
@@ -126,7 +130,7 @@ export class OrganizationInfoComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.phone = Number(term);
+        this.phone = term;
         this.phoneChange()
       });
 
@@ -153,7 +157,7 @@ export class OrganizationInfoComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.contactPersonPhoneNumber = Number(term);
+        this.contactPersonPhoneNumber = term;
         this.contactPersonPhoneNumberChange()
       });
 
@@ -207,9 +211,21 @@ export class OrganizationInfoComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.fax = Number(term);
+        this.fax = term;
         this.faxChange()
       });
+
+    this.testphone$.pipe(
+      debounceTime(400),
+      distinctUntilChanged())
+      .subscribe(term => {
+
+        console.log('term = ', term)
+
+        this.testphone = term.toString();
+        this.phoneChange()
+      });
+
 
     this.defaultValues();
 
@@ -233,16 +249,16 @@ export class OrganizationInfoComponent implements OnInit {
     this.yearFounded = 0;
     this.currentOperatingBudget = 0;
     this.director = '';
-    this.phone = 0;
+    this.phone = '';
     this.contactPerson = '';
     this.contactPersonTitle = ''
-    this.contactPersonPhoneNumber = 0;
+    this.contactPersonPhoneNumber = '';
     this.email = '';
     this.address = '';
     this.city = '';
     this.state = '';
     this.zip = 0;
-    this.fax = 0;
+    this.fax = '';
 
   }
 
