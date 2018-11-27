@@ -104,17 +104,29 @@
     </mat-form-field>
     <div>
       Contact Person
-      <p>
-        <mat-form-field>
-          <input matInput placeholder="Contact Person" value={{contactPerson}} (keyup)="contactPerson$.next($event.target.value)">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Title" value={{contactPersonTitle}} (keyup)="contactPersonTitle$.next($event.target.value)">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Phone Number" value={{contactPersonPhoneNumber}} (keyup)="contactPersonPhoneNumber$.next($event.target.value)">
-        </mat-form-field>
-      </p>
+      <!-- <p> -->
+      <form [formGroup]="form">
+
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Contact Person" value={{contactPerson}} (keyup)="contactPerson$.next($event.target.value)">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Title" value={{contactPersonTitle}} (keyup)="contactPersonTitle$.next($event.target.value)">
+          </mat-form-field>
+          <!-- <mat-form-field> -->
+          <!-- <input matInput placeholder="Phone Number" value={{contactPersonPhoneNumber}} (keyup)="contactPersonPhoneNumber$.next($event.target.value)"> -->
+          <!-- </mat-form-field> -->
+
+
+          <mat-form-field>
+            <input matInput class="form-control" value={{contactPersonPhoneNumber}} type="text" appPhoneMask
+              formControlName="phone" id="phone-number" placeholder="Phone Number" (keyup)="contactPersonPhoneNumber$.next($event.target.value)">
+          </mat-form-field>
+        </div>
+      </form>
+
+      <!-- </p> -->
     </div>
     <mat-form-field>
       <input matInput placeholder="Email" value={{email}} (keyup)="email$.next($event.target.value)">
@@ -162,7 +174,7 @@
       <div class="form-group">
         <label for="phone-number">Phone Number</label>
 
-        <input class="form-control" type="text" appPhoneMask formControlName="phone" id="phone-number">
+        <input class="form-control" type="text" appPhoneMask formControlName="phone" id="phone-number" (keyup)="testphone$.next($event.target.value)">
       </div>
 
 
