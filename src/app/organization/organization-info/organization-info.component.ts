@@ -75,7 +75,9 @@ export class OrganizationInfoComponent implements OnInit {
 
   editing = false;
 
-  form: FormGroup;
+  formContactPerson: FormGroup;
+  formOrganization: FormGroup;
+  formFax: FormGroup;
 
   constructor(
     private createOrganizationInfoService: CreateOrganizationInfoService,
@@ -85,8 +87,16 @@ export class OrganizationInfoComponent implements OnInit {
     fb: FormBuilder
   ) {
 
-    this.form = fb.group({
+    this.formContactPerson = fb.group({
+      contactPersonPhoneNumber: ['']
+    })
+
+    this.formOrganization = fb.group({
       phone: ['']
+    })
+
+    this.formFax = fb.group({
+      fax: ['']
     })
 
     this.legalName$.pipe(
