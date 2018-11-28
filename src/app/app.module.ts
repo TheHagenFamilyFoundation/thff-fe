@@ -88,6 +88,9 @@ import { DeleteLoiInfoService } from './services/loi/loi-info/delete-loi-info.se
 
 import { EmailService } from './services/user/email.service';
 
+//Directives
+import { PhoneMaskDirective } from './directives/phone-mask.directive';
+
 //Components
 
 //Home
@@ -272,6 +275,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
         NotFoundComponent,
 
+        PhoneMaskDirective,
+
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
@@ -292,6 +297,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
         ContentsModule, NgxPageScrollModule
     ],
+    exports: [PhoneMaskDirective],
     bootstrap: [AppComponent],
     providers: [
         AuthGuard, AuthService, LoginService, GetCSRFTokenService,
