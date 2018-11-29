@@ -1,7 +1,9 @@
 # Initial Account Setup Test
-### Due by Nov. 15th
+### Due by Dec. 15th
 
-## Create Organization User
+## User management
+
+### Create Organization User
 
 <show steps to create user.>
 
@@ -22,7 +24,7 @@ Check your email. You should have received an email. The user register email:
     
     From the THFF team
 
-## Reset password
+### Reset password
 
 <show steps to reset password.>
 
@@ -39,7 +41,7 @@ Check your email. You should have received an email. The user register email:
 The Reset URL will lead you to the Type New Password page. Once you make changes there. 
 Another email will be sent to you.    
     
-## Confirmation Password Change Email
+### Confirmation Password Change Email
 
 <show steps of typing new password.>
 
@@ -55,7 +57,7 @@ Another email will be sent to you.
 When at your user page, you will have the option to change your password and/or your email. 
 These will only be accessible while logged in.
  
-## Forgot Username
+### Forgot Username
 
 <show steps of retrieving forgotten username.>
 
@@ -67,7 +69,7 @@ You will receive this email:
     We have received a request for your username.
     Here is your username: (Username)
         
-## Change password 
+### Change password 
 
 <show steps of changing password.>
 
@@ -80,7 +82,7 @@ You will receive this email:
     If you didn’t make this request,
     (Support Email)
 
-## Change email 
+### Change email 
 
 <show steps of changing email.>
 
@@ -96,7 +98,9 @@ You will receive this email:
 
 Send to the old email notifying the change.
 
-## Create Organization
+## Organization Management
+
+### Create Organization
 
 <show steps of creating an organization.>
 
@@ -116,23 +120,23 @@ Check your email again. You have received another email. This one is about the o
     
     From the THFF team
     
-## Create Organization Info
+### Create Organization Info
 
 <show steps of creating organization info.>
 
-## Edit Organization Info
+### Edit Organization Info
 
 <show steps of editing organization info.>
 
-## Edit Users
+### Edit Users
 
 <show steps of editing organization's users.>
 
-## Upload 501(c)3
+### Upload 501(c)3
 
 <show steps of uploading 501(c)3.>
 
-## Receiving 501(c)3 Validation Status Email
+### Receiving 501(c)3 Validation Status Email
 
 
 
