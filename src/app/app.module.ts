@@ -36,6 +36,21 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { ContentsModule } from 'angular-contents';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 
+import { NgxCurrencyModule } from "ngx-currency";
+
+export const customCurrencyMaskConfig = {
+    align: "right",
+    allowNegative: false,
+    allowZero: true,
+    decimal: ".",
+    precision: 2,
+    prefix: "$",
+    suffix: "",
+    thousands: ",",
+    nullable: false
+};
+
+
 //guards
 import { AuthGuard } from './_guards/auth.guard';
 
@@ -295,7 +310,10 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
         MatPaginatorModule, MatDialogModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
 
-        ContentsModule, NgxPageScrollModule
+        ContentsModule, NgxPageScrollModule,
+
+        NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
+
     ],
     exports: [PhoneMaskDirective],
     bootstrap: [AppComponent],
