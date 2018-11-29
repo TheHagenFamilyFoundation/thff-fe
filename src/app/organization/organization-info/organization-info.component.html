@@ -7,7 +7,7 @@
 </div>
 
 <div *ngIf="editing">
-  <button mat-raised-button (click)="save()">Save</button>
+  <button *ngIf="canSave" mat-raised-button (click)="save()">Save</button>
   <button mat-raised-button (click)="cancel()">Cancel</button>
 </div>
 
@@ -24,7 +24,7 @@
         <input matInput placeholder="Year Founded" value={{yearFounded}} disabled>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Current Operating Budget" value={{currentOperatingBudget}} disabled>
+        <input matInput placeholder="Current Operating Budget" value="{{currentOperatingBudget | currency}}" disabled>
       </mat-form-field>
     </div>
     <mat-form-field>
@@ -95,7 +95,9 @@
             <input matInput placeholder="Year Founded" value={{yearFounded}} (keyup)="yearFounded$.next($event.target.value)">
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Current Operating Budget" value={{currentOperatingBudget}} (keyup)="currentOperatingBudget$.next($event.target.value)">
+            <input matInput placeholder="Current Operating Budget" currencyMask [(ngModel)]="currentOperatingBudget"
+              (ngModelChange)="currentOperatingBudgetChange($event)" [ngModelOptions]="{standalone: true}">
+            <mat-error>{{currentOperatingBudgetMessage}}</mat-error>
           </mat-form-field>
         </div>
         <mat-form-field>
@@ -172,7 +174,9 @@
     </form>
 
   </div>
-
+  <div *ngIf="showCurrentOperatingBudgetMessage">
+    {{currentOperatingBudgetMessage}}
+  </div>
 </div>
 
 <!-- <div class="container mt-5 mb-5 pl-5 ">

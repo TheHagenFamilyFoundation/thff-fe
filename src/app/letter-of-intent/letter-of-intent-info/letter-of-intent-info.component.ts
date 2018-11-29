@@ -15,7 +15,7 @@ import { DeleteLoiInfoService } from '../../services/loi/loi-info/delete-loi-inf
 import { AuthService } from '../../auth/auth.service';
 
 //debounce
-import { Subject } from 'rxjs';
+import { Subject, TimeoutError } from 'rxjs';
 
 import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
@@ -49,12 +49,21 @@ export class LetterOfIntentInfoComponent implements OnInit {
   amountRequested: string;
   totalProjectCost: string;
 
+  outputamountRequested: string;
+  outputTotalProjectCost: string;
+
+
   loaded = false;
 
   ShowMessage = false;
   message: any;
 
+  ShowCostMessage = false;
+  costMessage: any;
+
   editing = false;
+
+  canSave = true;
 
   startDate: any;
   endDate: any;
@@ -110,23 +119,23 @@ export class LetterOfIntentInfoComponent implements OnInit {
         this.projectEndDateChange()
       });
 
-    this.amountRequested$.pipe(
-      debounceTime(400),
-      distinctUntilChanged())
-      .subscribe(term => {
+    // this.amountRequested$.pipe(
+    //   debounceTime(400),
+    //   distinctUntilChanged())
+    //   .subscribe(term => {
 
-        this.amountRequested = term;
-        this.amountRequestedChange()
-      });
+    //     this.amountRequested = term;
+    //     this.amountRequestedChange()
+    //   });
 
-    this.totalProjectCost$.pipe(
-      debounceTime(400),
-      distinctUntilChanged())
-      .subscribe(term => {
+    // this.totalProjectCost$.pipe(
+    //   debounceTime(400),
+    //   distinctUntilChanged())
+    //   .subscribe(term => {
 
-        this.totalProjectCost = term;
-        this.totalProjectCostChange()
-      });
+    //     this.totalProjectCost = term;
+    //     this.totalProjectCostChange()
+    //   });
 
     this.defaultValues();
 
@@ -379,19 +388,61 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
   }
 
-  amountRequestedChange() {
-    console.log("amountRequestedChange");
+  amountRequestedChange(event) {
+    console.log("amountRequestedChange", event);
 
     this.ShowMessage = false;
 
+    this.checkCostAmounts();
+
   }
 
-  totalProjectCostChange() {
-    console.log("totalProjectCostChange");
+  totalProjectCostChange(event) {
+    console.log("totalProjectCostChange", event);
 
     this.ShowMessage = false;
 
+    this.checkCostAmounts();
+
   }
+
+  checkCostAmounts() {
+
+    if (this.amountRequested > this.totalProjectCost) {
+
+      this.costMessage = "Amount Requested must be lesser than the Total Project Cost."
+
+      this.ShowCostMessage = true;
+      this.canSave = false;
+
+    }
+    else if (this.totalProjectCost == '' && this.amountRequested == '') {
+      this.costMessage = "Total Project Cost and Amount Requested must be positive."
+
+      this.ShowCostMessage = true;
+      this.canSave = false;
+    }
+    else if (this.totalProjectCost == '') {
+
+      this.costMessage = "Total Project Cost must be positive."
+
+      this.ShowCostMessage = true;
+      this.canSave = false;
+
+    }
+    else if (this.amountRequested == '') {
+      this.costMessage = "Amount Requested must be positive."
+
+      this.ShowCostMessage = true;
+      this.canSave = false;
+    }
+    else {
+      this.ShowCostMessage = false;
+      this.canSave = true;
+    }
+
+  }
+
 
   getFormattedDate(date) {
 
@@ -408,6 +459,12 @@ export class LetterOfIntentInfoComponent implements OnInit {
     day = day.length > 1 ? day : day;
 
     return month + '/' + day + '/' + year;
+  }
+
+  doSomething(event) {
+
+    console.log('do something', event)
+
   }
 
 }

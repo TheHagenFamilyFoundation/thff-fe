@@ -53,7 +53,7 @@ export class OrganizationInfoComponent implements OnInit {
 
   legalName: string; //  -Legal Name of Organization Applying: 
   yearFounded: number; // -Year Founded 
-  currentOperatingBudget: number; // -Current Operating Budget 
+  currentOperatingBudget: string; // -Current Operating Budget 
   director: string; // -Executive Director 
   phone: string; // -Phone Number 
   contactPerson: string; //-Contact person/title/phone number 
@@ -72,6 +72,11 @@ export class OrganizationInfoComponent implements OnInit {
 
   ShowMessage = false;
   message: any;
+
+  canSave = true;
+
+  showCurrentOperatingBudgetMessage = false;
+  currentOperatingBudgetMessage: any;
 
   editing = false;
 
@@ -117,14 +122,14 @@ export class OrganizationInfoComponent implements OnInit {
         this.yearFoundedChange()
       });
 
-    this.currentOperatingBudget$.pipe(
-      debounceTime(400),
-      distinctUntilChanged())
-      .subscribe(term => {
+    // this.currentOperatingBudget$.pipe(
+    //   debounceTime(400),
+    //   distinctUntilChanged())
+    //   .subscribe(term => {
 
-        this.currentOperatingBudget = Number(term);
-        this.currentOperatingBudgetChange()
-      });
+    //     this.currentOperatingBudget = Number(term);
+    //     this.currentOperatingBudgetChange()
+    //   });
 
     this.director$.pipe(
       debounceTime(400),
@@ -257,7 +262,7 @@ export class OrganizationInfoComponent implements OnInit {
 
     this.legalName = ''
     this.yearFounded = 0;
-    this.currentOperatingBudget = 0;
+    this.currentOperatingBudget = '';
     this.director = '';
     this.phone = '';
     this.contactPerson = '';
@@ -494,8 +499,26 @@ export class OrganizationInfoComponent implements OnInit {
 
   }
 
-  currentOperatingBudgetChange() {
-    console.log("currentOperatingBudgetChange");
+  currentOperatingBudgetChange(event) {
+    console.log("currentOperatingBudgetChange", event);
+
+    if (this.currentOperatingBudget == '') {
+
+      this.currentOperatingBudgetMessage = "Current Operating Budget must be positive."
+
+      this.showCurrentOperatingBudgetMessage = true;
+      console.log('showing current op message')
+
+      this.canSave = false;
+
+    }
+    else {
+      this.showCurrentOperatingBudgetMessage = false;
+
+      this.canSave = true;
+
+    }
+
 
     this.ShowMessage = false;
 
