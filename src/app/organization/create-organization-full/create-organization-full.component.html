@@ -20,33 +20,46 @@
 
 <div align="center">
   <div>
-    <mat-form-field>
-      <input matInput placeholder="Legal Name" value={{legalName}} required (keyup)="legalName$.next($event.target.value)">
-    </mat-form-field>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="Year Founded" value={{yearFounded}} required (keyup)="yearFounded$.next($event.target.value)">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Current Operating Budget" value={{currentOperatingBudget}} required (keyup)="currentOperatingBudget$.next($event.target.value)">
-      </mat-form-field>
-    </div>
-    <mat-form-field>
-      <input matInput placeholder="Executive Director" value={{director}} required (keyup)="director$.next($event.target.value)">
-    </mat-form-field>
+    <form [formGroup]="formOrganization">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput placeholder="Legal Name" value={{legalName}} required (keyup)="legalName$.next($event.target.value)">
+        </mat-form-field>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="Year Founded" value={{yearFounded}} required (keyup)="yearFounded$.next($event.target.value)">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Current Operating Budget" currencyMask [(ngModel)]="currentOperatingBudget"
+              (ngModelChange)="currentOperatingBudgetChange($event)" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <mat-form-field>
+          <input matInput placeholder="Executive Director" value={{director}} required (keyup)="director$.next($event.target.value)">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput class="form-control" value={{phone}} type="text" appPhoneMask formControlName="phone" id="phone-number"
+            placeholder="Phone Number" (keyup)="phone$.next($event.target.value)">
+        </mat-form-field>
+      </div>
+    </form>
+
     <div>
       Contact Person
-      <p>
-        <mat-form-field>
-          <input matInput placeholder="Contact Person" value={{contactPerson}} required (keyup)="contactPerson$.next($event.target.value)">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Title" value={{contactPersonTitle}} required (keyup)="contactPersonTitle$.next($event.target.value)">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Phone Number" value={{contactPersonPhoneNumber}} required (keyup)="contactPersonPhoneNumber$.next($event.target.value)">
-        </mat-form-field>
-      </p>
+      <form [formGroup]="formContactPerson">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Contact Person" value={{contactPerson}} (keyup)="contactPerson$.next($event.target.value)">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Title" value={{contactPersonTitle}} (keyup)="contactPersonTitle$.next($event.target.value)">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput class="form-control" value={{contactPersonPhoneNumber}} type="text" appPhoneMask
+              formControlName="contactPersonPhoneNumber" id="phone-number" placeholder="Phone Number" (keyup)="contactPersonPhoneNumber$.next($event.target.value)">
+          </mat-form-field>
+        </div>
+      </form>
     </div>
     <div>Principal/Administrative Office
       <div>
@@ -85,12 +98,14 @@
         <input matInput placeholder="Email" value={{email}} required (keyup)="email$.next($event.target.value)">
       </mat-form-field>
     </div>
-    <mat-form-field>
-      <input matInput placeholder="Fax" value={{fax}} (keyup)="fax$.next($event.target.value)">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Phone Number" value={{phone}} required (keyup)="phone$.next($event.target.value)">
-    </mat-form-field>
+    <form [formGroup]="formFax">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput class="form-control" value={{fax}} type="text" appPhoneMask formControlName="fax" id="fax"
+            placeholder="Fax" (keyup)="fax$.next($event.target.value)">
+        </mat-form-field>
+      </div>
+    </form>
   </div>
 
 </div>
