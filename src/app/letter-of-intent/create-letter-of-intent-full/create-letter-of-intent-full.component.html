@@ -22,7 +22,8 @@
     </mat-form-field>
   </div>
   <mat-form-field class="text-a">
-    <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" (keyup)="description$.next($event.target.value)"></textarea>
+    <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+      (keyup)="description$.next($event.target.value)"></textarea>
   </mat-form-field>
 </div>
 
@@ -44,8 +45,8 @@
   <br>
   <div>
     <mat-form-field class="full-width">
-      <input matInput [matDatepicker]="picker3" placeholder="Project Start Date" required [value]="projectStartDate.value" (dateInput)="projectStartDate$.next($event.target.value) "
-        (dateChange)="projectStartDate$.next($event.target.value) ">
+      <input matInput [matDatepicker]="picker3" placeholder="Project Start Date" required [value]="projectStartDate.value"
+        (dateInput)="projectStartDate$.next($event.target.value) " (dateChange)="projectStartDate$.next($event.target.value) ">
       <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
       <mat-datepicker #picker3></mat-datepicker>
     </mat-form-field>
@@ -53,22 +54,26 @@
 
   <div>
     <mat-form-field class="full-width">
-      <input matInput [matDatepicker]="picker4" placeholder="Project End Date" required [value]="projectEndDate.value" (dateInput)="projectEndDate$.next($event.target.value) "
-        (dateChange)="projectEndDate$.next($event.target.value) ">
+      <input matInput [matDatepicker]="picker4" placeholder="Project End Date" required [value]="projectEndDate.value"
+        (dateInput)="projectEndDate$.next($event.target.value) " (dateChange)="projectEndDate$.next($event.target.value) ">
       <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
       <mat-datepicker #picker4></mat-datepicker>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Amount Requested " value={{amountRequested}} required (keyup)="amountRequested$.next($event.target.value) ">
+      <input matInput placeholder="Amount Requested " currencyMask [(ngModel)]="amountRequested" (ngModelChange)="amountRequestedChange($event)">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Total Project Cost " value={{totalProjectCost}} required (keyup)="totalProjectCost$.next($event.target.value) ">
+      <input matInput placeholder="Total Project Cost " currencyMask [(ngModel)]="totalProjectCost" (ngModelChange)="totalProjectCostChange($event)">
     </mat-form-field>
   </div>
+  <div *ngIf="ShowCostMessage">
+    {{costMessage}}
+  </div>
+
 </div>
 <br>
 <div *ngIf="CanCreateLOI">

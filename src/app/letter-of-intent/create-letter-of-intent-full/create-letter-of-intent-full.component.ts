@@ -60,6 +60,9 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
   ShowMessage = false;
 
+  ShowCostMessage = false;
+  costMessage: any;
+
   CanCreateLOI = false;
 
   //loi create
@@ -148,23 +151,23 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
         this.projectEndDateChange()
       });
 
-    this.amountRequested$.pipe(
-      debounceTime(400),
-      distinctUntilChanged())
-      .subscribe(term => {
+    // this.amountRequested$.pipe(
+    //   debounceTime(400),
+    //   distinctUntilChanged())
+    //   .subscribe(term => {
 
-        this.amountRequested = term;
-        this.amountRequestedChange()
-      });
+    //     this.amountRequested = term;
+    //     this.amountRequestedChange()
+    //   });
 
-    this.totalProjectCost$.pipe(
-      debounceTime(400),
-      distinctUntilChanged())
-      .subscribe(term => {
+    // this.totalProjectCost$.pipe(
+    //   debounceTime(400),
+    //   distinctUntilChanged())
+    //   .subscribe(term => {
 
-        this.totalProjectCost = term;
-        this.totalProjectCostChange()
-      });
+    //     this.totalProjectCost = term;
+    //     this.totalProjectCostChange()
+    //   });
 
     this.defaultValues();
 
@@ -275,6 +278,17 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
   verifyInput() {
 
+    console.log('in verifyInput')
+
+    console.log('this.ValidLOIName', this.ValidLOIName)
+    console.log('this.ValidOrgName', this.ValidOrgName)
+    console.log('this.ValidProjectTitle', this.ValidProjectTitle)
+    console.log('this.ValidPurpose', this.ValidPurpose)
+    console.log('this.ValidProjectStartDate', this.ValidProjectStartDate)
+    console.log('this.ValidProjectEndDate', this.ValidProjectEndDate)
+    console.log('this.ValidAmountRequested', this.ValidAmountRequested)
+    console.log('this.ValidTotalProjectCost', this.ValidTotalProjectCost)
+
     if (this.ValidLOIName && this.ValidOrgName &&
       this.ValidProjectTitle && this.ValidPurpose &&
       this.ValidProjectStartDate && this.ValidProjectEndDate &&
@@ -344,37 +358,21 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
   }
 
-  amountRequestedChange() {
-    console.log("amountRequestedChange");
+  amountRequestedChange(event) {
+    console.log("amountRequestedChange", event);
 
     this.ShowMessage = false;
 
-    if (this.amountRequested != "") {
-
-      this.ValidAmountRequested = true;
-    }
-    else {
-      this.ValidAmountRequested = false;
-    }
-
-    this.verifyInput();
+    this.checkCostAmounts();
 
   }
 
-  totalProjectCostChange() {
-    console.log("totalProjectCostChange");
+  totalProjectCostChange(event) {
+    console.log("totalProjectCostChange", event);
 
     this.ShowMessage = false;
 
-    if (this.totalProjectCost != "") {
-
-      this.ValidTotalProjectCost = true;
-    }
-    else {
-      this.ValidTotalProjectCost = false;
-    }
-
-    this.verifyInput();
+    this.checkCostAmounts();
 
   }
 
@@ -453,5 +451,49 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
       );
 
   }//end of createLOI
+
+  checkCostAmounts() {
+
+    if (this.amountRequested > this.totalProjectCost) {
+
+      this.costMessage = "Amount Requested must be lesser than the Total Project Cost."
+
+      this.ShowCostMessage = true;
+      this.ValidAmountRequested = false;
+      this.ValidTotalProjectCost = false;
+
+    }
+    else if (this.totalProjectCost == '' && this.amountRequested == '') {
+      this.costMessage = "Total Project Cost and Amount Requested must be positive."
+
+      this.ShowCostMessage = true;
+      this.ValidAmountRequested = false;
+      this.ValidTotalProjectCost = false;
+    }
+    else if (this.totalProjectCost == '') {
+
+      this.costMessage = "Total Project Cost must be positive."
+
+      this.ShowCostMessage = true;
+      this.ValidAmountRequested = false;
+      this.ValidTotalProjectCost = false;
+
+    }
+    else if (this.amountRequested == '') {
+      this.costMessage = "Amount Requested must be positive."
+
+      this.ShowCostMessage = true;
+      this.ValidAmountRequested = false;
+      this.ValidTotalProjectCost = false;
+    }
+    else {
+      this.ShowCostMessage = false;
+      this.ValidAmountRequested = true;
+      this.ValidTotalProjectCost = true;
+    }
+
+    this.verifyInput();
+
+  }
 
 }
