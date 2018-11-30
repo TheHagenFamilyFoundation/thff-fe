@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, FormsModule, NgControl, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 //Services
@@ -46,18 +47,18 @@ export class CreateOrganizationFullComponent implements OnInit {
 
   legalName: string; //  -Legal Name of Organization Applying: 
   yearFounded: number; // -Year Founded 
-  currentOperatingBudget: number; // -Current Operating Budget 
+  currentOperatingBudget: string; // -Current Operating Budget 
   director: string; // -Executive Director 
-  phone: number; // -Phone Number 
+  phone: string; // -Phone Number 
   contactPerson: string; //-Contact person/title/phone number 
   contactPersonTitle: string;
-  contactPersonPhoneNumber: number;
+  contactPersonPhoneNumber: string;
   email: string; // -Email Address 
   address: string; //-Address (principal/administrative office) 
   city: string; // -City 
   state: string;// -State 
   zip: number;//-Zip 
-  fax: number; //-Fax Number
+  fax: string; //-Fax Number
 
   message: any; //string
 
@@ -66,6 +67,10 @@ export class CreateOrganizationFullComponent implements OnInit {
   userName: any; //string
 
   ShowMessage = false;
+
+  showCurrentOperatingBudgetMessage = false;
+  currentOperatingBudgetMessage: any;
+
 
   CanCreateOrg = false;
 
@@ -84,11 +89,17 @@ export class CreateOrganizationFullComponent implements OnInit {
   ValidState = false;
   ValidZip = false;
 
+  formContactPerson: FormGroup;
+  formOrganization: FormGroup;
+  formFax: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private createOrganizationService: CreateOrganizationService,
-    private createOrganizationInfoService: CreateOrganizationInfoService, ) {
+    private createOrganizationInfoService: CreateOrganizationInfoService,
+    fb: FormBuilder
+  ) {
 
 
     //retreive the parameter
@@ -96,6 +107,19 @@ export class CreateOrganizationFullComponent implements OnInit {
       console.log(params);
       this.orgName = params.name;
     });
+
+    this.formContactPerson = fb.group({
+      contactPersonPhoneNumber: ['']
+    })
+
+    this.formOrganization = fb.group({
+      phone: ['']
+    })
+
+    this.formFax = fb.group({
+      fax: ['']
+    })
+
 
     //create organization
 
@@ -137,14 +161,14 @@ export class CreateOrganizationFullComponent implements OnInit {
         this.yearFoundedChange()
       });
 
-    this.currentOperatingBudget$.pipe(
-      debounceTime(400),
-      distinctUntilChanged())
-      .subscribe(term => {
+    // this.currentOperatingBudget$.pipe(
+    //   debounceTime(400),
+    //   distinctUntilChanged())
+    //   .subscribe(term => {
 
-        this.currentOperatingBudget = Number(term);
-        this.currentOperatingBudgetChange()
-      });
+    //     this.currentOperatingBudget = Number(term);
+    //     this.currentOperatingBudgetChange()
+    //   });
 
     this.director$.pipe(
       debounceTime(400),
@@ -160,7 +184,7 @@ export class CreateOrganizationFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.phone = Number(term);
+        this.phone = term;
         this.phoneChange()
       });
 
@@ -187,7 +211,7 @@ export class CreateOrganizationFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.contactPersonPhoneNumber = Number(term);
+        this.contactPersonPhoneNumber = term;
         this.contactPersonPhoneNumberChange()
       });
 
@@ -241,7 +265,7 @@ export class CreateOrganizationFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.fax = Number(term);
+        this.fax = term;
         this.faxChange()
       });
 
@@ -401,21 +425,26 @@ export class CreateOrganizationFullComponent implements OnInit {
 
   }
 
-  currentOperatingBudgetChange() {
-    console.log("currentOperatingBudgetChange");
+  currentOperatingBudgetChange(event) {
+    console.log("currentOperatingBudgetChange", event);
 
-    this.ShowMessage = false;
+    if (this.currentOperatingBudget == '') {
 
-    if (this.currentOperatingBudget != 0) {
+      this.currentOperatingBudgetMessage = "Current Operating Budget must be positive."
 
-      this.ValidCurrentOperatingBudget = true;
+      this.showCurrentOperatingBudgetMessage = true;
+      this.ValidCurrentOperatingBudget = false;
+      console.log('showing current op message')
 
     }
     else {
-
+      this.showCurrentOperatingBudgetMessage = false;
       this.ValidCurrentOperatingBudget = true;
 
     }
+
+
+    this.ShowMessage = false;
 
     this.VerifyInput();
 
@@ -566,7 +595,7 @@ export class CreateOrganizationFullComponent implements OnInit {
 
     this.ShowMessage = false;
 
-    if (this.contactPersonPhoneNumber != 0) {
+    if (this.contactPersonPhoneNumber != '') {
 
       this.ValidContactPersonPhoneNumber = true;
 
@@ -586,7 +615,7 @@ export class CreateOrganizationFullComponent implements OnInit {
 
     this.ShowMessage = false;
 
-    if (this.phone != 0) {
+    if (this.phone != '') {
 
       this.ValidPhone = true;
 
