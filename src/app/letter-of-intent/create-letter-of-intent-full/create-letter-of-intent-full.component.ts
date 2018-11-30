@@ -209,6 +209,9 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
     this.amountRequested = '';
     this.totalProjectCost = '';
 
+    this.ValidProjectStartDate = true;
+    this.ValidProjectEndDate = true;
+
   }
 
   loiNameChange() {
@@ -278,16 +281,14 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
   verifyInput() {
 
-    console.log('in verifyInput')
-
-    console.log('this.ValidLOIName', this.ValidLOIName)
-    console.log('this.ValidOrgName', this.ValidOrgName)
-    console.log('this.ValidProjectTitle', this.ValidProjectTitle)
-    console.log('this.ValidPurpose', this.ValidPurpose)
-    console.log('this.ValidProjectStartDate', this.ValidProjectStartDate)
-    console.log('this.ValidProjectEndDate', this.ValidProjectEndDate)
-    console.log('this.ValidAmountRequested', this.ValidAmountRequested)
-    console.log('this.ValidTotalProjectCost', this.ValidTotalProjectCost)
+    // console.log('this.ValidLOIName', this.ValidLOIName)
+    // console.log('this.ValidOrgName', this.ValidOrgName)
+    // console.log('this.ValidProjectTitle', this.ValidProjectTitle)
+    // console.log('this.ValidPurpose', this.ValidPurpose)
+    // console.log('this.ValidProjectStartDate', this.ValidProjectStartDate)
+    // console.log('this.ValidProjectEndDate', this.ValidProjectEndDate)
+    // console.log('this.ValidAmountRequested', this.ValidAmountRequested)
+    // console.log('this.ValidTotalProjectCost', this.ValidTotalProjectCost)
 
     if (this.ValidLOIName && this.ValidOrgName &&
       this.ValidProjectTitle && this.ValidPurpose &&
