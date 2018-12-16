@@ -10,8 +10,10 @@ import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/op
 import { CreateFullProposalService } from '../../services/full-proposal/create-full-proposal.service';
 import { CreateFpItemService } from '../../services/full-proposal/create-fp-item.service';
 
+import { GetLoiService } from '../../services/loi/get-loi.service';
+
+//components
 import { CreateFullProposalItemsComponent } from '../create-full-proposal-items/create-full-proposal-items.component';
-import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-create-full-proposal-full',
@@ -82,6 +84,7 @@ export class CreateFullProposalFullComponent implements OnInit {
     private router: Router,
     private createFullProposalService: CreateFullProposalService,
     private createFpItemService: CreateFpItemService,
+    private getLoiService: GetLoiService,
   ) {
 
     //retreive the parameter
@@ -240,17 +243,21 @@ export class CreateFullProposalFullComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.getLOI(this.loiID);
+
   }
 
   createFullProposal() {
 
-    console.log('create full proposal', this.orgID)
+    console.log('create full proposal', 'this.orgID', this.orgID, 'this.loiID', this.loiID)
 
     //debug
     console.log('fpitems', this.fpItemsComponent.fpItems)
 
     var fpBody = {
       org: this.orgID,
+      loi: this.loi.id,
       executiveSummary: this.executiveSummary,
       targetPopulation: this.targetPopulation,
       goals: this.goals,
@@ -438,5 +445,22 @@ export class CreateFullProposalFullComponent implements OnInit {
 
   }
 
+  getLOI(loiID) {
+
+    console.log('check loi');
+
+    //query database for that loi
+
+    this.getLoiService.getLOIbyID(loiID)
+      .subscribe(
+        (loi) => {
+
+          console.log('loi', loi);
+
+          this.loi = loi[0];
+
+        })
+
+  }
 
 }
