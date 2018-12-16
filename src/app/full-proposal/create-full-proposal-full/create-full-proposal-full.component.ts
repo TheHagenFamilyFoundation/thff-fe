@@ -6,7 +6,12 @@ import { Subject } from 'rxjs';
 
 import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
+//services
+import { CreateFullProposalService } from '../../services/full-proposal/create-full-proposal.service';
+import { CreateFpItemService } from '../../services/full-proposal/create-fp-item.service';
+
 import { CreateFullProposalItemsComponent } from '../create-full-proposal-items/create-full-proposal-items.component';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-create-full-proposal-full',
@@ -20,6 +25,8 @@ export class CreateFullProposalFullComponent implements OnInit {
 
   org: any;
   orgID: any;
+
+  fpID: any;
 
   executiveSummary$ = new Subject<string>();
   targetPopulation$ = new Subject<string>();
@@ -72,7 +79,10 @@ export class CreateFullProposalFullComponent implements OnInit {
   private fpItemsComponent: CreateFullProposalItemsComponent;
 
   constructor(private route: ActivatedRoute,
-    private router: Router, ) {
+    private router: Router,
+    private createFullProposalService: CreateFullProposalService,
+    private createFpItemService: CreateFpItemService,
+  ) {
 
     //retreive the parameter
     this.route.params.subscribe(params => {
@@ -234,9 +244,73 @@ export class CreateFullProposalFullComponent implements OnInit {
 
   createFullProposal() {
 
-    console.log('create full proposal')
+    console.log('create full proposal', this.orgID)
 
+    //debug
     console.log('fpitems', this.fpItemsComponent.fpItems)
+
+    var fpBody = {
+      org: this.orgID,
+      executiveSummary: this.executiveSummary,
+      targetPopulation: this.targetPopulation,
+      goals: this.goals,
+      activity: this.activity,
+      timeTable: this.timeTable,
+      partners: this.partners,
+      differ: this.differ,
+      involve: this.involve,
+      staff: this.staff,
+      strategy: this.strategy,
+      evaluation: this.evaluation,
+      dissemination: this.dissemination,
+      active: this.active,
+      priority: this.priority,
+      history: this.history,
+      website: this.website
+    }
+
+    console.log('body', fpBody)
+
+    //call the service
+    this.createFullProposalService.createFP(fpBody)
+      .subscribe(
+        (result) => {
+
+          console.log('result', result)
+          this.fpID = result.result.id;
+
+          console.log('fp Created');
+
+          console.log('now creating full proposal items')
+
+          //pass in the full proposal id
+          let fpItemBody = {
+            fpItems: this.fpItemsComponent.fpItems,
+            fp: this.fpID
+          }
+
+          //call the service
+          this.createFpItemService.createFPItems(fpItemBody)
+            .subscribe(
+              (result) => {
+
+                console.log('Fp Items Created', result.result);
+                // this.loiInfo = result.result;
+
+                // console.log('new this.loiInfo.id', this.loiInfo.id);
+
+                //route to loi page
+                //this.router.navigate(['/user']);
+
+              },
+              err => console.log(err)
+            );
+
+
+        },
+        err => console.log(err)
+      );
+
 
   }
 
