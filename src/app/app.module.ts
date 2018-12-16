@@ -101,7 +101,12 @@ import { CreateLoiInfoService } from './services/loi/loi-info/create-loi-info.se
 import { GetLoiInfoService } from './services/loi/loi-info/get-loi-info.service';
 import { DeleteLoiInfoService } from './services/loi/loi-info/delete-loi-info.service';
 
+//email - old?
 import { EmailService } from './services/user/email.service';
+
+//FullProposals
+import { GetFullProposalService } from './services/full-proposal/get-full-proposal.service';
+import { FpStatusService } from './services/full-proposal/fp-status.service';
 
 //Directives
 import { PhoneMaskDirective } from './directives/phone-mask.directive';
@@ -207,6 +212,9 @@ import { OrgSelectedLetterOfIntentComponent } from './organization/org-selected-
 import { OrganizationDoc501c3Component } from './organization/organization-doc501c3/organization-doc501c3.component';
 import { DeleteDoc501c3CheckComponent } from './organization/organization-doc501c3/delete-doc501c3-check/delete-doc501c3-check.component';
 
+//organization full proposal
+import { OrganizationFullProposalsComponent } from './organization/organization-full-proposals/organization-full-proposals.component';
+
 //test email component
 import { EmailComponent } from './test/email/email.component';
 
@@ -264,6 +272,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         OrganizationRequestsComponent, OrgSelectedLetterOfIntentComponent,
         OrganizationInfoComponent, OrganizationDoc501c3Component,
         DeleteDoc501c3CheckComponent,
+        OrganizationFullProposalsComponent,
+
 
         //letter of intent
         LetterOfIntentComponent,
@@ -291,7 +301,6 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
-
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
@@ -330,6 +339,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         Upload501c3Service, Create501c3Service, Get501c3Service, Delete501c3Service, Doc501c3StatusService,
         GetLoiService, CreateLoiService, LOIStatusService,
         CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
+        GetFullProposalService, FpStatusService
     ],
     entryComponents: [
         CreateOrganizationComponent, CreateOrganizationHeaderComponent,
