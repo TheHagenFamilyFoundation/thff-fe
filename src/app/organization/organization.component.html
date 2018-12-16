@@ -29,11 +29,20 @@
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="2">
+      <mat-grid-tile>
         <mat-card class="doc501c3">
           <mat-card-content>
             <div *ngIf='org'>
               <app-organization-doc501c3 [org]=" org "></app-organization-doc501c3>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="doc501c3">
+          <mat-card-content>
+            <div *ngIf='org'>
+              <app-organization-full-proposals [org]="org"></app-organization-full-proposals>
             </div>
           </mat-card-content>
         </mat-card>
