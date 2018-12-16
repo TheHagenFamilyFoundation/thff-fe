@@ -33,5 +33,12 @@ export class GetFullProposalService {
     return this.http.get(urlString);
   }
 
+  getFullProposalsByOrgID(orgID: string): Observable<any> {
+
+    let urlString = this.API_URL + "/fullproposal?organization=" + orgID;
+
+    return this.http.get(urlString);
+  }
+
 
 }
