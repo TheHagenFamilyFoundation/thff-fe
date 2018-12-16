@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 //debounce
 import { Subject } from 'rxjs';
 
 import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+import { CreateFullProposalItemsComponent } from '../create-full-proposal-items/create-full-proposal-items.component';
 
 @Component({
   selector: 'app-create-full-proposal-full',
@@ -66,6 +68,9 @@ export class CreateFullProposalFullComponent implements OnInit {
   ShowMessage = false;
   message: any;
 
+  @ViewChild(CreateFullProposalItemsComponent)
+  private fpItemsComponent: CreateFullProposalItemsComponent;
+
   constructor(private route: ActivatedRoute,
     private router: Router, ) {
 
@@ -76,7 +81,8 @@ export class CreateFullProposalFullComponent implements OnInit {
       this.loiID = params.loiID;
     });
 
-    this.canCreateFP = false;
+    // this.canCreateFP = false;
+    this.canCreateFP = true;
 
     this.executiveSummary$.pipe(
       debounceTime(400),
@@ -229,6 +235,8 @@ export class CreateFullProposalFullComponent implements OnInit {
   createFullProposal() {
 
     console.log('create full proposal')
+
+    console.log('fpitems', this.fpItemsComponent.fpItems)
 
   }
 
