@@ -289,18 +289,21 @@ export class CreateFullProposalFullComponent implements OnInit {
             fp: this.fpID
           }
 
+          console.log('fpItemBody', fpItemBody)
+
           //call the service
           this.createFpItemService.createFPItems(fpItemBody)
             .subscribe(
               (result) => {
 
-                console.log('Fp Items Created', result.result);
+                console.log('Fp Items Created', result);
+                console.log('orgID', this.orgID);
                 // this.loiInfo = result.result;
 
                 // console.log('new this.loiInfo.id', this.loiInfo.id);
 
                 //route to loi page
-                //this.router.navigate(['/user']);
+                this.router.navigate(['/organization/' + this.orgID]);
 
               },
               err => console.log(err)
