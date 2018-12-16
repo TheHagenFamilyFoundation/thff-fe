@@ -1,37 +1,35 @@
-<h4>Budget Narrative/Justification</h4>
-
 <button mat-icon-button color="primary" (click)="createFullProposalItem()">
   <mat-icon>add</mat-icon>
 </button>
 <div class="example-container mat-elevation-z8">
-
+  {{dataSource?.length}}
   <mat-table [dataSource]="dataSource" matSort>
 
     <ng-container matColumnDef="category">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Category/Description </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.category}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.categoryDescription}} </mat-cell>
       <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
     </ng-container>
     <ng-container matColumnDef="amount1">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Amount Requested from THFF </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.amount1}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.amountRequestedTHFF | currency}} </mat-cell>
       <mat-footer-cell *matFooterCellDef> {{getAmountTotal1() | currency}} </mat-footer-cell>
     </ng-container>
     <ng-container matColumnDef="amount2">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Amount Requested from Other Organizations, if any
       </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.amount2}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.amountRequested | currency}} </mat-cell>
       <mat-footer-cell *matFooterCellDef> {{getAmountTotal2() | currency}} </mat-footer-cell>
     </ng-container>
     <ng-container matColumnDef="amount3">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Amount Pending or Requested from Other Organizations, if any
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Amount Pending from Other Organizations, if any
       </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.amount3}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.amountPending | currency}} </mat-cell>
       <mat-footer-cell *matFooterCellDef> {{getAmountTotal3() | currency}} </mat-footer-cell>
     </ng-container>
     <ng-container matColumnDef="total">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.total}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.total | currency}} </mat-cell>
       <mat-footer-cell *matFooterCellDef> {{getAmountTotal() | currency}} </mat-footer-cell>
     </ng-container>
 

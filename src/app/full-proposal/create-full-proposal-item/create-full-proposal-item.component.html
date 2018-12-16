@@ -1,15 +1,27 @@
-<h4>Create Full Proposal Item</h4>
-<div>Category/Description:</div>
-<div>INPUT</div>
-<div>Amount Requested from THFF:</div>
-<div>INPUT</div>
-<div>Amount Requested from Other Organizations, if any:
+<div align="center">
+  <h4>Create Full Proposal Item</h4>
 </div>
-<div>INPUT</div>
-<div>Amount Pending or Requested from Other Organizations, if any:</div>
-<div>INPUT</div>
-<div>Total:</div>
-<div>{{getTotal()}}</div>
-<div *ngIf="canCreateFPItem">
-  <button mat-raised-button (click)="createFPItem()">Create Item</button>
+<div>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Category/Description" maxlength="50" value={{catDescription}} (keyup)="catDescription$.next($event.target.value) ">
+    <mat-hint align="end">{{catDescription?.toString().length}} / 50</mat-hint>
+  </mat-form-field>
+</div>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Amount Requested From THFF " currencyMask [(ngModel)]="amountRequestedTHFF"
+    (ngModelChange)="amountRequestedTHFFChange($event)">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Amount Requested From Other Organizations, if any" currencyMask [(ngModel)]="amountRequested"
+    (ngModelChange)="amountRequestedChange($event)">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Amount Pending From Other Organizations, if any " currencyMask [(ngModel)]="amountPending"
+    (ngModelChange)="amountPendingChange($event)">
+</mat-form-field>
+<div>Total: {{total | currency}}</div>
+<br>
+<div align="right">
+  <button *ngIf="canCreateFPItem" mat-raised-button (click)="createFPItem()">Create Item</button>
+  <button mat-raised-button (click)="cancel()" mat-dialog-close>Cancel</button>
 </div>

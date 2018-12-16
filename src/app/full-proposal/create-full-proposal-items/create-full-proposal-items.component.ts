@@ -21,15 +21,21 @@ export class CreateFullProposalItemsComponent implements OnInit {
 
   fpItems: any;
 
+  // fpItem: any;
+
   constructor(public dialog: MatDialog,
     private createFpItemService: CreateFpItemService) {
 
-    this.createFPItemHeight = '350';
+    this.createFPItemHeight = '450';
     this.createFPItemWidth = '700';
 
   }
 
   ngOnInit() {
+
+    this.fpItems = [];
+    //this.dataSource = this.fpItems;
+
   }
 
   onRowClicked(row) {
@@ -57,31 +63,39 @@ export class CreateFullProposalItemsComponent implements OnInit {
       data: { /*users: this.org.users*/ }
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed'); //debug
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
 
-    //   console.log('result', result); //debug
+      console.log('result', result); //debug
 
-    //   if (result) {
-    //     this.selectedUsers = result;
+      if (result) {
+        let fpItem = result;
 
-    //     var body = {
-    //       users: this.selectedUsers,
-    //       org: this.org
-    //     }
+        //  this.fpItems = [];
+        this.fpItems.push(fpItem)
 
-    //     //call service to add users to organization
-    //     this.addUserService.addUser(body)
-    //       .subscribe((users) => {
+        console.log('this.fpItems', this.fpItems)
 
-    //         console.log('users', users)
+        console.log('this.dataSource', this.dataSource)
 
-    //         this.getUsers();
-    //       })
-    //   }
+        this.updateDataSource();
 
-    // });
+      }
 
+    });
+
+  }
+
+  updateDataSource() {
+
+    console.log('update data source')
+    console.log('fpItems.length', this.fpItems.length)
+
+    this.dataSource = null;
+
+    this.dataSource = new MatTableDataSource(this.fpItems);
+
+    console.log('after - update data source')
   }
 
   getAmountTotal() {

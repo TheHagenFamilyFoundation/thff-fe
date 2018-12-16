@@ -44,10 +44,10 @@
       <div>
         <mat-form-field>
           <mat-select placeholder="New or Ongoing" required [(ngModel)]="activitySelected" (ngModelChange)="newOrOngoingChange($event)">
-              <mat-option *ngFor="let selection of activities" [value]="selection.value">
-                {{ selection.viewValue }}
-              </mat-option>
-            </mat-select>
+            <mat-option *ngFor="let selection of activities" [value]="selection.value">
+              {{ selection.viewValue }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div>
@@ -147,7 +147,8 @@
       </div>
     </div>
     <div>
-      <app-create-full-proposal-items></app-create-full-proposal-items>
+      <h4>Budget Narrative/Justification</h4>
+      <app-create-full-proposal-items #fpitems></app-create-full-proposal-items>
       <br>
       <div>
         In the event that you are not able to secure full funding, what are the priority items in the budget above?
@@ -177,7 +178,7 @@
       <div>
         <mat-form-field class="full-width">
           <input matInput placeholder="Website" maxlength="255" value={{website}} (keyup)="website$.next($event.target.value) ">
-          <!-- <mat-hint align="end">{{website?.toString().length}} / 255</mat-hint> -->
+          <mat-hint align="end">{{website?.toString().length}} / 255</mat-hint>
         </mat-form-field>
       </div>
     </div>
