@@ -17,7 +17,7 @@ export class OrganizationComponent implements OnInit {
   org: any; //the Organization object
 
   //check basic row height
-  basicRowHeight = 400;
+  basicRowHeight = 450;
 
   constructor(
     private route: ActivatedRoute,

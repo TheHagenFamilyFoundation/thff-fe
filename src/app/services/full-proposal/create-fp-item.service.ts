@@ -39,6 +39,8 @@ export class CreateFpItemService {
 
   createFPItems(fpItems): Observable<any> {
 
+    console.log('createFPItems', fpItems)
+
     let data = fpItems;
 
     console.log('data', data)
