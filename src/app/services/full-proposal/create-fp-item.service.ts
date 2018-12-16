@@ -37,4 +37,15 @@ export class CreateFpItemService {
     return this.http.post(this.API_URL + '/fullproposalitem', data)
   }
 
+  createFPItems(fpItems): Observable<any> {
+
+    let data = fpItems;
+
+    console.log('data', data)
+
+    return this.http.post(this.API_URL + '/fpItems', data)
+
+  }
+
+
 }
