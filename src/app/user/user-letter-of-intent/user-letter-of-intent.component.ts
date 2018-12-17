@@ -54,8 +54,7 @@ export class UserLetterOfIntentComponent implements OnInit {
       this.inOrgCheck = message;
 
       console.log('inOrgCheck change', this.inOrgCheck)
-      if(this.inOrgCheck)
-      {
+      if (this.inOrgCheck) {
         console.log('enable LOI')
         this.InOrganization = true;
       }
@@ -95,6 +94,8 @@ export class UserLetterOfIntentComponent implements OnInit {
     if (organization.length > 0) {
 
       this.InOrganization = true;
+
+      this.checkLOIs();
 
     }
     else {

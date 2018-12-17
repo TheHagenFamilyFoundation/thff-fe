@@ -52,6 +52,7 @@ export class ViewOrganizationsComponent implements OnInit {
 
     this.getUserName();
 
+    console.log('check organizations 2')
     this.checkOrganizations();
   }
 
@@ -80,6 +81,8 @@ export class ViewOrganizationsComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem('currentUser'));
       this.userName = this.user.username
 
+      console.log('check organizations 1')
+
       this.checkOrganizations();
 
     }
@@ -106,6 +109,9 @@ export class ViewOrganizationsComponent implements OnInit {
           if (organization.length > 0) {
 
             this.InOrganization = true;
+
+            console.log('organization', organization)
+
             this.dataSource = new MatTableDataSource(organization);
 
             this.dataSource.paginator = this.paginator;
