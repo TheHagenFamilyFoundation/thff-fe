@@ -120,8 +120,6 @@ export class UserOrganizationComponent implements OnInit {
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
 
-
-            this.dataSource = new MatTableDataSource(organization);
             this.inOrg.changeMessage(true)
 
           }
