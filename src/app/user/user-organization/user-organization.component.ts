@@ -54,6 +54,9 @@ export class UserOrganizationComponent implements OnInit {
 
     this.userName = this.user.username
 
+    this.getUserName();
+
+    console.log('check organizations 2')
     this.checkOrganizations();
   }
 
@@ -75,22 +78,23 @@ export class UserOrganizationComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  // getUserName() {
+  getUserName() {
 
-  //   if (localStorage.getItem('currentUser')) {
-  //     // logged in so return true
-  //     this.user = JSON.parse(localStorage.getItem('currentUser'));
-  //     this.userName = this.user.username
+    if (localStorage.getItem('currentUser')) {
+      // logged in so return true
+      this.user = JSON.parse(localStorage.getItem('currentUser'));
+      this.userName = this.user.username
 
-  //     this.checkOrganizations();
+      console.log('check organizations 1')
+      this.checkOrganizations();
 
-  //   }
-  //   else {
-  //     //logout
-  //     this.router.navigate(['/logout']);
-  //   }
+    }
+    else {
+      //logout
+      this.router.navigate(['/logout']);
+    }
 
-  // }//end of getUserName
+  }//end of getUserName
 
   //checks if user is in any organizations
   checkOrganizations() {
@@ -108,11 +112,16 @@ export class UserOrganizationComponent implements OnInit {
           if (organization.length > 0) {
 
             this.InOrganization = true;
+
+            console.log('organization', organization)
+
             this.dataSource = new MatTableDataSource(organization);
 
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
 
+
+            this.dataSource = new MatTableDataSource(organization);
             this.inOrg.changeMessage(true)
 
           }
