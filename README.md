@@ -19,3 +19,13 @@
 ## Deployment Notes
 
 
+## Setting up Development Environment
+### NPM
+#### TO DO
+### GIT
+#### TO DO
+### install angular-cli 
+#### TO DO
+### just frontend vs frontend and backend setup
+#### TO DO
+
