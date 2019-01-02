@@ -40,17 +40,25 @@ export class OrganizationRequestsComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public getLoiService: GetLoiService,
-    private loiStatusService: LOIStatusService) { }
+    private loiStatusService: LOIStatusService) {
+
+    this.lois = [];
+
+    this.dataSource = new MatTableDataSource([]);
+
+  }
 
   ngOnInit() {
 
     console.log('this.org', this.org)
-    console.log('this.org.users', this.org.users)
+    console.log('this.org.lois', this.org.lois)
     this.lois = this.org.lois;
 
-    this.setStatuses();
+    this.dataSource = new MatTableDataSource(this.lois);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
 
-    this.dataSource = this.lois;
+    console.log('this.dataSource.paginator', this.dataSource.paginator)
 
     this.orgID = this.org.organizationID;
     this.orgName = this.org.name;
@@ -58,6 +66,8 @@ export class OrganizationRequestsComponent implements OnInit {
     if (this.lois.length > 0) {
 
       this.HasLOIs = true;
+      this.setStatuses();
+
     }
     else {
       this.HasLOIs = false;
@@ -134,6 +144,8 @@ export class OrganizationRequestsComponent implements OnInit {
 
     console.log('setting status')
 
+    console.log('this.paginator', this.paginator)
+
     this.lois.forEach(loi => {
 
       console.log('before LOI', loi)
@@ -143,6 +155,13 @@ export class OrganizationRequestsComponent implements OnInit {
       loi.status = this.configureStatus(loi.status);
 
       console.log('after LOI', loi)
+
+      // this.dataSource = new MatTableDataSource(this.lois);
+      // // this.dataSource.paginator = this.paginator;
+      // // this.dataSource.sort = this.sort;
+      // console.log('this.paginator', this.paginator)
+      // console.log('this.dataSource', this.dataSource)
+      // console.log('this.dataSource.paginator', this.dataSource.paginator)
 
     });
 

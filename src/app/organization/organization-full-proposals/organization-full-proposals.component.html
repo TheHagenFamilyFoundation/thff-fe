@@ -2,7 +2,7 @@
   <h3>Full Proposals</h3>
 </div>
 
-<div *ngIf="HasFPs">
+<!-- <div *ngIf="HasFPs"> -->
   <div class="example-container mat-elevation-z8">
 
     <mat-table [dataSource]="dataSource" matSort>
@@ -48,7 +48,7 @@
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
-</div>
-<div *ngIf="!HasFPs">
+<!-- </div> -->
+<!-- <div *ngIf="!HasFPs">
   {{NoFPs}}
-</div>
+</div> -->

@@ -46,7 +46,9 @@ export class OrganizationUsersComponent implements OnInit {
     console.log('this.org', this.org)
     console.log('this.org.users', this.org.users)
     this.users = this.org.users;
-    this.dataSource = this.users;
+    this.dataSource = new MatTableDataSource(this.users);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
 
     this.orgID = this.org.id;
 

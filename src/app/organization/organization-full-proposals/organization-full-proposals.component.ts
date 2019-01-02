@@ -36,6 +36,8 @@ export class OrganizationFullProposalsComponent implements OnInit {
 
     this.HasFPs = false;
 
+    console.log('1 - this.paginator', this.paginator)
+
   }
 
   ngOnInit() {
@@ -47,6 +49,8 @@ export class OrganizationFullProposalsComponent implements OnInit {
     this.organizationID = this.org.id;
 
     console.log('orgID', this.orgID)
+
+    console.log('2 - this.paginator', this.paginator)
 
     this.getFPs();
 
@@ -80,6 +84,9 @@ export class OrganizationFullProposalsComponent implements OnInit {
             this.setStatuses();
 
             this.dataSource = new MatTableDataSource(this.fps);
+
+            console.log('this.paginator', this.paginator)
+            console.log('this.dataSource', this.dataSource)
 
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;

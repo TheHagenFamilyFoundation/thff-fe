@@ -2,7 +2,7 @@
 <button mat-icon-button color="primary" (click)="createLOI()">
     <mat-icon>add</mat-icon>
 </button>
-<div *ngIf="HasLOIs">
+<!-- <div *ngIf="HasLOIs"> -->
     <div class="example-container mat-elevation-z8">
 
         <mat-table [dataSource]="dataSource" matSort>
@@ -53,7 +53,7 @@
 
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
-</div>
-<div *ngIf="!HasLOIs">
+<!-- </div> -->
+<!-- <div *ngIf="!HasLOIs">
     {{NoLOIs}}
-</div>
+</div> -->
