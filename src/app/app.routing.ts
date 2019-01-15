@@ -4,7 +4,10 @@ import { Routes, RouterModule, ActivatedRouteSnapshot } from '@angular/router';
 import { AuthGuard } from './_guards/auth.guard';
 
 //Home
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { GettingStartedComponent } from './getting-started/getting-started.component';
+
+import { GrantProcessComponent } from './grant-process/grant-process.component';
 
 import { AboutusComponent } from './home/aboutus/aboutus.component'
 import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
@@ -53,7 +56,9 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
+    // { path: '', component: HomeComponent },
+    { path: '', component: GettingStartedComponent },
+    { path: 'grant-process', component: GrantProcessComponent },
     //login
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },

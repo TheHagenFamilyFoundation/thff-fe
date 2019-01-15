@@ -45,6 +45,7 @@
     <!-- logged in -->
     <div *ngIf="!authService.isExpired()">
       <button mat-button [matMenuTriggerFor]="user">
+        User
         <mat-icon>account_circle</mat-icon>
       </button>
     </div>

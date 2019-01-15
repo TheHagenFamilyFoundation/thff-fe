@@ -114,7 +114,10 @@ import { PhoneMaskDirective } from './directives/phone-mask.directive';
 //Components
 
 //Home
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { GettingStartedComponent } from './getting-started/getting-started.component';
+
+import { GrantProcessComponent } from './grant-process/grant-process.component';
 
 import { HeaderComponent } from './header/header.component';
 
@@ -226,6 +229,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         HeaderComponent,
         //Home
         HomeComponent,
+        GettingStartedComponent,GrantProcessComponent,
+
         AboutusComponent, ApplicationMaterialsComponent, ApplicationTimelineComponent,
         InthenewsComponent, FrequentlyAskedQuestionsComponent, ProcessComponent,
         GrantsAwardedComponent, GrantsByYearComponent,
