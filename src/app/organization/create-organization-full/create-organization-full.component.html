@@ -49,14 +49,14 @@
       <form [formGroup]="formContactPerson">
         <div class="form-group">
           <mat-form-field>
-            <input matInput placeholder="Contact Person" value={{contactPerson}} (keyup)="contactPerson$.next($event.target.value)">
+            <input matInput placeholder="Contact Person" value={{contactPerson}} (keyup)="contactPerson$.next($event.target.value)" required>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Title" value={{contactPersonTitle}} (keyup)="contactPersonTitle$.next($event.target.value)">
+            <input matInput placeholder="Title" value={{contactPersonTitle}} (keyup)="contactPersonTitle$.next($event.target.value)" required>
           </mat-form-field>
           <mat-form-field>
             <input matInput class="form-control" value={{contactPersonPhoneNumber}} type="text" appPhoneMask
-              formControlName="contactPersonPhoneNumber" id="phone-number" placeholder="Phone Number" (keyup)="contactPersonPhoneNumber$.next($event.target.value)">
+              formControlName="contactPersonPhoneNumber" id="phone-number" placeholder="Phone Number" (keyup)="contactPersonPhoneNumber$.next($event.target.value)" required>
           </mat-form-field>
         </div>
       </form>
