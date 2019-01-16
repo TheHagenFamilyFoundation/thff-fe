@@ -148,7 +148,7 @@ export class LoginComponent implements OnInit {
             console.log("token = " + localStorage.getItem('token'));
             console.log("currentUser = " + localStorage.getItem('currentUser'));
 
-            this.router.navigate(['/home']);
+            this.router.navigate(['/user']);
 
           }
           else {

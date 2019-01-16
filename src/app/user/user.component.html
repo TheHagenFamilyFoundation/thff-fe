@@ -4,19 +4,13 @@
     <mat-grid-list cols="2" [rowHeight]="basicRowHeight">
       <mat-grid-tile [rowspan]="1">
         <mat-card>
-          <!-- <mat-card-title>User</mat-card-title> -->
-          <mat-card-content class="change_password_email">
-            <app-change-password [user]="user"></app-change-password>
-            <br>
-            <br>
-            <app-change-email [user]="user"></app-change-email>
-          </mat-card-content>
+          <app-user-organization [user]="user"></app-user-organization>
         </mat-card>
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-card>
           <mat-card-content>
-            <app-user-organization [user]="user"></app-user-organization>
+            <app-user-letter-of-intent [user]="user"></app-user-letter-of-intent>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
@@ -28,8 +22,12 @@
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-card>
-          <mat-card-content>
-            <app-user-letter-of-intent [user]="user"></app-user-letter-of-intent>
+
+          <mat-card-content class="change_password_email">
+            <app-change-password [user]="user"></app-change-password>
+            <br>
+            <br>
+            <app-change-email [user]="user"></app-change-email>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>

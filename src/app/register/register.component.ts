@@ -176,7 +176,7 @@ export class RegisterComponent implements OnInit {
 
               console.log('now login', data)
 
-              this.router.navigate(['/home']);
+              this.router.navigate(['/user']);
 
             },
             err => console.log(err)

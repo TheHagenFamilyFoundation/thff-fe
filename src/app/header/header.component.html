@@ -7,13 +7,13 @@
     <div *ngIf="authService.isExpired()">
       <button mat-button routerLink="/login" fxHide="false">Login</button>
     </div>
-    <div *ngIf="authService.isExpired()" fxHide="false">
+    <!-- <div *ngIf="authService.isExpired()" fxHide="false">
       <button mat-button routerLink="/register">Register</button>
-    </div>
+    </div> -->
 
     <div *ngIf="!authService.isExpired()">
       <div *ngIf="!InOrganization">
-        <button mat-button (click)="createOrg()" fxHide="false">Create Organization</button>
+        <button mat-button routerLink="/create-organization" fxHide="false">Create Organization</button>
       </div>
       <div *ngIf="InOrganization">
         <button mat-button [matMenuTriggerFor]="orgMenu">Organizations</button>
@@ -72,9 +72,9 @@
   <div *ngIf="authService.isExpired()">
     <button mat-button routerLink="/login">Login</button>
   </div>
-  <div *ngIf="authService.isExpired()">
+  <!-- <div *ngIf="authService.isExpired()">
     <button mat-button routerLink="/register">Register</button>
-  </div>
+  </div> -->
   <div *ngIf="!authService.isExpired()">
     <button mat-button (click)="authService.logout()">Logout</button>
   </div>
