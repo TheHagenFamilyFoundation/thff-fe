@@ -118,9 +118,6 @@ import { PhoneMaskDirective } from './directives/phone-mask.directive';
 import { HomeComponent } from './home/home.component';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
 
-import { GrantProcessComponent } from './grant-process/grant-process.component';
-import { GPRegisterComponent } from './grant-process/gpregister/gpregister.component';
-
 import { HeaderComponent } from './header/header.component';
 
 import { AboutusComponent } from './home/aboutus/aboutus.component'
@@ -231,7 +228,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         HeaderComponent,
         //Home
         HomeComponent,
-        GettingStartedComponent, GrantProcessComponent,
+        GettingStartedComponent,
 
         AboutusComponent, ApplicationMaterialsComponent, ApplicationTimelineComponent,
         InthenewsComponent, FrequentlyAskedQuestionsComponent, ProcessComponent,
@@ -308,8 +305,6 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
-
-        GPRegisterComponent,
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
