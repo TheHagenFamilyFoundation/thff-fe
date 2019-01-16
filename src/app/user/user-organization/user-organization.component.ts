@@ -138,9 +138,10 @@ export class UserOrganizationComponent implements OnInit {
   createOrganization() {
 
     console.log('create organization');
+    this.router.navigate(['/create-organization']);
 
     //modal
-    this.openCreateOrgDialog();
+    // this.openCreateOrgDialog();
 
   }
 
