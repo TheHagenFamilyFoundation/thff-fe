@@ -80,7 +80,7 @@ const appRoutes: Routes = [
     { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
 
     { path: 'organization/:id', component: OrganizationComponent, canActivate: [AuthGuard] },
-    { path: 'create-organization/:name', component: CreateOrganizationFullComponent, canActivate: [AuthGuard] },
+    { path: 'create-organization', component: CreateOrganizationFullComponent, canActivate: [AuthGuard] },
     { path: 'view-organizations', component: ViewOrganizationsComponent, canActivate: [AuthGuard] },
 
     //Letter of Intent
