@@ -56,6 +56,7 @@ const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 const appRoutes: Routes = [
     // { path: '', component: HomeComponent },
     { path: '', component: GettingStartedComponent },
+    { path: 'old-home', component: HomeComponent },
     //login
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
