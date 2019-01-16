@@ -30,6 +30,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -118,6 +119,7 @@ import { HomeComponent } from './home/home.component';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
 
 import { GrantProcessComponent } from './grant-process/grant-process.component';
+import { GPRegisterComponent } from './grant-process/gpregister/gpregister.component';
 
 import { HeaderComponent } from './header/header.component';
 
@@ -229,7 +231,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         HeaderComponent,
         //Home
         HomeComponent,
-        GettingStartedComponent,GrantProcessComponent,
+        GettingStartedComponent, GrantProcessComponent,
 
         AboutusComponent, ApplicationMaterialsComponent, ApplicationTimelineComponent,
         InthenewsComponent, FrequentlyAskedQuestionsComponent, ProcessComponent,
@@ -306,6 +308,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
+
+        GPRegisterComponent,
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
@@ -323,6 +327,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
         MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
         MatPaginatorModule, MatDialogModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
+        MatExpansionModule,
 
         ContentsModule, NgxPageScrollModule,
 
