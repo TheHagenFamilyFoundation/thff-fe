@@ -3,8 +3,10 @@
 </div>
 
 <div class="tutorial">
+
+  <p align="center">Welcome to the new THFF Grant Application Portal!</p>
   <p>
-    Welcome to the new THFF Grant Application Portal. The grant request process involves several steps. You must first
+    The grant request process involves several steps. You must first
     register as an individual user in the Application Portal. Then, as a user, you must register your non-profit
     organization. When you register your organization, you will be asked to provide basic information about the
     organization and to upload a copy of your IRS 501(c)(3) determination letter. The information requested includes a
@@ -31,14 +33,21 @@
 
 </div>
 
-<div align="center" class="reg-button">
-  <button mat-raised-button color="primary" routerLink="/register">Click here to register</button>
-</div>
+<div *ngIf="authService.isExpired()">
+  <div align="center" class="reg-button">
+    <button mat-raised-button color="primary" routerLink="/register">Click here to register</button>
+  </div>
 
-<div align="center">
-  <p>If you have already registered, please use the Login link below.</p>
-</div>
+  <div align="center">
+    <p>If you have already registered, please use the Login link below.</p>
+  </div>
 
-<div align="center" class="reg-button">
-  <button mat-raised-button color="primary" routerLink="/login">Click here to login</button>
+  <div align="center" class="reg-button">
+    <button mat-raised-button color="primary" routerLink="/login">Click here to login</button>
+  </div>
+</div>
+<div *ngIf="!authService.isExpired()">
+  <div align="center" class="reg-button">
+    <button mat-raised-button color="primary" routerLink="/user">Click here to go to your User Page</button>
+  </div>
 </div>
