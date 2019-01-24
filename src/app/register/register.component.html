@@ -3,11 +3,17 @@
 </div>
 <div align="center">
     <mat-form-field class="quarter-width">
-        <input matInput placeholder="Username" value="" required (keyup)="userName$.next($event.target.value)">
+        <input matInput placeholder="Username" [formControl]="userNameFormControl" value="" required (keyup)="userName$.next($event.target.value)">
+        <mat-hint>
+            <div *ngIf="ShowUserNameError">
+                That User Name is already taken
+            </div>
+        </mat-hint>
+        <mat-error *ngIf="userNameFormControl.hasError('required')">
+            Username is <strong>required</strong>
+        </mat-error>
     </mat-form-field>
-    <div *ngIf="ShowUserNameError">
-        That User Name is already taken
-    </div>
+
     <br>
     <mat-form-field class="quarter-width">
         <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" value=""
@@ -25,19 +31,24 @@
         </mat-error>
     </mat-form-field>
 
-
     <br>
-    <!-- <div class="password"> -->
     <mat-form-field class="quarter-width">
-        <input matInput placeholder="Password" value="" type="password" required (keyup)="password$.next($event.target.value)">
+        <input matInput placeholder="Password" [formControl]="passwordFormControl" value="" type="password" required
+            (keyup)="password$.next($event.target.value)">
+        <mat-error *ngIf="cpasswordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+        </mat-error>
     </mat-form-field>
     <br>
     <div *ngIf="ShowConfirmPassword">
         <mat-form-field class="quarter-width">
-            <input matInput placeholder="Confirm Password" value="" type="password" required (keyup)="confirmPassword$.next($event.target.value)">
+            <input matInput placeholder="Confirm Password" [formControl]="cpasswordFormControl" value="" type="password"
+                required (keyup)="confirmPassword$.next($event.target.value)">
+            <mat-error *ngIf="cpasswordFormControl.hasError('required')">
+                Confirm Password is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
     </div>
-    <!-- </div> -->
     <br>
     <div *ngIf="CanRegister">
         <button mat-raised-button (click)="register()">Register</button>
