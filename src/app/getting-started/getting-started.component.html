@@ -33,14 +33,21 @@
 
 </div>
 
-<div align="center" class="reg-button">
-  <button mat-raised-button color="primary" routerLink="/register">Click here to register</button>
-</div>
+<div *ngIf="authService.isExpired()">
+  <div align="center" class="reg-button">
+    <button mat-raised-button color="primary" routerLink="/register">Click here to register</button>
+  </div>
 
-<div align="center">
-  <p>If you have already registered, please use the Login link below.</p>
-</div>
+  <div align="center">
+    <p>If you have already registered, please use the Login link below.</p>
+  </div>
 
-<div align="center" class="reg-button">
-  <button mat-raised-button color="primary" routerLink="/login">Click here to login</button>
+  <div align="center" class="reg-button">
+    <button mat-raised-button color="primary" routerLink="/login">Click here to login</button>
+  </div>
+</div>
+<div *ngIf="!authService.isExpired()">
+  <div align="center" class="reg-button">
+    <button mat-raised-button color="primary" routerLink="/user">Click here to go to your User Page</button>
+  </div>
 </div>

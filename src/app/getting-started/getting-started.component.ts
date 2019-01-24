@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../auth/auth.service';
+
 @Component({
   selector: 'app-getting-started',
   templateUrl: './getting-started.component.html',
@@ -7,7 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GettingStartedComponent implements OnInit {
 
-  constructor() { }
+  currentUser: any;
+
+  constructor(public authService: AuthService, ) {
+
+    if (!this.authService.isExpired()) {
+      console.log("currentUser");
+      console.log(localStorage.getItem('currentUser'));
+
+      if (localStorage.getItem('currentUser')) {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+      }
+
+    }
+
+  }
 
   ngOnInit() {
   }
