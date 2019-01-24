@@ -69,10 +69,22 @@ export class RegisterComponent implements OnInit {
 
   CanRegister = false;
 
+  userNameFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
+
+  passwordFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  cpasswordFormControl = new FormControl('', [
+    Validators.required,
+  ])
 
   matcher = new MyErrorStateMatcher();
 
