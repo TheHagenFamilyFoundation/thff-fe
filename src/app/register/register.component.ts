@@ -27,7 +27,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
