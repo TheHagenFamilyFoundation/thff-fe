@@ -110,25 +110,25 @@ export class CreateOrganizationFullComponent implements OnInit {
   //   Validators.email,
   // ]);
 
-  legalNameFormControl = new FormControl('', [
-    Validators.required,
-  ])
+  // legalNameFormControl = new FormControl('', [
+  //   Validators.required,
+  // ])
 
-  yearFoundedFormControl = new FormControl('', [
-    Validators.required,
-  ])
+  // yearFoundedFormControl = new FormControl('', [
+  //   Validators.required,
+  // ])
 
-  currentOperatingBudgetFormControl = new FormControl('', [
-    Validators.required,
-  ])
+  // currentOperatingBudgetFormControl = new FormControl('', [
+  //   Validators.required,
+  // ])
 
-  directorFormControl = new FormControl('', [
-    Validators.required,
-  ])
+  // directorFormControl = new FormControl('', [
+  //   Validators.required,
+  // ])
 
-  phoneFormControl = new FormControl('', [
-    Validators.required,
-  ])
+  // phoneFormControl = new FormControl('', [
+  //   Validators.required,
+  // ])
 
   // contactPersonFormControl = new FormControl('', [
   //   Validators.required,
@@ -191,7 +191,11 @@ export class CreateOrganizationFullComponent implements OnInit {
     })
 
     this.formOrganization = fb.group({
-      phone: ['']
+      legalName: new FormControl('', Validators.required),
+      yearFounded: new FormControl('', Validators.required),
+      currentOperatingBudget: new FormControl('', Validators.required),
+      director: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
     })
 
     this.formFax = fb.group({
