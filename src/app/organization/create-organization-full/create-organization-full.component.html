@@ -27,41 +27,41 @@
     <form [formGroup]="formOrganization">
       <div class="form-group">
         <mat-form-field class="quarter-width">
-          <input matInput placeholder="Legal Name" [formControl]="legalNameFormControl" value={{legalName}} required
-            (keyup)="legalName$.next($event.target.value)">
-          <mat-error *ngIf="legalNameFormControl.hasError('required')">
+          <input matInput placeholder="Legal Name" formControlName="legalName" value={{legalName}} required (keyup)="legalName$.next($event.target.value)">
+          <mat-error *ngIf="formOrganization.get('legalName').hasError('required')">
             Legal Name is <strong>required</strong>
           </mat-error>
         </mat-form-field>
         <div>
-          <mat-form-field>
-            <input matInput placeholder="Year Founded" [formControl]="yearFoundedFormControl" value={{yearFounded}}
-              required (keyup)="yearFounded$.next($event.target.value)">
-            <mat-error *ngIf="yearFoundedFormControl.hasError('required')">
+          <mat-form-field class="year-founded">
+            <input matInput placeholder="Year Founded" formControlName="yearFounded" value={{yearFounded}} required
+              (keyup)="yearFounded$.next($event.target.value)">
+            <mat-error *ngIf="formOrganization.get('yearFounded').hasError('required')">
               Year Founded is <strong>required</strong>
             </mat-error>
           </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Current Operating Budget" currencyMask required [(ngModel)]="currentOperatingBudget"
-              (ngModelChange)="currentOperatingBudgetChange($event)" [ngModelOptions]="{standalone: true}">
-            <mat-error *ngIf="currentOperatingBudgetFormControl.hasError('required')">
+          <mat-form-field class="current-operating-budget">
+            <input matInput formControlName="currentOperatingBudget" placeholder="Current Operating Budget"
+              currencyMask required [(ngModel)]="currentOperatingBudget" (ngModelChange)="currentOperatingBudgetChange($event)">
+            <!-- [ngModelOptions]="{standalone: true}"> -->
+            <mat-error *ngIf="formOrganization.get('phone').hasError('required')">
               Current Operating Budget is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
 
         <mat-form-field>
-          <input matInput placeholder="Executive Director" [formControl]="directorFormControl" value={{director}}
-            required (keyup)="director$.next($event.target.value)">
-          <mat-error *ngIf="directorFormControl.hasError('required')">
+          <input matInput placeholder="Executive Director" formControlName="director" value={{director}} required
+            (keyup)="director$.next($event.target.value)">
+          <mat-error *ngIf="formOrganization.get('director').hasError('required')">
             Executive Director is <strong>required</strong>
           </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput [formControl]="phoneFormControl" value={{phone}} type="text" appPhoneMask formControlName="phone"
-            id="phone-number" placeholder="Phone Number" (keyup)="phone$.next($event.target.value)">
-          <mat-error *ngIf="phoneFormControl.hasError('required')">
+          <input matInput formControlName="legalName" value={{phone}} type="text" appPhoneMask formControlName="phone"
+            id="phone-number" placeholder="Phone Number" (keyup)="phone$.next($event.target.value)" required>
+          <mat-error *ngIf="formOrganization.get('phone').hasError('required')">
             Phone Number is <strong>required</strong>
           </mat-error>
         </mat-form-field>
@@ -76,9 +76,6 @@
           <mat-form-field>
             <input matInput placeholder="Contact Person" formControlName="contactPerson" value={{contactPerson}}
               (keyup)="contactPerson$.next($event.target.value)" required>
-            <!-- <mat-error>
-              Contact Person is <strong>required</strong>
-            </mat-error> -->
             <mat-error *ngIf="formContactPerson.get('contactPerson').hasError('required')">
               Contact Person is <strong>required</strong>
             </mat-error>
