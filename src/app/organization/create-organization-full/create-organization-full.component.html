@@ -3,11 +3,15 @@
 </div>
 
 <div align="center">
-  <mat-form-field>
-    <input matInput placeholder="Organization Name" value={{orgName}} required (keyup)="orgName$.next($event.target.value)">
+  <mat-form-field class="quarter-width">
+    <input matInput placeholder="Organization Name" [formControl]="orgNameFormControl" value={{orgName}} required
+      (keyup)="orgName$.next($event.target.value)">
+    <mat-error *ngIf="orgNameFormControl.hasError('required')">
+      Organization Name is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
   <br>
-  <mat-form-field>
+  <mat-form-field class="quarter-width">
     <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
       (keyup)="description$.next($event.target.value)"></textarea>
   </mat-form-field>
@@ -22,70 +26,115 @@
   <div>
     <form [formGroup]="formOrganization">
       <div class="form-group">
-        <mat-form-field>
-          <input matInput placeholder="Legal Name" value={{legalName}} required (keyup)="legalName$.next($event.target.value)">
+        <mat-form-field class="quarter-width">
+          <input matInput placeholder="Legal Name" formControlName="legalName" value={{legalName}} required (keyup)="legalName$.next($event.target.value)">
+          <mat-error *ngIf="formOrganization.get('legalName').hasError('required')">
+            Legal Name is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
         <div>
-          <mat-form-field>
-            <input matInput placeholder="Year Founded" value={{yearFounded}} required (keyup)="yearFounded$.next($event.target.value)">
+          <mat-form-field class="year-founded">
+            <input matInput placeholder="Year Founded" formControlName="yearFounded" value={{yearFounded}} required
+              (keyup)="yearFounded$.next($event.target.value)">
+            <mat-error *ngIf="formOrganization.get('yearFounded').hasError('required')">
+              Year Founded is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Current Operating Budget" currencyMask [(ngModel)]="currentOperatingBudget"
-              (ngModelChange)="currentOperatingBudgetChange($event)" [ngModelOptions]="{standalone: true}">
+          <mat-form-field class="current-operating-budget">
+            <input matInput formControlName="currentOperatingBudget" placeholder="Current Operating Budget"
+              currencyMask required [(ngModel)]="currentOperatingBudget" (ngModelChange)="currentOperatingBudgetChange($event)">
+            <!-- [ngModelOptions]="{standalone: true}"> -->
+            <mat-error *ngIf="formOrganization.get('phone').hasError('required')">
+              Current Operating Budget is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
         </div>
+
         <mat-form-field>
-          <input matInput placeholder="Executive Director" value={{director}} required (keyup)="director$.next($event.target.value)">
+          <input matInput placeholder="Executive Director" formControlName="director" value={{director}} required
+            (keyup)="director$.next($event.target.value)">
+          <mat-error *ngIf="formOrganization.get('director').hasError('required')">
+            Executive Director is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
+
         <mat-form-field>
-          <input matInput class="form-control" value={{phone}} type="text" appPhoneMask formControlName="phone" id="phone-number"
-            placeholder="Phone Number" (keyup)="phone$.next($event.target.value)">
+          <input matInput formControlName="legalName" value={{phone}} type="text" appPhoneMask formControlName="phone"
+            id="phone-number" placeholder="Phone Number" (keyup)="phone$.next($event.target.value)" required>
+          <mat-error *ngIf="formOrganization.get('phone').hasError('required')">
+            Phone Number is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
+
       </div>
     </form>
-
+    <br>
     <div>
       Contact Person
       <form [formGroup]="formContactPerson">
         <div class="form-group">
           <mat-form-field>
-            <input matInput placeholder="Contact Person" value={{contactPerson}} (keyup)="contactPerson$.next($event.target.value)" required>
+            <input matInput placeholder="Contact Person" formControlName="contactPerson" value={{contactPerson}}
+              (keyup)="contactPerson$.next($event.target.value)" required>
+            <mat-error *ngIf="formContactPerson.get('contactPerson').hasError('required')">
+              Contact Person is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Title" value={{contactPersonTitle}} (keyup)="contactPersonTitle$.next($event.target.value)" required>
+            <input matInput placeholder="Title" formControlName="contactPersonTitle" value={{contactPersonTitle}}
+              (keyup)="contactPersonTitle$.next($event.target.value)" required>
+            <mat-error *ngIf="formContactPerson.get('contactPersonTitle').hasError('required')">
+              Contact Person Title is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
             <input matInput class="form-control" value={{contactPersonPhoneNumber}} type="text" appPhoneMask
-              formControlName="contactPersonPhoneNumber" id="phone-number" placeholder="Phone Number" (keyup)="contactPersonPhoneNumber$.next($event.target.value)" required>
+              formControlName="contactPersonPhoneNumber" id="phone-number" placeholder="Phone Number" (keyup)="contactPersonPhoneNumber$.next($event.target.value)"
+              required>
+            <mat-error *ngIf="formContactPerson.get('contactPersonPhoneNumber').hasError('required')">
+              Contact Person Phone Number is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
         </div>
       </form>
     </div>
+    <br>
     <div>Principal/Administrative Office
       <div>
-        <mat-form-field>
-          <textarea matInput placeholder="Address" value={{address}} required (keyup)="address$.next($event.target.value)"></textarea>
-          <!-- <mat-hint align="start">
-        <strong>Principal/Administrative Office</strong>
-      </mat-hint> -->
+        <mat-form-field class="quarter-width">
+          <textarea matInput placeholder="Address" [formControl]="addressFormControl" value={{address}} required
+            (keyup)="address$.next($event.target.value)"></textarea>
+          <mat-error *ngIf="addressFormControl.hasError('required')">
+            Address is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
 
         <table class="example-full-width" cellspacing="0">
           <tr>
             <td>
               <mat-form-field>
-                <input matInput placeholder="City" value={{city}} required (keyup)="city$.next($event.target.value)">
+                <input matInput placeholder="City" [formControl]="cityFormControl" value={{city}} required (keyup)="city$.next($event.target.value)">
+                <mat-error *ngIf="cityFormControl.hasError('required')">
+                  City is <strong>required</strong>
+                </mat-error>
               </mat-form-field>
             </td>
             <td>
               <mat-form-field>
-                <input matInput placeholder="State" value={{state}} required (keyup)="state$.next($event.target.value)">
+                <input matInput placeholder="State" [formControl]="stateFormControl" value={{state}} required (keyup)="state$.next($event.target.value)">
+                <mat-error *ngIf="stateFormControl.hasError('required')">
+                  State is <strong>required</strong>
+                </mat-error>
               </mat-form-field>
             </td>
             <td>
               <mat-form-field>
-                <input matInput placeholder="Zip" maxlength="5" value={{zip}} required (keyup)="zip$.next($event.target.value)">
+                <input matInput placeholder="Zip" maxlength="5" [formControl]="zipFormControl" value={{zip}} required
+                  (keyup)="zip$.next($event.target.value)">
                 <mat-hint align="end">{{zip?.toString().length}} / 5</mat-hint>
+                <mat-error *ngIf="zipFormControl.hasError('required')">
+                  Zip is <strong>required</strong>
+                </mat-error>
               </mat-form-field>
             </td>
           </tr>
@@ -95,7 +144,10 @@
 
     <div>
       <mat-form-field>
-        <input matInput placeholder="Email" value={{email}} required (keyup)="email$.next($event.target.value)">
+        <input matInput placeholder="Email" [formControl]="emailFormControl" value={{email}} required (keyup)="email$.next($event.target.value)">
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
     </div>
     <form [formGroup]="formFax">
