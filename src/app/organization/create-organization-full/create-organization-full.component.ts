@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, FormsModule, NgControl, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+
+import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 //Services
 import { CreateOrganizationService } from '../../services/organization/create-organization.service';
@@ -12,15 +14,20 @@ import { Subject } from 'rxjs';
 
 import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
 @Component({
   selector: 'app-create-organization-full',
   templateUrl: './create-organization-full.component.html',
   styleUrls: ['./create-organization-full.component.css']
 })
 export class CreateOrganizationFullComponent implements OnInit {
-
-  orgName$ = new Subject<string>();
-  description$ = new Subject<string>();
 
   orgName: any; //string
   description: any; //string
@@ -29,11 +36,13 @@ export class CreateOrganizationFullComponent implements OnInit {
 
   orgInfo: any;
 
+  orgName$ = new Subject<string>();
+  description$ = new Subject<string>(); //not sure
   legalName$ = new Subject<string>();
   yearFounded$ = new Subject<string>();
   currentOperatingBudget$ = new Subject<string>();
   director$ = new Subject<string>();
-  legalNphoneame$ = new Subject<string>();
+  // legalNphoneame$ = new Subject<string>();
   phone$ = new Subject<string>();
   contactPerson$ = new Subject<string>();
   contactPersonTitle$ = new Subject<string>();
@@ -71,7 +80,6 @@ export class CreateOrganizationFullComponent implements OnInit {
   showCurrentOperatingBudgetMessage = false;
   currentOperatingBudgetMessage: any;
 
-
   CanCreateOrg = false;
 
   ValidOrgName = false;
@@ -93,6 +101,75 @@ export class CreateOrganizationFullComponent implements OnInit {
   formOrganization: FormGroup;
   formFax: FormGroup;
 
+  orgNameFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  // descriptionFormControl = new FormControl('', [
+  //   Validators.required,
+  //   Validators.email,
+  // ]);
+
+  legalNameFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  yearFoundedFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  currentOperatingBudgetFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  directorFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  phoneFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  // contactPersonFormControl = new FormControl('', [
+  //   Validators.required,
+  // ])
+
+  // contactPersonTitleFormControl = new FormControl('', [
+  //   Validators.required,
+  // ])
+
+  // contactPersonPhoneNumberFormControl = new FormControl('', [
+  //   Validators.required,
+  // ])
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email
+  ])
+
+  addressFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  cityFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  stateFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  zipFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+
+  faxFormControl = new FormControl('', [
+    Validators.required
+  ]);
+
+  matcher = new MyErrorStateMatcher();
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -101,7 +178,6 @@ export class CreateOrganizationFullComponent implements OnInit {
     fb: FormBuilder
   ) {
 
-
     //retreive the parameter
     this.route.params.subscribe(params => {
       console.log(params);
@@ -109,7 +185,9 @@ export class CreateOrganizationFullComponent implements OnInit {
     });
 
     this.formContactPerson = fb.group({
-      contactPersonPhoneNumber: ['']
+      contactPersonPhoneNumber: new FormControl('', Validators.required),
+      contactPersonTitle: new FormControl('', Validators.required),
+      contactPerson: new FormControl('', Validators.required),
     })
 
     this.formOrganization = fb.group({
@@ -119,7 +197,6 @@ export class CreateOrganizationFullComponent implements OnInit {
     this.formFax = fb.group({
       fax: ['']
     })
-
 
     //create organization
 
@@ -160,15 +237,6 @@ export class CreateOrganizationFullComponent implements OnInit {
         this.yearFounded = Number(term);
         this.yearFoundedChange()
       });
-
-    // this.currentOperatingBudget$.pipe(
-    //   debounceTime(400),
-    //   distinctUntilChanged())
-    //   .subscribe(term => {
-
-    //     this.currentOperatingBudget = Number(term);
-    //     this.currentOperatingBudgetChange()
-    //   });
 
     this.director$.pipe(
       debounceTime(400),
@@ -268,8 +336,6 @@ export class CreateOrganizationFullComponent implements OnInit {
         this.fax = term;
         this.faxChange()
       });
-
-
 
   }//end of constructor
 
@@ -373,12 +439,9 @@ export class CreateOrganizationFullComponent implements OnInit {
               err => console.log(err)
             );
 
-
         },
         err => console.log(err)
       );
-
-
 
   }
 
@@ -401,7 +464,6 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
 
     this.VerifyInput();
-
 
   }
 
