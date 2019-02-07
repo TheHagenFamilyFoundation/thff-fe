@@ -179,12 +179,20 @@ export class UserLetterOfIntentComponent implements OnInit {
 
   }//end of getLOIs
 
-  createLOI() {
+  // createLOI() {
 
-    console.log('create letter of intent');
+  //   console.log('create letter of intent');
 
-    //modal
-    this.openCreateLOIDialog();
+  //   //modal
+  //   this.openCreateLOIDialog();
+
+  // }
+
+  createLOIFull() {
+
+    //route to the full LOI
+
+    this.router.navigate(['/create-loi-full']);
 
   }
 
