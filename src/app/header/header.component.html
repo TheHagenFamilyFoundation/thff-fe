@@ -25,10 +25,10 @@
       </div>
     </div>
 
-    <div *ngIf="!authService.isExpired()">
-      <div *ngIf="IsDirector">
-        <button mat-button routerLink="/director" fxHide="false">Directors</button>
-      </div>
+    <div *ngIf="!authService.isExpired() && directorService.isDirector()">
+      <!-- <div *ngIf="IsDirector"> -->
+      <button mat-button routerLink="/director" fxHide="false">Directors</button>
+      <!-- </div> -->
     </div>
 
   </div>
