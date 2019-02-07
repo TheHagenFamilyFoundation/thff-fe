@@ -289,11 +289,13 @@ export class RegisterComponent implements OnInit {
             console.log("user found");
 
             this.ShowUserNameError = true;
+            this.ValidUserName = false;
           }
           else {
             console.log("user not found");
 
             this.ShowUserNameError = false;
+            this.ValidUserName = true;
 
           }
 
@@ -316,11 +318,13 @@ export class RegisterComponent implements OnInit {
             console.log("email found");
 
             this.ShowEmailError = true;
+            this.ValidEmail = false;
           }
           else {
             console.log("email not found");
 
             this.ShowEmailError = false;
+            this.ValidEmail = true;
 
           }
 
