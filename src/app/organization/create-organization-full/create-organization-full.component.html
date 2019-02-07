@@ -3,6 +3,10 @@
 </div>
 
 <div align="center">
+  All required fields(*) must be completed in order to create an Organization.
+</div>
+
+<div align="center">
   <mat-form-field class="quarter-width">
     <input matInput placeholder="Organization Name" [formControl]="orgNameFormControl" value={{orgName}} required
       (keyup)="orgName$.next($event.target.value)">
@@ -45,7 +49,6 @@
           <mat-form-field class="current-operating-budget">
             <input matInput formControlName="currentOperatingBudget" placeholder="Current Operating Budget" currencyMask
               required [(ngModel)]="currentOperatingBudget" (ngModelChange)="currentOperatingBudgetChange($event)">
-            <!-- [ngModelOptions]="{standalone: true}"> -->
             <mat-error *ngIf="formOrganization.get('phone').hasError('required')">
               Current Operating Budget is <strong>required</strong>
             </mat-error>
@@ -171,6 +174,6 @@
 
 <div align="center">
   <div *ngIf="CanCreateOrg">
-    <button mat-raised-button (click)="createOrg()">Create Organization</button>
+    <button mat-raised-button (click)="createOrg()">Submit</button>
   </div>
 </div>

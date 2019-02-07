@@ -5,6 +5,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CreateLetterOfIntentComponent } from '../../letter-of-intent/create-letter-of-intent/create-letter-of-intent.component';
 import { OrgSelectedLetterOfIntentComponent } from '../org-selected-letter-of-intent/org-selected-letter-of-intent.component';
 
+import { Router } from '@angular/router';
+
 import { GetLoiService } from '../../services/loi/get-loi.service';
 import { LOIStatusService } from '../../services/loi/loi-status.service';
 
@@ -40,7 +42,9 @@ export class OrganizationRequestsComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public getLoiService: GetLoiService,
-    private loiStatusService: LOIStatusService) {
+    private loiStatusService: LOIStatusService,
+    private router: Router,
+  ) {
 
     this.lois = [];
 
@@ -82,14 +86,23 @@ export class OrganizationRequestsComponent implements OnInit {
 
   }
 
-  createLOI() {
+  // createLOI() {
 
-    console.log('create letter of intent');
+  //   console.log('create letter of intent');
 
-    //modal
-    this.openCreateLOIDialog();
+  //   //modal
+  //   this.openCreateLOIDialog();
+
+  // }
+
+  createLOIFull() {
+
+    //route to the full LOI
+
+    this.router.navigate(['/create-loi-full']);
 
   }
+
 
   openCreateLOIDialog(): void {
     let dialogRef = this.dialog.open(CreateLetterOfIntentComponent, {

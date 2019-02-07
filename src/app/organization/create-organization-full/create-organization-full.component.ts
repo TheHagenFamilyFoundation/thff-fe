@@ -454,13 +454,12 @@ export class CreateOrganizationFullComponent implements OnInit {
                   .subscribe(
                     (data) => {
 
+                      //route 
+                      this.router.navigate(['/organization/' + this.organizationID]);
+
                     },
                     err => console.log(err)
                   );
-
-
-                //route 
-                this.router.navigate(['/home']);
 
               },
               err => console.log(err)
