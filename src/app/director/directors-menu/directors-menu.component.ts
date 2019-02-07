@@ -40,13 +40,13 @@ export class DirectorsMenuComponent implements OnInit {
 
         this.IsDirector = true;
 
-        this.directorService.changeMessage(this.IsDirector)
+        //   this.directorService.changeMessage(this.IsDirector)
 
       }
       else {
         this.IsDirector = false;
 
-        this.directorService.changeMessage(this.IsDirector)
+        //   this.directorService.changeMessage(this.IsDirector)
 
         this.router.navigate(['/logout']);
 

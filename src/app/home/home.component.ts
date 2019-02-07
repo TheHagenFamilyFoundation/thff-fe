@@ -63,11 +63,11 @@ export class HomeComponent implements OnInit {
 
     })
 
-    this.directorService.currentIsDirector.subscribe(message => {
+    // this.directorService.currentIsDirector.subscribe(message => {
 
-      this.IsDirector = message;
+    //   this.IsDirector = message;
 
-    })
+    // })
 
     this.env = environment.envName;
 
@@ -94,14 +94,14 @@ export class HomeComponent implements OnInit {
         if (this.accessLevel > 1) {
           this.IsDirector = true;
 
-          this.directorService.changeMessage(this.IsDirector)
+          //   this.directorService.changeMessage(this.IsDirector)
 
         }
         else {
           this.IsDirector = false;
 
-          this.directorService.changeMessage(this.IsDirector)
-
+          //   this.directorService.changeMessage(this.IsDirector)
+          // 
         }
 
         this.getOrganizations();
@@ -133,13 +133,13 @@ export class HomeComponent implements OnInit {
         if (this.accessLevel > 1) {
           this.IsDirector = true;
 
-          this.directorService.changeMessage(this.IsDirector)
+          // this.directorService.changeMessage(this.IsDirector)
 
         }
         else {
           this.IsDirector = false;
 
-          this.directorService.changeMessage(this.IsDirector)
+          // this.directorService.changeMessage(this.IsDirector)
 
         }
 
