@@ -5,8 +5,10 @@ import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Valida
 import { ErrorStateMatcher } from '@angular/material/core';
 
 //Services
-import { CreateOrganizationService } from '../../services/organization/create-organization.service';
+import { AuthService } from '../../auth/auth.service';
+import { EmailService } from '../../services/user/email.service';
 
+import { CreateOrganizationService } from '../../services/organization/create-organization.service';
 import { CreateOrganizationInfoService } from '../../services/organization/organization-info/create-organization-info.service';
 
 //debounce
@@ -33,6 +35,7 @@ export class CreateOrganizationFullComponent implements OnInit {
   description: any; //string
 
   orgID: any;
+  organizationID: any;
 
   orgInfo: any;
 
@@ -74,6 +77,7 @@ export class CreateOrganizationFullComponent implements OnInit {
   user: any; //object
   userId: any; //string
   userName: any; //string
+  userEmail: string;
 
   ShowMessage = false;
 
@@ -173,6 +177,8 @@ export class CreateOrganizationFullComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private authService: AuthService,
+    private emailService: EmailService,
     private createOrganizationService: CreateOrganizationService,
     private createOrganizationInfoService: CreateOrganizationInfoService,
     fb: FormBuilder
@@ -356,6 +362,7 @@ export class CreateOrganizationFullComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem('currentUser'));
       this.userName = this.user.username
       this.userId = this.user.id;
+      this.userEmail = this.user.email;
     }
     else {
       //not logged in - redirect to home?
@@ -407,9 +414,10 @@ export class CreateOrganizationFullComponent implements OnInit {
       .subscribe(
         (result) => {
           console.log('Org Created');
-          console.log('result', result);
+          console.log('1-result', result);
 
           this.orgID = result.result.id;
+          this.organizationID = result.result.organizationID;
 
           var createOrgInfoBody = {
             legalName: this.legalName,
@@ -434,7 +442,22 @@ export class CreateOrganizationFullComponent implements OnInit {
             .subscribe(
               (result) => {
 
-                console.log('result', result)
+                console.log('2-result', result)
+                console.log('orgID', this.organizationID)
+
+                this.emailService.sendRegisterOrganizationEmail({
+                  //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+                  to: this.userEmail,
+                  name: this.userName,
+                  orgName: this.organizationID
+                })
+                  .subscribe(
+                    (data) => {
+
+                    },
+                    err => console.log(err)
+                  );
+
 
                 //route 
                 this.router.navigate(['/home']);

@@ -35,7 +35,7 @@ export class CreateOrganizationComponent implements OnInit {
   user: any; //object
   userId: any; //string
   userName: any; //string
-  email;
+  email: string;
 
   ShowMessage = false;
 
