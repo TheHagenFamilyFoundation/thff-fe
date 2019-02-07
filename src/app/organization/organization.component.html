@@ -1,52 +1,48 @@
-<mat-card>
-  <mat-card-title align="center">Organization Page - {{org?.name}}</mat-card-title>
-  <mat-card-content>
-    <mat-grid-list cols="2" [rowHeight]="basicRowHeight">
-      <mat-grid-tile [rowspan]="2">
-        <mat-card>
-          <mat-card-content>
-            <div *ngIf='org'>
-              <app-organization-info [org]='org'></app-organization-info>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-card>
-          <mat-card-content>
-            <div *ngIf='org'>
-              <app-organization-users [org]="org"></app-organization-users>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-card class="loiswidth">
-          <mat-card-content>
-            <div *ngIf='org'>
-              <app-organization-requests [org]="org"></app-organization-requests>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-card class="doc501c3">
-          <mat-card-content>
-            <div *ngIf='org'>
-              <app-organization-doc501c3 [org]=" org "></app-organization-doc501c3>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-card class="doc501c3">
-          <mat-card-content>
-            <div *ngIf='org'>
-              <app-organization-full-proposals [org]="org"></app-organization-full-proposals>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-card-content>
-</mat-card>
+<h2 align="center">Organization Page - {{org?.name}}</h2>
+<mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+  <mat-grid-tile [rowspan]="2">
+    <mat-card>
+      <mat-card-content>
+        <div *ngIf='org'>
+          <app-organization-info [org]='org'></app-organization-info>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-content>
+        <div *ngIf='org'>
+          <app-organization-users [org]="org"></app-organization-users>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="loiswidth">
+      <mat-card-content>
+        <div *ngIf='org'>
+          <app-organization-requests [org]="org"></app-organization-requests>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="doc501c3">
+      <mat-card-content>
+        <div *ngIf='org'>
+          <app-organization-doc501c3 [org]=" org "></app-organization-doc501c3>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="doc501c3">
+      <mat-card-content>
+        <div *ngIf='org'>
+          <app-organization-full-proposals [org]="org"></app-organization-full-proposals>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
