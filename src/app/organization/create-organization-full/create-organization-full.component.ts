@@ -463,7 +463,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidLegalName = true;
+      this.ValidLegalName = false;
 
     }
 
@@ -483,7 +483,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidYearFounded = true;
+      this.ValidYearFounded = false;
 
     }
 
@@ -494,6 +494,7 @@ export class CreateOrganizationFullComponent implements OnInit {
   currentOperatingBudgetChange(event) {
     console.log("currentOperatingBudgetChange", event);
 
+    //cannot be blank
     if (this.currentOperatingBudget == '') {
 
       this.currentOperatingBudgetMessage = "Current Operating Budget must be positive."
@@ -504,11 +505,11 @@ export class CreateOrganizationFullComponent implements OnInit {
 
     }
     else {
+      //if there is a value set to true
       this.showCurrentOperatingBudgetMessage = false;
       this.ValidCurrentOperatingBudget = true;
 
     }
-
 
     this.ShowMessage = false;
 
@@ -528,7 +529,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidDirector = true;
+      this.ValidDirector = false;
 
     }
 
@@ -548,7 +549,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidState = true;
+      this.ValidState = false;
 
     }
 
@@ -568,7 +569,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidCity = true;
+      this.ValidCity = false;
 
     }
 
@@ -588,7 +589,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidAddress = true;
+      this.ValidAddress = false;
 
     }
 
@@ -628,7 +629,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidContactPerson = true;
+      this.ValidContactPerson = false;
 
     }
 
@@ -648,7 +649,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidContactPersonTitle = true;
+      this.ValidContactPersonTitle = false;
 
     }
 
@@ -668,7 +669,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidContactPersonPhoneNumber = true;
+      this.ValidContactPersonPhoneNumber = false;
 
     }
 
@@ -688,7 +689,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidPhone = true;
+      this.ValidPhone = false;
 
     }
 
@@ -708,7 +709,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidZip = true;
+      this.ValidZip = false;
 
     }
 
