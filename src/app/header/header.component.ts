@@ -4,11 +4,10 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { AuthService } from '../auth/auth.service';
+import { DirectorService } from "../services/user/director.service";
 
 import { GetUserService } from '../services/user/get-user.service'; //used for getting organizations
 import { InOrgService } from "../services/user/in-org.service";
-
-import { DirectorService } from "../services/user/director.service";
 
 import { CreateOrganizationHeaderComponent } from '../organization/create-organization-header/create-organization-header.component';
 
@@ -32,11 +31,11 @@ export class HeaderComponent implements OnInit {
   IsDirector: boolean;
 
   constructor(
-    private router: Router,
     public authService: AuthService,
+    public directorService: DirectorService,
     private getUserService: GetUserService,
     private inOrg: InOrgService,
-    private directorService: DirectorService,
+    private router: Router,
     public dialog: MatDialog,
   ) {
 
@@ -54,13 +53,13 @@ export class HeaderComponent implements OnInit {
         if (this.accessLevel > 1) {
           this.IsDirector = true;
 
-          this.directorService.changeMessage(this.IsDirector)
+          // this.directorService.changeMessage(this.IsDirector)
 
         }
         else {
           this.IsDirector = false;
 
-          this.directorService.changeMessage(this.IsDirector)
+          // this.directorService.changeMessage(this.IsDirector)
 
         }
 
@@ -91,25 +90,25 @@ export class HeaderComponent implements OnInit {
 
     })
 
-    this.directorService.currentIsDirector.subscribe(message => {
+    // this.directorService.currentIsDirector.subscribe(message => {
 
-      this.IsDirector = message;
+    //   this.IsDirector = message;
 
-      // console.log('isdirector change', this.accessLevel)
+    //   // console.log('isdirector change', this.accessLevel)
 
-      // if (this.accessLevel > 1) {
+    //   // if (this.accessLevel > 1) {
 
-      //   console.log('isDirector')
+    //   //   console.log('isDirector')
 
-      //   this.IsDirector = true;
-      // }
-      // else {
-      //   this.IsDirector = false;
-      // }
+    //   //   this.IsDirector = true;
+    //   // }
+    //   // else {
+    //   //   this.IsDirector = false;
+    //   // }
 
 
 
-    })
+    // })
 
     console.log('expired', this.authService.isExpired())
 
@@ -130,13 +129,13 @@ export class HeaderComponent implements OnInit {
         if (this.accessLevel > 1) {
           this.IsDirector = true;
 
-          this.directorService.changeMessage(this.IsDirector)
+          // this.directorService.changeMessage(this.IsDirector)
 
         }
         else {
           this.IsDirector = false;
 
-          this.directorService.changeMessage(this.IsDirector)
+          // this.directorService.changeMessage(this.IsDirector)
 
         }
 
