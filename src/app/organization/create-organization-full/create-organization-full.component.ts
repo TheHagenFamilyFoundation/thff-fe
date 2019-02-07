@@ -608,7 +608,7 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
     else {
 
-      this.ValidEmail = true;
+      this.ValidEmail = false;
 
     }
 
