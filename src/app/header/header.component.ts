@@ -195,11 +195,21 @@ export class HeaderComponent implements OnInit {
 
   }//end of getOrganizations
 
+  // createOrg() {
+
+  //   console.log('clicked on createOrg');
+
+  //   this.openCreateOrgDialog();
+
+  // }
+
   createOrg() {
 
-    console.log('clicked on createOrg');
+    console.log('create organization');
+    this.router.navigate(['/create-organization']);
 
-    this.openCreateOrgDialog();
+    //modal
+    // this.openCreateOrgDialog();
 
   }
 
