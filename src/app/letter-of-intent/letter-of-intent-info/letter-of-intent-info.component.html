@@ -57,12 +57,14 @@
 <div *ngIf='editing'>
   <div>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Project Title" value={{projectTitle}} (keyup)="projectTitle$.next($event.target.value) ">
+      <input matInput placeholder="Project Title" value={{projectTitle}}
+        (keyup)="projectTitle$.next($event.target.value) ">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field class="full-width">
-      <textarea matInput placeholder="Purpose " value={{purpose}} (keyup)="purpose$.next($event.target.value) "></textarea>
+      <textarea matInput placeholder="Purpose " maxlength="2000" value={{purpose}}
+        (keyup)="purpose$.next($event.target.value) "></textarea>
       <!-- <mat-hint align="start "> -->
       <!-- <strong>2000 Characters Maximum</strong> -->
       <mat-hint align="start">{{purpose?.toString().length}} / 2000</mat-hint>
@@ -73,7 +75,8 @@
   <div>
     <mat-form-field class="full-width">
       <input matInput [matDatepicker]="picker3" placeholder="Project Start Date" [value]="projectStartDate.value"
-        (dateInput)="projectStartDate$.next($event.target.value) " (dateChange)="projectStartDate$.next($event.target.value) ">
+        (dateInput)="projectStartDate$.next($event.target.value) "
+        (dateChange)="projectStartDate$.next($event.target.value) ">
       <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
       <mat-datepicker #picker3></mat-datepicker>
     </mat-form-field>
@@ -82,7 +85,8 @@
   <div>
     <mat-form-field class="full-width">
       <input matInput [matDatepicker]="picker4" placeholder="Project End Date" [value]="projectEndDate.value"
-        (dateInput)="projectEndDate$.next($event.target.value) " (dateChange)="projectEndDate$.next($event.target.value) ">
+        (dateInput)="projectEndDate$.next($event.target.value) "
+        (dateChange)="projectEndDate$.next($event.target.value) ">
       <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
       <mat-datepicker #picker4></mat-datepicker>
     </mat-form-field>
@@ -90,12 +94,14 @@
   <div>
     <div>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Amount Requested " currencyMask [(ngModel)]="amountRequested" (ngModelChange)="amountRequestedChange($event)">
+        <input matInput placeholder="Amount Requested " currencyMask [(ngModel)]="amountRequested"
+          (ngModelChange)="amountRequestedChange($event)">
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Total Project Cost " currencyMask [(ngModel)]="totalProjectCost" (ngModelChange)="totalProjectCostChange($event)">
+        <input matInput placeholder="Total Project Cost " currencyMask [(ngModel)]="totalProjectCost"
+          (ngModelChange)="totalProjectCostChange($event)">
       </mat-form-field>
     </div>
     <div *ngIf="ShowCostMessage">
