@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, FormsModule, NgControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -84,6 +86,33 @@ export class OrganizationInfoComponent implements OnInit {
   formOrganization: FormGroup;
   formFax: FormGroup;
 
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email
+  ])
+
+  addressFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  cityFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  stateFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+  zipFormControl = new FormControl('', [
+    Validators.required,
+  ])
+
+
+  faxFormControl = new FormControl('', [
+    Validators.required
+  ]);
+
+
   constructor(
     private createOrganizationInfoService: CreateOrganizationInfoService,
     private getOrganizationInfoService: GetOrganizationInfoService,
@@ -93,11 +122,17 @@ export class OrganizationInfoComponent implements OnInit {
   ) {
 
     this.formContactPerson = fb.group({
-      contactPersonPhoneNumber: ['']
+      contactPersonPhoneNumber: new FormControl('', Validators.required),
+      contactPersonTitle: new FormControl('', Validators.required),
+      contactPerson: new FormControl('', Validators.required),
     })
 
     this.formOrganization = fb.group({
-      phone: ['']
+      legalName: new FormControl('', Validators.required),
+      yearFounded: new FormControl('', Validators.required),
+      currentOperatingBudget: new FormControl('', Validators.required),
+      director: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
     })
 
     this.formFax = fb.group({
@@ -600,8 +635,5 @@ export class OrganizationInfoComponent implements OnInit {
     this.ShowMessage = false;
 
   }
-
-
-
 
 }
