@@ -6,3 +6,11 @@
   .example-container > * {
     width: 100%;
   }
+
+  .year-founded-width {
+    width: 100px;
+  }
+
+  .titles-gray {
+    color: gray;
+  }
