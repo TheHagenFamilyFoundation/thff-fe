@@ -52,7 +52,6 @@ export class LetterOfIntentInfoComponent implements OnInit {
   outputamountRequested: string;
   outputTotalProjectCost: string;
 
-
   loaded = false;
 
   ShowMessage = false;
@@ -63,10 +62,18 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
   editing = false;
 
-  canSave = true;
+  CanSave = false;
 
   startDate: any;
   endDate: any;
+
+  //loi info
+  ValidProjectTitle = false;
+  ValidPurpose = false;
+  ValidProjectStartDate = false;
+  ValidProjectEndDate = false;
+  ValidAmountRequested = false;
+  ValidTotalProjectCost = false;
 
   constructor(
     private createLoiInfoService: CreateLoiInfoService,
@@ -263,10 +270,28 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
       if (this.loiInfo.projectTitle) {
         this.projectTitle = this.loiInfo.projectTitle;
+
+        if (this.projectTitle != "") {
+
+          this.ValidProjectTitle = true;
+        }
+        else {
+          this.ValidProjectTitle = false;
+        }
+
       }
 
       if (this.loiInfo.purpose) {
         this.purpose = this.loiInfo.purpose;
+
+        if (this.purpose != "") {
+
+          this.ValidPurpose = true;
+        }
+        else {
+          this.ValidPurpose = false;
+        }
+
       }
 
       if (this.loiInfo.projectStartDate) {
@@ -276,6 +301,9 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
         this.startDate = this.projectStartDate.value;
         this.startDate = this.getFormattedDate(this.startDate);
+
+        this.ValidProjectStartDate = true;
+
 
       }
 
@@ -287,15 +315,25 @@ export class LetterOfIntentInfoComponent implements OnInit {
         this.endDate = this.projectEndDate.value;
         this.endDate = this.getFormattedDate(this.endDate);
 
+        this.ValidProjectEndDate = true;
+
       }
 
       if (this.loiInfo.amountRequested) {
         this.amountRequested = this.loiInfo.amountRequested;
+
+        this.checkCostAmounts();
+
       }
 
       if (this.loiInfo.totalProjectCost) {
         this.totalProjectCost = this.loiInfo.totalProjectCost;
+
+        this.checkCostAmounts();
+
       }
+
+      this.verifyInput();
 
     }
     else {
@@ -365,12 +403,32 @@ export class LetterOfIntentInfoComponent implements OnInit {
 
     this.ShowMessage = false;
 
+    if (this.projectTitle != "") {
+
+      this.ValidProjectTitle = true;
+    }
+    else {
+      this.ValidProjectTitle = false;
+    }
+
+    this.verifyInput();
+
   }
 
   purposeChange() {
     console.log("purposeChange");
 
     this.ShowMessage = false;
+
+    if (this.purpose != "") {
+
+      this.ValidPurpose = true;
+    }
+    else {
+      this.ValidPurpose = false;
+    }
+
+    this.verifyInput();
 
   }
 
@@ -413,32 +471,52 @@ export class LetterOfIntentInfoComponent implements OnInit {
       this.costMessage = "Amount Requested must be lesser than the Total Project Cost."
 
       this.ShowCostMessage = true;
-      this.canSave = false;
+      this.ValidAmountRequested = false;
+      this.ValidTotalProjectCost = true;
 
     }
     else if (this.totalProjectCost == '' && this.amountRequested == '') {
       this.costMessage = "Total Project Cost and Amount Requested must be positive."
 
       this.ShowCostMessage = true;
-      this.canSave = false;
+
+      this.ValidAmountRequested = false;
+      this.ValidTotalProjectCost = false;
     }
     else if (this.totalProjectCost == '') {
 
       this.costMessage = "Total Project Cost must be positive."
 
       this.ShowCostMessage = true;
-      this.canSave = false;
+      this.ValidTotalProjectCost = false;
 
     }
     else if (this.amountRequested == '') {
       this.costMessage = "Amount Requested must be positive."
 
       this.ShowCostMessage = true;
-      this.canSave = false;
+      this.ValidAmountRequested = false;
     }
     else {
+      //hide message - all valid
       this.ShowCostMessage = false;
-      this.canSave = true;
+      this.ValidAmountRequested = true;
+      this.ValidTotalProjectCost = true;
+
+    }
+
+  }
+
+  verifyInput() {
+
+    if (this.ValidProjectTitle && this.ValidPurpose &&
+      this.ValidProjectStartDate && this.ValidProjectEndDate &&
+      this.ValidAmountRequested && this.ValidTotalProjectCost) {
+
+      this.CanSave = true;
+    }
+    else {
+      this.CanSave = false;
     }
 
   }
