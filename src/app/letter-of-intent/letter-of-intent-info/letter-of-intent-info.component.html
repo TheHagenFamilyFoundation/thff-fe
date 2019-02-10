@@ -7,7 +7,7 @@
 </div>
 
 <div *ngIf="editing">
-  <button *ngIf="canSave" mat-raised-button (click)="save()">Save</button>
+  <button *ngIf="CanSave" mat-raised-button (click)="save()">Save</button>
   <button mat-raised-button (click)="cancel()">Cancel</button>
 </div>
 
@@ -24,7 +24,7 @@
       <mat-form-field class="full-width">
         <textarea matInput placeholder="Purpose" value={{purpose}} disabled></textarea>
         <mat-hint align="start">
-          2000 Characters Maximum
+          2000 Characters Maximum - Current Count: {{purpose?.length}}
         </mat-hint>
       </mat-form-field>
     </div>
