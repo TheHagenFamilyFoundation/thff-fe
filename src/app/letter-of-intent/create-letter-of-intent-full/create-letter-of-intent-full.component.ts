@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 
 //debounce
@@ -81,12 +82,26 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
   organizations = [];
 
+  formLOI: FormGroup;
+
   constructor(
     private router: Router,
     private createLoiService: CreateLoiService,
     private getUserService: GetUserService,
-    private createLoiInfoService: CreateLoiInfoService
+    private createLoiInfoService: CreateLoiInfoService,
+    fb: FormBuilder
   ) {
+
+    this.formLOI = fb.group({
+      loiName: new FormControl('', Validators.required),
+      orgName: new FormControl('', Validators.required),
+      projectTitle: new FormControl('', Validators.required),
+      purpose: new FormControl('', Validators.required),
+      projectStartDate: new FormControl('', Validators.required),
+      projectEndDate: new FormControl('', Validators.required),
+      amountRequested: new FormControl('', Validators.required),
+      totalProjectCost: new FormControl('', Validators.required),
+    })
 
     this.loiName$.pipe(
       debounceTime(400),

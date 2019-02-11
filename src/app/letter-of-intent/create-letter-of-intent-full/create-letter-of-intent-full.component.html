@@ -3,77 +3,110 @@
 </div>
 
 <div align="center">
-  <mat-form-field class="full-width">
-    <input matInput placeholder="LOI Name" value="" required (keyup)="loiName$.next($event.target.value)">
-  </mat-form-field>
-  <br>
-  <div *ngIf='!orgName'>
-    <mat-form-field class="full-width">
-      <mat-select placeholder="Select Organization" required [(ngModel)]="orgSelected" name="org" (ngModelChange)="orgChanged($event)">
-        <mat-option *ngFor="let org of organizations" [value]="org.organizationID">
-          {{ org.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div *ngIf='orgName'>
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Organization" disabled value='{{orgName}}'>
-    </mat-form-field>
-  </div>
-  <mat-form-field class="text-a">
-    <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
-      (keyup)="description$.next($event.target.value)"></textarea>
-  </mat-form-field>
-</div>
+  <form [formGroup]="formLOI">
+    <div class="form-group">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="LOI Name" formControlName="loiName" value={{loiName}} required
+          (keyup)="loiName$.next($event.target.value)">
+        <mat-error *ngIf="formLOI.get('loiName').hasError('required')">
+          LOI Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <div *ngIf='!orgName'>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Select Organization" required formControlName="orgName" name="org"
+            (ngModelChange)="orgChanged($event)">
+            <mat-option *ngFor="let org of organizations" [value]="org.organizationID">
+              {{ org.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="formLOI.get('orgName').hasError('required')">
+            Org Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!--
+        <div *ngIf='orgName'>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Organization" disabled value='{{orgName}}'>
+          </mat-form-field>
+        </div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+            (keyup)="description$.next($event.target.value)"></textarea>
+        </mat-form-field>
+      </div>-->
 
-<div align="center">
-  <div>
-    <mat-form-field class="title-width">
-      <input matInput placeholder="Project Title" value={{projectTitle}} required (keyup)="projectTitle$.next($event.target.value) ">
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field class="text-a">
-      <textarea matInput placeholder="Purpose " value={{purpose}} required (keyup)="purpose$.next($event.target.value) "></textarea>
-      <!-- <mat-hint align="start "> -->
-      <!-- <strong>2000 Characters Maximum</strong> -->
-      <mat-hint align="start">{{purpose?.toString().length}} / 2000</mat-hint>
-      <!-- </mat-hint> -->
-    </mat-form-field>
-  </div>
-  <br>
-  <div>
-    <mat-form-field class="full-width">
-      <input matInput [matDatepicker]="picker3" placeholder="Project Start Date" required [value]="projectStartDate.value"
-        (dateInput)="projectStartDate$.next($event.target.value) " (dateChange)="projectStartDate$.next($event.target.value) ">
-      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-      <mat-datepicker #picker3></mat-datepicker>
-    </mat-form-field>
-  </div>
+      <!-- <div> -->
+      <div>
+        <mat-form-field class="title-width">
+          <input matInput placeholder="Project Title" formControlName="projectTitle" value={{projectTitle}} required
+            (keyup)="projectTitle$.next($event.target.value)">
+          <mat-error *ngIf="formLOI.get('projectTitle').hasError('required')">
+            Project Title is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-  <div>
-    <mat-form-field class="full-width">
-      <input matInput [matDatepicker]="picker4" placeholder="Project End Date" required [value]="projectEndDate.value"
-        (dateInput)="projectEndDate$.next($event.target.value) " (dateChange)="projectEndDate$.next($event.target.value) ">
-      <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
-      <mat-datepicker #picker4></mat-datepicker>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Amount Requested " currencyMask [(ngModel)]="amountRequested" (ngModelChange)="amountRequestedChange($event)">
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Total Project Cost " currencyMask [(ngModel)]="totalProjectCost" (ngModelChange)="totalProjectCostChange($event)">
-    </mat-form-field>
-  </div>
-  <div *ngIf="ShowCostMessage">
-    {{costMessage}}
-  </div>
-
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Purpose" formControlName="purpose" maxlength="2000" value={{purpose}} required
+            (keyup)="purpose$.next($event.target.value)"></textarea>
+          <mat-hint align="start">{{purpose?.toString().length}} / 2000</mat-hint>
+          <mat-error *ngIf="formLOI.get('purpose').hasError('required')">
+            Purpose is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput [matDatepicker]="picker3" formControlName="projectStartDate" placeholder="Project Start Date"
+            [value]="projectStartDate.value" (dateInput)="projectStartDate$.next($event.target.value) "
+            (dateChange)="projectStartDate$.next($event.target.value) ">
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+          <mat-error *ngIf="formLOI.get('projectStartDate').hasError('required')">
+            Project Start Date is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput [matDatepicker]="picker4" formControlName="projectEndDate" placeholder="Project End Date"
+            [value]="projectEndDate.value" (dateInput)="projectEndDate$.next($event.target.value) "
+            (dateChange)="projectEndDate$.next($event.target.value) ">
+          <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+          <mat-datepicker #picker4></mat-datepicker>
+          <mat-error *ngIf="formLOI.get('projectEndDate').hasError('required')">
+            Project End Date is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput formControlName="amountRequested" placeholder="Amount Requested" currencyMask required
+            [(ngModel)]="amountRequested" (ngModelChange)="amountRequestedChange($event)">
+          <mat-error *ngIf="formLOI.get('amountRequested').hasError('required')">
+            Amount Requested is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput formControlName="totalProjectCost" placeholder="Total Project Cost" currencyMask required
+            [(ngModel)]="totalProjectCost" (ngModelChange)="totalProjectCostChange($event)">
+          <mat-error *ngIf="formLOI.get('totalProjectCost').hasError('required')">
+            Total Project Cost is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div *ngIf="ShowCostMessage">
+        {{costMessage}}
+      </div>
+    </div>
+  </form>
 </div>
 <br>
 <div *ngIf="CanCreateLOI">
