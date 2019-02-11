@@ -3,51 +3,52 @@
 </div>
 
 <!-- <div *ngIf="HasFPs"> -->
-  <div class="example-container mat-elevation-z8">
+<div class="example-container mat-elevation-z8">
 
-    <mat-table [dataSource]="dataSource" matSort>
+  <mat-table [dataSource]="dataSource" matSort>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="loiname">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> LOI Name </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="select"> {{row.loiname}} </mat-cell>
-      </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="loiname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> LOI Name </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="select"> {{row.loiname}} </mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="createdAt">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Created On </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'MM/dd/yyyy'}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="createdAt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Created On </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.createdAt | date: 'MM/dd/yyyy'}} </mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="updatedAt">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Updated On </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.updatedAt | date: 'MM/dd/yyyy'}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="updatedAt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Updated On </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.updatedAt | date: 'MM/dd/yyyy'}} </mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="submitted">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Submitted </mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <div *ngIf="row.submitted">
-            {{row.submittedOn | date: 'MM/dd/yyyy'}}
-          </div>
-          <div *ngIf="!row.submitted">
-            Has not been submitted.
-          </div>
-        </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="submitted">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Submitted </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div *ngIf="row.submitted">
+          {{row.submittedOn | date: 'MM/dd/yyyy'}}
+        </div>
+        <div *ngIf="!row.submitted">
+          Has not been submitted.
+        </div>
+      </mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="status">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+    </ng-container>
 
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
-      </mat-row>
-    </mat-table>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
+    </mat-row>
+  </mat-table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-  </div>
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+  <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+</div>
 <!-- </div> -->
 <!-- <div *ngIf="!HasFPs">
   {{NoFPs}}
