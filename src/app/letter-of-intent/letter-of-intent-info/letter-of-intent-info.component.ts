@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 import { environment } from '../../../environments/environment';
 
@@ -16,6 +16,7 @@ import { AuthService } from '../../auth/auth.service';
 
 //debounce
 import { Subject, TimeoutError } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
@@ -75,12 +76,24 @@ export class LetterOfIntentInfoComponent implements OnInit {
   ValidAmountRequested = false;
   ValidTotalProjectCost = false;
 
+  formLOI: FormGroup;
+
   constructor(
     private createLoiInfoService: CreateLoiInfoService,
     private getLoiInfoService: GetLoiInfoService,
     private deleteLoiInfoService: DeleteLoiInfoService,
     private authService: AuthService,
+    fb: FormBuilder
   ) {
+
+    this.formLOI = fb.group({
+      projectTitle: new FormControl('', Validators.required),
+      purpose: new FormControl('', Validators.required),
+      projectStartDate: new FormControl('', Validators.required),
+      projectEndDate: new FormControl('', Validators.required),
+      amountRequested: new FormControl('', Validators.required),
+      totalProjectCost: new FormControl('', Validators.required),
+    })
 
     this.projectTitle$.pipe(
       debounceTime(400),
@@ -520,7 +533,6 @@ export class LetterOfIntentInfoComponent implements OnInit {
     }
 
   }
-
 
   getFormattedDate(date) {
 
