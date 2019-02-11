@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { PageEvent } from '@angular/material';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -20,6 +20,8 @@ export class DirectorOrganizationsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  pageEvent: PageEvent;
 
   constructor(public getOrgService: GetOrganizationService, public dialog: MatDialog, ) { }
 
@@ -81,6 +83,12 @@ export class DirectorOrganizationsComponent implements OnInit {
       console.log('result', result); //debug
 
     });
+  }
+
+  func($event) {
+
+    console.log('event', $event)
+
   }
 
 }
