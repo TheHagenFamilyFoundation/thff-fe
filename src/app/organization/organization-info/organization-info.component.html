@@ -13,7 +13,6 @@
 
 <br>
 <div *ngIf='!editing'>
-
   <div class="example-container">
     <mat-form-field>
       <input matInput placeholder="Legal Name" value={{legalName}} disabled>
@@ -83,7 +82,6 @@
       <input matInput placeholder="Fax" value={{fax}} disabled>
     </mat-form-field>
   </div>
-
 </div>
 
 <div *ngIf='editing'>
@@ -109,7 +107,7 @@
           <mat-form-field class="current-operating-budget">
             <input matInput formControlName="currentOperatingBudget" placeholder="Current Operating Budget" currencyMask
               required [(ngModel)]="currentOperatingBudget" (ngModelChange)="currentOperatingBudgetChange($event)">
-            <mat-error *ngIf="formOrganization.get('phone').hasError('required')">
+            <mat-error *ngIf="formOrganization.get('currentOperatingBudget').hasError('required')">
               Current Operating Budget is <strong>required</strong>
             </mat-error>
           </mat-form-field>
@@ -124,7 +122,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput formControlName="legalName" value={{phone}} type="text" appPhoneMask formControlName="phone"
+          <input matInput formControlName="phone" value={{phone}} type="text" appPhoneMask formControlName="phone"
             id="phone-number" placeholder="Phone Number" (keyup)="phone$.next($event.target.value)" required>
           <mat-error *ngIf="formOrganization.get('phone').hasError('required')">
             Phone Number is <strong>required</strong>
@@ -162,7 +160,6 @@
         </div>
       </form>
     </div>
-
 
     <div>Principal/Administrative Office
       <div>
