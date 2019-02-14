@@ -75,8 +75,6 @@ export class TypeNewPasswordComponent implements OnInit {
     private authService: AuthService
   ) {
 
-    this.getBackendURL();
-
     this.newPassword = "";
     this.confirmPassword = "";
 
@@ -112,6 +110,8 @@ export class TypeNewPasswordComponent implements OnInit {
       console.log(this.userName)
 
       console.log('type new password')
+
+      this.getBackendURL();
 
       if (!environment.production) {
         this.API_URL = environment.API_URL;
