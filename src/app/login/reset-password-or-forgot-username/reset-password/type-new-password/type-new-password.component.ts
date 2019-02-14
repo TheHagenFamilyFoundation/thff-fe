@@ -75,18 +75,6 @@ export class TypeNewPasswordComponent implements OnInit {
     private authService: AuthService
   ) {
 
-    console.log('type new password')
-
-    if (!environment.production) {
-      this.API_URL = environment.API_URL;
-    }
-    else {
-      this.API_URL = this.authService.getBackendURL();
-      console.log('this.API_URL', this.API_URL)
-    }
-
-    console.log('this.API_URL', this.API_URL)
-
     this.newPassword = "";
     this.confirmPassword = "";
 
@@ -120,6 +108,19 @@ export class TypeNewPasswordComponent implements OnInit {
 
       console.log("this.userName")
       console.log(this.userName)
+
+      console.log('type new password')
+
+      if (!environment.production) {
+        this.API_URL = environment.API_URL;
+      }
+      else {
+        this.API_URL = this.authService.getBackendURL();
+        console.log('this.API_URL', this.API_URL)
+      }
+
+      console.log('this.API_URL', this.API_URL)
+
 
       this.checkUserName();
     });
