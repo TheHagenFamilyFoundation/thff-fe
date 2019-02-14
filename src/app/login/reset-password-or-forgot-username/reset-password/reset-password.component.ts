@@ -179,12 +179,13 @@ export class ResetPasswordComponent implements OnInit {
             console.log("user found");
 
             this.ShowUserNameError = false;
+            this.ValidUserName = true;
           }
           else {
             console.log("user not found");
 
             this.ShowUserNameError = true;
-
+            this.ValidUserName = false;
           }
 
           this.VerifyInput();
@@ -206,12 +207,13 @@ export class ResetPasswordComponent implements OnInit {
             console.log("email found");
 
             this.ShowEmailError = false;
+            this.ValidEmail = true;
           }
           else {
             console.log("email not found");
 
             this.ShowEmailError = true;
-
+            this.ValidEmail = false;
           }
 
           this.VerifyInput();
