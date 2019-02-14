@@ -75,6 +75,8 @@ export class TypeNewPasswordComponent implements OnInit {
     private authService: AuthService
   ) {
 
+    this.getBackendURL();
+
     this.newPassword = "";
     this.confirmPassword = "";
 
@@ -324,5 +326,30 @@ export class TypeNewPasswordComponent implements OnInit {
         })
 
   }//end of setNewPassword
+
+  getBackendURL() {
+
+    if (environment.production) {
+
+      this.authService.initializeBackendURL().subscribe(
+        (backendUrl) => {
+
+          console.log('backendUrl', backendUrl.url);
+
+          if (backendUrl) {
+            sessionStorage.setItem('backend_url', backendUrl.url);
+          }
+          else {
+            console.log('Can´t find the backend URL, using a failover value');
+            sessionStorage.setItem('backend_url', 'https://failover-url.com');
+          }
+
+          this.API_URL = backendUrl.url;
+
+        })
+
+    }
+
+  }
 
 }
