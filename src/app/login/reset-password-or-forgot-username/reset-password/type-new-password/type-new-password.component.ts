@@ -2,7 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
+import { environment } from '../../../../../environments/environment';
+
 //services
+import { AuthService } from '../../../../auth/auth.service';
 import { ValidUserNameService } from '../../../../services/user/valid-username.service';
 import { ValidResetCodeService } from '../../../../services/user/valid-resetcode.service';
 import { SetNewPasswordService } from '../../../../services/user/set-new-password.service';
@@ -22,6 +25,8 @@ import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/op
 export class TypeNewPasswordComponent implements OnInit {
 
   title = "Type New Password"
+
+  API_URL: string;
 
   user: any;
   userName: any;
@@ -66,8 +71,21 @@ export class TypeNewPasswordComponent implements OnInit {
     private validResetCodeService: ValidResetCodeService,
     private setNewPasswordService: SetNewPasswordService,
     private getUserService: GetUserService,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private authService: AuthService
   ) {
+
+    console.log('type new password')
+
+    if (!environment.production) {
+      this.API_URL = environment.API_URL;
+    }
+    else {
+      this.API_URL = this.authService.getBackendURL();
+      console.log('this.API_URL', this.API_URL)
+    }
+
+    console.log('this.API_URL', this.API_URL)
 
     this.newPassword = "";
     this.confirmPassword = "";
