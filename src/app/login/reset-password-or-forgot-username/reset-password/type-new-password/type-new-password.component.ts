@@ -113,18 +113,10 @@ export class TypeNewPasswordComponent implements OnInit {
 
       this.getBackendURL();
 
-      if (!environment.production) {
-        this.API_URL = environment.API_URL;
-      }
-      else {
-        this.API_URL = this.authService.getBackendURL();
-        console.log('this.API_URL', this.API_URL)
-      }
-
       console.log('this.API_URL', this.API_URL)
 
 
-      this.checkUserName();
+      // this.checkUserName();
     });
 
   }//end of ngOnInit
@@ -345,6 +337,8 @@ export class TypeNewPasswordComponent implements OnInit {
           }
 
           this.API_URL = backendUrl.url;
+
+          this.checkUserName();
 
         })
 
