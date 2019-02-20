@@ -1,0 +1,25 @@
+<h3>User Update</h3>
+<br>
+<p>
+  {{firstName}} {{lastName}}
+</p>
+<mat-form-field>
+  <input matInput placeholder="First Name" value="" (keyup)="newFirstName$.next($event.target.value)"
+    [(ngModel)]="newFirstName">
+</mat-form-field>
+<br>
+<mat-form-field>
+  <input matInput placeholder="Last Name" value="" (keyup)="newLastName$.next($event.target.value)"
+    [(ngModel)]="newLastName">
+</mat-form-field>
+<div *ngIf="CanUpdateName">
+  <button mat-raised-button (click)="updateName()">Update Name</button>
+</div>
+<div *ngIf="!CanUpdateName">
+  <br>
+  <br>
+</div>
+<div *ngIf="ShowMessage">
+  {{message}}
+  <br>
+</div>
