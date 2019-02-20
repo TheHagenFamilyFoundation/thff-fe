@@ -72,6 +72,7 @@ import { GetUserService } from './services/user/get-user.service';
 import { ChangePasswordService } from './services/user/change-password.service';
 import { ChangeEmailService } from './services/user/change-email.service';
 import { ResetCodeService } from './services/user/reset-code.service';
+import { UpdateUserService } from './services/user/update-user.service';
 
 import { InOrgService } from './services/user/in-org.service';
 import { DirectorService } from './services/user/director.service';
@@ -222,6 +223,7 @@ import { EmailComponent } from './test/email/email.component';
 
 //Utility
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
+import { UserUpdateComponent } from './user/user-update/user-update.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -305,6 +307,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
+
+        UserUpdateComponent,
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
@@ -337,7 +341,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
-        EmailService, ResetCodeService, SetNewPasswordService, GetUserService, ChangePasswordService, ChangeEmailService,
+        EmailService, ResetCodeService, SetNewPasswordService, GetUserService,
+        ChangePasswordService, ChangeEmailService, UpdateUserService,
         InOrgService, DirectorService,
         GetOrganizationService, CreateOrganizationService, AddUserService,
         CreateOrganizationInfoService, GetOrganizationInfoService, DeleteOrganizationInfoService,
