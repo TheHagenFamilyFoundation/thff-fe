@@ -189,7 +189,7 @@ export class OrganizationDoc501c3Component implements OnInit {
                             //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
                             to: director.email,
                             name: this.user.username,
-                            director: director.name,
+                            director: (director.firstName && director.lastName ? director.firstName : director.username),
                             orgName: this.org.name,
                             orgID: this.org.organizationID
                           })
@@ -278,7 +278,7 @@ export class OrganizationDoc501c3Component implements OnInit {
                                   //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
                                   to: director.email,
                                   name: this.user.username,
-                                  director: director.name,
+                                  director: (director.firstName && director.lastName ? director.firstName : director.username),
                                   orgName: this.org.name,
                                   orgID: this.org.organizationID
                                 })
