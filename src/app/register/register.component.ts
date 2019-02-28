@@ -67,6 +67,7 @@ export class RegisterComponent implements OnInit {
   ShowPasswordError = false;
 
   CanRegister = false;
+  Submitted = false;
 
   userNameFormControl = new FormControl('', [
     Validators.required,
@@ -151,6 +152,9 @@ export class RegisterComponent implements OnInit {
   register(): void {
     console.log("You clicked on the Register")
 
+    this.CanRegister = false;
+    this.Submitted = true;
+
     let urlString = this.API_URL + '/user';
 
     this.body = {
@@ -166,34 +170,48 @@ export class RegisterComponent implements OnInit {
     //send to api
 
     this.http.post(urlString, this.body)
-      .subscribe(data => {
-        this.results = data;
+      .subscribe(
+        data => {
+          this.results = data;
 
-        localStorage.setItem('token', this.results.token);
-        localStorage.setItem('currentUser', JSON.stringify(this.results.user));
+          localStorage.setItem('token', this.results.token);
+          localStorage.setItem('currentUser', JSON.stringify(this.results.user));
 
-        console.log("token = " + localStorage.getItem('token'));
-        console.log("currentUser = " + localStorage.getItem('currentUser'));
-        console.log("this.userName = " + this.userName);
-        console.log("this.email = " + this.email);
+          console.log("token = " + localStorage.getItem('token'));
+          console.log("currentUser = " + localStorage.getItem('currentUser'));
+          console.log("this.userName = " + this.userName);
+          console.log("this.email = " + this.email);
 
-        this.emailService.sendRegisterUserEmail({
-          //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
-          to: this.email,
-          name: this.userName,
-        })
-          .subscribe(
-            (data) => {
+          this.emailService.sendRegisterUserEmail({
+            //from: 'Mailgun Sandbox <postmaster@sandboxXXXXXXXXXXXXXXXXXXXXX.mailgun.org>',
+            to: this.email,
+            name: this.userName,
+          })
+            .subscribe(
+              (data) => {
 
-              console.log('now login', data)
+                console.log('now login', data)
 
-              this.router.navigate(['/user']);
+                this.router.navigate(['/user']);
 
-            },
-            err => console.log(err)
-          );
+              },
+              err => console.log(err)
+            );
 
-      });
+        }, error => {
+
+          console.log('error', error)
+
+          // this.message = error;
+
+          // console.log('message', this.message)
+
+          // this.ShowMessage = true;
+          this.Submitted = false;
+        }
+
+
+      );
 
   }//end of register function
 

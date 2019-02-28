@@ -26,7 +26,7 @@ export class DirectorService {
 
       this.accessLevel = this.currentUser.accessLevel;
 
-      if (this.accessLevel === 4) {
+      if (this.accessLevel >= 2) {
         return true;
       }
       else {

@@ -15,11 +15,16 @@
     <br>
   </div>
   <br>
-  <button mat-raised-button (click)="login()">Login</button>
-  <button mat-raised-button (click)="register()">Register</button>
+  <div *ngIf="!Submitted">
+    <button mat-raised-button (click)="login()">Login</button>
+    <button mat-raised-button (click)="register()">Register</button>
+  </div>
+  <div *ngIf="Submitted">
+    <mat-spinner></mat-spinner>
+  </div>
   <br>
   <br>
-  <div>
+  <div *ngIf="!Submitted">
     <a routerLink="/reset-password-or-username">Reset Password Or Forgot Username</a>
   </div>
 </div>
