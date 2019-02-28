@@ -3,7 +3,8 @@
 </div>
 <div align="center">
     <mat-form-field class="quarter-width">
-        <input matInput placeholder="Username" [formControl]="userNameFormControl" value="" required (keyup)="userName$.next($event.target.value)">
+        <input matInput placeholder="Username" [formControl]="userNameFormControl" value="" required
+            (keyup)="userName$.next($event.target.value)">
         <mat-hint>
             <div *ngIf="ShowUserNameError">
                 That User Name is already taken
@@ -52,5 +53,8 @@
     <br>
     <div *ngIf="CanRegister">
         <button mat-raised-button (click)="register()">Register</button>
+    </div>
+    <div *ngIf="Submitted">
+        <mat-spinner></mat-spinner>
     </div>
 </div>
