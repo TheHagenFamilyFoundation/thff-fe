@@ -101,6 +101,9 @@ export class CreateOrganizationFullComponent implements OnInit {
   ValidState = false;
   ValidZip = false;
 
+  Submitted = false;
+
+  //forms
   formContactPerson: FormGroup;
   formOrganization: FormGroup;
   formFax: FormGroup;
@@ -402,6 +405,10 @@ export class CreateOrganizationFullComponent implements OnInit {
 
   createOrg() {
 
+    console.log('CreateOrg pressed')
+
+    this.Submitted = true;
+
     var createOrgBody = {
       name: this.orgName,
       description: this.description,
@@ -454,19 +461,31 @@ export class CreateOrganizationFullComponent implements OnInit {
                   .subscribe(
                     (data) => {
 
-                      //route 
+                      //route to the organization page
                       this.router.navigate(['/organization/' + this.organizationID]);
 
                     },
-                    err => console.log(err)
+                    err => {
+                      console.log(err)
+                      this.Submitted = false;
+                    }
                   );
 
               },
-              err => console.log(err)
+              err => {
+
+                console.log(err)
+
+                this.Submitted = false;
+              }
             );
 
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+
+          this.Submitted = false;
+        }
       );
 
   }
