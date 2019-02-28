@@ -32,12 +32,12 @@
 
     <div>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Amount Requested" value={{amountRequested}} disabled>
+        <input matInput placeholder="Amount Requested" value="{{amountRequested | currency}}" disabled>
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Total Project Cost" value={{totalProjectCost}} disabled>
+      <mat-form-field class=" full-width">
+        <input matInput placeholder="Total Project Cost" value="{{totalProjectCost | currency}}" disabled>
       </mat-form-field>
     </div>
   </div>
