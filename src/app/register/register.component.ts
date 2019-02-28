@@ -67,6 +67,7 @@ export class RegisterComponent implements OnInit {
   ShowPasswordError = false;
 
   CanRegister = false;
+  Submitted = false;
 
   userNameFormControl = new FormControl('', [
     Validators.required,
@@ -150,6 +151,9 @@ export class RegisterComponent implements OnInit {
 
   register(): void {
     console.log("You clicked on the Register")
+
+    this.CanRegister = false;
+    this.Submitted = true;
 
     let urlString = this.API_URL + '/user';
 
