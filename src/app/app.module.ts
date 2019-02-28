@@ -31,6 +31,7 @@ import { MatDialogModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -326,7 +327,7 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
         MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
         MatPaginatorModule, MatDialogModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
-        MatExpansionModule,
+        MatExpansionModule, MatProgressSpinnerModule,
 
         ContentsModule, NgxPageScrollModule,
 
