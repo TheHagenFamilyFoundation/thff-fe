@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
 
   Login: any;
 
+  Submitted = false;
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -101,6 +103,8 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     console.log("You clicked on the Login")
+
+    this.Submitted = true;
 
     console.log("userName = " + this.userName);
     console.log("password = " + this.password);
@@ -166,6 +170,7 @@ export class LoginComponent implements OnInit {
           console.log('message', this.message)
 
           this.ShowMessage = true;
+          this.Submitted = false;
         }
       )
 
