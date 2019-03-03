@@ -16,7 +16,7 @@ export class LetterOfIntentComponent implements OnInit {
   loi: any; //the loi object
 
   //check basic row height
-  basicRowHeight = 400;
+  basicRowHeight = 1000;
 
   status: number;
 
