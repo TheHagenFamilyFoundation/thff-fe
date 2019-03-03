@@ -21,7 +21,7 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
   status: number;
 
   //check basic row height
-  basicRowHeight = 600;
+  basicRowHeight = 1000;
 
   constructor(
     private route: ActivatedRoute,
