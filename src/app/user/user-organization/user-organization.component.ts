@@ -32,6 +32,8 @@ export class UserOrganizationComponent implements OnInit {
 
   inOrgCheck: boolean;
 
+  Loaded: boolean;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -41,6 +43,9 @@ export class UserOrganizationComponent implements OnInit {
     public dialog: MatDialog,
     private inOrg: InOrgService
   ) {
+
+    this.Loaded = false;
+
     // // Create 100 organizations
     // const organizations: OrganizationData[] = [];
     // for (let i = 1; i <= 100; i++) { organizations.push(createNewOrganization(i)); }
@@ -122,6 +127,8 @@ export class UserOrganizationComponent implements OnInit {
 
             this.inOrg.changeMessage(true)
 
+            this.Loaded = true;
+
           }
           else {
 
@@ -129,6 +136,8 @@ export class UserOrganizationComponent implements OnInit {
             console.log("not in any organizations");
 
             this.InOrganization = false;
+
+            this.Loaded = true;
 
           }
 

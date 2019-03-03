@@ -82,6 +82,8 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
   organizations = [];
 
+  Submitted = false;
+
   formLOI: FormGroup;
 
   constructor(
@@ -413,6 +415,9 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
     console.log('body', loiBody)
 
+    this.Submitted = true;
+    this.CanCreateLOI = false;
+
     //call the service
     this.createLoiService.createLOI(loiBody)
       .subscribe(
@@ -449,12 +454,19 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
                 this.router.navigate(['/user']);
 
               },
-              err => console.log(err)
+              err => {
+                console.log(err)
+
+                this.Submitted = false;
+              }
             );
 
 
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.Submitted = false;
+        }
       );
 
   }//end of createLOI

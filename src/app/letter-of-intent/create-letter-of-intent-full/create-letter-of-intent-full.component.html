@@ -51,7 +51,8 @@
 
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Purpose" formControlName="purpose" maxlength="2000" value={{purpose}} required
+          <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows=1 cdkAutosizeMaxRows="50" placeholder="Purpose"
+            formControlName="purpose" maxlength="2000" value={{purpose}} required
             (keyup)="purpose$.next($event.target.value)"></textarea>
           <mat-hint align="start">{{purpose?.toString().length}} / 2000</mat-hint>
           <mat-error *ngIf="formLOI.get('purpose').hasError('required')">
@@ -109,8 +110,11 @@
   </form>
 </div>
 <br>
-<div *ngIf="CanCreateLOI">
-  <div align="center">
+<div align="center">
+  <div *ngIf="CanCreateLOI">
     <button mat-raised-button (click)="createLOI()">Create Letter Of Intent</button>
+  </div>
+  <div *ngIf="Submitted">
+    <mat-spinner></mat-spinner>
   </div>
 </div>

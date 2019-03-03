@@ -36,6 +36,8 @@ export class UserLetterOfIntentComponent implements OnInit {
 
   inOrgCheck: boolean;
 
+  Loaded: boolean;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -45,7 +47,11 @@ export class UserLetterOfIntentComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private inOrg: InOrgService
-  ) { }
+  ) {
+
+    this.Loaded = false;
+
+  }
 
   ngOnInit() {
 
@@ -140,6 +146,8 @@ export class UserLetterOfIntentComponent implements OnInit {
             }
 
           }
+
+          this.Loaded = true;
 
         })
 
