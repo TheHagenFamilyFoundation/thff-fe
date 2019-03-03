@@ -1,9 +1,7 @@
 <h3>Letters of Intent
-  <div *ngIf="InOrganization">
-    <button mat-icon-button color="primary" (click)="createLOIFull()">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
+  <button *ngIf="InOrganization" mat-icon-button color="primary" (click)="createLOIFull()">
+    <mat-icon>add</mat-icon>
+  </button>
 </h3>
 <div *ngIf="!InOrganization">
   <p>{{NotInOrgMessage}}</p>
