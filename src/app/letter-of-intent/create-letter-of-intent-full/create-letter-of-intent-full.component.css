@@ -8,3 +8,6 @@
     width: 400px;
 }
   
+textarea {
+  resize: none;
+}
