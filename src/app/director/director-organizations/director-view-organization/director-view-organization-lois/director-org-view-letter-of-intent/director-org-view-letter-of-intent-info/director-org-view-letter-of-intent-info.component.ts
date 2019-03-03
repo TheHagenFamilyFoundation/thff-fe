@@ -148,6 +148,7 @@ export class DirectorOrgViewLetterOfIntentInfoComponent implements OnInit {
         this.totalProjectCost = this.loiInfo.totalProjectCost;
       }
 
+
     }
     else {
       console.log('default values')

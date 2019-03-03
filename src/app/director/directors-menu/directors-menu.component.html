@@ -2,34 +2,21 @@
   <h3>
     Director's Menu
   </h3>
-</div>
 
-<mat-grid-list cols="2" [rowHeight]="basicRowHeight">
-  <mat-grid-tile>
-    <mat-card>
-      <mat-card-content>
-        <app-director-organizations></app-director-organizations>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card>
-      <mat-card-content class="loiswidth">
-        <app-director-lois></app-director-lois>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <!--Extra-->
-  <!-- <mat-grid-tile>
-    <mat-card>
-      <mat-card-content>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card>
-      <mat-card-content>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile> -->
-</mat-grid-list>
+  <div>
+    <div>
+      <button class="bsize" mat-raised-button routerLink="/director/organizations">View Organizations</button>
+    </div>
+  </div>
+  <br>
+  <!-- <mat-divider></mat-divider> -->
+  <div>
+    <div>
+      <button class="bsize" mat-raised-button routerLink="/director/lois">View Letter of Intents</button>
+    </div>
+  </div>
+
+
+
+
+</div>

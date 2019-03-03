@@ -10,8 +10,9 @@
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field class="full-width">
-        <textarea matInput placeholder="Purpose" value={{purpose}} disabled></textarea>
+      <mat-form-field class="full-width purpose-size">
+        <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows=1 cdkAutosizeMaxRows="50" placeholder="Purpose"
+          value={{purpose}} disabled></textarea>
         <mat-hint align="start">
           2000 Characters Maximum
         </mat-hint>
