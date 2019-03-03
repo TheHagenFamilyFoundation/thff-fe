@@ -3,7 +3,6 @@
 
   <div>
     <div class="example-container mat-elevation-z8 toc">
-
       <mat-table [dataSource]="dataSource" matSort>
 
         <!-- Name Column -->
@@ -37,7 +36,9 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
         </mat-row>
       </mat-table>
-
+      <div *ngIf="!Loaded">
+        <mat-spinner></mat-spinner>
+      </div>
       <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
       <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
     </div>
