@@ -18,12 +18,18 @@ export class DirectorOrganizationsComponent implements OnInit {
   displayedColumns = ['name', 'createdOn', 'users', 'lois'];
   dataSource: MatTableDataSource<OrganizationData>;
 
+  Loaded: boolean;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   pageEvent: PageEvent;
 
-  constructor(public getOrgService: GetOrganizationService, public dialog: MatDialog, ) { }
+  constructor(public getOrgService: GetOrganizationService, public dialog: MatDialog, ) {
+
+    this.Loaded = false;
+
+  }
 
   ngOnInit() {
 
@@ -51,6 +57,8 @@ export class DirectorOrganizationsComponent implements OnInit {
 
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
+
+          this.Loaded = true;
 
         })
 
