@@ -19,13 +19,19 @@ export class DirectorLoisComponent implements OnInit {
   displayedColumns = ['name', 'org', 'createdOn', 'submitted', 'status'];
   dataSource: MatTableDataSource<LOIData>;
 
+  Loaded: boolean;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     public getLoiService: GetLoiService,
     public dialog: MatDialog,
-    private loiStatusService: LOIStatusService) { }
+    private loiStatusService: LOIStatusService) {
+
+    this.Loaded = false;
+
+  }
 
   ngOnInit() {
 
@@ -49,6 +55,8 @@ export class DirectorLoisComponent implements OnInit {
 
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
+
+          this.Loaded = true;
 
         })
 
