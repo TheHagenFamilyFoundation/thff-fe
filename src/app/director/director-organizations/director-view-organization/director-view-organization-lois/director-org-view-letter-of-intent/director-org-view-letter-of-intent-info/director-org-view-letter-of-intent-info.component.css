@@ -1,0 +1,16 @@
+.full-width {
+    width: 100%
+  }
+
+  /* .purpose-size {
+    height: 450px;
+  } */
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  textarea {
+    resize: none;
+}
