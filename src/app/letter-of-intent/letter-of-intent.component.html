@@ -2,33 +2,35 @@
   <h3>
     {{loi?.name}}
   </h3>
+
+  <mat-grid-list cols="6" [rowHeight]="basicRowHeight">
+    <mat-grid-tile [colspan]="3">
+      <mat-card class="loi-info">
+        <mat-card-content>
+          <div *ngIf='loi'>
+            <app-letter-of-intent-info [loi]='loi'></app-letter-of-intent-info>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-content>
+          <div *ngIf='loi'>
+            <app-letter-of-intent-status [loi]="loi"></app-letter-of-intent-status>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-content>
+          <div *ngIf='loi'>
+            <app-letter-of-intent-submit [loi]="loi"></app-letter-of-intent-submit>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
 </div>
-<mat-grid-list cols="2" [rowHeight]="basicRowHeight">
-  <mat-grid-tile [rowspan]="2">
-    <mat-card class="loi-info">
-      <mat-card-content>
-        <div *ngIf='loi'>
-          <app-letter-of-intent-info [loi]='loi'></app-letter-of-intent-info>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card>
-      <mat-card-content>
-        <div *ngIf='loi'>
-          <app-letter-of-intent-status [loi]="loi"></app-letter-of-intent-status>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card>
-      <mat-card-content>
-        <div *ngIf='loi'>
-          <app-letter-of-intent-submit [loi]="loi"></app-letter-of-intent-submit>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
