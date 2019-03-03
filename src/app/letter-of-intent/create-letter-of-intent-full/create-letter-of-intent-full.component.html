@@ -109,8 +109,11 @@
   </form>
 </div>
 <br>
-<div *ngIf="CanCreateLOI">
-  <div align="center">
+<div align="center">
+  <div *ngIf="CanCreateLOI">
     <button mat-raised-button (click)="createLOI()">Create Letter Of Intent</button>
+  </div>
+  <div *ngIf="Submitted">
+    <mat-spinner></mat-spinner>
   </div>
 </div>
