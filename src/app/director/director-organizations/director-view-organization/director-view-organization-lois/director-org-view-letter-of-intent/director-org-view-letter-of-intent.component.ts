@@ -23,6 +23,10 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
   //check basic row height
   basicRowHeight = 350;
 
+  First: boolean;
+
+  Last: boolean;
+
   constructor(
     private route: ActivatedRoute,
     public getLoiService: GetLoiService,
@@ -33,6 +37,10 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
       console.log(params);
       this.loiID = params.id;
     });
+
+    this.First = false;
+    this.First = true;
+    this.Last = false;
 
   }
 
