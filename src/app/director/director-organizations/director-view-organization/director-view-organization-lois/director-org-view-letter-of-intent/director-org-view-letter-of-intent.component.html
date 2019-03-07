@@ -8,8 +8,8 @@
   </div>
 
   <div class="loi-basic">
-    <mat-grid-list cols="4" [rowHeight]="basicRowHeight">
-      <mat-grid-tile colspan="3">
+    <mat-grid-list cols="4" rows="3" [rowHeight]="basicRowHeight">
+      <mat-grid-tile colspan="3" rowspan="3">
         <div *ngIf="loi" class="loi-info">
           <app-director-org-view-letter-of-intent-info [loi]="loi"></app-director-org-view-letter-of-intent-info>
         </div>
@@ -19,7 +19,16 @@
           <app-director-org-view-letter-of-intent-status [loi]="loi"></app-director-org-view-letter-of-intent-status>
         </div>
       </mat-grid-tile>
-
+      <mat-grid-tile>
+        <div *ngIf="loi">
+          <app-director-org-loi-president-voting></app-director-org-loi-president-voting>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div *ngIf="loi">
+          <app-director-org-loi-voting></app-director-org-loi-voting>
+        </div>
+      </mat-grid-tile>
     </mat-grid-list>
   </div>
 

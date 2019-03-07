@@ -175,6 +175,8 @@ import { DirectorOrgSelectedLetterOfIntentComponent } from './director/director-
 import { DirectorOrgViewLetterOfIntentComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent.component';
 import { DirectorOrgViewLetterOfIntentInfoComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent-info/director-org-view-letter-of-intent-info.component';
 import { DirectorOrgViewLetterOfIntentStatusComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent-status/director-org-view-letter-of-intent-status.component';
+import { DirectorOrgLoiVotingComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-loi-voting/director-org-loi-voting.component';
+import { DirectorOrgLoiPresidentVotingComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-loi-president-voting/director-org-loi-president-voting.component';
 
 import { DirectorLoisComponent } from './director/director-lois/director-lois.component';
 import { DirectorSelectedLoiComponent } from './director/director-lois/director-selected-loi/director-selected-loi.component';
@@ -255,13 +257,15 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
         DirectorSelectedLoiComponent,
         DirectorOrgViewLetterOfIntentInfoComponent,
         DirectorOrgViewLetterOfIntentStatusComponent,
+        DirectorOrgLoiVotingComponent,
+        DirectorOrgLoiPresidentVotingComponent,
 
         DirectorLoisComponent,
-
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
         ForgotUsernameComponent,
+        UserUpdateComponent,
 
         //user
         UserComponent, ChangePasswordComponent, ChangeEmailComponent,
@@ -308,8 +312,6 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
-
-        UserUpdateComponent,
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
