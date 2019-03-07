@@ -176,6 +176,7 @@ import { DirectorOrgViewLetterOfIntentComponent } from './director/director-orga
 import { DirectorOrgViewLetterOfIntentInfoComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent-info/director-org-view-letter-of-intent-info.component';
 import { DirectorOrgViewLetterOfIntentStatusComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent-status/director-org-view-letter-of-intent-status.component';
 import { DirectorOrgLoiVotingComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-loi-voting/director-org-loi-voting.component';
+import { DirectorOrgLoiPresidentVotingComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-loi-president-voting/director-org-loi-president-voting.component';
 
 import { DirectorLoisComponent } from './director/director-lois/director-lois.component';
 import { DirectorSelectedLoiComponent } from './director/director-lois/director-selected-loi/director-selected-loi.component';
@@ -227,7 +228,6 @@ import { EmailComponent } from './test/email/email.component';
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 
-
 @NgModule({
     declarations: [AppComponent,
         HeaderComponent,
@@ -258,9 +258,9 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
         DirectorOrgViewLetterOfIntentInfoComponent,
         DirectorOrgViewLetterOfIntentStatusComponent,
         DirectorOrgLoiVotingComponent,
+        DirectorOrgLoiPresidentVotingComponent,
 
         DirectorLoisComponent,
-
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
