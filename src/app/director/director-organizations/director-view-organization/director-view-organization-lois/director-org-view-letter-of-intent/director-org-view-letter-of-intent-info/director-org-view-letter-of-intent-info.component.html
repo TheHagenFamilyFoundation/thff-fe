@@ -13,9 +13,10 @@
       <mat-form-field class="full-width purpose-size">
         <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows=1 cdkAutosizeMaxRows="50" placeholder="Purpose"
           value={{purpose}} disabled></textarea>
-        <mat-hint align="start">
+        <mat-hint align="start">{{purpose?.toString().length}} / 2000</mat-hint>
+        <!-- <mat-hint align="start">
           2000 Characters Maximum
-        </mat-hint>
+        </mat-hint> -->
       </mat-form-field>
     </div>
     <br>
