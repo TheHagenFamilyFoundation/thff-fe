@@ -15,8 +15,13 @@
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
-        <div *ngIf="loi">
-          <app-director-org-view-letter-of-intent-status [loi]="loi"></app-director-org-view-letter-of-intent-status>
+        <div>
+          <div *ngIf="loi">
+            <app-director-org-view-letter-of-intent-status [loi]="loi"></app-director-org-view-letter-of-intent-status>
+          </div>
+          <div *ngIf="loi">
+            <app-director-org-loi-voting></app-director-org-loi-voting>
+          </div>
         </div>
       </mat-grid-tile>
 
