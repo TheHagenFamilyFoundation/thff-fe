@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DirectorOrgLoiVotingComponent } from './director-org-loi-voting.component';
 
-describe('DirectorOrgVotingComponent', () => {
+describe('DirectorOrgLoiVotingComponent', () => {
   let component: DirectorOrgLoiVotingComponent;
   let fixture: ComponentFixture<DirectorOrgLoiVotingComponent>;
 
