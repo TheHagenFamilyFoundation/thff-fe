@@ -63,7 +63,7 @@ export class DirectorOrgViewLetterOfIntentInfoComponent implements OnInit, OnCha
     console.log('loi changed: ', this.loi)
     this.loiID = this.loi.id;
 
-    setTimeout(() => { this.resetPurpose = false; }, 100)
+    setTimeout(() => { this.resetPurpose = false; }, 1000)
     console.log('this.resetPurpose', this.resetPurpose)
 
     this.getLoiInfo()
