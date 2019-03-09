@@ -28,7 +28,9 @@ export class GetNextLoiService {
 
   getNextLOI(ts: string): Observable<any> {
 
-    let urlString = this.API_URL + "/loi?ts=" + ts;
+    let urlString = this.API_URL + "/nextLOI?ts=" + ts;
+
+    console.log('urlString', urlString)
 
     return this.http.get(urlString);
   }
