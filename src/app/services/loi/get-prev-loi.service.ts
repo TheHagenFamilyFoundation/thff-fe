@@ -28,7 +28,7 @@ export class GetPrevLoiService {
 
   getPrevLOI(ts: string): Observable<any> {
 
-    let urlString = this.API_URL + "/loi?ts=" + ts;
+    let urlString = this.API_URL + "/prevLOI?ts=" + ts;
 
     return this.http.get(urlString);
   }
