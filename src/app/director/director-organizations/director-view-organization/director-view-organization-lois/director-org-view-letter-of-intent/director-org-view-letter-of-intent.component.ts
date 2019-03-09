@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
+//services
 import { GetLoiService } from '../../../../../services/loi/get-loi.service';
 import { LOIStatusService } from "../../../../../services/loi/loi-status.service";
 import { GetNextLoiService } from '../../../../../services/loi/get-next-loi.service';
@@ -27,11 +28,17 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
   basicRowHeight = 350;
 
   First: boolean;
-
   Last: boolean;
+
+  loiLink = 'director-loi/'
+  link: string;
+
+  nextLOILink: string;
+  prevLOILink: string;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     public getLoiService: GetLoiService,
     private loiStatus: LOIStatusService,
     public getNextLoiService: GetNextLoiService,
@@ -40,21 +47,22 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
   ) {
 
     this.route.params.subscribe(params => {
-      console.log(params);
+      console.log('params', params);
       this.loiID = params.id;
+      this.getLOI(this.loiID);
     });
 
     this.First = false;
-    this.First = true;
+    // this.First = true; //debug
     this.Last = false;
-
+ 
   }
 
   ngOnInit() {
 
     console.log('loiID', this.loiID)
 
-    this.getLOI(this.loiID);
+    // this.getLOI(this.loiID);
 
   }
 
@@ -85,6 +93,18 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
             (loi) => {
               console.log('next loi', loi)
 
+              if (loi.length > 0) {
+                this.Last = false;
+
+                this.nextLOILink = this.loiLink + loi[0].loiID;
+
+                console.log('this is the link', this.nextLOILink);
+
+              }
+              else {
+                this.Last = true;
+              }
+
             },
             err => {
               console.log(err)
@@ -94,6 +114,18 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
           this.getPrevLoiService.getPrevLOI(this.createdAt).subscribe(
             (loi) => {
               console.log('prev loi', loi)
+
+              if (loi.length > 0) {
+                this.First = false;
+
+                this.prevLOILink = this.loiLink + loi[0].loiID;
+
+                console.log('this is the link', this.prevLOILink);
+
+              }
+              else {
+                this.First = true;
+              }
 
             },
             err => {
@@ -115,5 +147,21 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
     this.status = this.loi.status;
 
   }
+
+  routePrevious() {
+
+    console.log('routePrevious')
+    console.log('routing to: ', this.prevLOILink);
+    this.router.navigate([this.prevLOILink]);
+
+  }
+
+  routeNext() {
+    console.log('routeNext')
+    console.log('routing to: ', this.nextLOILink);
+    this.router.navigate([this.nextLOILink]);
+
+  }
+
 
 }
