@@ -3,6 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 
 import { GetLoiService } from '../../../../../services/loi/get-loi.service';
 import { LOIStatusService } from "../../../../../services/loi/loi-status.service";
+import { GetNextLoiService } from '../../../../../services/loi/get-next-loi.service';
+import { GetPrevLoiService } from '../../../../../services/loi/get-prev-loi.service';
 
 @Component({
   selector: 'app-director-org-view-letter-of-intent',
@@ -14,6 +16,7 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
   loiID: any;
 
   loi: any; //the loi object
+  createdAt: any;
 
   organization: any; //organization object retrieved from the loi object
   orgName: string;
@@ -30,7 +33,10 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public getLoiService: GetLoiService,
-    private loiStatus: LOIStatusService
+    private loiStatus: LOIStatusService,
+    public getNextLoiService: GetNextLoiService,
+    public getPrevLoiService: GetPrevLoiService,
+
   ) {
 
     this.route.params.subscribe(params => {
@@ -65,6 +71,7 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
           console.log('loi', loi);
 
           this.loi = loi[0];
+          this.createdAt = this.loi.createdAt;
 
           this.organization = loi[0].organization;
 
@@ -74,7 +81,32 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
 
           this.setStatus();
 
-        })
+          this.getNextLoiService.getNextLOI(this.createdAt).subscribe(
+            (loi) => {
+              console.log('next loi', loi)
+
+            },
+            err => {
+              console.log(err)
+            }
+          )
+
+          this.getPrevLoiService.getPrevLOI(this.createdAt).subscribe(
+            (loi) => {
+              console.log('prev loi', loi)
+
+            },
+            err => {
+              console.log(err)
+            }
+          )
+
+        },
+        err => {
+          console.log(err)
+        }
+
+      )
 
   }
 
