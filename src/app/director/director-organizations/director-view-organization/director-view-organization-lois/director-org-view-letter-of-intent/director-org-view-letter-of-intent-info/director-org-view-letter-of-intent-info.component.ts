@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 //services
@@ -9,7 +9,7 @@ import { GetLoiInfoService } from '../../../../../../services/loi/loi-info/get-l
   templateUrl: './director-org-view-letter-of-intent-info.component.html',
   styleUrls: ['./director-org-view-letter-of-intent-info.component.css']
 })
-export class DirectorOrgViewLetterOfIntentInfoComponent implements OnInit {
+export class DirectorOrgViewLetterOfIntentInfoComponent implements OnInit, OnChanges {
 
   @Input()
   loi: any;
@@ -30,9 +30,19 @@ export class DirectorOrgViewLetterOfIntentInfoComponent implements OnInit {
   startDate: any;
   endDate: any;
 
+  // MAX_ROWS = 50;
+  // MIN_ROWS = 1;
+
+  // purpose_min_rows: number;
+  // purpose_max_rows: number;
+
+  resetPurpose: boolean;
+
   constructor(private getLoiInfoService: GetLoiInfoService) {
 
     this.defaultValues();
+
+    this.resetPurpose = false;
 
   }
 
@@ -44,6 +54,19 @@ export class DirectorOrgViewLetterOfIntentInfoComponent implements OnInit {
     this.loiID = this.loi.id;
 
     this.getLoiInfo();
+
+  }
+
+  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
+    this.resetPurpose = true;
+    console.log('changes', changes)
+    console.log('loi changed: ', this.loi)
+    this.loiID = this.loi.id;
+
+    setTimeout(() => { this.resetPurpose = false; }, 100)
+    console.log('this.resetPurpose', this.resetPurpose)
+
+    this.getLoiInfo()
 
   }
 

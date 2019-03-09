@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 
 import { LOIStatusService } from "../../../../../../services/loi/loi-status.service";
 
@@ -7,7 +7,7 @@ import { LOIStatusService } from "../../../../../../services/loi/loi-status.serv
   templateUrl: './director-org-view-letter-of-intent-status.component.html',
   styleUrls: ['./director-org-view-letter-of-intent-status.component.css']
 })
-export class DirectorOrgViewLetterOfIntentStatusComponent implements OnInit {
+export class DirectorOrgViewLetterOfIntentStatusComponent implements OnInit, OnChanges {
 
   @Input()
   loi: any;
@@ -26,6 +26,19 @@ export class DirectorOrgViewLetterOfIntentStatusComponent implements OnInit {
     this.status = this.loi.status;
 
     //set status
+    this.setStatus(this.status);
+
+    this.loiStatus.currentStatus.subscribe(status => this.status = Number(status))
+
+  }
+
+  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
+
+    console.log('changes', changes)
+    console.log('loi', this.loi)
+
+    this.status = this.loi.status;
+
     this.setStatus(this.status);
 
     this.loiStatus.currentStatus.subscribe(status => this.status = Number(status))
