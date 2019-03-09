@@ -34,8 +34,11 @@
 
 </div>
 <div id="textbox">
-  <p class="alignleft"><span *ngIf="!First">Previous LOI</span></p>
-  <p class="aligncenter">Back To Directors Home</p>
-  <p class="alignright"><span *ngIf="!Last">Next LOI</span></p>
+  <p class="alignleft"><span *ngIf="!First"><button mat-raised-button (click)="routePrevious()">Previous
+        LOI</button></span></p>
+  <p class="aligncenter"> <button mat-raised-button routerLink="/director">Back To Directors Home</button></p>
+  <p class="alignright"><span *ngIf="!Last">
+      <button mat-raised-button (click)="routeNext()">Next LOI</button>
+    </span></p>
 </div>
 <div style="clear: both;"></div>
