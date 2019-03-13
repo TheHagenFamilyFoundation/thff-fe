@@ -15,8 +15,7 @@ import { DeleteLoiInfoService } from '../../services/loi/loi-info/delete-loi-inf
 import { AuthService } from '../../auth/auth.service';
 
 //debounce
-import { Subject, TimeoutError } from 'rxjs';
-import { Observable } from 'rxjs/Observable';
+import { Subject, TimeoutError ,  Observable } from 'rxjs';
 
 import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 

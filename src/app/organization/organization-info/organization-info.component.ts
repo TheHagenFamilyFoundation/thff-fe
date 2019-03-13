@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Valida
 import { ErrorStateMatcher } from '@angular/material/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  Subject } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 
@@ -13,9 +13,6 @@ import { GetOrganizationInfoService } from '../../services/organization/organiza
 import { DeleteOrganizationInfoService } from '../../services/organization/organization-info/delete-organization-info.service';
 
 import { AuthService } from '../../auth/auth.service';
-
-//debounce
-import { Subject } from 'rxjs';
 
 import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
