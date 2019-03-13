@@ -36,6 +36,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { ContentsModule } from 'angular-contents';
+
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 
 import { NgxCurrencyModule } from "ngx-currency";
@@ -331,7 +333,8 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
         MatPaginatorModule, MatDialogModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
         MatExpansionModule, MatProgressSpinnerModule,
 
-        ContentsModule, NgxPageScrollModule,
+        ContentsModule, NgxPageScrollCoreModule.forRoot({ /* custom settings here */ }),
+        NgxPageScrollModule,
 
         NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
 
