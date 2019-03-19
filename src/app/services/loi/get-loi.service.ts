@@ -51,7 +51,7 @@ export class GetLoiService {
 
   getAllLOIs(): Observable<any> {
 
-    let urlString = this.API_URL + "/loi";
+    let urlString = this.API_URL + "/loi?limit=500";
 
     return this.http.get(urlString);
 
