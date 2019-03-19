@@ -53,6 +53,7 @@ export class GetLoiService {
 
     let urlString = this.API_URL + "/loi?limit=500";
 
+    console.log('urlString', urlString)
     return this.http.get(urlString);
 
   }
