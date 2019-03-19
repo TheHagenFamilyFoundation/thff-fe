@@ -199,6 +199,7 @@ export class LoginComponent implements OnInit {
 
   getBackendURL() {
 
+    console.log('environment', environment)
     if (environment.production) {
 
       this.authService.initializeBackendURL().subscribe(
