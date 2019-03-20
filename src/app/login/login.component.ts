@@ -202,23 +202,25 @@ export class LoginComponent implements OnInit {
     console.log('environment', environment)
     if (environment.production) {
 
-      this.authService.initializeBackendURL().subscribe(
-        (backendUrl) => {
+      this.API_URL = environment.API_URL;
 
-          console.log('backendUrl', backendUrl);
-          console.log('backendUrl', backendUrl.url);
+      // this.authService.initializeBackendURL().subscribe(
+      //   (backendUrl) => {
 
-          if (backendUrl) {
-            sessionStorage.setItem('backend_url', backendUrl.url);
-          }
-          else {
-            console.log('Can´t find the backend URL, using a failover value');
-            sessionStorage.setItem('backend_url', 'https://failover-url.com');
-          }
+      //     console.log('backendUrl', backendUrl);
+      //     console.log('backendUrl', backendUrl.url);
 
-          this.API_URL = backendUrl.url;
+      //     if (backendUrl) {
+      //       sessionStorage.setItem('backend_url', backendUrl.url);
+      //     }
+      //     else {
+      //       console.log('Can´t find the backend URL, using a failover value');
+      //       sessionStorage.setItem('backend_url', 'https://failover-url.com');
+      //     }
 
-        })
+      //     this.API_URL = backendUrl.url || 'http://localhost:1337';
+
+      //   })
 
     }
 
