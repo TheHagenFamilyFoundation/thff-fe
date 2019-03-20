@@ -23,13 +23,6 @@ export class GettingStartedComponent implements OnInit {
       }
 
     }
-    else {
-      this.authService.initializeBackendURL().subscribe(url=>{
-
-        console.log('API_URL', url)
-      })
-      
-    }
 
   }
 
