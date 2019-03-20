@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
+    "heroku-postbuild": "echo Skip build on Heroku",
     "start": "node server.js",
     "test": "ng test",
     "lint": "ng lint",
