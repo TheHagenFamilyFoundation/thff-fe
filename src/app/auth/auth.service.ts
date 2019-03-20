@@ -38,8 +38,8 @@ export class AuthService {
             this.API_URL = environment.API_URL;
         }
         else {
-            // this.API_URL = this.getBackendURL();
-            this.API_URL = environment.API_URL;
+            this.API_URL = this.getBackendURL();
+
             console.log('auth service - this.API_URL', this.API_URL)
         }
 
