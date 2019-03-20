@@ -205,6 +205,7 @@ export class LoginComponent implements OnInit {
       this.authService.initializeBackendURL().subscribe(
         (backendUrl) => {
 
+          console.log('backendUrl', backendUrl);
           console.log('backendUrl', backendUrl.url);
 
           if (backendUrl) {
