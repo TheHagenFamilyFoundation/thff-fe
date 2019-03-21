@@ -1,39 +1,21 @@
 <h2 align="center">User Page - {{user.username}}</h2>
 <mat-grid-list cols="4" [rowHeight]="basicRowHeight">
-  <mat-grid-tile [rowspan]="1" [colspan]="2">
+  <mat-grid-tile [colspan]="2">
     <mat-card>
       <app-user-organization [user]="user"></app-user-organization>
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile>
+  <mat-grid-tile [colspan]="2">
     <mat-card>
       <mat-card-content>
         <app-user-letter-of-intent [user]="user"></app-user-letter-of-intent>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile [rowspan]="1">
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="1">
-    <mat-card>
-      <mat-card-content class="change_password_email">
-        <app-change-password [user]="user"></app-change-password>
-        <br>
-      </mat-card-content>
+  <mat-grid-tile [colspan]="4">
+    <mat-card class="user-info">
+      <app-user-update-main [user]="user"></app-user-update-main>
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card>
-      <mat-card-content class="change_password_email">
-        <app-change-email [user]="user"></app-change-email>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="1">
-    <mat-card>
-      <mat-card-content>
-        <app-user-update [user]="user"></app-user-update>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
+
 </mat-grid-list>
