@@ -191,6 +191,8 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
 import { UserComponent } from './user/user.component';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
 import { ChangeEmailComponent } from './user/change-email/change-email.component';
+import { UserUpdateComponent } from './user/user-update/user-update.component';
+import { UserUpdateMainComponent } from './user/user-update-main/user-update-main.component';
 import { UserOrganizationComponent } from './user/user-organization/user-organization.component';
 import { SelectedOrganizationComponent } from './user/user-organization/selected-organization/selected-organization.component';
 
@@ -228,7 +230,6 @@ import { EmailComponent } from './test/email/email.component';
 
 //Utility
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
-import { UserUpdateComponent } from './user/user-update/user-update.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -272,7 +273,7 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
         //user
         UserComponent, ChangePasswordComponent, ChangeEmailComponent,
         UserOrganizationComponent, SelectedOrganizationComponent,
-        UserLetterOfIntentComponent, SelectedLetterOfIntentComponent,
+        UserLetterOfIntentComponent, SelectedLetterOfIntentComponent, UserUpdateMainComponent,
 
         //organization
         OrganizationComponent,
@@ -314,6 +315,7 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
+
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
