@@ -1,0 +1,27 @@
+<mat-card>
+  <div align="center">
+    <h3>User Update</h3>
+  </div>
+  <mat-grid-list cols="3" [rowHeight]="basicRowHeight">
+    <mat-grid-tile [colspan]="1">
+      <app-change-password [user]="user"></app-change-password>
+      <br>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">
+      <app-change-email [user]="user"></app-change-email>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">
+      <app-user-update [user]="user"></app-user-update>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+<!-- <mat-grid-tile [colspan]="1">
+  <app-change-password [user]="user"></app-change-password>
+  <br>
+</mat-grid-tile>
+<mat-grid-tile [colspan]="1">
+  <app-change-email [user]="user"></app-change-email>
+</mat-grid-tile>
+<mat-grid-tile [colspan]="1">
+  <app-user-update [user]="user"></app-user-update>
+</mat-grid-tile> -->

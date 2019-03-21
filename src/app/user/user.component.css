@@ -22,3 +22,13 @@
     display:flex;
     flex-direction: column;
   }
+
+  .user-info {
+    width: 1000px
+  }
+
+  .child-grid{
+    width: 100%;
+    height: 100%;
+  }
+   

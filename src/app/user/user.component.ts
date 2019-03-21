@@ -10,7 +10,7 @@ import { InOrgService } from "../services/user/in-org.service";
 export class UserComponent implements OnInit {
 
   //check basic row height
-  basicRowHeight = 700;
+  basicRowHeight = 500;
 
   user;
 
