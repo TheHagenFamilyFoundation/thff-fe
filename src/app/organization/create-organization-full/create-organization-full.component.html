@@ -173,7 +173,7 @@
 <br>
 
 <div align="center">
-  <div *ngIf="CanCreateOrg">
+  <div *ngIf="CanCreateOrg && !Submitted">
     <button mat-raised-button (click)="createOrg()">Submit</button>
   </div>
   <div *ngIf="Submitted">
