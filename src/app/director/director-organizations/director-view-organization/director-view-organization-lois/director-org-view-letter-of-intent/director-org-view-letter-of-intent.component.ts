@@ -21,6 +21,7 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
 
   organization: any; //organization object retrieved from the loi object
   orgName: string;
+  orgID: string;
 
   status: number;
 
@@ -32,6 +33,8 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
 
   loiLink = 'director-loi/'
   link: string;
+
+  dirOrgLink = 'director-organization/'
 
   nextLOILink: string;
   prevLOILink: string;
@@ -55,7 +58,7 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
     this.First = false;
     // this.First = true; //debug
     this.Last = false;
- 
+
   }
 
   ngOnInit() {
@@ -86,6 +89,10 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
           console.log('organization', this.organization);
 
           this.orgName = this.organization.name;
+          this.orgID = this.organization.organizationID;
+          this.dirOrgLink += this.orgID
+
+          console.log('this.dirOrgLink', this.dirOrgLink)
 
           this.setStatus();
 
@@ -161,6 +168,10 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
     console.log('routing to: ', this.nextLOILink);
     this.router.navigate([this.nextLOILink]);
 
+  }
+
+  routeToOrg() {
+    this.router.navigate([this.dirOrgLink]);
   }
 
 
