@@ -48,7 +48,7 @@ export class GetOrganizationService {
 
   getAllOrgs(): Observable<any> {
 
-    let urlString = this.API_URL + "/organization";
+    let urlString = this.API_URL + "/organization?limit=500";
 
     return this.http.get(urlString);
 
