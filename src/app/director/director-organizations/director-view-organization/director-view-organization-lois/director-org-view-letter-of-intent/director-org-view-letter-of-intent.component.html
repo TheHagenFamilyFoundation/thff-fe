@@ -6,6 +6,9 @@
     <h4>Viewing Letter of Intent: {{loi?.name}}</h4>
     <h5>Organization: {{orgName}}</h5>
   </div>
+  <div>
+    <button mat-raised-button (click)="routeToOrg()">View Organization</button>
+  </div>
 
   <div class="loi-basic">
     <mat-grid-list cols="4" rows="3" [rowHeight]="basicRowHeight">
