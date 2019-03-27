@@ -38,6 +38,7 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
 
   nextLOILink: string;
   prevLOILink: string;
+  viewOrgLink: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -90,9 +91,9 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
 
           this.orgName = this.organization.name;
           this.orgID = this.organization.organizationID;
-          this.dirOrgLink += this.orgID
+          this.viewOrgLink = this.dirOrgLink + this.orgID
 
-          console.log('this.dirOrgLink', this.dirOrgLink)
+          console.log('this.viewOrgLink', this.viewOrgLink)
 
           this.setStatus();
 
@@ -171,7 +172,7 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
   }
 
   routeToOrg() {
-    this.router.navigate([this.dirOrgLink]);
+    this.router.navigate([this.viewOrgLink]);
   }
 
 
