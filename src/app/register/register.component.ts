@@ -62,12 +62,15 @@ export class RegisterComponent implements OnInit {
 
   ValidPassword = false;
 
+  ShowErrorMessage = false;
   ShowUserNameError = false;
   ShowEmailError = false;
   ShowPasswordError = false;
 
   CanRegister = false;
   Submitted = false;
+
+  errorMessage: string;
 
   userNameFormControl = new FormControl('', [
     Validators.required,
@@ -152,7 +155,6 @@ export class RegisterComponent implements OnInit {
   register(): void {
     console.log("You clicked on the Register")
 
-    this.CanRegister = false;
     this.Submitted = true;
 
     let urlString = this.API_URL + '/user';
@@ -201,15 +203,15 @@ export class RegisterComponent implements OnInit {
         }, error => {
 
           console.log('error', error)
-
-          // this.message = error;
-
-          // console.log('message', this.message)
-
-          // this.ShowMessage = true;
           this.Submitted = false;
-        }
+          this.ShowErrorMessage = true;
+          this.errorMessage = error;
 
+          setTimeout(() => {
+            this.clearErrorMessage();
+          }, 3000);
+
+        }
 
       );
 
@@ -353,12 +355,18 @@ export class RegisterComponent implements OnInit {
   }
 
   VerifyInput(): void {
+    // this.CanRegister = true; //debug
     if (this.ValidUserName && this.ValidEmail && this.ValidPassword) {
       this.CanRegister = true;
     }
     else {
       this.CanRegister = false;
     }
+  }
+
+  clearErrorMessage(): void {
+    this.errorMessage = '';
+    this.ShowErrorMessage = false;
   }
 
 }

@@ -51,7 +51,11 @@
         </mat-form-field>
     </div>
     <br>
-    <div *ngIf="CanRegister">
+    <div *ngIf="ShowErrorMessage">
+        {{errorMessage}}
+    </div>
+    <br>
+    <div *ngIf="CanRegister && !Submitted">
         <button mat-raised-button (click)="register()">Register</button>
     </div>
     <div *ngIf="Submitted">
