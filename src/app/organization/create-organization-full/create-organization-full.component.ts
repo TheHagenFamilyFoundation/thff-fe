@@ -73,6 +73,7 @@ export class CreateOrganizationFullComponent implements OnInit {
   fax: string; //-Fax Number
 
   message: any; //string
+  errorMessage: any; //string
 
   user: any; //object
   userId: any; //string
@@ -80,6 +81,7 @@ export class CreateOrganizationFullComponent implements OnInit {
   userEmail: string;
 
   ShowMessage = false;
+  ShowErrorMessage = false;
 
   showCurrentOperatingBudgetMessage = false;
   currentOperatingBudgetMessage: any;
@@ -414,6 +416,7 @@ export class CreateOrganizationFullComponent implements OnInit {
       description: this.description,
       username: this.userName,
       userid: this.userId,//userid of user who created the organization
+      legalName: this.legalName
     }
 
     //call the service
@@ -485,6 +488,13 @@ export class CreateOrganizationFullComponent implements OnInit {
           console.log(err)
 
           this.Submitted = false;
+
+          this.ShowErrorMessage = true;
+          this.errorMessage = err;
+
+          setTimeout(() => {
+            this.clearErrorMessage();
+          }, 3000);
         }
       );
 
@@ -793,5 +803,11 @@ export class CreateOrganizationFullComponent implements OnInit {
     }
 
   }
+
+  clearErrorMessage(): void {
+    this.errorMessage = '';
+    this.ShowErrorMessage = false;
+  }
+
 
 }
