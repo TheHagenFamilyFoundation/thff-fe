@@ -251,6 +251,8 @@ export class RegisterComponent implements OnInit {
   passwordChange() {
     console.log("PasswordChange");
 
+    this.ShowErrorMessage = false;
+
     if (this.password != "") {
       this.ShowConfirmPassword = true;
     }
@@ -260,13 +262,15 @@ export class RegisterComponent implements OnInit {
       this.ValidPassword = false;
     }
 
-    this.VerifyInput();
+    this.ComparePasswords();
 
   }
 
 
   confirmPasswordChange() {
     console.log("ConfirmPasswordChange");
+
+    this.ShowErrorMessage = false;
 
     this.ComparePasswords();
   }
@@ -277,6 +281,9 @@ export class RegisterComponent implements OnInit {
       this.NoMatchPassword = false;
       //debug
       console.log("NoMatchPassword = " + this.NoMatchPassword);
+
+      this.ShowErrorMessage = true;
+      this.errorMessage = 'Passwords do not match.'
 
       this.ValidPassword = false;
 
@@ -356,7 +363,7 @@ export class RegisterComponent implements OnInit {
 
   VerifyInput(): void {
     // this.CanRegister = true; //debug
-    if (this.ValidUserName && this.ValidEmail && this.ValidPassword) {
+    if (this.ValidUserName && this.ValidEmail && this.ValidPassword && this.NoMatchPassword) {
       this.CanRegister = true;
     }
     else {
