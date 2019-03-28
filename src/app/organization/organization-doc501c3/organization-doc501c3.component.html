@@ -6,10 +6,13 @@
   <mat-grid-tile>
     <div *ngIf="!HasUpload501c3">
       <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">
-      <div *ngIf="CanUpload501c3">
+      <div *ngIf="CanUpload501c3 && !Submitted">
         <div align="center">
           <button mat-raised-button (click)="upload()">Upload</button>
         </div>
+      </div>
+      <div *ngIf="Submitted">
+        <mat-spinner></mat-spinner>
       </div>
     </div>
     <div *ngIf="HasUpload501c3">
