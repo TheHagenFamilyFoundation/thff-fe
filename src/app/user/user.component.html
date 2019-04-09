@@ -1,21 +1,27 @@
-<h2 align="center">User Page - {{user.username}}</h2>
-<mat-grid-list cols="4" [rowHeight]="basicRowHeight">
-  <mat-grid-tile [colspan]="2">
+<div align="center">
+  <h2>User Page - {{user.username}}</h2>
+
+  <div class="user-org-loi">
+    <mat-grid-list cols="2" [rowHeight]="basicRowHeight">
+      <mat-grid-tile>
+        <mat-card>
+          <app-user-organization [user]="user"></app-user-organization>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-content>
+            <app-user-letter-of-intent [user]="user"></app-user-letter-of-intent>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div class="user-info">
+    <!-- <mat-grid-tile [colspan]="4"> -->
     <mat-card>
-      <app-user-organization [user]="user"></app-user-organization>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="2">
-    <mat-card>
-      <mat-card-content>
-        <app-user-letter-of-intent [user]="user"></app-user-letter-of-intent>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="4">
-    <mat-card class="user-info">
       <app-user-update-main [user]="user"></app-user-update-main>
     </mat-card>
-  </mat-grid-tile>
-
-</mat-grid-list>
+    <!-- </mat-grid-tile> -->
+  </div>
+</div>
