@@ -1,9 +1,13 @@
 .loi-basic {
-    width: 1050px
+    width: 800px
 }
 
 .loi-info {
-    width: 700px
+    width: 800px
+}
+
+.loi-status {
+    width: 800px
 }
 
 
@@ -28,4 +32,5 @@
    float: left;
    width:33.33333%;
    text-align:right;
+   /* padding: 100px; */
 }
