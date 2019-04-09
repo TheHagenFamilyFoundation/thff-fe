@@ -9,6 +9,9 @@
         <input matInput placeholder="Project Title" value={{projectTitle}} disabled>
       </mat-form-field>
     </div>
+    <div *ngIf="resetPurpose">
+      <mat-spinner></mat-spinner>
+    </div>
     <div *ngIf="!resetPurpose">
       <mat-form-field class="full-width purpose-size">
         <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows=1 cdkAutosizeMaxRows=50 placeholder="Purpose"

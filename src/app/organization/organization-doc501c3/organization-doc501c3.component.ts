@@ -54,6 +54,8 @@ export class OrganizationDoc501c3Component implements OnInit {
 
   Rejected501c3: boolean;
 
+  Submitted: boolean;
+
   constructor(private router: Router,
     public getOrgService: GetOrganizationService,
     private upload501c3Service: Upload501c3Service,
@@ -66,7 +68,9 @@ export class OrganizationDoc501c3Component implements OnInit {
     private getUserService: GetUserService,
   ) {
 
+
     this.Rejected501c3 = false;
+    this.Submitted = false;
 
   }
 
@@ -142,6 +146,8 @@ export class OrganizationDoc501c3Component implements OnInit {
 
   upload() {
 
+    this.Submitted = true;
+
     this.upload501c3Service.upload501c3(this.file, this.orgID)
       .subscribe(
         (result) => {
@@ -195,9 +201,13 @@ export class OrganizationDoc501c3Component implements OnInit {
                           })
                             .subscribe(
                               (data) => {
-
+                                this.Submitted = false;
                               },
-                              err => console.log(err)
+                              err => {
+                                console.log(err);
+                                this.Submitted = false;
+                              }
+
                             );
 
                         });
@@ -208,13 +218,19 @@ export class OrganizationDoc501c3Component implements OnInit {
                   this.getOrganization(this.orgID);
 
                 },
-                err => console.log(err)
+                err => {
+                  console.log(err)
+                  this.Submitted = false;
+                }
               );
 
           }
 
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.Submitted = false;
+        }
       );
 
   }
@@ -225,6 +241,8 @@ export class OrganizationDoc501c3Component implements OnInit {
 
     //delete the old one
     console.log('deleting 501c3')
+
+    this.Submitted = true;
 
     //call the delete 501c3 service
     this.delete501c3Service.delete501c3byOrgID(this.orgID)
@@ -284,9 +302,12 @@ export class OrganizationDoc501c3Component implements OnInit {
                                 })
                                   .subscribe(
                                     (data) => {
-
+                                      this.Submitted = false;
                                     },
-                                    err => console.log(err)
+                                    err => {
+                                      console.log(err)
+                                      this.Submitted = false;
+                                    }
                                   );
 
                               });
@@ -297,13 +318,19 @@ export class OrganizationDoc501c3Component implements OnInit {
                         this.getOrganization(this.orgID);
 
                       },
-                      err => console.log(err)
+                      err => {
+                        console.log(err)
+                        this.Submitted = false;
+                      }
                     );
 
                 }
 
               },
-              err => console.log(err)
+              err => {
+                console.log(err)
+                this.Submitted = false;
+              }
             );
 
         })
