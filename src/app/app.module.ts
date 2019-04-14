@@ -113,6 +113,10 @@ import { EmailService } from './services/user/email.service';
 import { GetFullProposalService } from './services/full-proposal/get-full-proposal.service';
 import { FpStatusService } from './services/full-proposal/fp-status.service';
 
+//Voting
+import { PresVotingService } from './services/voting/pres-voting.service';
+import { DirectorVotingService } from './services/voting/director-voting.service';
+
 //Directives
 import { PhoneMaskDirective } from './directives/phone-mask.directive';
 
@@ -357,7 +361,9 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         Upload501c3Service, Create501c3Service, Get501c3Service, Delete501c3Service, Doc501c3StatusService,
         GetLoiService, CreateLoiService, LOIStatusService,
         CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
-        GetFullProposalService, FpStatusService
+        GetFullProposalService, FpStatusService,
+
+        PresVotingService, DirectorVotingService
     ],
     entryComponents: [
         CreateOrganizationComponent, CreateOrganizationHeaderComponent,
