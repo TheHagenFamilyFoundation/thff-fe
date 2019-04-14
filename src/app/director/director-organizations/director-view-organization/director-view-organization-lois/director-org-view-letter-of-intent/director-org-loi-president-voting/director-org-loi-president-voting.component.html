@@ -1,27 +1,22 @@
-<!-- <mat-card [style.color]="getColor()"> -->
-<!-- <mat-card [ngStyle]="{
-      'color': getColor(),
-      'font-size': font_size,
-      'background-color': getColor
-      }"> -->
 <mat-card>
-  <!-- [ngStyle]="{
-  'font-size': font_size,
-  'background-color': getColor()
-  }"> -->
-
   <div align="center">
     <h3>Letter Of Intent President Voting</h3>
   </div>
-  <!-- <mat-form-field>
-    <mat-label>President Vote</mat-label>
-    <mat-select (selectionChange)="doSomething($event)">
-      <mat-option *ngFor="let option of options" [value]="option.value">
-        {{option.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field> -->
-  <div>
+  <div *ngIf="!President">
+    <a [ngStyle]="{
+        'color': getUpColor()
+        }">
+      <mat-icon style="padding-right:25px; padding-left:25px;">thumb_up
+      </mat-icon>
+    </a>
+    <a [ngStyle]="{
+        'color': getDownColor()
+        }">
+      <mat-icon style="padding-right:25px; padding-left:25px;">thumb_down
+      </mat-icon>
+    </a>
+  </div>
+  <div *ngIf="President">
     <a [ngStyle]="{
       'color': getUpColor()
       }">

@@ -20,6 +20,8 @@ export class DirectorOrgLoiPresidentVotingComponent implements OnInit {
   upColor: string = 'black';
   downColor: string = 'black';
 
+  President: boolean;
+
   constructor(public presVotingService: PresVotingService) {
   }
 
@@ -33,6 +35,13 @@ export class DirectorOrgLoiPresidentVotingComponent implements OnInit {
 
     this.user = JSON.parse(localStorage.getItem('currentUser'))
     this.userID = this.user.id;
+
+    console.log('president voting - this.user', this.user)
+
+    if (this.user.accessLevel > 2) {
+      this.President = true
+    }
+
   }
 
   submitVote(v) {
