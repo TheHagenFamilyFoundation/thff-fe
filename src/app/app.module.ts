@@ -32,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -337,7 +338,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
         MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
         MatPaginatorModule, MatDialogModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
-        MatExpansionModule, MatProgressSpinnerModule,
+        MatExpansionModule, MatProgressSpinnerModule, MatSliderModule,
 
         ContentsModule, NgxPageScrollCoreModule.forRoot({ /* custom settings here */ }),
         NgxPageScrollModule,
