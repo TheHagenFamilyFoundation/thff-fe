@@ -21,7 +21,7 @@
     <mat-grid-list cols="2" rows="1" [rowHeight]="basicRowHeight">
       <mat-grid-tile>
         <div *ngIf="loi">
-          <app-director-org-loi-president-voting></app-director-org-loi-president-voting>
+          <app-director-org-loi-president-voting [loi]="loi"></app-director-org-loi-president-voting>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
