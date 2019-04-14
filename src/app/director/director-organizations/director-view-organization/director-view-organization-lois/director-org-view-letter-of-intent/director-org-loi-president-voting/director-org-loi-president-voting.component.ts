@@ -35,12 +35,6 @@ export class DirectorOrgLoiPresidentVotingComponent implements OnInit {
     this.userID = this.user.id;
   }
 
-  //can remove
-  options: Option[] = [
-    // { value: 'maybe-0', viewValue: 'Maybe' },
-    { value: 'yes-1', viewValue: 'Yes' },
-    { value: 'no-2', viewValue: 'No' }];
-
   submitVote(v) {
     console.log('Submit Vote', v)
 
@@ -114,10 +108,4 @@ export class DirectorOrgLoiPresidentVotingComponent implements OnInit {
     return this.downColor;
   }
 
-}
-
-//old
-export interface Option {
-  value: string;
-  viewValue: string;
 }
