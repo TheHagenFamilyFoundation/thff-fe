@@ -105,6 +105,8 @@ export class DirectorOrgLoiPresidentVotingComponent implements OnInit {
 
   checkPresVote(votes) {
 
+    this.checkVote(0);
+    
     votes.forEach(vote => {
 
       if (vote.voteType == 'President') {
