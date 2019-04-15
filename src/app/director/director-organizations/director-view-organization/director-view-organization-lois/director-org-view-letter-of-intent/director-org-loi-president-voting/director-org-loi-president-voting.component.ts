@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 
 import { PresVotingService } from '../../../../../../services/voting/pres-voting.service';
 
@@ -11,6 +11,7 @@ export class DirectorOrgLoiPresidentVotingComponent implements OnInit {
 
   @Input()
   loi: any;
+  loiID: any;
 
   user: any;
   userID: any;
@@ -21,6 +22,8 @@ export class DirectorOrgLoiPresidentVotingComponent implements OnInit {
   downColor: string = 'black';
 
   President: boolean;
+
+  Loading: boolean;
 
   constructor(public presVotingService: PresVotingService) {
   }
@@ -42,6 +45,30 @@ export class DirectorOrgLoiPresidentVotingComponent implements OnInit {
       this.President = true
     }
 
+  }
+
+  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
+    this.Loading = true;
+    console.log('changes', changes)
+    console.log('loi changed: ', this.loi)
+    this.loiID = this.loi.id;
+
+    setTimeout(() => { this.Loading = false; }, 1000)
+    console.log('this.Loading', this.Loading)
+
+    if (this.loi.votes.length > 0) {
+      this.checkPresVote(this.loi.votes)
+    }
+    else {
+      this.vote = 0;
+      this.defaultColors();
+    }
+
+  }
+
+  defaultColors() {
+    this.upColor = 'black'
+    this.downColor = 'black'
   }
 
   submitVote(v) {
