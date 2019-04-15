@@ -2,11 +2,16 @@
   <div align="center">
     <h3>Letter Of Intent Voting</h3>
   </div>
-  <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
-    [thumbLabel]="thumbLabel" [tickInterval]="tickInterval" [(ngModel)]="vote" (input)="onInputChange($event)"
-    [vertical]="vertical">
-  </mat-slider>
-  <div>
-    {{vote}}
+  <div *ngIf="Loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="!Loading">
+    <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
+      [thumbLabel]="thumbLabel" [tickInterval]="tickInterval" [(ngModel)]="vote" (input)="onInputChange($event)"
+      [vertical]="vertical">
+    </mat-slider>
+    <div>
+      {{vote}}
+    </div>
   </div>
 </mat-card>

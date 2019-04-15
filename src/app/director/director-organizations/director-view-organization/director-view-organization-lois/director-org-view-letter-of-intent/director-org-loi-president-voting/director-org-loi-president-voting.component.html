@@ -2,34 +2,39 @@
   <div align="center">
     <h3>Letter Of Intent President Voting</h3>
   </div>
-  <div *ngIf="!President">
-    <a [ngStyle]="{
+  <div *ngIf="Loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="!Loading">
+    <div *ngIf="!President">
+      <a [ngStyle]="{
         'color': getUpColor()
         }">
-      <mat-icon style="padding-right:25px; padding-left:25px;">thumb_up
-      </mat-icon>
-    </a>
-    <a [ngStyle]="{
+        <mat-icon style="padding-right:25px; padding-left:25px;">thumb_up
+        </mat-icon>
+      </a>
+      <a [ngStyle]="{
         'color': getDownColor()
         }">
-      <mat-icon style="padding-right:25px; padding-left:25px;">thumb_down
-      </mat-icon>
-    </a>
-  </div>
-  <div *ngIf="President">
-    <a [ngStyle]="{
+        <mat-icon style="padding-right:25px; padding-left:25px;">thumb_down
+        </mat-icon>
+      </a>
+    </div>
+    <div *ngIf="President">
+      <a [ngStyle]="{
       'color': getUpColor()
       }">
-      <mat-icon style="padding-right:25px; padding-left:25px;" class="like" (click)="submitVote(1)">thumb_up
-      </mat-icon>
-    </a>
-    <a [ngStyle]="{
+        <mat-icon style="padding-right:25px; padding-left:25px;" class="like" (click)="submitVote(1)">thumb_up
+        </mat-icon>
+      </a>
+      <a [ngStyle]="{
       'color': getDownColor()
       }">
-      <mat-icon style="padding-right:25px; padding-left:25px;" class="like" (click)="submitVote(2)">thumb_down
-      </mat-icon>
-    </a>
+        <mat-icon style="padding-right:25px; padding-left:25px;" class="like" (click)="submitVote(2)">thumb_down
+        </mat-icon>
+      </a>
+    </div>
+    <br>
   </div>
-  <br>
 
 </mat-card>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 
@@ -13,6 +13,7 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
 
   @Input()
   loi: any;
+  loiID: any;
 
   user: any;
   userID: any;
@@ -27,6 +28,8 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
   thumbLabel = false;
   vote = 0;
   vertical = false;
+
+  Loading: boolean;
 
   get tickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
@@ -48,6 +51,26 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
     }
 
   }
+
+  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
+    this.Loading = true;
+    console.log('changes', changes)
+    console.log('loi changed: ', this.loi)
+    this.loiID = this.loi.id;
+
+    setTimeout(() => { this.Loading = false; }, 1000)
+    console.log('this.Loading', this.Loading)
+
+    if (this.loi.votes.length > 0) {
+      this.checkDirVote(this.loi.votes)
+    }
+    else {
+      //set the default
+      this.vote = 0
+    }
+
+  }
+
 
   onInputChange(event: any) {
     console.log("This is emitted as the thumb slides", event);
@@ -79,11 +102,9 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
 
   checkDirVote(votes) {
 
-
-
     votes.forEach(vote => {
 
-      if (vote.userID == this.userID) {
+      if (vote.userID == this.userID && vote.voteType == 'Director') {
         console.log('vote', vote)
         this.vote = vote.vote;
       }
@@ -91,7 +112,5 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
     });
 
   }
-
-
 
 }
