@@ -106,6 +106,8 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
 
   checkDirVote(votes) {
 
+    this.vote = 0;
+    
     votes.forEach(vote => {
 
       if (vote.userID == this.userID && vote.voteType == 'Director') {
