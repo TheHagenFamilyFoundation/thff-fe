@@ -26,8 +26,12 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
   showTicks = true;
   step = 1;
   thumbLabel = false;
-  vote = 0;
+  vote = -1;
   vertical = false;
+
+  outputVote: string;
+
+  DEFAULT_VOTE = -1;
 
   Loading: boolean;
 
@@ -51,8 +55,10 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
     }
     else {
       //set the default
-      this.vote = 0
+      this.vote = this.DEFAULT_VOTE
     }
+
+    this.outVote(this.vote);
 
   }
 
@@ -70,8 +76,10 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
     }
     else {
       //set the default
-      this.vote = 0
+      this.vote = this.DEFAULT_VOTE
     }
+
+    this.outVote(this.vote);
 
   }
 
@@ -80,6 +88,8 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
     console.log("This is emitted as the thumb slides", event);
 
     this.vote = event.value;
+
+    this.outVote(this.vote);
 
     let data = {
       letterOfIntent: this.loi.id,
@@ -106,8 +116,8 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
 
   checkDirVote(votes) {
 
-    this.vote = 0;
-    
+    this.vote = this.DEFAULT_VOTE;
+
     votes.forEach(vote => {
 
       if (vote.userID == this.userID && vote.voteType == 'Director') {
@@ -115,7 +125,29 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
         this.vote = vote.vote;
       }
 
+      this.outVote(this.vote);
     });
+
+  }
+
+  outVote(v) {
+
+    switch (v) {
+      case -1:
+        this.outputVote = 'No Vote';
+        break;
+      case 0:
+        this.outputVote = 'No';
+        break;
+      case 1:
+        this.outputVote = 'Maybe';
+        break;
+      case 2:
+        this.outputVote = 'Yes';
+        break;
+      default:
+        console.log('error - invalid vote')
+    }
 
   }
 
