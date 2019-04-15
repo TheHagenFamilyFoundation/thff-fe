@@ -49,6 +49,10 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
     if (this.loi.votes.length > 0) {
       this.checkDirVote(this.loi.votes)
     }
+    else {
+      //set the default
+      this.vote = 0
+    }
 
   }
 
@@ -102,6 +106,8 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
 
   checkDirVote(votes) {
 
+    this.vote = 0;
+    
     votes.forEach(vote => {
 
       if (vote.userID == this.userID && vote.voteType == 'Director') {
