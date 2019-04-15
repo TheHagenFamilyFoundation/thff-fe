@@ -22,7 +22,7 @@ export class DirectorOrgLoiVotingComponent implements OnInit {
   disabled = false;
   invert = false;
   max = 2;
-  min = 0;
+  min = -1;
   showTicks = true;
   step = 1;
   thumbLabel = false;
