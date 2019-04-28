@@ -3,10 +3,10 @@
 
   <div>
     <div class="example-button-row">
-      <button mat-raised-button (click)="getLOIs()">All</button>
-      <button mat-raised-button (click)="getPresVoting(1)">President Voting Yes</button>
-      <button mat-raised-button (click)="getPresVoting(2)">President Voting No</button>
-      <button mat-raised-button (click)="getPendingVoteLOIs()">Pending Votes</button>
+      <button mat-raised-button [disabled]="AllLOI" (click)="getLOIs()">All</button>
+      <button mat-raised-button [disabled]="PresYes" (click)="getPresVoting(1)">President Voting Yes</button>
+      <button mat-raised-button [disabled]="PresNo" (click)="getPresVoting(2)">President Voting No</button>
+      <button mat-raised-button [disabled]="Pending" (click)="getPendingVoteLOIs()">Pending Votes</button>
     </div>
   </div>
 
