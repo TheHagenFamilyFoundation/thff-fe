@@ -24,6 +24,12 @@ export class DirectorLoisComponent implements OnInit {
 
   Loaded: boolean;
 
+  AllLOI: boolean;
+  PresYes: boolean;
+  PresNo: boolean;
+  Pending: boolean;
+
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -34,6 +40,10 @@ export class DirectorLoisComponent implements OnInit {
   ) {
 
     this.Loaded = false;
+    this.AllLOI = true; //set to all initial
+    this.PresYes = false;
+    this.PresNo = false;
+    this.Pending = false;
 
   }
 
@@ -47,6 +57,8 @@ export class DirectorLoisComponent implements OnInit {
   }
 
   getLOIs() {
+
+    this.setButtons(0);
 
     this.getLoiService.getAllLOIs()
       .subscribe(
@@ -123,6 +135,14 @@ export class DirectorLoisComponent implements OnInit {
 
   getPresVoting(vote) {
 
+    if (vote == 1) {
+      this.setButtons(1);
+    }
+    else {
+      this.setButtons(2);
+    }
+
+
     this.Loaded = false;
 
     this.getLoiService.getPresVotes(vote).subscribe(
@@ -146,6 +166,8 @@ export class DirectorLoisComponent implements OnInit {
 
   getPendingVoteLOIs() {
 
+    this.setButtons(3);
+
     this.Loaded = false;
 
     let user = this.userID;
@@ -167,6 +189,31 @@ export class DirectorLoisComponent implements OnInit {
         this.Loaded = true;
 
       })
+  }
+
+  setButtons(numButton) {
+
+    //all to false
+    this.AllLOI = false; //set to all initial
+    this.PresYes = false;
+    this.PresNo = false;
+    this.Pending = false;
+
+    switch (numButton) {
+      case 0:
+        this.AllLOI = true; //set to all initial
+        break;
+      case 1:
+        this.PresYes = true;
+        break;
+      case 2:
+        this.PresNo = true;
+        break;
+      case 3:
+        this.Pending = true;
+        break;
+    }
+
   }
 
 }
