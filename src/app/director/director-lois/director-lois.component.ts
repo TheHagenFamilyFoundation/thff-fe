@@ -29,6 +29,7 @@ export class DirectorLoisComponent implements OnInit {
   PresNo: boolean;
   Pending: boolean;
 
+  currentFilter: number;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -44,6 +45,8 @@ export class DirectorLoisComponent implements OnInit {
     this.PresYes = false;
     this.PresNo = false;
     this.Pending = false;
+
+    this.currentFilter = 0; //initialize to 0 - All LOI
 
   }
 
@@ -89,6 +92,8 @@ export class DirectorLoisComponent implements OnInit {
 
   onRowClicked(row) {
     console.log('Row clicked: ', row);
+
+    console.log('currentFilter', this.currentFilter)
 
     this.openSelectedLOIDialog(row); //pass in the org from row object
 
@@ -202,15 +207,19 @@ export class DirectorLoisComponent implements OnInit {
     switch (numButton) {
       case 0:
         this.AllLOI = true; //set to all initial
+        this.currentFilter = 0;
         break;
       case 1:
         this.PresYes = true;
+        this.currentFilter = 1;
         break;
       case 2:
         this.PresNo = true;
+        this.currentFilter = 2;
         break;
       case 3:
         this.Pending = true;
+        this.currentFilter = 3;
         break;
     }
 
