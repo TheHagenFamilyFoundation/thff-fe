@@ -2,6 +2,17 @@
   <h3>View Letter of Intents</h3>
 
   <div>
+    <div class="example-button-row">
+      <button mat-raised-button (click)="getLOIs()">All</button>
+      <button mat-raised-button (click)="getPresVoting(1)">President Voting Yes</button>
+      <button mat-raised-button (click)="getPresVoting(2)">President Voting No</button>
+      <button mat-raised-button (click)="getPendingVoteLOIs()">Pending Votes</button>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
     <div class="example-container mat-elevation-z8 toc">
       <mat-table [dataSource]="dataSource" matSort>
 
