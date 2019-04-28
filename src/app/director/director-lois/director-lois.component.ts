@@ -16,6 +16,9 @@ export class DirectorLoisComponent implements OnInit {
 
   lois: any;
 
+  user: any;
+  userID: any;
+
   displayedColumns = ['name', 'org', 'createdOn', 'submitted', 'status'];
   dataSource: MatTableDataSource<LOIData>;
 
@@ -27,7 +30,8 @@ export class DirectorLoisComponent implements OnInit {
   constructor(
     public getLoiService: GetLoiService,
     public dialog: MatDialog,
-    private loiStatusService: LOIStatusService) {
+    private loiStatusService: LOIStatusService,
+  ) {
 
     this.Loaded = false;
 
@@ -36,6 +40,9 @@ export class DirectorLoisComponent implements OnInit {
   ngOnInit() {
 
     this.getLOIs();
+
+    this.user = JSON.parse(localStorage.getItem('currentUser'))
+    this.userID = this.user.id;
 
   }
 
@@ -114,6 +121,53 @@ export class DirectorLoisComponent implements OnInit {
 
   }
 
+  getPresVoting(vote) {
+
+    this.Loaded = false;
+
+    this.getLoiService.getPresVotes(vote).subscribe(
+      (lois) => {
+
+        console.log('lois', lois)
+
+        this.lois = lois;
+
+        this.setStatuses();
+
+        this.dataSource = new MatTableDataSource(this.lois);
+
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+
+        this.Loaded = true;
+
+      })
+  }
+
+  getPendingVoteLOIs() {
+
+    this.Loaded = false;
+
+    let user = this.userID;
+
+    this.getLoiService.getPendingVotes(user).subscribe(
+      (lois) => {
+
+        console.log('lois', lois)
+
+        this.lois = lois;
+
+        this.setStatuses();
+
+        this.dataSource = new MatTableDataSource(this.lois);
+
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+
+        this.Loaded = true;
+
+      })
+  }
 
 }
 
@@ -122,4 +176,3 @@ export interface LOIData {
   id: string;
   name: string;
 }
-

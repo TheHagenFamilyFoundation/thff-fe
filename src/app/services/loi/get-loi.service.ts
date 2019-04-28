@@ -58,4 +58,31 @@ export class GetLoiService {
 
   }
 
+  getPresVotes(data: any): Observable<any> {
+
+    console.log('getPresVotes - data', data)
+
+    let urlString = this.API_URL + "/presVotes";
+
+    if (data) {
+      urlString += '?vote=' + data
+    }
+
+    console.log('getPresVotes - urlString', urlString)
+
+    return this.http.get(urlString);
+
+  }
+
+  //get pending votes for user
+  getPendingVotes(data: any): Observable<any> {
+
+    let urlString = this.API_URL + "/pendingVotes?user=" + data;
+
+    console.log('getPendingVotes - urlString', urlString)
+
+    return this.http.get(urlString);
+
+  }
+
 }
