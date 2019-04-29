@@ -19,6 +19,9 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
   loi: any; //the loi object
   createdAt: any;
 
+  user: any;
+  userID: any;
+
   organization: any; //organization object retrieved from the loi object
   orgName: string;
   orgID: string;
@@ -40,6 +43,9 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
   prevLOILink: string;
   viewOrgLink: string;
 
+  filter: number;
+  outputFilter: string;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -50,24 +56,34 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
 
   ) {
 
+    this.outputFilter = 'All'
+
     this.route.params.subscribe(params => {
       console.log('params', params);
       this.loiID = params.id;
       this.getLOI(this.loiID);
     });
 
+    this.route.queryParams.subscribe(queryParams => {
+      console.log('query params', queryParams);
+      this.filter = Number(queryParams.filter);
+      this.getFilter(this.filter);
+    })
+
     this.First = false;
     // this.First = true; //debug
     this.Last = false;
+
+    this.user = JSON.parse(localStorage.getItem('currentUser'))
+    this.userID = this.user.id;
 
   }
 
   ngOnInit() {
 
     console.log('loiID', this.loiID)
-
+    console.log('filter', this.filter)
     // this.getLOI(this.loiID);
-
   }
 
   getLOI(loiID) {
@@ -97,14 +113,19 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
 
           this.setStatus();
 
-          this.getNextLoiService.getNextLOI(this.createdAt).subscribe(
+          let nextLOIData = {
+            createdAt: this.createdAt,
+            filter: this.filter,
+            user: this.user
+          }
+          this.getNextLoiService.getNextLOI(nextLOIData).subscribe(
             (loi) => {
               console.log('next loi', loi)
 
-              if (loi.length > 0) {
+              if (loi) {
                 this.Last = false;
 
-                this.nextLOILink = this.loiLink + loi[0].loiID;
+                this.nextLOILink = this.loiLink + loi.loiID;
 
                 console.log('this is the link', this.nextLOILink);
 
@@ -119,14 +140,20 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
             }
           )
 
-          this.getPrevLoiService.getPrevLOI(this.createdAt).subscribe(
+          let prevLOIData = {
+            createdAt: this.createdAt,
+            filter: this.filter,
+            user: this.user
+          }
+
+          this.getPrevLoiService.getPrevLOI(prevLOIData).subscribe(
             (loi) => {
               console.log('prev loi', loi)
 
-              if (loi.length > 0) {
+              if (loi) {
                 this.First = false;
 
-                this.prevLOILink = this.loiLink + loi[0].loiID;
+                this.prevLOILink = this.loiLink + loi.loiID;
 
                 console.log('this is the link', this.prevLOILink);
 
@@ -160,19 +187,43 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
 
     console.log('routePrevious')
     console.log('routing to: ', this.prevLOILink);
-    this.router.navigate([this.prevLOILink]);
+    this.router.navigate([this.prevLOILink], { queryParams: { filter: this.filter } });
 
   }
 
   routeNext() {
     console.log('routeNext')
     console.log('routing to: ', this.nextLOILink);
-    this.router.navigate([this.nextLOILink]);
+    this.router.navigate([this.nextLOILink], { queryParams: { filter: this.filter } });
 
   }
 
   routeToOrg() {
     this.router.navigate([this.viewOrgLink]);
+  }
+
+  getFilter(filter) {
+
+    console.log('getFilter', filter)
+    console.log('before - this.outputFilter', this.outputFilter)
+
+    switch (filter) {
+      case 0:
+        this.outputFilter = 'All'
+        break;
+      case 1:
+        this.outputFilter = 'President Voted Yes'
+        break;
+      case 2:
+        this.outputFilter = 'President Voted No'
+        break;
+      case 3:
+        this.outputFilter = 'Pending Votes'
+        break;
+    }
+
+    console.log('after - this.outputFilter', this.outputFilter)
+
   }
 
 
