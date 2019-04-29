@@ -26,10 +26,10 @@ export class GetNextLoiService {
 
   }
 
-  getNextLOI(ts: string): Observable<any> {
+  getNextLOI(data: any): Observable<any> {
 
-    let urlString = this.API_URL + "/nextLOI?ts=" + ts;
-
+    let urlString = this.API_URL + "/nextLOI?ts=" + data.createdAt + '&user=' + data.user + '&filter=' + data.filter;
+    
     console.log('urlString', urlString)
 
     return this.http.get(urlString);
