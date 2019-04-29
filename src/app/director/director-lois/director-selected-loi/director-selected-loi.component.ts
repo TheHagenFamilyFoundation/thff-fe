@@ -31,6 +31,12 @@ export class DirectorSelectedLoiComponent implements OnInit {
 
   }
 
+  routeToLOI() {
+
+    this.router.navigate([this.link], { queryParams: { filter: this.data.currentFilter } });
+
+  }
+
   cancel() {
 
     console.log('cancel pressed');
