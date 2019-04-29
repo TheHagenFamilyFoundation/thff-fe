@@ -103,7 +103,7 @@ export class DirectorLoisComponent implements OnInit {
 
     let dialogRef = this.dialog.open(DirectorSelectedLoiComponent, {
       width: '400px',
-      data: { name: loi.name, loiID: loi.loiID }
+      data: { name: loi.name, loiID: loi.loiID, currentFilter: this.currentFilter }
     });
 
     dialogRef.afterClosed().subscribe(result => {
