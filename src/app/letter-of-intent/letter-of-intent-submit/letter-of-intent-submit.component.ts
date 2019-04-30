@@ -51,6 +51,9 @@ export class LetterOfIntentSubmitComponent implements OnInit {
   doc501c3status: any; //for the 501c3 doc
   outputStatus: any;
 
+  currentYear: number;
+  nextYear: number;
+
   constructor(
     public dialog: MatDialog,
     private submitLoiService: SubmitLoiService,
@@ -83,6 +86,9 @@ export class LetterOfIntentSubmitComponent implements OnInit {
     this.configureStatus(this.status);
 
     this.checkCanSubmit();
+
+    this.currentYear = new Date().getFullYear();
+    this.nextYear = new Date().getFullYear() + 1;
 
   }
 
