@@ -64,6 +64,8 @@ export class DirectorLoisComponent implements OnInit {
 
   getLOIs() {
 
+    this.Loaded = false;
+
     this.setButtons(0);
 
     this.getLoiService.getAllLOIs()
