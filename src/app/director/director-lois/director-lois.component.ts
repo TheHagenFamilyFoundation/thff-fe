@@ -247,7 +247,7 @@ export interface LOIData {
   id: string;
   name: string;
   organization: string;
-  createdAt: string;
+  createdAt: Date;
   submitted: string;
   status: string;
   score: number;
