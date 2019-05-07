@@ -1,12 +1,17 @@
 <div align="center">
   <h3>View Letter of Intents</h3>
 
-  <div *ngIf="!Printable">
+  <div>
     <div class="example-button-row">
       <button mat-raised-button [disabled]="AllLOI" (click)="getLOIs()">All</button>
       <button mat-raised-button [disabled]="PresYes" (click)="getPresVoting(1)">President Voting Yes</button>
       <button mat-raised-button [disabled]="PresNo" (click)="getPresVoting(2)">President Voting No</button>
       <button mat-raised-button [disabled]="Pending" (click)="getPendingVoteLOIs()">Pending Votes</button>
+      <button mat-raised-button [disabled]="Rank" (click)="getRankedLOIs()">Ranked LOIs</button>
+    </div>
+  </div>
+  <div *ngIf="!Printable">
+    <div class="example-button-row">
       <button mat-raised-button (click)="getPrintable()">Printable</button>
     </div>
   </div>
@@ -18,6 +23,7 @@
 
   <br>
 
+  <!-- create separate component for this -->
   <div *ngIf="!Printable">
     <div class="example-container mat-elevation-z8 toc">
       <mat-table [dataSource]="dataSource" matSort>
@@ -69,7 +75,12 @@
   <br>
 
   <div *ngIf="Printable">
-    <app-loi-list></app-loi-list>
+    <div *ngIf="Loaded">
+      <app-loi-list [lois]="lois"></app-loi-list>
+    </div>
+    <div *ngIf="!Loaded">
+      <mat-spinner></mat-spinner>
+    </div>
   </div>
 
 </div>
