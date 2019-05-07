@@ -33,6 +33,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatSortModule } from '@angular/material/sort';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -341,7 +342,7 @@ import { LoiListComponent } from './director/director-lois/loi-list/loi-list.com
         MatSidenavModule, MatTabsModule, MatIconModule, MatToolbarModule, MatMenuModule,
         MatSnackBarModule, MatCardModule, MatDividerModule, MatTableModule, MatFormFieldModule,
         MatPaginatorModule, MatDialogModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
-        MatExpansionModule, MatProgressSpinnerModule, MatSliderModule,
+        MatExpansionModule, MatProgressSpinnerModule, MatSliderModule, MatSortModule,
 
         ContentsModule, NgxPageScrollCoreModule.forRoot({ /* custom settings here */ }),
         NgxPageScrollModule,
