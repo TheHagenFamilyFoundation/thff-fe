@@ -1,3 +1,66 @@
-<p>
-  loi-list works!
-</p>
+<div>
+
+  <!-- loop through loi -->
+  <div *ngFor="let loi of lois">
+
+    <div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="LOI Name" value={{loi.name}} disabled>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Project Title" value={{loi.info[0]?.projectTitle}} disabled>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width purpose-size">
+          <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows=1 cdkAutosizeMaxRows=50 placeholder="Purpose"
+            value={{loi.info[0]?.purpose}} disabled></textarea>
+          <mat-hint align="start">{{loi.info[0]?.purpose?.toString().length}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <br>
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Project Start Date" value="{{loi.info[0]?.projectStartDate | date}}" disabled>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Project End Date" value="{{loi.info[0]?.projectEndDate | date}}" disabled>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class=" full-width">
+          <input matInput placeholder="Amount Requested" value="{{loi.info[0]?.amountRequested | currency}}" disabled>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class=" full-width">
+          <input matInput placeholder="Total Project Cost" value="{{loi.info[0]?.totalProjectCost | currency}}"
+            disabled>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class=" full-width">
+          <input matInput placeholder="Status" value="{{loi.status}}" disabled>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class=" full-width">
+          <input matInput placeholder="Score" value="{{loi.score}}" disabled>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+  </div>
+
+</div>
