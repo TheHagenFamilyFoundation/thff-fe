@@ -235,6 +235,7 @@ import { EmailComponent } from './test/email/email.component';
 
 //Utility
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
+import { LoiListComponent } from './director/director-lois/loi-list/loi-list.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -320,6 +321,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
+
+        LoiListComponent,
 
     ],
     imports: [BrowserModule,
