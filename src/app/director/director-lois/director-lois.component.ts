@@ -246,4 +246,9 @@ export class DirectorLoisComponent implements OnInit {
 export interface LOIData {
   id: string;
   name: string;
+  organization: string;
+  createdAt: string;
+  submitted: string;
+  status: string;
+  score: number;
 }
