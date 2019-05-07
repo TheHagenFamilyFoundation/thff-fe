@@ -28,6 +28,7 @@ export class DirectorLoisComponent implements OnInit {
   PresYes: boolean;
   PresNo: boolean;
   Pending: boolean;
+  Ranked: boolean;
   Printable: boolean;
 
   currentFilter: number;
@@ -197,6 +198,31 @@ export class DirectorLoisComponent implements OnInit {
       })
   }
 
+  getRankedLOIs() {
+
+    this.setButtons(4);
+
+    this.Loaded = false;
+
+    this.getLoiService.getRankedLOIs().subscribe(
+      (lois) => {
+
+        console.log('lois', lois)
+
+        this.lois = lois;
+
+        this.setStatuses();
+
+        this.dataSource = new MatTableDataSource(this.lois);
+
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+
+        this.Loaded = true;
+
+      })
+  }
+
   getPrintable() {
     console.log('printable')
 
@@ -218,6 +244,7 @@ export class DirectorLoisComponent implements OnInit {
     this.PresYes = false;
     this.PresNo = false;
     this.Pending = false;
+    this.Ranked = false;
 
     switch (numButton) {
       case 0:
@@ -235,6 +262,10 @@ export class DirectorLoisComponent implements OnInit {
       case 3:
         this.Pending = true;
         this.currentFilter = 3;
+        break;
+      case 4:
+        this.Ranked = true;
+        this.currentFilter = 4;
         break;
     }
 
