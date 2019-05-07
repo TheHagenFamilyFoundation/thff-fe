@@ -7,9 +7,10 @@
       <button mat-raised-button [disabled]="PresYes" (click)="getPresVoting(1)">President Voting Yes</button>
       <button mat-raised-button [disabled]="PresNo" (click)="getPresVoting(2)">President Voting No</button>
       <button mat-raised-button [disabled]="Pending" (click)="getPendingVoteLOIs()">Pending Votes</button>
-      <button mat-raised-button [disabled]="Rank" (click)="getRankedLOIs()">Ranked LOIs</button>
+      <button mat-raised-button [disabled]="Ranked" (click)="getRankedLOIs()">Ranked LOIs</button>
     </div>
   </div>
+  <br>
   <div *ngIf="!Printable">
     <div class="example-button-row">
       <button mat-raised-button (click)="getPrintable()">Printable</button>
