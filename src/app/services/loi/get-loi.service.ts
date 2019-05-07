@@ -51,7 +51,17 @@ export class GetLoiService {
 
   getAllLOIs(): Observable<any> {
 
-    let urlString = this.API_URL + "/loi?limit=500";
+    let urlString = this.API_URL + "/getLOIs";
+
+    console.log('urlString', urlString)
+    return this.http.get(urlString);
+
+  }
+
+
+  getRankedLOIs(): Observable<any> {
+
+    let urlString = this.API_URL + "/getRankedLOIs";
 
     console.log('urlString', urlString)
     return this.http.get(urlString);

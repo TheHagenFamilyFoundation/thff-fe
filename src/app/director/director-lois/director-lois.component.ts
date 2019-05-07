@@ -19,7 +19,7 @@ export class DirectorLoisComponent implements OnInit {
   user: any;
   userID: any;
 
-  displayedColumns = ['name', 'org', 'createdOn', 'submitted', 'status'];
+  displayedColumns = ['name', 'org', 'createdOn', 'submitted', 'status', 'score'];
   dataSource: MatTableDataSource<LOIData>;
 
   Loaded: boolean;
@@ -28,6 +28,8 @@ export class DirectorLoisComponent implements OnInit {
   PresYes: boolean;
   PresNo: boolean;
   Pending: boolean;
+  Ranked: boolean;
+  Printable: boolean;
 
   currentFilter: number;
 
@@ -45,6 +47,7 @@ export class DirectorLoisComponent implements OnInit {
     this.PresYes = false;
     this.PresNo = false;
     this.Pending = false;
+    this.Printable = false;
 
     this.currentFilter = 0; //initialize to 0 - All LOI
 
@@ -147,7 +150,6 @@ export class DirectorLoisComponent implements OnInit {
       this.setButtons(2);
     }
 
-
     this.Loaded = false;
 
     this.getLoiService.getPresVotes(vote).subscribe(
@@ -196,6 +198,45 @@ export class DirectorLoisComponent implements OnInit {
       })
   }
 
+  getRankedLOIs() {
+
+    this.setButtons(4);
+
+    this.Loaded = false;
+
+    this.getLoiService.getRankedLOIs().subscribe(
+      (lois) => {
+
+        console.log('lois', lois)
+
+        this.lois = lois;
+
+        this.setStatuses();
+
+        this.dataSource = new MatTableDataSource(this.lois);
+
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+
+        this.Loaded = true;
+
+      })
+  }
+
+  getPrintable() {
+    console.log('printable')
+
+    this.Printable = true;
+
+  }
+
+  getTable() {
+    this.Printable = false;
+
+    this.getLOIs();
+
+  }
+
   setButtons(numButton) {
 
     //all to false
@@ -203,6 +244,7 @@ export class DirectorLoisComponent implements OnInit {
     this.PresYes = false;
     this.PresNo = false;
     this.Pending = false;
+    this.Ranked = false;
 
     switch (numButton) {
       case 0:
@@ -221,6 +263,10 @@ export class DirectorLoisComponent implements OnInit {
         this.Pending = true;
         this.currentFilter = 3;
         break;
+      case 4:
+        this.Ranked = true;
+        this.currentFilter = 4;
+        break;
     }
 
   }
@@ -231,4 +277,9 @@ export class DirectorLoisComponent implements OnInit {
 export interface LOIData {
   id: string;
   name: string;
+  organization: string;
+  createdAt: Date;
+  submitted: string;
+  status: string;
+  score: number;
 }
