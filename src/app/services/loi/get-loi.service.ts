@@ -58,6 +58,16 @@ export class GetLoiService {
 
   }
 
+
+  getRankedLOIs(): Observable<any> {
+
+    let urlString = this.API_URL + "/getRankedLOIs";
+
+    console.log('urlString', urlString)
+    return this.http.get(urlString);
+
+  }
+
   getPresVotes(data: any): Observable<any> {
 
     console.log('getPresVotes - data', data)
