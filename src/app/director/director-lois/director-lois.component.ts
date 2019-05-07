@@ -232,8 +232,8 @@ export class DirectorLoisComponent implements OnInit {
 
     this.Loaded = false;
 
-
-    setTimeout(() => { this.Loaded = true; }, 1000)
+    this.toggleGet();
+    // setTimeout(() => { this.Loaded = true; }, 1000)
 
   }
 
@@ -242,8 +242,30 @@ export class DirectorLoisComponent implements OnInit {
 
     this.Loaded = false;
 
-    setTimeout(() => { this.Loaded = true; }, 1000)
+    this.toggleGet();
 
+    // setTimeout(() => { this.Loaded = true; }, 1000)
+
+  }
+
+  toggleGet() {
+    switch (this.currentFilter) {
+      case 0:
+        this.getLOIs();
+        break;
+      case 1:
+        this.getPresVoting(this.currentFilter);
+        break;
+      case 2:
+        this.getPresVoting(this.currentFilter);
+        break;
+      case 3:
+        this.getPendingVoteLOIs();
+        break;
+      case 4:
+        this.getRankedLOIs();
+        break;
+    }
   }
 
   setButtons(numButton) {
