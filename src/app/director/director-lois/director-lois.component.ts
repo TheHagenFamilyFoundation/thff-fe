@@ -19,7 +19,7 @@ export class DirectorLoisComponent implements OnInit {
   user: any;
   userID: any;
 
-  displayedColumns = ['name', 'org', 'createdOn', 'submitted', 'status'];
+  displayedColumns = ['name', 'org', 'createdOn', 'submitted', 'status', 'score'];
   dataSource: MatTableDataSource<LOIData>;
 
   Loaded: boolean;
@@ -28,6 +28,7 @@ export class DirectorLoisComponent implements OnInit {
   PresYes: boolean;
   PresNo: boolean;
   Pending: boolean;
+  Printable: boolean;
 
   currentFilter: number;
 
@@ -45,6 +46,7 @@ export class DirectorLoisComponent implements OnInit {
     this.PresYes = false;
     this.PresNo = false;
     this.Pending = false;
+    this.Printable = false;
 
     this.currentFilter = 0; //initialize to 0 - All LOI
 
@@ -147,7 +149,6 @@ export class DirectorLoisComponent implements OnInit {
       this.setButtons(2);
     }
 
-
     this.Loaded = false;
 
     this.getLoiService.getPresVotes(vote).subscribe(
@@ -194,6 +195,20 @@ export class DirectorLoisComponent implements OnInit {
         this.Loaded = true;
 
       })
+  }
+
+  getPrintable() {
+    console.log('printable')
+
+    this.Printable = true;
+
+  }
+
+  getTable() {
+    this.Printable = false;
+
+    this.getLOIs();
+
   }
 
   setButtons(numButton) {
