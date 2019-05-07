@@ -1,18 +1,24 @@
 <div align="center">
   <h3>View Letter of Intents</h3>
 
-  <div>
+  <div *ngIf="!Printable">
     <div class="example-button-row">
       <button mat-raised-button [disabled]="AllLOI" (click)="getLOIs()">All</button>
       <button mat-raised-button [disabled]="PresYes" (click)="getPresVoting(1)">President Voting Yes</button>
       <button mat-raised-button [disabled]="PresNo" (click)="getPresVoting(2)">President Voting No</button>
       <button mat-raised-button [disabled]="Pending" (click)="getPendingVoteLOIs()">Pending Votes</button>
+      <button mat-raised-button (click)="getPrintable()">Printable</button>
+    </div>
+  </div>
+  <div *ngIf="Printable">
+    <div class="example-button-row">
+      <button mat-raised-button (click)="getTable()">Table</button>
     </div>
   </div>
 
   <br>
 
-  <div>
+  <div *ngIf="!Printable">
     <div class="example-container mat-elevation-z8 toc">
       <mat-table [dataSource]="dataSource" matSort>
 
@@ -43,6 +49,11 @@
           <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="score">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Score </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.score}} </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
         </mat-row>
@@ -53,6 +64,12 @@
       <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
       <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
     </div>
+  </div>
+
+  <br>
+
+  <div *ngIf="Printable">
+    <app-loi-list></app-loi-list>
   </div>
 
 </div>
