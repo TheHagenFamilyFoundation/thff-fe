@@ -228,12 +228,19 @@ export class DirectorLoisComponent implements OnInit {
 
     this.Printable = true;
 
+    this.Loaded = false;
+
+
+    setTimeout(() => { this.Loaded = true; }, 1000)
+
   }
 
   getTable() {
     this.Printable = false;
 
-    this.getLOIs();
+    this.Loaded = false;
+
+    setTimeout(() => { this.Loaded = true; }, 1000)
 
   }
 
