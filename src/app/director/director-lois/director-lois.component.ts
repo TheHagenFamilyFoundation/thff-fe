@@ -302,6 +302,8 @@ export class DirectorLoisComponent implements OnInit {
 
   }
 
+
+
 }
 
 //old
