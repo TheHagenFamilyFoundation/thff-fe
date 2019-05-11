@@ -6,7 +6,7 @@
   <div class="example-container">
     <div>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Project Title" value={{projectTitle}} disabled>
+        <input matInput placeholder="Project Title" value={{projectTitle}} readonly>
       </mat-form-field>
     </div>
     <div *ngIf="resetPurpose">
@@ -15,31 +15,31 @@
     <div *ngIf="!resetPurpose">
       <mat-form-field class="full-width purpose-size">
         <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows=1 cdkAutosizeMaxRows=50 placeholder="Purpose"
-          value={{purpose}} disabled></textarea>
+          value={{purpose}} readonly></textarea>
         <mat-hint align="start">{{purpose?.toString().length}} / 2000</mat-hint>
       </mat-form-field>
     </div>
     <br>
     <div>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Project Start Date" value={{startDate}} disabled>
+        <input matInput placeholder="Project Start Date" value={{startDate}} readonly>
       </mat-form-field>
     </div>
 
     <div>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Project End Date" value={{endDate}} disabled>
+        <input matInput placeholder="Project End Date" value={{endDate}} readonly>
       </mat-form-field>
     </div>
 
     <div>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Amount Requested" value="{{amountRequested | currency}}" disabled>
+        <input matInput placeholder="Amount Requested" value="{{amountRequested | currency}}" readonly>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class=" full-width">
-        <input matInput placeholder="Total Project Cost" value="{{totalProjectCost | currency}}" disabled>
+        <input matInput placeholder="Total Project Cost" value="{{totalProjectCost | currency}}" readonly>
       </mat-form-field>
     </div>
   </div>
