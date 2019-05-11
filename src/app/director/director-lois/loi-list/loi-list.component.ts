@@ -14,13 +14,13 @@ export class LoiListComponent implements OnInit {
   @Input()
   lois: any;
 
-  Loaded: boolean;
+  Loading: boolean;
 
   fullImagePath = '/assets/images/pdf.png';
 
   constructor(
   ) {
-    this.Loaded = false;
+    // this.Loading = false;
   }
 
   ngOnInit() {
@@ -28,6 +28,8 @@ export class LoiListComponent implements OnInit {
 
   exportToPDF() {
     console.log('export to pdf pressed')
+
+    this.Loading = true;
 
     var pdf = new jsPDF('p', 'mm', 'a4');
     let promises = [];
@@ -66,6 +68,8 @@ export class LoiListComponent implements OnInit {
         }
 
       });
+
+      this.Loading = false;
 
       pdf.save('converteddoc.pdf');
     })
