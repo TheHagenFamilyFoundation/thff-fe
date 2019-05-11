@@ -1,3 +1,23 @@
 .full-width {
     width: 900px
   }
+
+  .half-width {
+    width: 450px
+  }
+
+  .quarter-width {
+    width: 225px
+  }
+/* 
+  ::ng-deep .mat-focused .mat-form-field-label {
+    color: black !important;
+   }
+  
+   ::ng-deep.mat-form-field-value {
+    color: green !important;
+  } 
+  
+  ::ng-deep.mat-form-field-ripple {
+   background-color: green !important;;
+  } */
