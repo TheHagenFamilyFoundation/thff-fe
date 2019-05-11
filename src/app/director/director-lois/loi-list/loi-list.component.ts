@@ -3,11 +3,6 @@ import { FormControl } from '@angular/forms';
 
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-// import { LOIStatusService } from '../../../services/loi/loi-status.service';
-
-
-// import { GetLoiService } from '../../../services/loi/get-loi.service';
-// import { LOIStatusService } from '../../../services/loi/loi-status.service';
 
 @Component({
   selector: 'app-loi-list',
@@ -19,36 +14,29 @@ export class LoiListComponent implements OnInit {
   @Input()
   lois: any;
 
-  // lois: any
-
-  Loaded: boolean;
+  Loading: boolean;
 
   fullImagePath = '/assets/images/pdf.png';
 
   constructor(
-    // public getLoiService: GetLoiService,
-    // private loiStatusService: LOIStatusService
   ) {
-    this.Loaded = false;
+    // this.Loading = false;
   }
 
   ngOnInit() {
-
-    // this.getLOIs();
-
   }
 
   exportToPDF() {
     console.log('export to pdf pressed')
 
-    // var pdf = new jsPDF();
+    this.Loading = true;
+
     var pdf = new jsPDF('p', 'mm', 'a4');
-    // var pdf = new jsPDF('p', 'pt', 'a0');
     let promises = [];
 
 
     //this is the title
-    // pdf.setFontSize(40)
+    // pdf.setFontSize(40) //maybe
     pdf.setFontSize(12)
     pdf.text(75, 10, 'List of Letter of Intents')
 
@@ -80,6 +68,8 @@ export class LoiListComponent implements OnInit {
         }
 
       });
+
+      this.Loading = false;
 
       pdf.save('converteddoc.pdf');
     })

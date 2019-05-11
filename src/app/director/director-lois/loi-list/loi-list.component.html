@@ -1,8 +1,10 @@
 <div>
   <!-- add pdf icon-->
-  <button mat-button (click)="exportToPDF()">
+  <button mat-button (click)="exportToPDF()" [disabled]="Loading">
     <img [src]="fullImagePath" width="10%" height="10%"></button>
-
+  <div *ngIf="Loading">
+    <mat-spinner></mat-spinner>
+  </div>
 
   <!-- loop through loi -->
   <br>
