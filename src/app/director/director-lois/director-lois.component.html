@@ -11,17 +11,10 @@
     </div>
   </div>
   <br>
-  <div *ngIf="!Printable">
-    <div class="example-button-row">
-      <button mat-raised-button (click)="getPrintable()">Printable</button>
-    </div>
+  <div class="example-button-row">
+    <button *ngIf="!Printable" mat-raised-button (click)="getPrintable()">Printable</button>
+    <button *ngIf="Printable" mat-raised-button (click)="getTable()">Table</button>
   </div>
-  <div *ngIf="Printable">
-    <div class="example-button-row">
-      <button mat-raised-button (click)="getTable()">Table</button>
-    </div>
-  </div>
-
   <br>
 
   <!-- create separate component for this -->

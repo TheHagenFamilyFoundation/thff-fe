@@ -1,66 +1,77 @@
 <div>
+  <!-- add pdf icon-->
+  <button mat-button (click)="exportToPDF()">
+    <img [src]="fullImagePath" width="10%" height="10%"></button>
+
 
   <!-- loop through loi -->
+  <br>
+  <br>
+  <h3>List of Letter of Intents</h3>
+
   <div *ngFor="let loi of lois">
+    <!-- TO BE REMOVED - debug-->
+    <div id="loi_{{loi.id}}">
+      <!-- <div id="loi1"> -->
+      <!-- TO BE REMOVED - debug-->
+      <div>
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="LOI Name" value={{loi.name}} readonly>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Project Title" value={{loi.info[0]?.projectTitle}} readonly>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width purpose-size">
+            <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows=1 cdkAutosizeMaxRows=50 placeholder="Purpose"
+              value={{loi.info[0]?.purpose}} readonly></textarea>
+            <mat-hint align="start">{{loi.info[0]?.purpose?.toString().length}} / 2000</mat-hint>
+          </mat-form-field>
+        </div>
+        <br>
+        <div>
+          <mat-form-field class="quarter-width">
+            <input matInput placeholder="Project Start Date" value="{{loi.info[0]?.projectStartDate | date}}" readonly>
+          </mat-form-field>
+          <!-- </div>
 
-    <div>
-      <div>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="LOI Name" value={{loi.name}} disabled>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Project Title" value={{loi.info[0]?.projectTitle}} disabled>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class="full-width purpose-size">
-          <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows=1 cdkAutosizeMaxRows=50 placeholder="Purpose"
-            value={{loi.info[0]?.purpose}} disabled></textarea>
-          <mat-hint align="start">{{loi.info[0]?.purpose?.toString().length}} / 2000</mat-hint>
-        </mat-form-field>
-      </div>
-      <br>
-      <div>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Project Start Date" value="{{loi.info[0]?.projectStartDate | date}}" disabled>
-        </mat-form-field>
-      </div>
+        <div> -->
+          <mat-form-field class="quarter-width">
+            <input matInput placeholder="Project End Date" value="{{loi.info[0]?.projectEndDate | date}}" readonly>
+          </mat-form-field>
+        </div>
 
-      <div>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Project End Date" value="{{loi.info[0]?.projectEndDate | date}}" disabled>
-        </mat-form-field>
-      </div>
+        <div>
+          <mat-form-field class="quarter-width">
+            <input matInput placeholder="Amount Requested" value="{{loi.info[0]?.amountRequested | currency}}" readonly>
+          </mat-form-field>
+          <!-- </div>
+        <div> -->
+          <mat-form-field class="quarter-width">
+            <input matInput placeholder="Total Project Cost" value="{{loi.info[0]?.totalProjectCost | currency}}"
+              readonly>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="quarter-width">
+            <input matInput placeholder="Status" value="{{loi.status}}" readonly>
+          </mat-form-field>
+          <!-- </div>
+        <div> -->
+          <mat-form-field class="quarter-width">
+            <input matInput placeholder="Score" value="{{loi.score}}" readonly>
+          </mat-form-field>
+        </div>
 
-      <div>
-        <mat-form-field class=" full-width">
-          <input matInput placeholder="Amount Requested" value="{{loi.info[0]?.amountRequested | currency}}" disabled>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class=" full-width">
-          <input matInput placeholder="Total Project Cost" value="{{loi.info[0]?.totalProjectCost | currency}}"
-            disabled>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class=" full-width">
-          <input matInput placeholder="Status" value="{{loi.status}}" disabled>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class=" full-width">
-          <input matInput placeholder="Score" value="{{loi.score}}" disabled>
-        </mat-form-field>
       </div>
 
     </div>
-
     <br>
     <mat-divider></mat-divider>
     <br>
   </div>
-
 </div>

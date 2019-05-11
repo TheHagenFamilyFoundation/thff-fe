@@ -1,6 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+// import { LOIStatusService } from '../../../services/loi/loi-status.service';
+
+
 // import { GetLoiService } from '../../../services/loi/get-loi.service';
 // import { LOIStatusService } from '../../../services/loi/loi-status.service';
 
@@ -18,6 +23,8 @@ export class LoiListComponent implements OnInit {
 
   Loaded: boolean;
 
+  fullImagePath = '/assets/images/pdf.png';
+
   constructor(
     // public getLoiService: GetLoiService,
     // private loiStatusService: LOIStatusService
@@ -31,47 +38,52 @@ export class LoiListComponent implements OnInit {
 
   }
 
-  // getLOIs() {
+  exportToPDF() {
+    console.log('export to pdf pressed')
 
-  //   this.getLoiService.getAllLOIs()
-  //     .subscribe(
-  //       (lois) => {
+    // var pdf = new jsPDF();
+    var pdf = new jsPDF('p', 'mm', 'a4');
+    // var pdf = new jsPDF('p', 'pt', 'a0');
+    let promises = [];
 
-  //         console.log('lois', lois);
 
-  //         this.lois = lois;
+    //this is the title
+    // pdf.setFontSize(40)
+    pdf.setFontSize(12)
+    pdf.text(75, 10, 'List of Letter of Intents')
 
-  //         this.setStatuses();
 
-  //         this.Loaded = true;
+    this.lois.forEach(loi => {
 
-  //       })
+      let loiDoc = '#loi_' + loi.id;
+      console.log('loiDoc', loiDoc)
 
-  // }
+      promises.push(html2canvas(document.querySelector(loiDoc)))
 
-  // setStatuses() {
+    });
 
-  //   console.log('setting status')
+    Promise.all(promises).then((canvases) => {
 
-  //   this.lois.forEach(loi => {
+      canvases.forEach((canvas, index) => {
 
-  //     console.log('before LOI', loi)
+        var imgWidth = 208; //default 208
+        var pageHeight = 500; //295
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+        var heightLeft = imgHeight;
+        var position = 30;
 
-  //     console.log('status', loi.status)
+        var imgData = canvas.toDataURL("image/jpeg", 1.0);
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
 
-  //     loi.status = this.configureStatus(loi.status);
+        if (index < this.lois.length - 1) {
+          pdf.addPage();
+        }
 
-  //     console.log('after LOI', loi)
+      });
 
-  //   });
+      pdf.save('converteddoc.pdf');
+    })
 
-  // }
-
-  //takes in a status s that is a number
-  // configureStatus(s: number): string {
-
-  //   return this.loiStatusService.getStatus(s)
-
-  // }
+  }
 
 }
