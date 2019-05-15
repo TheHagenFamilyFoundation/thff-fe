@@ -29,7 +29,7 @@ export class DirectorOrgViewLetterOfIntentComponent implements OnInit {
   status: number;
 
   //check basic row height
-  basicRowHeight = 350;
+  basicRowHeight = 250;
 
   First: boolean;
   Last: boolean;
