@@ -33,9 +33,21 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div>
-    <app-director-open-full-proposal></app-director-open-full-proposal>
+  <div class="loi-basic">
+    <mat-grid-list cols="2" rows="1" [rowHeight]="basicRowHeight">
+      <mat-grid-tile>
+        <div *ngIf="loi">
+          <app-director-open-full-proposal></app-director-open-full-proposal>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
+  <!-- <div class="loi-basic">
+    <app-director-open-full-proposal></app-director-open-full-proposal>
+  </div> -->
 
 </div>
 <div id="textbox">
