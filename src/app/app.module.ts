@@ -185,9 +185,12 @@ import { DirectorOrgViewLetterOfIntentInfoComponent } from './director/director-
 import { DirectorOrgViewLetterOfIntentStatusComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent-status/director-org-view-letter-of-intent-status.component';
 import { DirectorOrgLoiVotingComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-loi-voting/director-org-loi-voting.component';
 import { DirectorOrgLoiPresidentVotingComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-loi-president-voting/director-org-loi-president-voting.component';
+import { DirectorOpenFullProposalComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-open-full-proposal/director-open-full-proposal.component';
 
 import { DirectorLoisComponent } from './director/director-lois/director-lois.component';
 import { DirectorSelectedLoiComponent } from './director/director-lois/director-selected-loi/director-selected-loi.component';
+
+import { LoiListComponent } from './director/director-lois/loi-list/loi-list.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
@@ -236,7 +239,6 @@ import { EmailComponent } from './test/email/email.component';
 
 //Utility
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
-import { LoiListComponent } from './director/director-lois/loi-list/loi-list.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -269,8 +271,10 @@ import { LoiListComponent } from './director/director-lois/loi-list/loi-list.com
         DirectorOrgViewLetterOfIntentStatusComponent,
         DirectorOrgLoiVotingComponent,
         DirectorOrgLoiPresidentVotingComponent,
+        DirectorOpenFullProposalComponent,
 
         DirectorLoisComponent,
+        LoiListComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
@@ -322,8 +326,6 @@ import { LoiListComponent } from './director/director-lois/loi-list/loi-list.com
         NotFoundComponent,
 
         PhoneMaskDirective,
-
-        LoiListComponent,
 
     ],
     imports: [BrowserModule,
