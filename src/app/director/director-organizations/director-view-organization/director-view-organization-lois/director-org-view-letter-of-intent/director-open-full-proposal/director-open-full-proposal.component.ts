@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-director-open-full-proposal',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./director-open-full-proposal.component.css']
 })
 export class DirectorOpenFullProposalComponent implements OnInit {
+
+  @Input()
+  loi: any;
+  loiID: any;
 
   constructor() { }
 
