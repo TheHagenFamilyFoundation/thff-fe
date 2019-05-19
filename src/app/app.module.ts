@@ -209,6 +209,8 @@ import { ForgotUsernameComponent } from './login/reset-password-or-forgot-userna
 //admin
 import { AdminComponent } from './admin/admin.component';
 
+import { AdminFullProposalComponent } from './admin/admin-full-proposal/admin-full-proposal.component';
+
 //user
 import { UserComponent } from './user/user.component';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
@@ -271,6 +273,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
         //Admin
         AdminComponent,
+
+        AdminFullProposalComponent,
 
         //Organization
         DirectorOrganizationsComponent,
@@ -342,7 +346,6 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
-
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
