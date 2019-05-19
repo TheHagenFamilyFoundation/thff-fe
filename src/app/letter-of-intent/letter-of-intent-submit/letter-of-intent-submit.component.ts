@@ -109,7 +109,7 @@ export class LetterOfIntentSubmitComponent implements OnInit {
 
     console.log('checking if loi info', this.loi)
 
-    if (this.loi.info[0].validLOIInfo) {
+    if (this.loi.info.length > 0 && this.loi.info[0].validLOIInfo) {
       this.HasLOIInfo = true;
     }
     else {
