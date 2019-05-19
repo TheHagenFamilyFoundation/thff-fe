@@ -16,7 +16,7 @@
   </div>
   <br>
   <div>
-    <div>
+    <div *ngIf="accessLevel > 3">
       <button class="bsize" mat-raised-button routerLink="/admin">Admin Page</button>
     </div>
   </div>
