@@ -196,6 +196,9 @@ import { ResetPasswordComponent } from './login/reset-password-or-forgot-usernam
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
 
+//admin
+import { AdminComponent } from './admin/admin.component';
+
 //user
 import { UserComponent } from './user/user.component';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
@@ -255,6 +258,9 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
         //Director
         DirectorsMenuComponent,
+
+        //Admin
+        AdminComponent,
 
         //Organization
         DirectorOrganizationsComponent,
