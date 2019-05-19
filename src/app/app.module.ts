@@ -128,6 +128,8 @@ import { PhoneMaskDirective } from './directives/phone-mask.directive';
 
 
 //ADMIN
+import { SubmissionYearService } from './services/admin/submission-year.service';
+
 //utility
 //full proposal
 import { CreateFieldOpenFpService } from './services/full-proposal/utility/create-field-open-fp.service';
@@ -397,6 +399,9 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         //voting
         PresVotingService, DirectorVotingService,
 
+
+        //admin
+        SubmissionYearService,
 
         //utility
         CreateFieldOpenFpService
