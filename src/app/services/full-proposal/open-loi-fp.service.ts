@@ -35,7 +35,7 @@ export class OpenLoiFpService {
 
     console.log('data', data)
 
-    return this.http.post(this.API_URL + '/openFPs', data)
+    return this.http.post(this.API_URL + '/loiFP', data)
   }
 
 }
