@@ -16,9 +16,7 @@
     <app-director-org-view-letter-of-intent-info [loi]="loi"></app-director-org-view-letter-of-intent-info>
   </div>
   <br>
-  <div *ngIf="loi" class="loi-status">
-    <app-director-org-view-letter-of-intent-status [loi]="loi"></app-director-org-view-letter-of-intent-status>
-  </div>
+
   <div class="loi-basic">
     <mat-grid-list cols="2" rows="1" [rowHeight]="basicRowHeight">
       <mat-grid-tile>
@@ -36,19 +34,17 @@
   <div class="loi-basic">
     <mat-grid-list cols="2" rows="1" [rowHeight]="basicRowHeight">
       <mat-grid-tile>
-        <div *ngIf="loi">
-          <app-director-open-full-proposal></app-director-open-full-proposal>
+        <div *ngIf="loi" class="loi-status">
+          <app-director-org-view-letter-of-intent-status [loi]="loi"></app-director-org-view-letter-of-intent-status>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
-
+        <div *ngIf="loi">
+          <app-director-open-full-proposal [loi]="loi"></app-director-open-full-proposal>
+        </div>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <!-- <div class="loi-basic">
-    <app-director-open-full-proposal></app-director-open-full-proposal>
-  </div> -->
-
 </div>
 <div id="textbox">
   <p class="alignleft"><span *ngIf="!First"><button mat-raised-button (click)="routePrevious()">Previous

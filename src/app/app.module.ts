@@ -114,6 +114,10 @@ import { EmailService } from './services/user/email.service';
 //FullProposals
 import { GetFullProposalService } from './services/full-proposal/get-full-proposal.service';
 import { FpStatusService } from './services/full-proposal/fp-status.service';
+import { OpenLoiFpService } from './services/full-proposal/open-loi-fp.service';
+import { OpenFpPortalService } from './services/full-proposal/open-fp-portal.service';
+import { NotifyRejectService } from './services/full-proposal/notify-reject.service';
+
 
 //Voting
 import { PresVotingService } from './services/voting/pres-voting.service';
@@ -121,6 +125,14 @@ import { DirectorVotingService } from './services/voting/director-voting.service
 
 //Directives
 import { PhoneMaskDirective } from './directives/phone-mask.directive';
+
+
+//ADMIN
+import { SubmissionYearService } from './services/admin/submission-year.service';
+
+//utility
+//full proposal
+import { CreateFieldOpenFpService } from './services/full-proposal/utility/create-field-open-fp.service';
 
 //Components
 
@@ -196,6 +208,13 @@ import { ResetPasswordComponent } from './login/reset-password-or-forgot-usernam
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
 
+//admin
+import { AdminComponent } from './admin/admin.component';
+
+import { AdminFullProposalComponent } from './admin/admin-full-proposal/admin-full-proposal.component';
+
+import { SubmissionYearComponent } from './admin/submission-year/submission-year.component';
+
 //user
 import { UserComponent } from './user/user.component';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
@@ -255,6 +274,10 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
         //Director
         DirectorsMenuComponent,
+
+        //Admin
+        AdminComponent, AdminFullProposalComponent,
+        SubmissionYearComponent,
 
         //Organization
         DirectorOrganizationsComponent,
@@ -356,8 +379,10 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
     bootstrap: [AppComponent],
     providers: [
         AuthGuard, AuthService, LoginService, GetCSRFTokenService,
+
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
         GrantService, GrantApiService,
         ValidEmailService, ValidUserNameService, ValidResetCodeService,
         EmailService, ResetCodeService, SetNewPasswordService, GetUserService,
@@ -368,9 +393,21 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         Upload501c3Service, Create501c3Service, Get501c3Service, Delete501c3Service, Doc501c3StatusService,
         GetLoiService, CreateLoiService, LOIStatusService,
         CreateLoiInfoService, GetLoiInfoService, DeleteLoiInfoService,
-        GetFullProposalService, FpStatusService,
 
-        PresVotingService, DirectorVotingService
+        //full proposal services
+        GetFullProposalService, FpStatusService,
+        OpenLoiFpService, OpenFpPortalService, NotifyRejectService,
+
+        //voting
+        PresVotingService, DirectorVotingService,
+
+
+        //admin
+        SubmissionYearService,
+
+        //utility
+        CreateFieldOpenFpService
+
     ],
     entryComponents: [
         CreateOrganizationComponent, CreateOrganizationHeaderComponent,

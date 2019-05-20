@@ -9,13 +9,17 @@
     </div>
   </div>
   <br>
-  <!-- <mat-divider></mat-divider> -->
   <div>
     <div>
       <button class="bsize" mat-raised-button routerLink="/director/lois">View Letter of Intents</button>
     </div>
   </div>
-
+  <br>
+  <div>
+    <div *ngIf="accessLevel > 3">
+      <button class="bsize" mat-raised-button routerLink="/admin">Admin Page</button>
+    </div>
+  </div>
 
 
 

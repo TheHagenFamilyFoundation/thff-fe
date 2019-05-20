@@ -1,0 +1,18 @@
+<div>
+  <mat-card>
+    <div>
+      <h3>Full Proposals</h3>
+
+      <div *ngIf="accessLevel > 3">
+        <div *ngIf="!Opened">
+          <button class="bsize" mat-raised-button (click)="openFullProposalPortal(true)">Open Full Proposal
+            Portal</button>
+        </div>
+        <div *ngIf="Opened">
+          <button class="bsize" mat-raised-button (click)="openFullProposalPortal(false)">Close Full Proposal
+            Portal</button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -1,5 +1,15 @@
 <mat-card>
   <div align="center">
     <h3>Open Full Proposal</h3>
+    <div *ngIf="!Opened">
+      <button mat-raised-button (click)="openFullProposal(true)">Open Full Proposal</button>
+    </div>
+    <div *ngIf="Opened">
+      Opened
+      link to the full proposal
+      <button mat-raised-button (click)="openFullProposal(false)">Close Full Proposal</button>
+    </div>
+
   </div>
+
 </mat-card>
