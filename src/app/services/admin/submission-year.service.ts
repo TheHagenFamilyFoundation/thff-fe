@@ -52,13 +52,13 @@ export class SubmissionYearService {
     return this.http.post(this.API_URL + '/submissionyear', data)
   }
 
-  getSubmissionYears(): Observable<any> {
-    return this.http.get(this.API_URL + '/submissionyear')
-  }
-
   getSubmissionYear(data): Observable<any> {
     return this.http.get(this.API_URL + '/submissionyear/' + data.id)
   }
 
+  //get all submission years
+  getSubmissionYears(): Observable<any> {
+    return this.http.get(this.API_URL + '/submissionyear')
+  }
 
 }
