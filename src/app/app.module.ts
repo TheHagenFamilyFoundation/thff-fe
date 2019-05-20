@@ -213,6 +213,8 @@ import { AdminComponent } from './admin/admin.component';
 
 import { AdminFullProposalComponent } from './admin/admin-full-proposal/admin-full-proposal.component';
 
+import { SubmissionYearComponent } from './admin/submission-year/submission-year.component';
+
 //user
 import { UserComponent } from './user/user.component';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
@@ -256,7 +258,6 @@ import { EmailComponent } from './test/email/email.component';
 
 //Utility
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
-import { SubmissionYearComponent } from './admin/submission-year/submission-year.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -275,9 +276,8 @@ import { SubmissionYearComponent } from './admin/submission-year/submission-year
         DirectorsMenuComponent,
 
         //Admin
-        AdminComponent,
-
-        AdminFullProposalComponent,
+        AdminComponent, AdminFullProposalComponent,
+        SubmissionYearComponent,
 
         //Organization
         DirectorOrganizationsComponent,
@@ -350,7 +350,6 @@ import { SubmissionYearComponent } from './admin/submission-year/submission-year
 
         PhoneMaskDirective,
 
-        SubmissionYearComponent,
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
