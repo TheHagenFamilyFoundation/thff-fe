@@ -256,6 +256,7 @@ import { EmailComponent } from './test/email/email.component';
 
 //Utility
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
+import { SubmissionYearComponent } from './admin/submission-year/submission-year.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -348,6 +349,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
+
+        SubmissionYearComponent,
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
