@@ -57,9 +57,9 @@ export class SubmissionYearComponent implements OnInit {
 
   createSubmissionYear() {
 
+    console.log('createSubmissionYear')
 
 
-    
   }
 
   checkCurrentYear(year) {
@@ -68,6 +68,13 @@ export class SubmissionYearComponent implements OnInit {
     let currentYear = today.getFullYear();
 
     return year === currentYear;
+  }
+
+  closeSubmissionYear() {
+    console.log('closeSubmissionYear')
+
+
+
   }
 
 
