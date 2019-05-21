@@ -15,23 +15,23 @@
 <div *ngIf='!editing'>
   <div class="example-container">
     <mat-form-field>
-      <input matInput placeholder="Legal Name" value={{legalName}} disabled>
+      <input matInput placeholder="Legal Name" value={{legalName}} readonly>
     </mat-form-field>
 
     <div>
       <mat-form-field>
-        <input matInput placeholder="Year Founded" value={{yearFounded}} disabled>
+        <input matInput placeholder="Year Founded" value={{yearFounded}} readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Current Operating Budget" value="{{currentOperatingBudget | currency}}" disabled>
+        <input matInput placeholder="Current Operating Budget" value="{{currentOperatingBudget | currency}}" readonly>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field>
-        <input matInput placeholder="Executive Director" value={{director}} disabled>
+        <input matInput placeholder="Executive Director" value={{director}} readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Phone Number" value={{phone}} disabled>
+        <input matInput placeholder="Phone Number" value={{phone}} readonly>
       </mat-form-field>
     </div>
     <div>
@@ -40,13 +40,13 @@
       </div>
       <p>
         <mat-form-field>
-          <input matInput placeholder="Contact Person" value={{contactPerson}} disabled>
+          <input matInput placeholder="Contact Person" value={{contactPerson}} readonly>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Title" value={{contactPersonTitle}} disabled>
+          <input matInput placeholder="Title" value={{contactPersonTitle}} readonly>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Phone Number" value={{contactPersonPhoneNumber}} disabled>
+          <input matInput placeholder="Phone Number" value={{contactPersonPhoneNumber}} readonly>
         </mat-form-field>
       </p>
     </div>
@@ -54,34 +54,34 @@
     </div>
     <div>
       <mat-form-field>
-        <input matInput placeholder="Email" value={{email}} disabled>
+        <input matInput placeholder="Email" value={{email}} readonly>
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput placeholder="Address" value={{address}} disabled></textarea>
+        <textarea matInput placeholder="Address" value={{address}} readonly></textarea>
       </mat-form-field>
 
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="City" value={{city}} disabled>
+              <input matInput placeholder="City" value={{city}} readonly>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="State" value={{state}} disabled>
+              <input matInput placeholder="State" value={{state}} readonly>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Zip" value={{zip}} disabled>
+              <input matInput placeholder="Zip" value={{zip}} readonly>
             </mat-form-field>
           </td>
         </tr>
       </table>
     </div>
     <mat-form-field>
-      <input matInput placeholder="Fax" value={{fax}} disabled>
+      <input matInput placeholder="Fax" value={{fax}} readonly>
     </mat-form-field>
   </div>
 </div>
