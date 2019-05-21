@@ -10,12 +10,16 @@ import { SubmissionYearService } from './../../services/admin/submission-year.se
 export class SubmissionYearComponent implements OnInit {
 
   submissionyears = [];
+  currentSY: any;
 
   SubmissionYear: boolean;
+  Active: boolean;
+
 
   constructor(public submissionYearService: SubmissionYearService) {
 
     this.SubmissionYear = false;
+    this.Active = false;
 
   }
 
@@ -38,6 +42,13 @@ export class SubmissionYearComponent implements OnInit {
 
           if (this.checkCurrentYear(sy.year)) {
             noSubmissionYear = true;
+
+            this.currentSY = sy;
+
+            console.log('setting the currentSY', this.currentSY)
+
+            this.Active = this.currentSY.active;
+
           }
 
         });
@@ -73,9 +84,20 @@ export class SubmissionYearComponent implements OnInit {
   closeSubmissionYear() {
     console.log('closeSubmissionYear')
 
+    this.submissionYearService.closeSubmissionYear(this.currentSY).subscribe(
+      (sy) => {
 
+        console.log('return from closing - sy', sy)
+
+        this.currentSY = sy;
+        this.Active = this.currentSY.active;
+
+      },
+      (err) => {
+        console.log('err', err)
+      }
+    )
 
   }
-
 
 }
