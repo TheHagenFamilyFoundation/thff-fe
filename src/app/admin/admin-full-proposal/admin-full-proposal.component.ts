@@ -66,13 +66,14 @@ export class AdminFullProposalComponent implements OnInit {
 
           this.SubmissionYear = true;
 
-          if (this.currentSY.fpPortal) {
-            this.Opened = false;
-          }
-
-
         }
 
+        console.log('this.currentSY', this.currentSY)
+        console.log('this.currentSY.fpPortal', this.currentSY.fpPortal)
+
+        if (this.currentSY.fpPortal) {
+          this.Opened = true;
+        }
 
       },
       (err) => {
@@ -152,12 +153,10 @@ export class AdminFullProposalComponent implements OnInit {
 
         console.log('after getting SY - this.Opened', this.Opened)
 
-
       },
       (err) => {
         console.log('err', err)
       })
   }
-
 
 }

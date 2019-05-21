@@ -7,8 +7,15 @@
           <button class="bsize" mat-raised-button (click)="createSubmissionYear()">Create Submission Year</button>
         </div>
         <div *ngIf="SubmissionYear">
-          Submission Year Already Created
-          <!-- show list of previous Submission Years -->
+          <div>
+            Submission Year Already Created
+            <!-- show list of previous Submission Years -->
+          </div>
+          <div>
+            <div *ngIf="Active">
+              <button class="bsize" mat-raised-button (click)="closeSubmissionYear()">Close Submission Year</button>
+            </div>
+          </div>
         </div>
 
       </div>

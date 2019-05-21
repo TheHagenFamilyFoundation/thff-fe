@@ -61,4 +61,12 @@ export class SubmissionYearService {
     return this.http.get(this.API_URL + '/submissionyear')
   }
 
+  //pass in the submission year id
+  closeSubmissionYear(data): Observable<any> {
+    console.log('closeSubmissionYear - data', data)
+
+    return this.http.post(this.API_URL + '/closeSubmissionYear', data)
+  }
+
+
 }
