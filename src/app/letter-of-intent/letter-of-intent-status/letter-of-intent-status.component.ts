@@ -26,14 +26,14 @@ export class LetterOfIntentStatusComponent implements OnInit {
   status: number;
   outputStatus: string;
 
-  fullProposal: boolean;
+  FullProposal: boolean;
 
   constructor(
     private loiStatus: LOIStatusService,
     public dialog: MatDialog,
     private router: Router) {
     //for testing purposes
-    this.fullProposal = true;
+    this.FullProposal = false;
 
   }
 
@@ -60,12 +60,26 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
     this.outputStatus = this.configureStatus(s);
 
+    this.checkFPportal();
+
   }
 
   //takes in a status s that is a number
   configureStatus(s: number): string {
 
     return this.loiStatus.getStatus(s)
+
+  }
+
+  checkFPportal() {
+
+    console.log('checkFPportal - this.status', this.status)
+
+    if (this.status == 6) {
+
+      this.FullProposal = true
+
+    }
 
   }
 
@@ -76,22 +90,5 @@ export class LetterOfIntentStatusComponent implements OnInit {
     this.router.navigate(['/create-fp-full/', this.orgID, this.loiID]);
 
   }
-
-  // //full proposal
-  // openCreateFPDialog(): void {
-  //   let dialogRef = this.dialog.open(CreateFullProposalComponent, {
-  //     width: '250px',
-  //     data: { org: this.org, loi: this.loi }
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed'); //debug
-  //     //maybe pull the organizations again
-  //     console.log('result', result); //debug
-  //     // //this.checkLOIs(this.user);
-  //     // this.getLOIs();
-  //   });
-  // }
-
 
 }
