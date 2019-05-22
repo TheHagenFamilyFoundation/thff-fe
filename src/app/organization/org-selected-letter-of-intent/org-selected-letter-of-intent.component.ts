@@ -37,5 +37,4 @@ export class OrgSelectedLetterOfIntentComponent implements OnInit {
 
   }
 
-
 }
