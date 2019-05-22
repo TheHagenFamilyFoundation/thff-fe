@@ -40,5 +40,11 @@ export class GetFullProposalService {
     return this.http.get(urlString);
   }
 
+  getFullProposalsByLOIID(loi: any): Observable<any> {
+
+    let urlString = this.API_URL + "/fullproposal?loi=" + loi.id;
+
+    return this.http.get(urlString);
+  }
 
 }
