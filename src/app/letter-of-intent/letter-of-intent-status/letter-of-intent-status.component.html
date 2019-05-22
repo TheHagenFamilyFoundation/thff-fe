@@ -13,8 +13,12 @@
     </button>
   </div>
   <div *ngIf="HasFullProposal">
-    Full Proposal created
-    link
+    <div>
+      Link to Full Proposal:
+    </div>
+    <div>
+      <button mat-raised-button [routerLink]="[fpLink]">Full Proposal</button>
+    </div>
   </div>
 </div>
 <div *ngIf="!FullProposalPortalOpen">

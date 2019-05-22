@@ -27,6 +27,8 @@ export class LetterOfIntentStatusComponent implements OnInit {
   status: number;
   outputStatus: string;
 
+  fpLink: string;
+
   FullProposalPortalOpen: boolean;
   HasFullProposal: boolean;
 
@@ -85,7 +87,6 @@ export class LetterOfIntentStatusComponent implements OnInit {
     if (this.status == 6) {
 
       this.FullProposalPortalOpen = true;
-      this.HasFullProposal = true;
 
     }
 
@@ -101,14 +102,17 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
   checkFullProposal() {
     this.getFullProposalService.getFullProposalsByLOIID(this.loi)
-      .subscribe((fp) => {
+      .subscribe((fps) => {
 
         //debugging
-        console.log('fp', fp)
+        console.log('fp', fps)
 
-        if (fp.length > 0) {
+        if (fps.length > 0) {
 
           this.HasFullProposal = true;
+
+          //create the fp link - first one
+          this.fpLink = '/fp/' + fps[0].fpID
 
         }
         else {
