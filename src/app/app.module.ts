@@ -252,6 +252,7 @@ import { DeleteDoc501c3CheckComponent } from './organization/organization-doc501
 
 //organization full proposal
 import { OrganizationFullProposalsComponent } from './organization/organization-full-proposals/organization-full-proposals.component';
+import { OrgSelectedFullProposalComponent } from './organization/org-selected-full-proposal/org-selected-full-proposal.component';
 
 //test email component
 import { EmailComponent } from './test/email/email.component';
@@ -322,7 +323,6 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         DeleteDoc501c3CheckComponent,
         OrganizationFullProposalsComponent,
 
-
         //letter of intent
         LetterOfIntentComponent,
         CreateLetterOfIntentComponent,
@@ -342,6 +342,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         FullProposalStatusComponent,
         FullProposalSubmitComponent,
         FullProposalSubmitCheckComponent,
+        OrgSelectedFullProposalComponent,
 
         //test component - email
         EmailComponent,
@@ -414,7 +415,9 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         SelectedOrganizationComponent, DirectorSelectedOrganizationComponent, Validate501c3CheckComponent,
         AddUsersComponent,
         CreateLetterOfIntentComponent, SelectedLetterOfIntentComponent,
-        OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent, DeleteDoc501c3CheckComponent,
+        OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent,
+        OrgSelectedFullProposalComponent,
+        DeleteDoc501c3CheckComponent,
         DirectorOrgSelectedLetterOfIntentComponent, DirectorSelectedLoiComponent,
         FullProposalSubmitCheckComponent,
         CreateFullProposalItemComponent
