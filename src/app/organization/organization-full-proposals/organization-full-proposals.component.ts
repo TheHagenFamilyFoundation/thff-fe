@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { GetFullProposalService } from '../../services/full-proposal/get-full-proposal.service';
 import { FpStatusService } from '../../services/full-proposal/fp-status.service';
+
+import { OrgSelectedFullProposalComponent } from '../org-selected-full-proposal/org-selected-full-proposal.component'
 
 @Component({
   selector: 'app-organization-full-proposals',
@@ -32,7 +34,8 @@ export class OrganizationFullProposalsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private getFullProposalService: GetFullProposalService, private fpStatusService: FpStatusService, ) {
+  constructor(public dialog: MatDialog,
+    private getFullProposalService: GetFullProposalService, private fpStatusService: FpStatusService, ) {
 
     this.HasFPs = false;
 
@@ -126,6 +129,8 @@ export class OrganizationFullProposalsComponent implements OnInit {
   onRowClicked(row) {
     console.log('Row clicked: ', row);
 
+    this.openRouteFPDialog(row);
+
   }
 
   //takes in a status s that is a number
@@ -133,6 +138,19 @@ export class OrganizationFullProposalsComponent implements OnInit {
 
     return this.fpStatusService.getStatus(s)
 
+  }
+
+  openRouteFPDialog(fp): void {
+    let dialogRef = this.dialog.open(OrgSelectedFullProposalComponent, {
+      width: '250px',
+      data: { name: fp.loiname, fpID: fp.fpID }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+      //maybe pull the organizations again
+      console.log('result', result); //debug
+    });
   }
 
 }
