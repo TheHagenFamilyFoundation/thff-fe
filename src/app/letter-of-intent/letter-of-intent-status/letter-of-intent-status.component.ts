@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { LOIStatusService } from "../../services/loi/loi-status.service";
+import { GetFullProposalService } from "../../services/full-proposal/get-full-proposal.service";
 
 @Component({
   selector: 'app-letter-of-intent-status',
@@ -26,14 +27,18 @@ export class LetterOfIntentStatusComponent implements OnInit {
   status: number;
   outputStatus: string;
 
-  FullProposal: boolean;
+  FullProposalPortalOpen: boolean;
+  HasFullProposal: boolean;
 
   constructor(
     private loiStatus: LOIStatusService,
     public dialog: MatDialog,
-    private router: Router) {
-    //for testing purposes
-    this.FullProposal = false;
+    private router: Router,
+    public getFullProposalService: GetFullProposalService
+  ) {
+
+    this.HasFullProposal = false; //check in db
+    this.FullProposalPortalOpen = false; //the portal
 
   }
 
@@ -53,6 +58,8 @@ export class LetterOfIntentStatusComponent implements OnInit {
     this.setStatus(this.status);
 
     this.loiStatus.currentStatus.subscribe(status => this.status = Number(status))
+
+    this.checkFullProposal();
 
   }
 
@@ -77,7 +84,8 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
     if (this.status == 6) {
 
-      this.FullProposal = true
+      this.FullProposalPortalOpen = true;
+      this.HasFullProposal = true;
 
     }
 
@@ -89,6 +97,30 @@ export class LetterOfIntentStatusComponent implements OnInit {
 
     this.router.navigate(['/create-fp-full/', this.orgID, this.loiID]);
 
+  }
+
+  checkFullProposal() {
+    this.getFullProposalService.getFullProposalsByLOIID(this.loi)
+      .subscribe((fp) => {
+
+        //debugging
+        console.log('fp', fp)
+
+        if (fp.length > 0) {
+
+          this.HasFullProposal = true;
+
+        }
+        else {
+
+          this.HasFullProposal = false;
+
+        }
+
+      },
+        (err) => {
+          console.log('err', err)
+        })
   }
 
 }

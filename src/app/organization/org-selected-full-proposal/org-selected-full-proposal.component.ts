@@ -3,16 +3,16 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-org-selected-letter-of-intent',
-  templateUrl: './org-selected-letter-of-intent.component.html',
-  styleUrls: ['./org-selected-letter-of-intent.component.css']
+  selector: 'app-org-selected-full-proposal',
+  templateUrl: './org-selected-full-proposal.component.html',
+  styleUrls: ['./org-selected-full-proposal.component.css']
 })
-export class OrgSelectedLetterOfIntentComponent implements OnInit {
+export class OrgSelectedFullProposalComponent implements OnInit {
 
-  loiLink = '/loi/'
+  fpLink = '/fp/'
   link: string;
 
-  loiID: any;
+  fpID: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -23,9 +23,9 @@ export class OrgSelectedLetterOfIntentComponent implements OnInit {
     // will log the entire data object
     console.log('this.data', this.data)
 
-    this.loiID = this.data.loiID;
+    this.fpID = this.data.fpID;
 
-    this.link = this.loiLink + this.data.loiID;
+    this.link = this.fpLink + this.data.fpID;
 
     console.log('this is the link', this.link);
 

@@ -6,8 +6,17 @@
     Status: {{outputStatus}}
   </span>
 </div>
-<div *ngIf="FullProposal">
-  <h4>Create A Full Proposal here</h4>
-  <button mat-raised-button (click)="createFP()">Create Full Proposal
-  </button>
+<div *ngIf="FullProposalPortalOpen">
+  <div *ngIf="!HasFullProposal">
+    <h4>Create A Full Proposal here</h4>
+    <button mat-raised-button (click)="createFP()">Create Full Proposal
+    </button>
+  </div>
+  <div *ngIf="HasFullProposal">
+    Full Proposal created
+    link
+  </div>
+</div>
+<div *ngIf="!FullProposalPortalOpen">
+  Full Proposal Portal is closed.
 </div>
