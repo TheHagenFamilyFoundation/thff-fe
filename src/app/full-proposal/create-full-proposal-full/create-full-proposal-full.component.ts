@@ -116,28 +116,31 @@ export class CreateFullProposalFullComponent implements OnInit {
     this.canCreateFP = true;
 
     this.executiveSummary$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.executiveSummaryLength = term.length.toString();
+        this.executiveSummary = term;
         this.executiveSummaryChange()
       });
 
     this.targetPopulation$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.targetPopulationLength = term.length.toString();
+        this.targetPopulation = term;
         this.targetPopulationChange()
       });
     this.goals$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.goalsLength = term.length.toString();
+        this.goals = term;
         this.goalsChange()
       });
 
@@ -152,110 +155,122 @@ export class CreateFullProposalFullComponent implements OnInit {
     //   });
 
     this.timeTable$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.timeTableLength = term.length.toString();
+        this.timeTable = term;
         this.timeTableChange()
       });
 
     this.partners$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.partnersLength = term.length.toString();
+        this.partners = term;
         this.partnersChange()
       });
 
     this.differ$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.differLength = term.length.toString();
+        this.differ = term;
         this.differChange()
       });
 
     this.involve$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.involveLength = term.length.toString();
+        this.involve = term;
         this.involveChange()
       });
 
     this.staff$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.staffLength = term.length.toString();
+        this.staff = term;
         this.staffChange()
       });
 
     this.strategy$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.strategyLength = term.length.toString();
+        this.strategy = term;
         this.strategyChange()
       });
 
     this.evaluation$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.evaluationLength = term.length.toString();
+        this.evaluation = term;
         this.evaluationChange()
       });
 
     this.dissemination$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.disseminationLength = term.length.toString();
+        this.dissemination = term;
         this.disseminationChange()
       });
 
     this.active$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.activeLength = term.length.toString();
+        this.active = term;
         this.activeChange()
       });
 
     this.priority$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.priorityLength = term.length.toString();
+        this.priority = term;
         this.priorityChange()
       });
 
     this.history$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.historyLength = term.length.toString();
+        this.history = term;
         this.historyChange()
       });
 
     this.website$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.websiteLength = term.length.toString();
+        this.website = term;
         this.websiteChange()
       });
 
@@ -313,7 +328,8 @@ export class CreateFullProposalFullComponent implements OnInit {
       active: this.active,
       priority: this.priority,
       history: this.history,
-      website: this.website
+      website: this.website,
+      fpItems: this.fpItemsComponent.fpItems, //pass the fpitems
     }
 
     console.log('body', fpBody)
@@ -323,44 +339,17 @@ export class CreateFullProposalFullComponent implements OnInit {
       .subscribe(
         (result) => {
 
-          console.log('result', result)
-          this.fpID = result.result.id;
-
+          console.log('fp created - result', result)
+          this.fpID = result.result.fpID;
           console.log('fp Created');
-
-          console.log('now creating full proposal items')
-
-          //pass in the full proposal id
-          let fpItemBody = {
-            fpItems: this.fpItemsComponent.fpItems,
-            fp: this.fpID
-          }
-
-          console.log('fpItemBody', fpItemBody)
-
-          //call the service
-          this.createFpItemService.createFPItems(fpItemBody)
-            .subscribe(
-              (result) => {
-
-                console.log('Fp Items Created', result);
-                console.log('orgID', this.orgID);
-                // this.loiInfo = result.result;
-
-                // console.log('new this.loiInfo.id', this.loiInfo.id);
-
-                //route to loi page
-                this.router.navigate(['/organization/' + this.orgID]);
-
-              },
-              err => console.log(err)
-            );
+          //route to full proposal
+          //route to loi page
+          this.router.navigate(['/fp/' + this.fpID]);
 
 
         },
         err => console.log(err)
       );
-
 
   }
 
