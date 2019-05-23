@@ -16,7 +16,7 @@
           <textarea matInput placeholder="Executive Summary" cdkTextareaAutosize cdkAutosizeMinRows=2
             cdkAutosizeMaxRows="50" maxlength="2000" value={{executiveSummary}}
             (keyup)="executiveSummary$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{executiveSummary?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="end">{{executiveSummaryLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -28,9 +28,9 @@
       <div>
         <mat-form-field class="text-a">
           <textarea matInput placeholder="Target Population" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{targetPopulation}}
+            cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{targetPopulation}}
             (keyup)="targetPopulation$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{targetPopulation?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="end">{{targetPopulationLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -38,10 +38,9 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Goals" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{goals}}
-            (keyup)="goals$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{goals?.toString().length}} / 2000</mat-hint>
+          <textarea matInput placeholder="Goals" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{goals}} (keyup)="goals$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{goalsLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -62,10 +61,10 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Time Table" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{timeTable}}
+          <textarea matInput placeholder="Time Table" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{timeTable}}
             (keyup)="timeTable$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{timeTable?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="end">{{timeTableLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -75,10 +74,10 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Partners" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{partners}}
+          <textarea matInput placeholder="Partners" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{partners}}
             (keyup)="partners$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{partners?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="end">{{partnersLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -88,10 +87,9 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Differ" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{differ}}
-            (keyup)="differ$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{differ?.toString().length}} / 2000</mat-hint>
+          <textarea matInput placeholder="Differ" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{differ}} (keyup)="differ$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{differLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -101,10 +99,10 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Involvment" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{involve}}
+          <textarea matInput placeholder="Involvment" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{involve}}
             (keyup)="involve$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{involve?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="end">{{involveLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -114,10 +112,9 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Staff" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{staff}}
-            (keyup)="staff$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{staff?.toString().length}} / 2000</mat-hint>
+          <textarea matInput placeholder="Staff" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{staff}} (keyup)="staff$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{staffLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -125,10 +122,10 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Strategy" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{strategy}}
+          <textarea matInput placeholder="Strategy" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{strategy}}
             (keyup)="strategy$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{strategy?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="end">{{strategyLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -140,10 +137,10 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Evaluation" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{evaluation}}
+          <textarea matInput placeholder="Evaluation" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{evaluation}}
             (keyup)="evaluation$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{evaluation?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="end">{{evaluationLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -154,9 +151,9 @@
       <div>
         <mat-form-field class="text-a">
           <textarea matInput placeholder="Dissemination" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{dissemination}}
+            cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{dissemination}}
             (keyup)="dissemination$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{dissemination?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="end">{{disseminationLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -164,10 +161,9 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Active" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{active}}
-            (keyup)="active$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{active?.toString().length}} / 2000</mat-hint>
+          <textarea matInput placeholder="Active" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{active}} (keyup)="active$.next($event.target.value) "></textarea>
+          <mat-hint align="end">{{activeLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -181,10 +177,10 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="Priority" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{priority}}
+          <textarea matInput placeholder="Priority" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{priority}}
             (keyup)="priority$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{priority?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="end">{{priorityLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -195,10 +191,10 @@
       </div>
       <div>
         <mat-form-field class="text-a">
-          <textarea matInput placeholder="History" cdkTextareaAutosize cdkAutosizeMinRows=2
-          cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{history}}
+          <textarea matInput placeholder="History" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{history}}
             (keyup)="history$.next($event.target.value) "></textarea>
-          <mat-hint align="end">{{history?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="end">{{historyLength}} / 2000</mat-hint>
         </mat-form-field>
       </div>
       <div>
@@ -208,7 +204,7 @@
         <mat-form-field class="website-width">
           <input matInput placeholder="Website" maxlength="255" value={{website}}
             (keyup)="website$.next($event.target.value) ">
-          <mat-hint align="end">{{website?.toString().length}} / 255</mat-hint>
+          <mat-hint align="end">{{websiteLength}} / 255</mat-hint>
         </mat-form-field>
       </div>
     </div>
