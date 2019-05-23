@@ -28,6 +28,9 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
   loiName: any; //string
   description: any; //string
 
+  loiNameLength: any; //string
+  descriptionLength: any; //string
+
   loiID: any;
 
   loiInfo: any;
@@ -45,6 +48,9 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
   projectEndDate: any;
   amountRequested: string;
   totalProjectCost: string;
+
+  projectTitleLength: string;
+  purposeLength: string;
 
   message: any; //string
 
@@ -110,7 +116,7 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.loiName = term;
+        this.loiNameLength = term.length.toString();
         this.loiNameChange()
       });
 
@@ -119,7 +125,7 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.description = term;
+        this.descriptionLength = term.length.toString();
         this.descriptionChange()
       });
 
@@ -129,7 +135,7 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.projectTitle = term;
+        this.projectTitleLength = term.length.toString();
         this.projectTitleChange()
       });
 
@@ -138,7 +144,7 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.purpose = term;
+        this.purposeLength = term.length.toString();
         this.purposeChange()
       });
 
@@ -228,6 +234,12 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
 
     this.ValidProjectStartDate = true;
     this.ValidProjectEndDate = true;
+
+    //set the lengths
+    this.projectTitleLength = '0';
+    this.purposeLength = '0';
+    this.loiNameLength = '0';
+    this.descriptionLength = '0';
 
   }
 

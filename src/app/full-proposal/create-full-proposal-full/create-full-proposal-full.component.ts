@@ -63,6 +63,24 @@ export class CreateFullProposalFullComponent implements OnInit {
   history: string;
   website: string;
 
+  executiveSummaryLength: string;
+  targetPopulationLength: string;
+  goalsLength: string;
+  // activityLength: number;
+  timeTableLength: string;
+  partnersLength: string;
+  differLength: string;
+  involveLength: string;
+  staffLength: string;
+  strategyLength: string;
+  evaluationLength: string;
+  disseminationLength: string;
+  activeLength: string;
+  priorityLength: string;
+  historyLength: string;
+  websiteLength: string;
+
+
   activities = [
     { value: '1', viewValue: 'New' },
     { value: '2', viewValue: 'Ongoing' }
@@ -102,7 +120,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.executiveSummary = term;
+        this.executiveSummaryLength = term.length.toString();
         this.executiveSummaryChange()
       });
 
@@ -111,7 +129,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.targetPopulation = term;
+        this.targetPopulationLength = term.length.toString();
         this.targetPopulationChange()
       });
     this.goals$.pipe(
@@ -119,10 +137,11 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.goals = term;
+        this.goalsLength = term.length.toString();
         this.goalsChange()
       });
 
+    //scrap
     // this.activity$.pipe(
     //   debounceTime(400),
     //   distinctUntilChanged())
@@ -137,7 +156,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.timeTable = term;
+        this.timeTableLength = term.length.toString();
         this.timeTableChange()
       });
 
@@ -146,7 +165,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.partners = term;
+        this.partnersLength = term.length.toString();
         this.partnersChange()
       });
 
@@ -155,7 +174,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.differ = term;
+        this.differLength = term.length.toString();
         this.differChange()
       });
 
@@ -164,7 +183,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.involve = term;
+        this.involveLength = term.length.toString();
         this.involveChange()
       });
 
@@ -173,7 +192,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.staff = term;
+        this.staffLength = term.length.toString();
         this.staffChange()
       });
 
@@ -182,7 +201,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.strategy = term;
+        this.strategyLength = term.length.toString();
         this.strategyChange()
       });
 
@@ -191,7 +210,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.evaluation = term;
+        this.evaluationLength = term.length.toString();
         this.evaluationChange()
       });
 
@@ -200,7 +219,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.dissemination = term;
+        this.disseminationLength = term.length.toString();
         this.disseminationChange()
       });
 
@@ -209,7 +228,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.active = term;
+        this.activeLength = term.length.toString();
         this.activeChange()
       });
 
@@ -218,7 +237,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.priority = term;
+        this.priorityLength = term.length.toString();
         this.priorityChange()
       });
 
@@ -227,7 +246,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.history = term;
+        this.historyLength = term.length.toString();
         this.historyChange()
       });
 
@@ -236,7 +255,7 @@ export class CreateFullProposalFullComponent implements OnInit {
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.website = term;
+        this.websiteLength = term.length.toString();
         this.websiteChange()
       });
 
@@ -246,6 +265,27 @@ export class CreateFullProposalFullComponent implements OnInit {
 
     this.getLOI(this.loiID);
 
+    this.defaultValues();
+
+  }
+
+  defaultValues() {
+    this.executiveSummaryLength = '0';
+    this.targetPopulationLength = '0';
+    this.goalsLength = '0';
+    // this.activityLength = 0; // no length for this
+    this.timeTableLength = '0';
+    this.partnersLength = '0';
+    this.differLength = '0'
+    this.involveLength = '0';
+    this.staffLength = '0';
+    this.strategyLength = '0';
+    this.evaluationLength = '0';
+    this.disseminationLength = '0';
+    this.activeLength = '0';
+    this.priorityLength = '0';
+    this.historyLength = '0';
+    this.websiteLength = '0';
   }
 
   createFullProposal() {
