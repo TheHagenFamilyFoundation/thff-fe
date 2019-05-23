@@ -340,11 +340,11 @@ export class CreateFullProposalFullComponent implements OnInit {
         (result) => {
 
           console.log('fp created - result', result)
-          this.fpID = result.result.id;
+          this.fpID = result.result.fpID;
           console.log('fp Created');
           //route to full proposal
           //route to loi page
-          // this.router.navigate(['/fp/' + this.fpID]);
+          this.router.navigate(['/fp/' + this.fpID]);
 
 
         },
