@@ -43,11 +43,14 @@ export class CreateFullProposalItemComponent implements OnInit {
     this.catDescriptionLength = '0'; //default
 
     this.catDescription$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
+        console.log('this.catDescription', this.catDescription)
+
         this.catDescriptionLength = term.length.toString();
+        this.catDescription = term;
         this.catDescriptionChange()
       });
 
@@ -115,6 +118,8 @@ export class CreateFullProposalItemComponent implements OnInit {
 
   createFPItem() {
     console.log('createFPItem')
+
+    console.log('catDescription', this.catDescription)
 
     var body = {
       total: this.total,
