@@ -101,27 +101,66 @@ export class CreateFullProposalItemsComponent implements OnInit {
   getAmountTotal() {
 
     console.log('getAmountTotal');
-    //return this.transactions.map(t => t.cost).reduce((acc, value) => acc + value, 0);
+
+    let totalAmount = 0;
+
+    this.fpItems.forEach(fpItem => {
+      console.log('fpItem', fpItem)
+      totalAmount += Number(fpItem.total);
+
+    });
+
+    return totalAmount;
   }
 
   getAmountTotal1() {
 
     console.log('getAmountTotal1');
-    //return this.transactions.map(t => t.cost).reduce((acc, value) => acc + value, 0);
+
+    let totalamountRequestedTHFF = 0;
+
+    this.fpItems.forEach(fpItem => {
+      console.log('fpItem', fpItem)
+      totalamountRequestedTHFF += fpItem.amountRequestedTHFF
+
+    });
+
+    return totalamountRequestedTHFF;
 
   }
 
   getAmountTotal2() {
 
     console.log('getAmountTotal2');
-    //return this.transactions.map(t => t.cost).reduce((acc, value) => acc + value, 0);
+
+    let totalAmountRequested = 0;
+
+    this.fpItems.forEach(fpItem => {
+      console.log('fpItem', fpItem)
+      totalAmountRequested += fpItem.amountRequested
+
+    });
+
+    return totalAmountRequested;
 
   }
 
+  //total
   getAmountTotal3() {
 
     console.log('getAmountTotal3');
-    //return this.transactions.map(t => t.cost).reduce((acc, value) => acc + value, 0);
+
+    // amountPending
+
+    let totalAmountPending = 0;
+
+    this.fpItems.forEach(fpItem => {
+      console.log('fpItem', fpItem)
+      totalAmountPending += fpItem.amountPending
+
+    });
+
+    return totalAmountPending;
 
   }
 
