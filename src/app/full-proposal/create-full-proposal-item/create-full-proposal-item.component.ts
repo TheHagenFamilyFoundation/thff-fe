@@ -26,6 +26,8 @@ export class CreateFullProposalItemComponent implements OnInit {
   amountPending: string;
   total: string
 
+  catDescriptionLength: string; //Category/Description
+
   ShowMessage: boolean;
 
   ValidCategory: boolean;
@@ -38,12 +40,14 @@ export class CreateFullProposalItemComponent implements OnInit {
     this.canCreateFPItem = false; //initialize to false
     this.ShowMessage = false; //don't show message at the start
 
+    this.catDescriptionLength = '0'; //default
+
     this.catDescription$.pipe(
       debounceTime(400),
       distinctUntilChanged())
       .subscribe(term => {
 
-        this.catDescription = term;
+        this.catDescriptionLength = term.length.toString();
         this.catDescriptionChange()
       });
 
@@ -78,7 +82,6 @@ export class CreateFullProposalItemComponent implements OnInit {
     this.ValidAmountTHFF = false;
     this.ValidAmount = true; //others
     this.ValidAmountPending = true;
-
 
   }
 
