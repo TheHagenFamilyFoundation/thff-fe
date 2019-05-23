@@ -4,7 +4,7 @@
 <div>
   <mat-form-field class="full-width">
     <input matInput placeholder="Category/Description" maxlength="50" value={{catDescription}} (keyup)="catDescription$.next($event.target.value) ">
-    <mat-hint align="end">{{catDescription?.toString().length}} / 50</mat-hint>
+    <mat-hint align="end">{{catDescriptionLength}} / 50</mat-hint>
   </mat-form-field>
 </div>
 <mat-form-field class="full-width">

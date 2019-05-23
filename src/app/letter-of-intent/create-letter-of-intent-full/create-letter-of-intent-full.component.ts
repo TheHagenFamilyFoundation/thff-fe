@@ -112,44 +112,48 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
     })
 
     this.loiName$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.loiNameLength = term.length.toString();
+        this.loiName = term;
         this.loiNameChange()
       });
 
     this.description$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.descriptionLength = term.length.toString();
+        this.description = term;
         this.descriptionChange()
       });
 
 
     this.projectTitle$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.projectTitleLength = term.length.toString();
+        this.projectTitle = term;
         this.projectTitleChange()
       });
 
     this.purpose$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
         this.purposeLength = term.length.toString();
+        this.purpose = term;
         this.purposeChange()
       });
 
     this.projectStartDate$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
@@ -162,7 +166,7 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
       });
 
     this.projectEndDate$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
@@ -175,7 +179,7 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
       });
 
     // this.amountRequested$.pipe(
-    //   debounceTime(400),
+    //   debounceTime(1000),
     //   distinctUntilChanged())
     //   .subscribe(term => {
 
@@ -184,7 +188,7 @@ export class CreateLetterOfIntentFullComponent implements OnInit {
     //   });
 
     // this.totalProjectCost$.pipe(
-    //   debounceTime(400),
+    //   debounceTime(1000),
     //   distinctUntilChanged())
     //   .subscribe(term => {
 

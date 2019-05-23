@@ -26,6 +26,8 @@ export class CreateFullProposalItemComponent implements OnInit {
   amountPending: string;
   total: string
 
+  catDescriptionLength: string; //Category/Description
+
   ShowMessage: boolean;
 
   ValidCategory: boolean;
@@ -38,11 +40,16 @@ export class CreateFullProposalItemComponent implements OnInit {
     this.canCreateFPItem = false; //initialize to false
     this.ShowMessage = false; //don't show message at the start
 
+    this.catDescriptionLength = '0'; //default
+
     this.catDescription$.pipe(
-      debounceTime(400),
+      debounceTime(1000),
       distinctUntilChanged())
       .subscribe(term => {
 
+        console.log('this.catDescription', this.catDescription)
+
+        this.catDescriptionLength = term.length.toString();
         this.catDescription = term;
         this.catDescriptionChange()
       });
@@ -79,7 +86,6 @@ export class CreateFullProposalItemComponent implements OnInit {
     this.ValidAmount = true; //others
     this.ValidAmountPending = true;
 
-
   }
 
   ngOnInit() {
@@ -112,6 +118,8 @@ export class CreateFullProposalItemComponent implements OnInit {
 
   createFPItem() {
     console.log('createFPItem')
+
+    console.log('catDescription', this.catDescription)
 
     var body = {
       total: this.total,
