@@ -54,7 +54,7 @@
           <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows=1 cdkAutosizeMaxRows="50" placeholder="Purpose"
             formControlName="purpose" maxlength="2000" value={{purpose}} required
             (keyup)="purpose$.next($event.target.value)"></textarea>
-          <mat-hint align="start">{{purpose?.toString().length}} / 2000</mat-hint>
+          <mat-hint align="start">{{purposeLength}} / 2000</mat-hint>
           <mat-error *ngIf="formLOI.get('purpose').hasError('required')">
             Purpose is <strong>required</strong>
           </mat-error>
