@@ -135,7 +135,7 @@ export class FullProposalItemsComponent implements OnInit {
     let totalAmount = 0;
 
     this.fpItems.forEach(fpItem => {
-      console.log('fpItem', fpItem)
+      // console.log('getAmountTotal - fpItem', fpItem)
       totalAmount += Number(fpItem.total);
 
     });
@@ -150,8 +150,8 @@ export class FullProposalItemsComponent implements OnInit {
     let totalamountRequestedTHFF = 0;
 
     this.fpItems.forEach(fpItem => {
-      console.log('fpItem', fpItem)
-      totalamountRequestedTHFF += fpItem.amountRequestedTHFF
+      // console.log('getAmountTotal1 - fpItem', fpItem)
+      totalamountRequestedTHFF += Number(fpItem.amountRequestedTHFF);
 
     });
 
@@ -166,8 +166,8 @@ export class FullProposalItemsComponent implements OnInit {
     let totalAmountRequested = 0;
 
     this.fpItems.forEach(fpItem => {
-      console.log('fpItem', fpItem)
-      totalAmountRequested += fpItem.amountRequested
+      // console.log('getAmountTotal2 - fpItem', fpItem)
+      totalAmountRequested += Number(fpItem.amountRequested)
 
     });
 
@@ -185,8 +185,8 @@ export class FullProposalItemsComponent implements OnInit {
     let totalAmountPending = 0;
 
     this.fpItems.forEach(fpItem => {
-      console.log('fpItem', fpItem)
-      totalAmountPending += fpItem.amountPending
+      // console.log('getAmountTotal3 - fpItem', fpItem)
+      totalAmountPending += Number(fpItem.amountPending)
 
     });
 
