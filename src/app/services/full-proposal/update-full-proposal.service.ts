@@ -8,7 +8,7 @@ import { AuthService } from '../../auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class GetFpItemService {
+export class UpdateFullProposalService {
 
   API_URL: string;
 
@@ -26,22 +26,11 @@ export class GetFpItemService {
 
   }
 
-  //not used
-  getFullProposalItemByID(fpItemID: string): Observable<any> {
+  updateFullProposal(data: any): Observable<any> {
 
-    let urlString = this.API_URL + "/fullproposalitem?fpItemID=" + fpItemID;
+    let urlString = this.API_URL + '/fullproposal/' + data.id
 
-    return this.http.get(urlString);
-  }
-
-  //mongo id
-  getFullProposalItemsByFPID(fp: string): Observable<any> {
-
-    let urlString = this.API_URL + "/fullproposalitem?fp=" + fp;
-
-    console.log('getFullProposalItemsByFPID - urlString', urlString)
-
-    return this.http.get(urlString);
+    return this.http.patch(urlString, data);
   }
 
 }
