@@ -26,16 +26,20 @@ export class GetFpItemService {
 
   }
 
-  getFullProposalByID(fpItemID: string): Observable<any> {
+  //not used
+  getFullProposalItemByID(fpItemID: string): Observable<any> {
 
     let urlString = this.API_URL + "/fullproposalitem?fpItemID=" + fpItemID;
 
     return this.http.get(urlString);
   }
 
-  getFullProposalByFPID(fp: string): Observable<any> {
+  //mongo id
+  getFullProposalItemsByFPID(fp: string): Observable<any> {
 
     let urlString = this.API_URL + "/fullproposalitem?fp=" + fp;
+
+    console.log('getFullProposalItemsByFPID - urlString', urlString)
 
     return this.http.get(urlString);
   }
