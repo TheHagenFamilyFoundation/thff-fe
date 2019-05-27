@@ -165,8 +165,8 @@
       </div>
       <div>
         <h4>Budget Narrative/Justification</h4>
-        <div class="text-a">
-          <app-full-proposal-items #fpitems></app-full-proposal-items>
+        <div class="text-a" *ngIf="FPid">
+          <app-full-proposal-items #fpitems [FPid]="FPid" [Editing]="Editing"></app-full-proposal-items>
         </div>
         <br>
         <br>
@@ -206,6 +206,9 @@
       </div>
       <br>
     </div>
+
+
+
 
     <div *ngIf="Editing">
       <div>
@@ -376,8 +379,8 @@
       </div>
       <div>
         <h4>Budget Narrative/Justification</h4>
-        <div class="text-a">
-          <app-create-full-proposal-items #fpitems></app-create-full-proposal-items>
+        <div class="text-a" *ngIf="FPid">
+          <app-full-proposal-items #fpitems [FPid]="FPid" [Editing]="Editing"></app-full-proposal-items>
         </div>
         <br>
         <br>
