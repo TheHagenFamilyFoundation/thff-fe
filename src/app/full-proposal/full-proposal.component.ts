@@ -16,6 +16,7 @@ import { GetFullProposalService } from '../services/full-proposal/get-full-propo
 export class FullProposalComponent implements OnInit {
 
   fpID: any;
+  FPid: any;//mongoid
 
   fp: any; //the full proposal object
 
@@ -92,6 +93,8 @@ export class FullProposalComponent implements OnInit {
       console.log(params);
       this.fpID = params.id;
     });
+
+    this.FPid = null;
 
     this.Editing = false;
     this.CanSave = false;
@@ -278,7 +281,8 @@ export class FullProposalComponent implements OnInit {
           console.log('fp', fp);
 
           this.fp = fp[0];
-
+          this.FPid = this.fp.id;
+          
           this.setFields();
 
         })
@@ -501,5 +505,18 @@ export class FullProposalComponent implements OnInit {
 
   }
 
+
+  getOutputActivity() {
+
+    //activity == 1
+    var outputActivity = 'New';
+
+    if (this.activity === 2) {
+      outputActivity = 'Ongoing';
+    }
+
+    return outputActivity;
+
+  }
 
 }
