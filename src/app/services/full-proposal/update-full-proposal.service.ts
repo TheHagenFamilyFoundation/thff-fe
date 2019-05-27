@@ -30,7 +30,7 @@ export class UpdateFullProposalService {
 
     let urlString = this.API_URL + '/fullproposal/' + data.id
 
-    return this.http.put(urlString, data);
+    return this.http.patch(urlString, data);
   }
 
 }
