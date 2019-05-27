@@ -308,7 +308,22 @@ export class FullProposalComponent implements OnInit {
 
     console.log('setting fields')
 
-    
+    this.executiveSummary = this.fp.executiveSummary;
+    this.targetPopulation = this.targetPopulation;
+    this.goals = this.goals;
+    this.activity = this.activity;
+    this.timeTable = this.timeTable;
+    this.partners = this.partners;
+    this.differ = this.differ;
+    this.involve = this.involve;
+    this.staff = this.staff;
+    this.strategy = this.strategy;
+    this.evaluation = this.evaluation;
+    this.dissemination = this.dissemination;
+    this.active = this.active;
+    this.priority = this.priority;
+    this.history = this.history;
+    this.website = this.website;
 
   }
 
