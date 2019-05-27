@@ -12,10 +12,14 @@
       <button mat-raised-button (click)="cancel()">Cancel</button>
     </div>
 
+    <!-- View Section -->
+
     <div *ngIf="!Editing">
+
+      <!-- Executive Summary -->
+
       <div>
         <h4>Executive Summary</h4>
-
         <div>
           Briefly explain why your agency is requesting this grant, what outcomes you hope to achieve, and how you will
           spend the funds if the grant is made (2000 characters max).
@@ -28,6 +32,9 @@
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Purpose Section -->
+
       <div>
         <h4>Purpose:</h4>
         <div>
@@ -127,6 +134,9 @@
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Evaluation Section -->
+
       <div>
         <h4>Evaluation</h4>
         <div>
@@ -163,6 +173,9 @@
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Budget Section -->
+
       <div>
         <h4>Budget Narrative/Justification</h4>
         <div class="text-a" *ngIf="FPid">
@@ -182,6 +195,9 @@
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Your Organization -->
+
       <div>
         <h4>Your Organization</h4>
         <div>
@@ -208,12 +224,14 @@
     </div>
 
 
-
+    <!-- Editing Section -->
 
     <div *ngIf="Editing">
+
+      <!-- Executive Summary -->
+
       <div>
         <h4>Executive Summary</h4>
-
         <div>
           Briefly explain why your agency is requesting this grant, what outcomes you hope to achieve, and how you will
           spend
@@ -228,6 +246,9 @@
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Purpose Section -->
+
       <div>
         <h4>Purpose:</h4>
         <div>
@@ -338,6 +359,9 @@
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Evaluation Section -->
+
       <div>
         <h4>Evaluation</h4>
         <div>
@@ -377,6 +401,9 @@
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Budget Section -->
+
       <div>
         <h4>Budget Narrative/Justification</h4>
         <div class="text-a" *ngIf="FPid">
@@ -397,6 +424,9 @@
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Your Organization -->
+
       <div>
         <h4>Your Organization</h4>
         <div>
@@ -423,5 +453,11 @@
       </div>
       <br>
     </div>
+
+    <!-- leaving -->
+    <!-- <div class="text-a" *ngIf="FPid">
+      <app-full-proposal-items #fpitems [FPid]="FPid" [Editing]="Editing"></app-full-proposal-items>
+    </div> -->
+
   </mat-card>
 </div>
