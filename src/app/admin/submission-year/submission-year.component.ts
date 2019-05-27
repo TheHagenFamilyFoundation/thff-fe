@@ -74,6 +74,9 @@ export class SubmissionYearComponent implements OnInit {
       .subscribe(
         (sy) => {
           console.log('submission year created', sy)
+
+          this.getSubmissionYears();
+
         }, (err) => {
           console.log('we have an error', err)
         }
