@@ -68,8 +68,8 @@ export class AdminFullProposalComponent implements OnInit {
 
         }
 
-        console.log('this.currentSY', this.currentSY)
-        console.log('this.currentSY.fpPortal', this.currentSY.fpPortal)
+        // console.log('this.currentSY', this.currentSY)
+        // console.log('this.currentSY.fpPortal', this.currentSY.fpPortal)
 
         if (this.currentSY.fpPortal) {
           this.Opened = true;
