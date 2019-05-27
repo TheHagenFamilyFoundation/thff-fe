@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
 //debounce
 import { Subject } from 'rxjs';
 import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
+//components
+import { FullProposalItemsComponent } from './full-proposal-items/full-proposal-items.component';
+
 //services
 import { GetFullProposalService } from '../services/full-proposal/get-full-proposal.service';
+import { UpdateFullProposalService } from '../services/full-proposal/update-full-proposal.service';
 
 @Component({
   selector: 'app-full-proposal',
@@ -15,7 +19,7 @@ import { GetFullProposalService } from '../services/full-proposal/get-full-propo
 })
 export class FullProposalComponent implements OnInit {
 
-  fpID: any;
+  fpID: any; //custom
   FPid: any;//mongoid
 
   fp: any; //the full proposal object
@@ -86,8 +90,12 @@ export class FullProposalComponent implements OnInit {
   ShowMessage = false;
   message: any;
 
+  @ViewChild(FullProposalItemsComponent)
+  private fpItemsComponent: FullProposalItemsComponent;
+
   constructor(private route: ActivatedRoute,
-    public getFullProposalService: GetFullProposalService) {
+    public getFullProposalService: GetFullProposalService,
+    public updateFullProposalService: UpdateFullProposalService) {
 
     this.route.params.subscribe(params => {
       console.log(params);
@@ -97,7 +105,7 @@ export class FullProposalComponent implements OnInit {
     this.FPid = null;
 
     this.Editing = false;
-    this.CanSave = false;
+    this.CanSave = true; //setting to true for now
 
     this.executiveSummary$.pipe(
       debounceTime(1000),
@@ -282,7 +290,7 @@ export class FullProposalComponent implements OnInit {
 
           this.fp = fp[0];
           this.FPid = this.fp.id;
-          
+
           this.setFields();
 
         })
@@ -479,21 +487,44 @@ export class FullProposalComponent implements OnInit {
     console.log('save pressed')
     //the first time is create - the second time is a delete and create
 
-    //console.log('this.loiInfo.id', this.loiInfo.id)
-
+    console.log('this.fp', this.fp)
+    console.log('this.fpItemsComponent.fpItems', this.fpItemsComponent.fpItems)
+    // fpItems: this.fpItemsComponent.fpItems, //pass the fpitems
     this.Editing = false;
 
-    // var body = {
-    //   projectTitle: this.projectTitle,
-    //   purpose: this.purpose,
-    //   projectStartDate: this.projectStartDate.value,
-    //   projectEndDate: this.projectEndDate.value,
-    //   amountRequested: this.amountRequested,
-    //   totalProjectCost: this.totalProjectCost,
-    //   loi: this.loiID
-    // }
+    var fpBody = {
+      id: this.FPid,
+      executiveSummary: this.executiveSummary,
+      targetPopulation: this.targetPopulation,
+      goals: this.goals,
+      activity: this.activity,
+      timeTable: this.timeTable,
+      partners: this.partners,
+      differ: this.differ,
+      involve: this.involve,
+      staff: this.staff,
+      strategy: this.strategy,
+      evaluation: this.evaluation,
+      dissemination: this.dissemination,
+      active: this.active,
+      priority: this.priority,
+      history: this.history,
+      website: this.website,
+      newfpItems: this.fpItemsComponent.fpItems, //pass the fpitems
+    }
 
-    // console.log('body', body)
+    //updates full proposal
+    this.updateFullProposalService.updateFullProposal(fpBody).subscribe(
+      (fp) => {
+        console.log('full proposal updated', fp)
+
+        this.fpItemsComponent.getFPItems();
+
+      },
+      (err) => {
+        console.log('we have an err', err)
+      }
+    )
 
   }
 
