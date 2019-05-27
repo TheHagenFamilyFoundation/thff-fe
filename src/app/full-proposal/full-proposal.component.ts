@@ -309,21 +309,37 @@ export class FullProposalComponent implements OnInit {
     console.log('setting fields')
 
     this.executiveSummary = this.fp.executiveSummary;
-    this.targetPopulation = this.targetPopulation;
-    this.goals = this.goals;
-    this.activity = this.activity;
-    this.timeTable = this.timeTable;
-    this.partners = this.partners;
-    this.differ = this.differ;
-    this.involve = this.involve;
-    this.staff = this.staff;
-    this.strategy = this.strategy;
-    this.evaluation = this.evaluation;
-    this.dissemination = this.dissemination;
-    this.active = this.active;
-    this.priority = this.priority;
-    this.history = this.history;
-    this.website = this.website;
+    this.targetPopulation = this.fp.targetPopulation;
+    this.goals = this.fp.goals;
+    this.activity = this.fp.activity;
+    this.timeTable = this.fp.timeTable;
+    this.partners = this.fp.partners;
+    this.differ = this.fp.differ;
+    this.involve = this.fp.involve;
+    this.staff = this.fp.staff;
+    this.strategy = this.fp.strategy;
+    this.evaluation = this.fp.evaluation;
+    this.dissemination = this.fp.dissemination;
+    this.active = this.fp.active;
+    this.priority = this.fp.priority;
+    this.history = this.fp.history;
+    this.website = this.fp.website;
+
+    this.executiveSummaryLength = this.fp.executiveSummary.length;
+    this.targetPopulationLength = this.fp.targetPopulation.length;
+    this.goalsLength = this.fp.goals.length;
+    this.timeTableLength = this.fp.timeTable.length;
+    this.partnersLength = this.fp.partners.length;
+    this.differLength = this.fp.differ.length;
+    this.involveLength = this.fp.involve.length;
+    this.staffLength = this.fp.staff.length;
+    this.strategyLength = this.fp.strategy.length;
+    this.evaluationLength = this.fp.evaluation.length;
+    this.disseminationLength = this.fp.dissemination.length;
+    this.activeLength = this.fp.active.length;
+    this.priorityLength = this.fp.priority.length;
+    this.historyLength = this.fp.history.length;
+    this.websiteLength = this.fp.website.length;
 
   }
 
