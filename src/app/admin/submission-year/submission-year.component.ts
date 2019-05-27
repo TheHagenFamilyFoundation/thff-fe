@@ -70,6 +70,15 @@ export class SubmissionYearComponent implements OnInit {
 
     console.log('createSubmissionYear')
 
+    this.submissionYearService.createSubmissionYear()
+      .subscribe(
+        (sy) => {
+          console.log('submission year created', sy)
+        }, (err) => {
+          console.log('we have an error', err)
+        }
+
+      )
 
   }
 
