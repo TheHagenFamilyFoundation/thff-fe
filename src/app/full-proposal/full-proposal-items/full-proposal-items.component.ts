@@ -196,8 +196,6 @@ export class FullProposalItemsComponent implements OnInit {
   }
 
   remove(row) {
-    // this.dataSource.splice(i, 1);
-    // this.dataSource = JSON.parse(JSON.stringify(this.dataSource));// this line is to refresh view and detect changes for updating table view
 
     console.log('remove', row)
     let body = {
