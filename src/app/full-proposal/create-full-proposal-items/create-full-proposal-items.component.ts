@@ -13,7 +13,7 @@ import { CreateFpItemService } from '../../services/full-proposal/create-fp-item
 })
 export class CreateFullProposalItemsComponent implements OnInit {
 
-  displayedColumns = ['category', 'amount1', 'amount2', 'amount3', 'total'];
+  displayedColumns = ['category', 'amount1', 'amount2', 'amount3', 'total', 'remove'];
   dataSource: any;
 
   createFPItemHeight: string;
@@ -161,6 +161,16 @@ export class CreateFullProposalItemsComponent implements OnInit {
     });
 
     return totalAmountPending;
+
+  }
+
+  remove(index) {
+
+    console.log('remove', index)
+
+    this.fpItems.splice(index, 1)
+
+    this.updateDataSource();
 
   }
 
