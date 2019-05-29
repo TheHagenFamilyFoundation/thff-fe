@@ -6,6 +6,7 @@ import { CreateFullProposalItemComponent } from '../create-full-proposal-item/cr
 
 // import { CreateFpItemService } from '../../services/full-proposal/create-fp-item.service'; //used in the modal
 import { GetFpItemService } from '../../services/full-proposal/get-fp-item.service';
+import { RemoveFpItemService } from '../../services/full-proposal/remove-fp-item.service';
 
 @Component({
   selector: 'app-full-proposal-items',
@@ -14,7 +15,7 @@ import { GetFpItemService } from '../../services/full-proposal/get-fp-item.servi
 })
 export class FullProposalItemsComponent implements OnInit {
 
-  displayedColumns = ['category', 'amount1', 'amount2', 'amount3', 'total'];
+  displayedColumns = ['category', 'amount1', 'amount2', 'amount3', 'total', 'remove'];
   dataSource: any;
 
   createFPItemHeight: string;
@@ -32,7 +33,8 @@ export class FullProposalItemsComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
     // private createFpItemService: CreateFpItemService,
-    private getFpItemService: GetFpItemService) {
+    private getFpItemService: GetFpItemService,
+    private RemoveFpItemService: RemoveFpItemService) {
 
     this.createFPItemHeight = '450';
     this.createFPItemWidth = '700';
@@ -191,6 +193,25 @@ export class FullProposalItemsComponent implements OnInit {
     });
 
     return totalAmountPending;
+  }
+
+  remove(row) {
+    // this.dataSource.splice(i, 1);
+    // this.dataSource = JSON.parse(JSON.stringify(this.dataSource));// this line is to refresh view and detect changes for updating table view
+
+    console.log('remove', row)
+    let body = {
+      id: row.id
+    }
+
+    this.RemoveFpItemService.deleteFPItem(body).subscribe(
+      () => {
+        this.getFPItems();
+      },
+      (err) => {
+        console.log('err', err)
+      })
+
 
   }
 
