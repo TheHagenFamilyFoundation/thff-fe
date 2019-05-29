@@ -37,6 +37,15 @@
         <mat-cell *matCellDef="let row"> {{row.total | currency}} </mat-cell>
         <mat-footer-cell *matFooterCellDef> {{getAmountTotal() | currency}} </mat-footer-cell>
       </ng-container>
+      <ng-container matColumnDef="remove">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Remove </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index;">
+          <button *ngIf="Editing" mat-icon-button (click)="remove(row)" matTooltip="Remove this item">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </mat-cell>
+        <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+      </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
