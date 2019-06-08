@@ -1,3 +1,28 @@
-<p>
-  edit-full-proposal-item works!
-</p>
+<div align="center">
+  <h4>Edit Full Proposal Item</h4>
+</div>
+<div>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Category/Description" maxlength="50" value={{catDescription}}
+      (keyup)="catDescription$.next($event.target.value)" required>
+    <mat-hint align="end">{{catDescriptionLength}} / 50</mat-hint>
+  </mat-form-field>
+</div>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Amount Requested From THFF " currencyMask [(ngModel)]="amountRequestedTHFF"
+    (ngModelChange)="amountRequestedTHFFChange($event)" required>
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Amount Requested From Other Organizations, if any" currencyMask
+    [(ngModel)]="amountRequested" (ngModelChange)="amountRequestedChange($event)">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Amount Pending From Other Organizations, if any " currencyMask
+    [(ngModel)]="amountPending" (ngModelChange)="amountPendingChange($event)">
+</mat-form-field>
+<div>Total: {{total | currency}}</div>
+<br>
+<div align="right">
+  <button *ngIf="canEditFPItem" mat-raised-button (click)="editFPItem()">Edit Item</button>
+  <button mat-raised-button (click)="cancel()" mat-dialog-close>Cancel</button>
+</div>
