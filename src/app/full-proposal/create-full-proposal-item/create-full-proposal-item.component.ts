@@ -218,7 +218,6 @@ export class CreateFullProposalItemComponent implements OnInit {
 
   }
 
-
   cancel() {
 
     console.log('cancel pressed');
