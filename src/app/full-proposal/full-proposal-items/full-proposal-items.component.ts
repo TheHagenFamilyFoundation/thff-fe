@@ -248,4 +248,14 @@ export class FullProposalItemsComponent implements OnInit {
 
   }
 
+  //shows the dialog
+  edit(row) {
+
+    console.log('clicked edit', row)
+
+    //modal
+    // this.openEditFullProposalItemDialog(row);
+
+  }
+
 }
