@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CreateFullProposalItemComponent } from '../create-full-proposal-item/create-full-proposal-item.component';
+import { DeleteFullProposalItemComponent } from '../delete-full-proposal-item/delete-full-proposal-item.component';
 
 // import { CreateFpItemService } from '../../services/full-proposal/create-fp-item.service'; //used in the modal
 import { GetFpItemService } from '../../services/full-proposal/get-fp-item.service';
@@ -21,6 +22,9 @@ export class FullProposalItemsComponent implements OnInit {
   createFPItemHeight: string;
   createFPItemWidth: string;
 
+  deleteFPItemHeight: string;
+  deleteFPItemWidth: string;
+
   fpItems: any;
 
   // fpItem: any;
@@ -38,6 +42,9 @@ export class FullProposalItemsComponent implements OnInit {
 
     this.createFPItemHeight = '450';
     this.createFPItemWidth = '700';
+
+    this.deleteFPItemHeight = '450';
+    this.deleteFPItemWidth = '700';
 
   }
 
@@ -111,6 +118,42 @@ export class FullProposalItemsComponent implements OnInit {
         console.log('this.dataSource', this.dataSource)
 
         this.updateDataSource();
+
+      }
+
+    });
+
+  }
+
+  openDeleteFullProposalItemDialog(fpItem: any): void {
+
+    let dialogRef = this.dialog.open(DeleteFullProposalItemComponent, {
+      //width: '700px',
+      width: this.createFPItemWidth + 'px',
+      height: this.createFPItemHeight + 'px',
+      data: { fpItem }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+
+      console.log('result', result); //debug
+
+      if (result && result.delete) {
+
+        console.log('deleting'); //debug
+
+        let body = {
+          id: fpItem.id
+        }
+
+        this.RemoveFpItemService.deleteFPItem(body).subscribe(
+          () => {
+            this.getFPItems();
+          },
+          (err) => {
+            console.log('err', err)
+          })
 
       }
 
@@ -195,21 +238,13 @@ export class FullProposalItemsComponent implements OnInit {
     return totalAmountPending;
   }
 
+  //shows the dialog
   remove(row) {
 
-    console.log('remove', row)
-    let body = {
-      id: row.id
-    }
+    console.log('clicked remove', row)
 
-    this.RemoveFpItemService.deleteFPItem(body).subscribe(
-      () => {
-        this.getFPItems();
-      },
-      (err) => {
-        console.log('err', err)
-      })
-
+    //modal
+    this.openDeleteFullProposalItemDialog(row);
 
   }
 
