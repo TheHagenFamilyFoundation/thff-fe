@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CreateFullProposalItemComponent } from '../create-full-proposal-item/create-full-proposal-item.component';
+import { EditFullProposalItemComponent } from '../edit-full-proposal-item/edit-full-proposal-item.component';
 
 import { CreateFpItemService } from '../../services/full-proposal/create-fp-item.service';
 
@@ -18,6 +19,9 @@ export class CreateFullProposalItemsComponent implements OnInit {
 
   createFPItemHeight: string;
   createFPItemWidth: string;
+
+  editFPItemHeight: string;
+  editFPItemWidth: string;
 
   fpItems: any;
 
@@ -77,6 +81,33 @@ export class CreateFullProposalItemsComponent implements OnInit {
         console.log('this.fpItems', this.fpItems)
 
         console.log('this.dataSource', this.dataSource)
+
+        this.updateDataSource();
+
+      }
+
+    });
+
+  }
+
+  openEditFullProposalItemDialog(fpItem: any, index: number): void {
+
+    let dialogRef = this.dialog.open(EditFullProposalItemComponent, {
+      //width: '700px',
+      width: this.createFPItemWidth + 'px',
+      height: this.createFPItemHeight + 'px',
+      data: { fpItem: fpItem }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+
+      console.log('result', result); //debug
+
+      if (result) {
+        let fpItem = result;
+
+        this.fpItems[index] = fpItem;
 
         this.updateDataSource();
 
@@ -171,6 +202,17 @@ export class CreateFullProposalItemsComponent implements OnInit {
     this.fpItems.splice(index, 1)
 
     this.updateDataSource();
+
+  }
+
+  //shows the dialog
+  edit(row, index) {
+
+    console.log('clicked edit', row)
+    console.log('clicked edit - index', index)
+
+    //modal
+    this.openEditFullProposalItemDialog(row, index);
 
   }
 
