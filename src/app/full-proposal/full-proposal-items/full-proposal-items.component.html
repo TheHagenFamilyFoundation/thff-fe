@@ -40,14 +40,14 @@
       <ng-container matColumnDef="remove">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Utility</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;">
-          <button *ngIf="Editing" mat-icon-button (click)="edit(row)" matTooltip="Edit this item">
+          <button *ngIf="Editing" mat-icon-button (click)="edit(row,i)" matTooltip="Edit this item">
             <mat-icon>edit</mat-icon>
           </button>
           <button *ngIf="Editing" mat-icon-button (click)="remove(row)" matTooltip="Remove this item">
             <mat-icon>clear</mat-icon>
           </button>
         </mat-cell>
-        <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
