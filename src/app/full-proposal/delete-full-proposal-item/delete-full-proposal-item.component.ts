@@ -17,7 +17,7 @@ export class DeleteFullProposalItemComponent implements OnInit {
   total: string;
 
   constructor(public dialogRef: MatDialogRef<DeleteFullProposalItemComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, ) {
+    @Inject(MAT_DIALOG_DATA) public data: any) {
 
     console.log('data', data)
 
