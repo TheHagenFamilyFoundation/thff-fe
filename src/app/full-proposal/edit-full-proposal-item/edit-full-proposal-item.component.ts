@@ -1,5 +1,4 @@
-//modal component
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Subject } from 'rxjs';
@@ -7,13 +6,13 @@ import { Subject } from 'rxjs';
 import { map, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-create-full-proposal-item',
-  templateUrl: './create-full-proposal-item.component.html',
-  styleUrls: ['./create-full-proposal-item.component.css']
+  selector: 'app-edit-full-proposal-item',
+  templateUrl: './edit-full-proposal-item.component.html',
+  styleUrls: ['./edit-full-proposal-item.component.css']
 })
-export class CreateFullProposalItemComponent implements OnInit {
+export class EditFullProposalItemComponent implements OnInit {
 
-  canCreateFPItem: boolean;
+  canEditFPItem: boolean;
 
   catDescription$ = new Subject<string>();
   amountRequestedTHFF$ = new Subject<string>();
@@ -35,9 +34,11 @@ export class CreateFullProposalItemComponent implements OnInit {
   ValidAmount: boolean; //others
   ValidAmountPending: boolean;
 
-  constructor(public dialogRef: MatDialogRef<CreateFullProposalItemComponent>, ) {
+  constructor(public dialogRef: MatDialogRef<EditFullProposalItemComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
 
-    this.canCreateFPItem = false; //initialize to false
+    this.canEditFPItem = true; //initialize to true
     this.ShowMessage = false; //don't show message at the start
 
     this.catDescriptionLength = '0'; //default
@@ -54,43 +55,29 @@ export class CreateFullProposalItemComponent implements OnInit {
         this.catDescriptionChange()
       });
 
-    // this.amountRequestedTHFF$.pipe(
-    //   debounceTime(400),
-    //   distinctUntilChanged())
-    //   .subscribe(term => {
-
-    //     this.amountRequestedTHFF = Number(term);
-    //     this.amountRequestedTHFFChange()
-    //   });
-
-    // this.amountRequested$.pipe(
-    //   debounceTime(400),
-    //   distinctUntilChanged())
-    //   .subscribe(term => {
-
-    //     this.amountRequested = Number(term);
-    //     this.amountRequestedChange()
-    //   });
-
-    // this.amountPending$.pipe(
-    //   debounceTime(400),
-    //   distinctUntilChanged())
-    //   .subscribe(term => {
-
-    //     this.amountPending = Number(term);
-    //     this.amountPendingChange()
-    //   });
-
-    this.ValidCategory = false;
-    this.ValidAmountTHFF = false;
+    this.ValidCategory = true;
+    this.ValidAmountTHFF = true;
     this.ValidAmount = true; //others
     this.ValidAmountPending = true;
+
+    console.log('edit-full-proposal-data', data)
+
+    this.catDescriptionLength = '0'; //default
+
+    this.catDescription = data.fpItem.categoryDescription;
+    this.catDescriptionLength = data.fpItem.categoryDescription.length;
+    this.amountRequestedTHFF = data.fpItem.amountRequestedTHFF;
+    this.amountRequested = data.fpItem.amountRequested;
+    this.amountPending = data.fpItem.amountPending;
+    this.total = data.fpItem.total;
+
+    this.verifyInput();
 
   }
 
   ngOnInit() {
 
-    this.total = (0).toString();
+    // this.total = (0).toString();
 
   }
 
@@ -114,10 +101,12 @@ export class CreateFullProposalItemComponent implements OnInit {
 
     this.total = (art + aro + arp).toString();
 
+    console.log('getTotal - total', this.total)
+
   }
 
-  createFPItem() {
-    console.log('createFPItem')
+  editFPItem() {
+    console.log('editFPItem')
 
     console.log('catDescription', this.catDescription)
 
@@ -126,7 +115,8 @@ export class CreateFullProposalItemComponent implements OnInit {
       categoryDescription: this.catDescription,
       amountRequestedTHFF: this.amountRequestedTHFF,
       amountRequested: (this.amountRequested ? this.amountRequested : 0),
-      amountPending: (this.amountPending ? this.amountPending : 0)
+      amountPending: (this.amountPending ? this.amountPending : 0),
+
     }
 
     this.dialogRef.close(body);
@@ -206,12 +196,14 @@ export class CreateFullProposalItemComponent implements OnInit {
     this.getTotal();
 
     if (this.ValidAmount && this.ValidCategory && this.ValidAmountPending && this.ValidAmountTHFF) {
-      this.canCreateFPItem = true;
+
+      this.canEditFPItem = true;
       this.ShowMessage = false;
 
     }
     else {
-      this.canCreateFPItem = false;
+
+      this.canEditFPItem = false;
       this.ShowMessage = false;
 
     }

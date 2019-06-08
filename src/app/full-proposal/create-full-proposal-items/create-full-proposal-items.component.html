@@ -37,6 +37,9 @@ Create New Category
     <ng-container matColumnDef="remove">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Remove </mat-header-cell>
       <mat-cell *matCellDef="let row; let i = index;">
+        <button mat-icon-button (click)="edit(row,i)" matTooltip="Edit this item">
+          <mat-icon>edit</mat-icon>
+        </button>
         <button mat-icon-button (click)="remove(i)" matTooltip="Remove this item">
           <mat-icon>clear</mat-icon>
         </button>

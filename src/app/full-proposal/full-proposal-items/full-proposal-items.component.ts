@@ -4,10 +4,12 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CreateFullProposalItemComponent } from '../create-full-proposal-item/create-full-proposal-item.component';
 import { DeleteFullProposalItemComponent } from '../delete-full-proposal-item/delete-full-proposal-item.component';
+import { EditFullProposalItemComponent } from '../edit-full-proposal-item/edit-full-proposal-item.component';
 
 // import { CreateFpItemService } from '../../services/full-proposal/create-fp-item.service'; //used in the modal
 import { GetFpItemService } from '../../services/full-proposal/get-fp-item.service';
 import { RemoveFpItemService } from '../../services/full-proposal/remove-fp-item.service';
+import { EditFpItemService } from '../../services/full-proposal/edit-fp-item.service';
 
 @Component({
   selector: 'app-full-proposal-items',
@@ -38,7 +40,9 @@ export class FullProposalItemsComponent implements OnInit {
   constructor(public dialog: MatDialog,
     // private createFpItemService: CreateFpItemService,
     private getFpItemService: GetFpItemService,
-    private RemoveFpItemService: RemoveFpItemService) {
+    private removeFpItemService: RemoveFpItemService,
+    private editFpItemService: EditFpItemService
+  ) {
 
     this.createFPItemHeight = '450';
     this.createFPItemWidth = '700';
@@ -125,6 +129,45 @@ export class FullProposalItemsComponent implements OnInit {
 
   }
 
+  openEditFullProposalItemDialog(fpItem: any, index: number): void {
+
+    console.log('openEditFullProposalItemDialog - fpItem', fpItem)
+
+    let fpItemDocID = fpItem.id;
+
+    let dialogRef = this.dialog.open(EditFullProposalItemComponent, {
+      //width: '700px',
+      width: this.createFPItemWidth + 'px',
+      height: this.createFPItemHeight + 'px',
+      data: { fpItem: fpItem }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+
+      console.log('openEditFullProposalItemDialog - result', result); //debug
+
+      if (result) {
+        let fpItem = result;
+        fpItem.id = fpItemDocID;
+
+        this.fpItems[index] = fpItem;
+
+
+        this.editFpItemService.editFPItem(fpItem).subscribe(
+          () => {
+            this.getFPItems();
+
+          },
+          (err) => {
+            console.log('err', err)
+          })
+      }
+
+    });
+
+  }
+
   openDeleteFullProposalItemDialog(fpItem: any): void {
 
     let dialogRef = this.dialog.open(DeleteFullProposalItemComponent, {
@@ -147,7 +190,7 @@ export class FullProposalItemsComponent implements OnInit {
           id: fpItem.id
         }
 
-        this.RemoveFpItemService.deleteFPItem(body).subscribe(
+        this.removeFpItemService.deleteFPItem(body).subscribe(
           () => {
             this.getFPItems();
           },
@@ -245,6 +288,17 @@ export class FullProposalItemsComponent implements OnInit {
 
     //modal
     this.openDeleteFullProposalItemDialog(row);
+
+  }
+
+  //shows the dialog
+  edit(row, index) {
+
+    console.log('clicked edit', row)
+    console.log('clicked edit - index', index)
+
+    //modal
+    this.openEditFullProposalItemDialog(row, index);
 
   }
 
