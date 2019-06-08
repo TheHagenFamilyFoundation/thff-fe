@@ -1,3 +1,26 @@
-<p>
-  delete-full-proposal-item works!
-</p>
+<div align="center">
+  <h4>Delete Full Proposal Item</h4>
+</div>
+<div>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Category/Description" maxlength="50" value={{catDescription}} readonly>
+    <mat-hint align="end">{{catDescriptionLength}} / 50</mat-hint>
+  </mat-form-field>
+</div>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Amount Requested From THFF " currencyMask value="{{amountRequestedTHFF}}" readonly>
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Amount Requested From Other Organizations, if any" currencyMask
+    value="{{amountRequested}}" readonly>
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Amount Pending From Other Organizations, if any " currencyMask value="{{amountPending}}"
+    readonly>
+</mat-form-field>
+<div>Total: {{total | currency}}</div>
+<br>
+<div align="right">
+  <button mat-raised-button (click)="deleteFPItem()">Delete Item</button>
+  <button mat-raised-button (click)="cancel()" mat-dialog-close>Cancel</button>
+</div>
