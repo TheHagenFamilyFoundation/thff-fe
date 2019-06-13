@@ -82,6 +82,9 @@ export class AddUsersComponent implements OnInit {
           console.log('this.users - after', this.users);
           this.dataSourceAllUsers = new MatTableDataSource(this.users);
 
+          this.dataSourceAllUsers.paginator = this.paginator;
+          this.dataSourceAllUsers.sort = this.sort;
+
         })
 
   }
@@ -106,8 +109,14 @@ export class AddUsersComponent implements OnInit {
         console.log('we have user', this.dataSourceAllUsers.data);
         this.dataSourceAllUsers = new MatTableDataSource(this.dataSourceAllUsers.data);
 
+        this.dataSourceAllUsers.paginator = this.paginator;
+        this.dataSourceAllUsers.sort = this.sort;
+
         this.selectedUsers.push(element);
         this.dataSourceSelectedUsers = new MatTableDataSource(this.selectedUsers);
+
+        this.dataSourceSelectedUsers.paginator = this.paginator;
+        this.dataSourceSelectedUsers.sort = this.sort;
 
       }
 
