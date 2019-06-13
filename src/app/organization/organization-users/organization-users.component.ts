@@ -34,7 +34,7 @@ export class OrganizationUsersComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private addUserService: AddUserService) {
 
-    this.addUsersHeight = '550';
+    this.addUsersHeight = '750';//550
     this.addUsersWidth = '700';
 
     this.selectedUsers = [];
