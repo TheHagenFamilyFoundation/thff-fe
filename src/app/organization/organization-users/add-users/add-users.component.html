@@ -1,68 +1,61 @@
-<div align="center">
-  <h3>Add Users</h3>
-</div>
-<mat-grid-list cols="2" rowHeight="20px">
-  <mat-grid-tile>
-    <div align="center">
-      <h4>All Users</h4>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <div align="center">
-      <h4>Selected Users</h4>
-    </div>
-  </mat-grid-tile>
-</mat-grid-list>
-<mat-grid-list cols="2" rowHeight="350px" gutterSize="50px">
-  <mat-grid-tile mat-elevation-z8>
-    <span>
+<mat-card>
+  <div align="center">
+    <h3>Add Users</h3>
+  </div>
 
-      <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-      </mat-form-field>
-      <div>
+  <mat-grid-list cols="2" rowHeight="500px">
+    <mat-grid-tile>
+      <span>
+        <div align="center">
+          <h4>All Users</h4>
+        </div>
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+        <div>
+          <table mat-table [dataSource]="dataSourceAllUsers" matSort>
 
-        <mat-table [dataSource]="dataSourceAllUsers" matSort>
+            <ng-container matColumnDef="username">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
+            </ng-container>
 
-          <ng-container matColumnDef="username">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
-          </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
+            </mat-row>
 
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
-          </mat-row>
-        </mat-table>
+          </table>
 
-        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
-        <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
-      </div>
-    </span>
-  </mat-grid-tile>
+          <mat-paginator #allUsersPaginator [pageSizeOptions]="[5]"></mat-paginator>
+        </div>
+      </span>
+    </mat-grid-tile>
 
-  <mat-grid-tile mat-elevation-z8>
-    <span>
-      <div>
+    <mat-grid-tile>
+      <span>
+        <div align="center">
+          <h4>Selected Users</h4>
+        </div>
+        <div>
+          <table mat-table [dataSource]="dataSourceSelectedUsers" matSort>
 
-        <mat-table [dataSource]="dataSourceSelectedUsers" matSort>
+            <ng-container matColumnDef="username">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
+            </ng-container>
 
-          <ng-container matColumnDef="username">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
-          </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
+            </mat-row>
+          </table>
+          <mat-paginator #selectedUsersPaginator [pageSizeOptions]="[5]"></mat-paginator>
+        </div>
+      </span>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div align="center">
+    <button mat-raised-button (click)="addUsers()">Add Selected Users</button>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+  </div>
 
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
-          </mat-row>
-        </mat-table>
-
-        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
-        <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
-      </div>
-    </span>
-  </mat-grid-tile>
-</mat-grid-list>
-<!-- <div *ngIf="editing"> -->
-<button mat-raised-button (click)="addUsers()">Add Selected Users</button>
-<button mat-raised-button (click)="cancel()">Cancel</button>
-<!-- </div> -->
+</mat-card>

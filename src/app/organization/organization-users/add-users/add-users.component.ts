@@ -21,8 +21,13 @@ export class AddUsersComponent implements OnInit {
   dataSourceAllUsers: any;//MatTableDataSource<OrganizationData>;
   dataSourceSelectedUsers: any;//MatTableDataSource<OrganizationData>;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('allUsersPaginator', { read: MatPaginator }) allUsersPaginator: MatPaginator;
+  @ViewChild('selectedUsersPaginator', { read: MatPaginator }) selectedUsersPaginator: MatPaginator;
+
+  // @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('allUsersSort', { read: MatSort }) allUsersSort: MatSort;
+  @ViewChild('selectedUsersSort', { read: MatSort }) selectedUsersSort: MatSort;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -82,6 +87,9 @@ export class AddUsersComponent implements OnInit {
           console.log('this.users - after', this.users);
           this.dataSourceAllUsers = new MatTableDataSource(this.users);
 
+          this.dataSourceAllUsers.paginator = this.allUsersPaginator;
+          this.dataSourceAllUsers.sort = this.allUsersSort;
+
         })
 
   }
@@ -100,14 +108,24 @@ export class AddUsersComponent implements OnInit {
       if (element.id == row.id) {
         console.log('we have user', index);
 
-        //this.users. 
         this.dataSourceAllUsers.data.splice(index, 1);
 
-        console.log('we have user', this.dataSourceAllUsers.data);
-        this.dataSourceAllUsers = new MatTableDataSource(this.dataSourceAllUsers.data);
+        // console.log('we have user', this.dataSourceAllUsers.data);
+        // this.dataSourceAllUsers = new MatTableDataSource(this.dataSourceAllUsers.data);
+
+        this.dataSourceAllUsers.paginator = this.allUsersPaginator;
+        this.dataSourceAllUsers.sort = this.allUsersSort;
 
         this.selectedUsers.push(element);
+        console.log('added user - selectedUsers', this.selectedUsers)
+        // this.dataSourceSelectedUsers.push(element)
+        // this.dataSourceSelectedUsers = this.selectedUsers
         this.dataSourceSelectedUsers = new MatTableDataSource(this.selectedUsers);
+
+        this.dataSourceSelectedUsers.paginator = this.selectedUsersPaginator;
+        this.dataSourceSelectedUsers.sort = this.selectedUsersSort;
+
+        console.log('this.dataSourceSelectedUsers', this.dataSourceSelectedUsers)
 
       }
 
