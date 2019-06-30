@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { GetFullProposalService } from '../../services/full-proposal/get-full-proposal.service';
+// import { FPStatusService } from '../../services/ful-proposal/fp-status.service';
+// import { DirectorSelectedFPComponent } from './director-selected-fp/director-selected-fp.component';
+
 
 @Component({
   selector: 'app-director-fps',
@@ -7,9 +12,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectorFpsComponent implements OnInit {
 
-  constructor() { }
+  Loaded: boolean;
+
+  fullproposals: any;
+
+  constructor(public getFullProposalService: GetFullProposalService,
+    // private loiStatusService: LOIStatusService
+  ) {
+
+    this.Loaded = false;
+
+  }
 
   ngOnInit() {
+
+    this.getFPs();
+
+  }
+
+  getFPs() {
+
+    this.Loaded = false;
+
+    // this.setButtons(0);
+
+    this.getFullProposalService.getAllFPs()
+      .subscribe(
+        (fps) => {
+
+          console.log('fps', fps);
+
+          this.fullproposals = fps;
+
+          this.Loaded = true;
+
+        })
+
   }
 
 }
