@@ -205,6 +205,8 @@ import { DirectorLoisComponent } from './director/director-lois/director-lois.co
 import { DirectorSelectedLoiComponent } from './director/director-lois/director-selected-loi/director-selected-loi.component';
 
 import { DirectorFpsComponent } from './director/director-fps/director-fps.component';
+import { DirectorTableFullProposalsComponent } from './director/director-fps/director-table-full-proposals/director-table-full-proposals.component';
+import { DirectorSelectedFpComponent } from './director/director-fps/director-table-full-proposals/director-selected-fp/director-selected-fp.component';
 
 import { LoiListComponent } from './director/director-lois/loi-list/loi-list.component';
 
@@ -305,6 +307,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         LoiListComponent,
 
         DirectorFpsComponent,
+        DirectorTableFullProposalsComponent,
+        DirectorSelectedFpComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
@@ -426,7 +430,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent,
         OrgSelectedFullProposalComponent,
         DeleteDoc501c3CheckComponent,
-        DirectorOrgSelectedLetterOfIntentComponent, DirectorSelectedLoiComponent,
+        DirectorOrgSelectedLetterOfIntentComponent, DirectorSelectedLoiComponent, DirectorSelectedFpComponent,
         FullProposalSubmitCheckComponent, DeleteFullProposalItemComponent, EditFullProposalItemComponent,
         CreateFullProposalItemComponent
     ]
