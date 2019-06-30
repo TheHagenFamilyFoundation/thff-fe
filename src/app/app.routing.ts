@@ -38,6 +38,7 @@ import { UserComponent } from './user/user.component';
 import { DirectorsMenuComponent } from './director/directors-menu/directors-menu.component';
 import { DirectorOrganizationsComponent } from './director/director-organizations/director-organizations.component';
 import { DirectorLoisComponent } from './director/director-lois/director-lois.component';
+import { DirectorFpsComponent } from './director/director-fps/director-fps.component';
 import { DirectorViewOrganizationComponent } from './director/director-organizations/director-view-organization/director-view-organization.component';
 import { DirectorOrgViewLetterOfIntentComponent } from './director/director-organizations/director-view-organization/director-view-organization-lois/director-org-view-letter-of-intent/director-org-view-letter-of-intent.component';
 
@@ -98,6 +99,7 @@ const appRoutes: Routes = [
     { path: 'director', component: DirectorsMenuComponent, canActivate: [AuthGuard] },
     { path: 'director/organizations', component: DirectorOrganizationsComponent, canActivate: [AuthGuard] },
     { path: 'director/lois', component: DirectorLoisComponent, canActivate: [AuthGuard] },
+    { path: 'director/fullproposals', component: DirectorFpsComponent, canActivate: [AuthGuard] },
     { path: 'director/users', component: DirectorsMenuComponent, canActivate: [AuthGuard] },
     { path: 'director-organization/:id', component: DirectorViewOrganizationComponent, canActivate: [AuthGuard] },
     { path: 'director-loi/:id', component: DirectorOrgViewLetterOfIntentComponent, canActivate: [AuthGuard] },
