@@ -204,6 +204,8 @@ import { DirectorOpenFullProposalComponent } from './director/director-organizat
 import { DirectorLoisComponent } from './director/director-lois/director-lois.component';
 import { DirectorSelectedLoiComponent } from './director/director-lois/director-selected-loi/director-selected-loi.component';
 
+import { DirectorFpsComponent } from './director/director-fps/director-fps.component';
+
 import { LoiListComponent } from './director/director-lois/loi-list/loi-list.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
@@ -301,6 +303,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
         DirectorLoisComponent,
         LoiListComponent,
+
+        DirectorFpsComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
