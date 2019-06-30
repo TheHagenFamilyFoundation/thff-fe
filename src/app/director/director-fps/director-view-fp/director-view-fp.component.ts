@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from "@angular/router";
+
+//services
+import { GetFullProposalService } from '../../../services/full-proposal/get-full-proposal.service';
 
 @Component({
   selector: 'app-director-view-fp',
@@ -7,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectorViewFPComponent implements OnInit {
 
-  constructor() { }
+  constructor(private getFullProposalService: GetFullProposalService) { }
 
   ngOnInit() {
   }
