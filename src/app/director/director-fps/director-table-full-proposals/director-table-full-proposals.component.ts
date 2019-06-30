@@ -47,7 +47,7 @@ export class DirectorTableFullProposalsComponent implements OnInit {
 
     let dialogRef = this.dialog.open(DirectorSelectedFPComponent, {
       width: '400px',
-      data: { fp: fp }
+      data: { fp: fp, fpID: fp.fpID }
     });
 
     dialogRef.afterClosed().subscribe(result => {
