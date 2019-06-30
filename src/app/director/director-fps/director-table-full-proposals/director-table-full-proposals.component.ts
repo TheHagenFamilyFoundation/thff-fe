@@ -4,6 +4,8 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';//
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+import { DirectorSelectedFPComponent } from './director-selected-fp/director-selected-fp.component';
+
 @Component({
   selector: 'app-director-table-full-proposals',
   templateUrl: './director-table-full-proposals.component.html',
@@ -36,23 +38,24 @@ export class DirectorTableFullProposalsComponent implements OnInit {
   onRowClicked(row) {
     console.log('Row clicked: ', row);
 
-    // this.openSelectedLOIDialog(row); //pass in the org from row object
+    this.openSelectedFPDialog(row); // pass in the fp
 
   }
 
-  // openSelectedLOIDialog(loi): void {
+  //takes in the full proposal
+  openSelectedFPDialog(fp): void {
 
-  //   let dialogRef = this.dialog.open(DirectorSelectedFPComponent, {
-  //     width: '400px',
-  //     data: { name: loi.name, loiID: loi.loiID }
-  //   });
+    let dialogRef = this.dialog.open(DirectorSelectedFPComponent, {
+      width: '400px',
+      data: { fp: fp }
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed'); //debug
-  //     console.log('result', result); //debug
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed'); //debug
+      console.log('result', result); //debug
 
-  //   });
-  // }
+    });
+  }
 
 
 }
