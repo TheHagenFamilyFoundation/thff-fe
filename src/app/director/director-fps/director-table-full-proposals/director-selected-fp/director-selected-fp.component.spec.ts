@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DirectorSelectedFpComponent } from './director-selected-fp.component';
+import { DirectorSelectedFPComponent } from './director-selected-fp.component';
 
 describe('DirectorSelectedFpComponent', () => {
-  let component: DirectorSelectedFpComponent;
-  let fixture: ComponentFixture<DirectorSelectedFpComponent>;
+  let component: DirectorSelectedFPComponent;
+  let fixture: ComponentFixture<DirectorSelectedFPComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DirectorSelectedFpComponent ]
+      declarations: [ DirectorSelectedFPComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DirectorSelectedFpComponent);
+    fixture = TestBed.createComponent(DirectorSelectedFPComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

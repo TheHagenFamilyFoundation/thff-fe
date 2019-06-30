@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './director-selected-fp.component.html',
   styleUrls: ['./director-selected-fp.component.css']
 })
-export class DirectorSelectedFpComponent implements OnInit {
+export class DirectorSelectedFPComponent implements OnInit {
 
   constructor() { }
 
