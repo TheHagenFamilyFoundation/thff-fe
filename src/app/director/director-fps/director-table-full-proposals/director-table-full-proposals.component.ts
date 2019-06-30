@@ -13,6 +13,8 @@ import { DirectorSelectedFPComponent } from './director-selected-fp/director-sel
 })
 export class DirectorTableFullProposalsComponent implements OnInit {
 
+  Printable: boolean;
+
   @Input()
   fps: any
 
@@ -24,7 +26,11 @@ export class DirectorTableFullProposalsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialog: MatDialog, ) { }
+  constructor(public dialog: MatDialog, ) {
+
+    this.Printable = false;
+
+  }
 
   ngOnInit() {
 
