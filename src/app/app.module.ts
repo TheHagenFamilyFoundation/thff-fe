@@ -204,11 +204,12 @@ import { DirectorOpenFullProposalComponent } from './director/director-organizat
 import { DirectorLoisComponent } from './director/director-lois/director-lois.component';
 import { DirectorSelectedLoiComponent } from './director/director-lois/director-selected-loi/director-selected-loi.component';
 
+import { LoiListComponent } from './director/director-lois/loi-list/loi-list.component';
+
 import { DirectorFpsComponent } from './director/director-fps/director-fps.component';
 import { DirectorTableFullProposalsComponent } from './director/director-fps/director-table-full-proposals/director-table-full-proposals.component';
 import { DirectorSelectedFPComponent } from './director/director-fps/director-table-full-proposals/director-selected-fp/director-selected-fp.component';
-
-import { LoiListComponent } from './director/director-lois/loi-list/loi-list.component';
+import { DirectorViewFPComponent } from './director/director-fps/director-view-fp/director-view-fp.component';
 
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
@@ -309,6 +310,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         DirectorFpsComponent,
         DirectorTableFullProposalsComponent,
         DirectorSelectedFPComponent,
+        DirectorViewFPComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
