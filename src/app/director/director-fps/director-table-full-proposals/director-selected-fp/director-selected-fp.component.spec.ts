@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DirectorSelectedFPComponent } from './director-selected-fp.component';
 
-describe('DirectorSelectedFpComponent', () => {
+describe('DirectorSelectedFPComponent', () => {
   let component: DirectorSelectedFPComponent;
   let fixture: ComponentFixture<DirectorSelectedFPComponent>;
 
