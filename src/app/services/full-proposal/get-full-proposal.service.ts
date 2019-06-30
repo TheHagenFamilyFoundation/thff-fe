@@ -47,4 +47,14 @@ export class GetFullProposalService {
     return this.http.get(urlString);
   }
 
+  //get all full proposals - used for directors
+  getAllFPs(): Observable<any> {
+
+    let urlString = this.API_URL + "/fullproposal";
+
+    console.log('urlString', urlString)
+    return this.http.get(urlString);
+
+  }
+
 }

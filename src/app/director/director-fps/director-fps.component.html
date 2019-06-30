@@ -1,0 +1,12 @@
+<div align="center">
+  <div>
+    <h3>View Full Proposals</h3>
+  </div>
+  <div *ngIf="!Loaded">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="Loaded">
+    <app-director-table-full-proposals [fps]=fullproposals></app-director-table-full-proposals>
+  </div>
+
+</div>

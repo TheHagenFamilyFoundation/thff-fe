@@ -206,6 +206,11 @@ import { DirectorSelectedLoiComponent } from './director/director-lois/director-
 
 import { LoiListComponent } from './director/director-lois/loi-list/loi-list.component';
 
+import { DirectorFpsComponent } from './director/director-fps/director-fps.component';
+import { DirectorTableFullProposalsComponent } from './director/director-fps/director-table-full-proposals/director-table-full-proposals.component';
+import { DirectorSelectedFPComponent } from './director/director-fps/director-table-full-proposals/director-selected-fp/director-selected-fp.component';
+import { DirectorViewFPComponent } from './director/director-fps/director-view-fp/director-view-fp.component';
+
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
@@ -301,6 +306,11 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 
         DirectorLoisComponent,
         LoiListComponent,
+
+        DirectorFpsComponent,
+        DirectorTableFullProposalsComponent,
+        DirectorSelectedFPComponent,
+        DirectorViewFPComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
@@ -422,7 +432,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         OrgSelectedLetterOfIntentComponent, LetterOfIntentSubmitCheckComponent,
         OrgSelectedFullProposalComponent,
         DeleteDoc501c3CheckComponent,
-        DirectorOrgSelectedLetterOfIntentComponent, DirectorSelectedLoiComponent,
+        DirectorOrgSelectedLetterOfIntentComponent, DirectorSelectedLoiComponent, DirectorSelectedFPComponent,
         FullProposalSubmitCheckComponent, DeleteFullProposalItemComponent, EditFullProposalItemComponent,
         CreateFullProposalItemComponent
     ]
