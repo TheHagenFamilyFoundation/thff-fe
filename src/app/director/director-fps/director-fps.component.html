@@ -6,7 +6,15 @@
     <mat-spinner></mat-spinner>
   </div>
   <div *ngIf="Loaded">
-    <app-director-table-full-proposals [fps]=fullproposals></app-director-table-full-proposals>
+    <div>Switch</div>
+    <div>
+      <app-director-table-full-proposals [fps]=fullproposals></app-director-table-full-proposals>
+    </div>
+    <div>
+      <app-director-fps-list [fps]=fullproposals>
+      </app-director-fps-list>
+    </div>
+
   </div>
 
 </div>
