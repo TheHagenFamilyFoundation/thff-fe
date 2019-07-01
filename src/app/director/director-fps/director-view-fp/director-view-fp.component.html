@@ -2,4 +2,214 @@
   <div>
     <h3>View Full Proposal</h3>
   </div>
+
+  <div>
+
+    <!-- Executive Summary -->
+
+    <div>
+      <h4>Executive Summary</h4>
+      <div>
+        Briefly explain why your agency is requesting this grant, what outcomes you hope to achieve, and how you will
+        spend the funds if the grant is made (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Executive Summary" cdkTextareaAutosize cdkAutosizeMinRows=2
+            cdkAutosizeMaxRows="50" maxlength="2000" value={{executiveSummary}} readonly></textarea>
+          <mat-hint align="end">{{executiveSummaryLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Purpose Section -->
+
+    <div>
+      <h4>Purpose:</h4>
+      <div>
+        Describe the target population and how they will benefit (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Target Population" cdkTextareaAutosize cdkAutosizeMinRows=2
+            cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{targetPopulation}} readonly></textarea>
+          <mat-hint align="end">{{targetPopulationLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Describe the project goals, measurable objectives, and action plans (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Goals" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{goals}} readonly></textarea>
+          <mat-hint align="end">{{goalsLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Is this a new or ongoing activity for the organization?
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Activity" value={{getOutputActivity()}} readonly>
+        </mat-form-field>
+      </div>
+      <div>
+        Provide a timetable for implementation: (2000 characters max)
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Time Table" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{timeTable}} readonly></textarea>
+          <mat-hint align="end">{{timeTableLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        If there are any other partners in the project, describe them and indicate how you will cooperate on the
+        project
+        (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Partners" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{partners}} readonly></textarea>
+          <mat-hint align="end">{{partnersLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        How does your proposed project differ from the work of other existing projects (in your organization or in
+        other
+        similar organizations; 2000 characters max))?
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Differ" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{differ}} readonly></textarea>
+          <mat-hint align="end">{{differLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Describe the active involvement of constituents in defining problems to be addressed, making policy, and
+        planning
+        the program (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Involvment" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{involve}} readonly></textarea>
+          <mat-hint align="end">{{involveLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Describe the qualifications of key staff and volunteers that will ensure the success of the program, and any
+        staff
+        training that will be needed (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Staff" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{staff}} readonly></textarea>
+          <mat-hint align="end">{{staffLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Describe your long-term strategies for funding this project at end of grant period (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Strategy" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{strategy}} readonly></textarea>
+          <mat-hint align="end">{{strategyLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Evaluation Section -->
+
+    <div>
+      <h4>Evaluation</h4>
+      <div>
+        Describe your plans for evaluation of the project, including how success will be defined and measured (2000
+        characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Evaluation" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{evaluation}} readonly></textarea>
+          <mat-hint align="end">{{evaluationLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        How will the evaluation results be used and/or disseminated? If appropriate, how will the project be
+        replicated?
+        (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Dissemination" cdkTextareaAutosize cdkAutosizeMinRows=2
+            cdkAutosizeMaxRows="50" maxlength="2000" maxlength="2000" value={{dissemination}} readonly></textarea>
+          <mat-hint align="end">{{disseminationLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        Describe the active involvement of constituents in evaluating the program, if any (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Active" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{active}} readonly></textarea>
+          <mat-hint align="end">{{activeLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Budget Section -->
+
+    <div>
+      <h4>Budget Narrative/Justification</h4>
+      <div class="text-a" *ngIf="FPid">
+        <app-full-proposal-items #fpitems [FPid]="FPid"></app-full-proposal-items>
+      </div>
+      <br>
+      <br>
+      <div>
+        In the event that you are not able to secure full funding, what are the priority items in the budget above?
+        (2000 characters max)
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="Priority" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{priority}} readonly></textarea>
+          <mat-hint align="end">{{priorityLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Your Organization -->
+
+    <div>
+      <h4>Your Organization</h4>
+      <div>
+        Provide a brief history and overview of your organization (2000 characters max).
+      </div>
+      <div>
+        <mat-form-field class="text-a">
+          <textarea matInput placeholder="History" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
+            maxlength="2000" maxlength="2000" value={{history}} readonly></textarea>
+          <mat-hint align="end">{{historyLength}} / 2000</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        If your organization has a website, provide the link here:
+      </div>
+      <div>
+        <mat-form-field class="website-width">
+          <input matInput placeholder="Website" maxlength="255" value={{website}} readonly>
+          <mat-hint align="end">{{websiteLength}} / 255</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <br>
+  </div>
+
 </div>
