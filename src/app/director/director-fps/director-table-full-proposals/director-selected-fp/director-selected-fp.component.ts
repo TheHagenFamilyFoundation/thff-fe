@@ -12,17 +12,26 @@ export class DirectorSelectedFPComponent implements OnInit {
   fpLink = '/director-fp/'
   link: string;
 
+  fp: any;
   fpID: any;
+
+  HasFP: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private router: Router,
-  ) { }
+  ) {
+
+    this.HasFP = false;
+
+  }
 
   ngOnInit() {
     // will log the entire data object
     console.log('this.data', this.data)
-
+    this.fp = this.data.fp;
+    console.log('this.fp', this.fp)
+    this.HasFP = true;
     this.fpID = this.data.fpID;
 
     this.link = this.fpLink + this.fpID;

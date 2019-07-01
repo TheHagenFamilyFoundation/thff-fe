@@ -13,6 +13,7 @@ import { GetFullProposalService } from '../../services/full-proposal/get-full-pr
 export class DirectorFpsComponent implements OnInit {
 
   Loaded: boolean;
+  Printable: boolean;
 
   fullproposals: any;
 
@@ -21,6 +22,7 @@ export class DirectorFpsComponent implements OnInit {
   ) {
 
     this.Loaded = false;
+    this.Printable = false;
 
   }
 
@@ -47,6 +49,19 @@ export class DirectorFpsComponent implements OnInit {
           this.Loaded = true;
 
         })
+
+  }
+
+  getPrintable(printable) {
+    console.log('printable', printable)
+
+    if (printable === true) {
+      this.Printable = true;
+    }
+    else {
+      this.Printable = false;
+    }
+
 
   }
 

@@ -211,6 +211,8 @@ import { DirectorTableFullProposalsComponent } from './director/director-fps/dir
 import { DirectorSelectedFPComponent } from './director/director-fps/director-table-full-proposals/director-selected-fp/director-selected-fp.component';
 import { DirectorViewFPComponent } from './director/director-fps/director-view-fp/director-view-fp.component';
 
+import { DirectorFpsListComponent } from './director/director-fps/director-fps-list/director-fps-list.component';
+
 import { ResetPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/reset-password.component';
 import { TypeNewPasswordComponent } from './login/reset-password-or-forgot-username/reset-password/type-new-password/type-new-password.component';
 import { ForgotUsernameComponent } from './login/reset-password-or-forgot-username/forgot-username/forgot-username.component';
@@ -311,6 +313,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         DirectorTableFullProposalsComponent,
         DirectorSelectedFPComponent,
         DirectorViewFPComponent,
+        DirectorFpsListComponent,
 
         ResetPasswordComponent,
         TypeNewPasswordComponent,
@@ -364,7 +367,6 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
-
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({

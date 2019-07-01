@@ -3,6 +3,11 @@
 </div>
 
 <div>
+  LOI Name: {{fp?.loi.name}}
+</div>
+<div>Organization Name: {{fp?.organization.name}}</div>
+<br>
+<div>
   <button mat-raised-button [routerLink]="[link]" mat-dialog-close>FP</button>
   <button mat-raised-button (click)="cancel() " mat-dialog-close>Cancel</button>
 </div>
