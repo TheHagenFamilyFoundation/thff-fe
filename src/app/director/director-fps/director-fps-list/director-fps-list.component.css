@@ -1,0 +1,21 @@
+.full-width {
+    width: 100%;
+  }
+
+.text-a {
+  /* min-width: 200px;
+  max-width: 500px; */
+  width: 80%;
+}
+
+textarea {
+  resize: none;
+}
+
+.full-width {
+  width: 40%;
+}
+
+.website-width {
+    width: 40%;
+  }
