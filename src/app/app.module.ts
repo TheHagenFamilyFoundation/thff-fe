@@ -266,6 +266,7 @@ import { EmailComponent } from './test/email/email.component';
 
 //Utility
 import { NotFoundComponent } from './utilities/not-found/not-found.component';
+import { DirectorFpsListComponent } from './director/director-fps/director-fps-list/director-fps-list.component';
 
 @NgModule({
     declarations: [AppComponent,
@@ -364,6 +365,8 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
+
+        DirectorFpsListComponent,
 
     ],
     imports: [BrowserModule,
