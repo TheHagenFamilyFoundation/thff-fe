@@ -6,11 +6,15 @@
     <mat-spinner></mat-spinner>
   </div>
   <div *ngIf="Loaded">
-    <div>Switch</div>
-    <div>
+    <div class="example-button-row">
+      <button *ngIf="!Printable" mat-raised-button (click)="getPrintable(true)">List</button>
+      <button *ngIf="Printable" mat-raised-button (click)="getPrintable(false)">Table</button>
+    </div>
+    <br>
+    <div *ngIf="!Printable">
       <app-director-table-full-proposals [fps]=fullproposals></app-director-table-full-proposals>
     </div>
-    <div>
+    <div *ngIf="Printable">
       <app-director-fps-list [fps]=fullproposals>
       </app-director-fps-list>
     </div>
