@@ -58,11 +58,30 @@ export class GetUserService {
     return this.http.get(urlString);
   }
 
-  getAllUsers(): Observable<any> {
+  getUsersCount(): Observable<any> {
+
+    this.getBackendURL();
+
+    let urlString = this.API_URL + "/users/count";
+
+    return this.http.get(urlString);
+
+  }
+
+  getAllUsers(paging: any): Observable<any> {
 
     this.getBackendURL();
 
     let urlString = this.API_URL + "/user";
+
+    // console.log('paging limit', paging.limit)
+    // console.log('paging skip', paging.skip)
+
+    // if (paging.limit && paging.skip) {
+    urlString += '?skip=' + paging.skip + '&limit=' + paging.limit;
+    // }
+
+    console.log('this.urlString', urlString)
 
     return this.http.get(urlString);
   }
