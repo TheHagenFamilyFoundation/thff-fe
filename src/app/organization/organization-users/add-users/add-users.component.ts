@@ -15,11 +15,16 @@ export class AddUsersComponent implements OnInit {
   users: any;
   usersToBeAdded: any;
 
+  usersCount: any;
+
   selectedUsers: any;
 
   displayedColumns = ['username'];
   dataSourceAllUsers: any;//MatTableDataSource<OrganizationData>;
   dataSourceSelectedUsers: any;//MatTableDataSource<OrganizationData>;
+
+  limit: number;
+  skip: number;
 
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('allUsersPaginator', { read: MatPaginator }) allUsersPaginator: MatPaginator;
@@ -38,6 +43,8 @@ export class AddUsersComponent implements OnInit {
     this.users = [];
     this.selectedUsers = [];
 
+    this.limit = 5;//default to 5
+
   }
 
   ngOnInit() {
@@ -50,6 +57,10 @@ export class AddUsersComponent implements OnInit {
 
     console.log('addusers: orgUsers', this.orgUsers)
 
+    this.skip = 0;
+
+    // this.getUsersCount();
+
     this.getUsers();
 
   }
@@ -60,7 +71,95 @@ export class AddUsersComponent implements OnInit {
 
     let userAlreadyIn = false;
 
-    this.getUserService.getAllUsers()
+    let paging = {
+      limit: this.limit,
+      skip: this.skip
+    }
+
+    console.log('paging', paging)
+
+    this.getUserService.getUsersCount().subscribe((usersCount) => {
+      this.usersCount = usersCount;
+      console.log('this.usersCount', this.usersCount)
+
+      this.allUsersPaginator.length = this.usersCount
+
+      this.getUserService.getAllUsers(paging)
+        .subscribe(
+          (users) => {
+
+            console.log('users', users);
+
+            users.forEach(element => {
+
+              userAlreadyIn = false;
+
+              this.orgUsers.forEach(inside => {
+
+                if (element.id == inside.id) {
+                  userAlreadyIn = true;
+                }
+
+              });
+
+              this.selectedUsers.forEach(inside => {
+
+                if (element.id == inside.id) {
+                  userAlreadyIn = true;
+                }
+
+              });
+
+              this.users.forEach(inside => {
+
+                if (element.id == inside.id) {
+                  userAlreadyIn = true;
+                }
+
+              });
+
+
+              if (!userAlreadyIn) {
+                this.users.push(element)
+              }
+
+            });
+
+            console.log('this.users - after', this.users);
+            this.dataSourceAllUsers = new MatTableDataSource(this.users);
+
+            // this.dataSourceAllUsers.paginator = this.allUsersPaginator;
+            this.dataSourceAllUsers.sort = this.allUsersSort;
+
+          })
+
+    },
+      (err) => {
+        console.log(err)
+      },
+      () => {
+      }
+
+    )
+
+  }
+
+  getNextUsers() {
+
+    console.log('getting users')
+
+    this.users = [];
+
+    let userAlreadyIn = false;
+
+    let paging = {
+      limit: this.limit,
+      skip: this.skip
+    }
+
+    console.log('paging', paging)
+
+    this.getUserService.getAllUsers(paging)
       .subscribe(
         (users) => {
 
@@ -78,6 +177,22 @@ export class AddUsersComponent implements OnInit {
 
             });
 
+            this.selectedUsers.forEach(inside => {
+
+              if (element.id == inside.id) {
+                userAlreadyIn = true;
+              }
+
+            });
+
+            this.users.forEach(inside => {
+
+              if (element.id == inside.id) {
+                userAlreadyIn = true;
+              }
+
+            });
+
             if (!userAlreadyIn) {
               this.users.push(element)
             }
@@ -86,8 +201,9 @@ export class AddUsersComponent implements OnInit {
 
           console.log('this.users - after', this.users);
           this.dataSourceAllUsers = new MatTableDataSource(this.users);
-
-          this.dataSourceAllUsers.paginator = this.allUsersPaginator;
+          //reset the length
+          this.allUsersPaginator.length = this.usersCount
+          // this.dataSourceAllUsers.paginator = this.allUsersPaginator;
           this.dataSourceAllUsers.sort = this.allUsersSort;
 
         })
@@ -160,6 +276,17 @@ export class AddUsersComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSourceAllUsers.filter = filterValue;
   }
+
+  onPaginateChange(event) {
+    console.log("Current page index: " + event.pageIndex);
+
+    this.skip = event.pageIndex * 5;
+    console.log('this.skip = ', this.skip)
+
+    this.getNextUsers()
+
+  }
+
 
 
 }
