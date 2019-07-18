@@ -26,7 +26,8 @@
 
           </table>
 
-          <mat-paginator #allUsersPaginator [pageSizeOptions]="[5]"></mat-paginator>
+          <mat-paginator #allUsersPaginator [length]="usersCount" [pageSizeOptions]="[5]"
+            (page)="onPaginateChange($event)"></mat-paginator>
         </div>
       </span>
     </mat-grid-tile>
