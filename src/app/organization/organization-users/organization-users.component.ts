@@ -105,14 +105,17 @@ export class OrganizationUsersComponent implements OnInit {
       }
 
     });
-    
+
   }
 
   getUsers() {
     //pulls list of users that organization has
     console.log('getting users')
-
-
   }
+
+  onPaginateChange(event) {
+    console.log(JSON.stringify("Current page index: " + event.pageIndex));
+  }
+
 
 }
