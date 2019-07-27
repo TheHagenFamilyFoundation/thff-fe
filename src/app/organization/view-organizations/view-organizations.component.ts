@@ -30,8 +30,8 @@ export class ViewOrganizationsComponent implements OnInit {
 
   inOrgCheck: boolean;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
     public getUserService: GetUserService,

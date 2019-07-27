@@ -58,11 +58,15 @@ export class GetUserService {
     return this.http.get(urlString);
   }
 
-  getUsersCount(): Observable<any> {
+  getUsersCount(body: any): Observable<any> {
 
     this.getBackendURL();
 
-    let urlString = this.API_URL + "/users/count";
+    let urlString = this.API_URL + "/users/count"
+
+    if (body.org) {
+      urlString += '?org=' + body.org; //mongo id
+    }
 
     return this.http.get(urlString);
 
@@ -80,6 +84,10 @@ export class GetUserService {
     // if (paging.limit && paging.skip) {
     urlString += '?skip=' + paging.skip + '&limit=' + paging.limit;
     // }
+
+    if (paging.org) {
+      urlString += '&notorg=' + paging.org; //mongo id
+    }
 
     console.log('this.urlString', urlString)
 

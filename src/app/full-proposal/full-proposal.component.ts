@@ -20,7 +20,7 @@ import { UpdateFullProposalService } from '../services/full-proposal/update-full
 export class FullProposalComponent implements OnInit {
 
   fpID: any; //custom
-  FPid: any;//mongoid
+  FPid: any; //mongo id
 
   fp: any; //the full proposal object
 
@@ -90,7 +90,7 @@ export class FullProposalComponent implements OnInit {
   ShowMessage = false;
   message: any;
 
-  @ViewChild(FullProposalItemsComponent)
+  @ViewChild(FullProposalItemsComponent, { static: false })
   private fpItemsComponent: FullProposalItemsComponent;
 
   constructor(private route: ActivatedRoute,

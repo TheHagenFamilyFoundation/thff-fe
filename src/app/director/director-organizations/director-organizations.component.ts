@@ -20,8 +20,8 @@ export class DirectorOrganizationsComponent implements OnInit {
 
   Loaded: boolean;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   pageEvent: PageEvent;
 

@@ -28,8 +28,8 @@ export class OrganizationUsersComponent implements OnInit {
   displayedColumns = ['username'];
   dataSource: any;//MatTableDataSource<OrganizationData>;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(public dialog: MatDialog,
     private addUserService: AddUserService) {
@@ -78,7 +78,7 @@ export class OrganizationUsersComponent implements OnInit {
       //width: '700px',
       width: this.addUsersWidth + 'px',
       height: this.addUsersHeight + 'px',
-      data: { users: this.org.users }
+      data: { org: this.org }
     });
 
     dialogRef.afterClosed().subscribe(result => {

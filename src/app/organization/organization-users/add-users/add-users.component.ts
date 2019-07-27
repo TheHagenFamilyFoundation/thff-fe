@@ -11,6 +11,9 @@ import { GetUserService } from '../../../services/user/get-user.service';
 })
 export class AddUsersComponent implements OnInit {
 
+  org: any;
+  orgDocID: any; //mongo id
+
   orgUsers: any;
   users: any;
   usersToBeAdded: any;
@@ -26,13 +29,15 @@ export class AddUsersComponent implements OnInit {
   limit: number;
   skip: number;
 
+  LoadingUsers: boolean;
+
   // @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild('allUsersPaginator', { read: MatPaginator }) allUsersPaginator: MatPaginator;
-  @ViewChild('selectedUsersPaginator', { read: MatPaginator }) selectedUsersPaginator: MatPaginator;
+  @ViewChild('allUsersPaginator', {static: false}) allUsersPaginator: MatPaginator;
+  @ViewChild('selectedUsersPaginator', {static: false}) selectedUsersPaginator: MatPaginator;
 
   // @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('allUsersSort', { read: MatSort }) allUsersSort: MatSort;
-  @ViewChild('selectedUsersSort', { read: MatSort }) selectedUsersSort: MatSort;
+  @ViewChild('allUsersSort', {static: false}) allUsersSort: MatSort;
+  @ViewChild('selectedUsersSort', {static: false}) selectedUsersSort: MatSort;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -45,6 +50,8 @@ export class AddUsersComponent implements OnInit {
 
     this.limit = 5;//default to 5
 
+    this.LoadingUsers = false;
+
   }
 
   ngOnInit() {
@@ -53,7 +60,10 @@ export class AddUsersComponent implements OnInit {
 
     console.log('addusers: data', this.data)
 
-    this.orgUsers = this.data.users;
+    this.orgDocID = this.data.org.id;
+    console.log('addusers: orgDocId', this.orgDocID)
+
+    this.orgUsers = this.data.org.users;
 
     console.log('addusers: orgUsers', this.orgUsers)
 
@@ -73,12 +83,15 @@ export class AddUsersComponent implements OnInit {
 
     let paging = {
       limit: this.limit,
-      skip: this.skip
+      skip: this.skip,
+      org: this.orgDocID
     }
 
     console.log('paging', paging)
 
-    this.getUserService.getUsersCount().subscribe((usersCount) => {
+    this.LoadingUsers = true;
+
+    this.getUserService.getUsersCount({ org: this.orgDocID }).subscribe((usersCount) => {
       this.usersCount = usersCount;
       console.log('this.usersCount', this.usersCount)
 
@@ -154,9 +167,9 @@ export class AddUsersComponent implements OnInit {
 
     let paging = {
       limit: this.limit,
-      skip: this.skip
+      skip: this.skip,
+      org: this.orgDocID
     }
-
     console.log('paging', paging)
 
     this.getUserService.getAllUsers(paging)

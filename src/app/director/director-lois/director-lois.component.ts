@@ -33,8 +33,8 @@ export class DirectorLoisComponent implements OnInit {
 
   currentFilter: number;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
     public getLoiService: GetLoiService,

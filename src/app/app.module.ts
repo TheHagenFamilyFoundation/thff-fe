@@ -37,10 +37,10 @@ import { MatSortModule } from '@angular/material/sort';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
-import { ContentsModule } from 'angular-contents';
+// import { ContentsModule } from 'angular-contents';
 
-import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
-import { NgxPageScrollModule } from 'ngx-page-scroll';
+// import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
+// import { NgxPageScrollModule } from 'ngx-page-scroll';
 
 import { NgxCurrencyModule } from "ngx-currency";
 
@@ -386,8 +386,9 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         MatPaginatorModule, MatDialogModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule,
         MatExpansionModule, MatProgressSpinnerModule, MatSliderModule, MatSortModule,
 
-        ContentsModule, NgxPageScrollCoreModule.forRoot({ /* custom settings here */ }),
-        NgxPageScrollModule,
+        // ContentsModule, 
+        // NgxPageScrollCoreModule.forRoot({ /* custom settings here */ }),
+        // NgxPageScrollModule,
 
         NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
 
