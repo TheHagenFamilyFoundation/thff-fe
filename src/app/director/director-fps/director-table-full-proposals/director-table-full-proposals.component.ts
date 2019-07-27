@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';//for table
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { DirectorSelectedFPComponent } from './director-selected-fp/director-selected-fp.component';
 
