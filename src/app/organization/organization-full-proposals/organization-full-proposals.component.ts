@@ -31,7 +31,7 @@ export class OrganizationFullProposalsComponent implements OnInit {
 
   NoFPs = 'No Full Proposals'
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(public dialog: MatDialog,

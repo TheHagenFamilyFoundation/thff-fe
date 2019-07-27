@@ -23,8 +23,8 @@ export class DirectorTableFullProposalsComponent implements OnInit {
   // dataSource: MatTableDataSource<LOIData>;
   dataSource: any; //used for the table
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(public dialog: MatDialog, ) {
 
@@ -34,11 +34,27 @@ export class DirectorTableFullProposalsComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log('setting the dataSource', this.fps)
+
+    // this.dataSource = this.fps;
+
+    // console.log('dataSource set', this.dataSource)
+    // setTimeout(() => this.dataSource.paginator = this.paginator);
+    // // this.dataSource.paginator = this.paginator;
+    // setTimeout(() => this.dataSource.sort = this.sort);
+    // this.dataSource.sort = this.sort;
+
+    this.setData();
+
+  }
+
+  setData() {
+
+    console.log('setting data')
+
     this.dataSource = new MatTableDataSource(this.fps);
-
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
+    this.dataSource.paginator = this.paginator;
   }
 
   onRowClicked(row) {
