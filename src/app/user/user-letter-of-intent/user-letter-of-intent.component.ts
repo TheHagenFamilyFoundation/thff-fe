@@ -38,7 +38,7 @@ export class UserLetterOfIntentComponent implements OnInit {
 
   Loaded: boolean;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(

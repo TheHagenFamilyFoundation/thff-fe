@@ -28,7 +28,7 @@ export class OrganizationUsersComponent implements OnInit {
   displayedColumns = ['username'];
   dataSource: any;//MatTableDataSource<OrganizationData>;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(public dialog: MatDialog,
@@ -47,12 +47,16 @@ export class OrganizationUsersComponent implements OnInit {
     console.log('this.org.users', this.org.users)
     this.users = this.org.users;
     this.dataSource = new MatTableDataSource(this.users);
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
     this.orgID = this.org.id;
 
   }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+}
 
   onRowClicked(row) {
     console.log('Row clicked: ', row);

@@ -1,7 +1,7 @@
-import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit, Input } from '@angular/core';
 
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatPaginator, MatSort } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 //services
 import { GetLoiService } from '../../../../services/loi/get-loi.service';
@@ -15,7 +15,7 @@ import { DirectorOrgSelectedLetterOfIntentComponent } from './director-org-selec
   templateUrl: './director-view-organization-lois.component.html',
   styleUrls: ['./director-view-organization-lois.component.css']
 })
-export class DirectorViewOrganizationLoisComponent implements OnInit {
+export class DirectorViewOrganizationLoisComponent implements OnInit, AfterViewInit {
 
   lois: any;
 
@@ -63,7 +63,15 @@ export class DirectorViewOrganizationLoisComponent implements OnInit {
     }
 
     this.dataSource = this.lois;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
+  }
 
+  ngAfterViewInit() {
+
+    console.log('after view init')
+
+    this.dataSource.paginator = this.paginator;
   }
 
   onRowClicked(row) {
