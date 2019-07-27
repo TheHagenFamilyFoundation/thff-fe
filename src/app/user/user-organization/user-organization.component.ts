@@ -34,8 +34,8 @@ export class UserOrganizationComponent implements OnInit {
 
   Loaded: boolean;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
     public getUserService: GetUserService,
@@ -114,7 +114,7 @@ export class UserOrganizationComponent implements OnInit {
 
           let organization = user[0].organizations;
 
-          if (organization.length > 0) {
+          if (organization && organization.length > 0) {
 
             this.InOrganization = true;
 

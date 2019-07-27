@@ -36,8 +36,8 @@ export class OrganizationRequestsComponent implements OnInit {
   displayedColumns = ['name', 'createdAt', 'submitted', 'status'];
   dataSource: any;//MatTableDataSource<OrganizationData>;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
     public dialog: MatDialog,

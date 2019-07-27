@@ -23,8 +23,8 @@ export class DirectorTableFullProposalsComponent implements OnInit {
   // dataSource: MatTableDataSource<LOIData>;
   dataSource: any; //used for the table
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   constructor(public dialog: MatDialog, ) {
 

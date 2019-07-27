@@ -26,7 +26,7 @@
 
           </table>
 
-          <mat-paginator #allUsersPaginator [length]="usersCount" [pageSizeOptions]="[5]"
+          <mat-paginator #allUsersPaginator [disabled]='!LoadingUsers' [length]="usersCount" [pageSizeOptions]="[5]"
             (page)="onPaginateChange($event)"></mat-paginator>
         </div>
       </span>

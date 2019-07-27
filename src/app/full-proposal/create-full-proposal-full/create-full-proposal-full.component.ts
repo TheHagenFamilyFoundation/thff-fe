@@ -94,7 +94,7 @@ export class CreateFullProposalFullComponent implements OnInit {
   ShowMessage = false;
   message: any;
 
-  @ViewChild(CreateFullProposalItemsComponent)
+  @ViewChild(CreateFullProposalItemsComponent, { static: false })
   private fpItemsComponent: CreateFullProposalItemsComponent;
 
   constructor(private route: ActivatedRoute,
