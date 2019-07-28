@@ -1,5 +1,9 @@
 <div>
 
+  <div align="center">
+    <button mat-button (click)="exportToPDF()">
+      <img [src]="fullImagePath" width="10%" height="10%"></button>
+  </div>
   <h4>Number of Full Proposals: {{fps.length}}</h4>
 
   <hr>
@@ -23,11 +27,12 @@
       <div align="center">
         <div>
           <h4>Executive Summary</h4>
-          <div>
+          <div>{{executiveSummaryDesc}}</div>
+          <!-- <div>
             Briefly explain why your agency is requesting this grant, what outcomes you hope to achieve, and how you
             will
             spend the funds if the grant is made (2000 characters max).
-          </div>
+          </div> -->
           <div>
             <mat-form-field class="text-a">
               <textarea matInput placeholder="Executive Summary" cdkTextareaAutosize cdkAutosizeMinRows=2
@@ -41,8 +46,11 @@
 
         <div>
           <h4>Purpose:</h4>
-          <div>
+          <!-- <div>
             Describe the target population and how they will benefit (2000 characters max).
+          </div> -->
+          <div>
+            {{targetPopulationDesc}}
           </div>
           <div>
             <mat-form-field class="text-a">
@@ -52,9 +60,10 @@
               <mat-hint align="end">{{calculateLength(fp.targetPopulation)}} / 2000</mat-hint>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             Describe the project goals, measurable objectives, and action plans (2000 characters max).
-          </div>
+          </div> -->
+          <div>{{projectGoalsDesc}}</div>
           <div>
             <mat-form-field class="text-a">
               <textarea matInput placeholder="Goals" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
@@ -62,17 +71,21 @@
               <mat-hint align="end">{{calculateLength(fp.goals)}} / 2000</mat-hint>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             Is this a new or ongoing activity for the organization?
+          </div> -->
+          <div>
+            {{newOrOngoingDesc}}
           </div>
           <div>
             <mat-form-field>
               <input matInput placeholder="Activity" value={{getOutputActivity(fp.activity)}} readonly>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             Provide a timetable for implementation: (2000 characters max)
-          </div>
+          </div> -->
+          <div>{{timeTableDesc}}</div>
           <div>
             <mat-form-field class="text-a">
               <textarea matInput placeholder="Time Table" cdkTextareaAutosize cdkAutosizeMinRows=2
@@ -80,10 +93,13 @@
               <mat-hint align="end">{{calculateLength(fp.timeTable)}} / 2000</mat-hint>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             If there are any other partners in the project, describe them and indicate how you will cooperate on the
             project
             (2000 characters max).
+          </div> -->
+          <div>
+            {{partnersDesc}}
           </div>
           <div>
             <mat-form-field class="text-a">
@@ -92,10 +108,13 @@
               <mat-hint align="end">{{calculateLength(fp.partners)}} / 2000</mat-hint>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             How does your proposed project differ from the work of other existing projects (in your organization or in
             other
             similar organizations; 2000 characters max))?
+          </div> -->
+          <div>
+            {{diffDesc}}
           </div>
           <div>
             <mat-form-field class="text-a">
@@ -104,10 +123,13 @@
               <mat-hint align="end">{{calculateLength(fp.differ)}} / 2000</mat-hint>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             Describe the active involvement of constituents in defining problems to be addressed, making policy, and
             planning
             the program (2000 characters max).
+          </div> -->
+          <div>
+            {{involveDesc}}
           </div>
           <div>
             <mat-form-field class="text-a">
@@ -116,11 +138,12 @@
               <mat-hint align="end">{{calculateLength(fp.involve)}} / 2000</mat-hint>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             Describe the qualifications of key staff and volunteers that will ensure the success of the program, and any
             staff
             training that will be needed (2000 characters max).
-          </div>
+          </div> -->
+          <div>{{staffDesc}}</div>
           <div>
             <mat-form-field class="text-a">
               <textarea matInput placeholder="Staff" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
@@ -128,9 +151,10 @@
               <mat-hint align="end">{{calculateLength(fp.staff)}} / 2000</mat-hint>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             Describe your long-term strategies for funding this project at end of grant period (2000 characters max).
-          </div>
+          </div> -->
+          <div>{{strategyDesc}}</div>
           <div>
             <mat-form-field class="text-a">
               <textarea matInput placeholder="Strategy" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
@@ -144,10 +168,11 @@
 
         <div>
           <h4>Evaluation</h4>
-          <div>
+          <!-- <div>
             Describe your plans for evaluation of the project, including how success will be defined and measured (2000
             characters max).
-          </div>
+          </div> -->
+          <div>{{evaluationDesc}}</div>
           <div>
             <mat-form-field class="text-a">
               <textarea matInput placeholder="Evaluation" cdkTextareaAutosize cdkAutosizeMinRows=2
@@ -155,11 +180,12 @@
               <mat-hint align="end">{{calculateLength(fp.evaluation)}} / 2000</mat-hint>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             How will the evaluation results be used and/or disseminated? If appropriate, how will the project be
             replicated?
             (2000 characters max).
-          </div>
+          </div> -->
+          <div>{{disseminationDesc}}</div>
           <div>
             <mat-form-field class="text-a">
               <textarea matInput placeholder="Dissemination" cdkTextareaAutosize cdkAutosizeMinRows=2
@@ -168,9 +194,10 @@
               <mat-hint align="end">{{calculateLength(fp.dissemination)}} / 2000</mat-hint>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             Describe the active involvement of constituents in evaluating the program, if any (2000 characters max).
-          </div>
+          </div> -->
+          <div>{{activeDesc}}</div>
           <div>
             <mat-form-field class="text-a">
               <textarea matInput placeholder="Active" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
@@ -189,10 +216,11 @@
           </div>
           <br>
           <br>
-          <div>
+          <!-- <div>
             In the event that you are not able to secure full funding, what are the priority items in the budget above?
             (2000 characters max)
-          </div>
+          </div> -->
+          <div>{{priorityDesc}}</div>
           <div>
             <mat-form-field class="text-a">
               <textarea matInput placeholder="Priority" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
@@ -206,9 +234,10 @@
 
         <div>
           <h4>Your Organization</h4>
-          <div>
+          <!-- <div>
             Provide a brief history and overview of your organization (2000 characters max).
-          </div>
+          </div> -->
+          <div>{{historyDesc}}</div>
           <div>
             <mat-form-field class="text-a">
               <textarea matInput placeholder="History" cdkTextareaAutosize cdkAutosizeMinRows=2 cdkAutosizeMaxRows="50"
@@ -216,9 +245,10 @@
               <mat-hint align="end">{{calculateLength(fp.history)}} / 2000</mat-hint>
             </mat-form-field>
           </div>
-          <div>
+          <!-- <div>
             If your organization has a website, provide the link here:
-          </div>
+          </div> -->
+          <div>{{websiteDesc}}</div>
           <div>
             <mat-form-field class="website-width">
               <input matInput placeholder="Website" maxlength="255" value={{fp.website}} readonly>
