@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
 
 import * as jsPDF from 'jspdf';
-// import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas'; //no longer using this
 
 @Component({
   selector: 'app-loi-list',
