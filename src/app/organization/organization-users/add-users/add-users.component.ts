@@ -32,12 +32,12 @@ export class AddUsersComponent implements OnInit {
   LoadingUsers: boolean;
 
   // @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild('allUsersPaginator', {static: false}) allUsersPaginator: MatPaginator;
-  @ViewChild('selectedUsersPaginator', {static: false}) selectedUsersPaginator: MatPaginator;
+  @ViewChild('allUsersPaginator', { static: false }) allUsersPaginator: MatPaginator;
+  @ViewChild('selectedUsersPaginator', { static: false }) selectedUsersPaginator: MatPaginator;
 
   // @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('allUsersSort', {static: false}) allUsersSort: MatSort;
-  @ViewChild('selectedUsersSort', {static: false}) selectedUsersSort: MatSort;
+  @ViewChild('allUsersSort', { static: false }) allUsersSort: MatSort;
+  @ViewChild('selectedUsersSort', { static: false }) selectedUsersSort: MatSort;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -89,7 +89,8 @@ export class AddUsersComponent implements OnInit {
 
     console.log('paging', paging)
 
-    this.LoadingUsers = true;
+    this.LoadingUsers = false;
+    console.log('loading users:', this.LoadingUsers)
 
     this.getUserService.getUsersCount({ org: this.orgDocID }).subscribe((usersCount) => {
       this.usersCount = usersCount;
@@ -140,7 +141,7 @@ export class AddUsersComponent implements OnInit {
 
             console.log('this.users - after', this.users);
             this.dataSourceAllUsers = new MatTableDataSource(this.users);
-
+            this.LoadingUsers = true;
             // this.dataSourceAllUsers.paginator = this.allUsersPaginator;
             this.dataSourceAllUsers.sort = this.allUsersSort;
 
@@ -171,7 +172,7 @@ export class AddUsersComponent implements OnInit {
       org: this.orgDocID
     }
     console.log('paging', paging)
-
+    this.LoadingUsers = false;
     this.getUserService.getAllUsers(paging)
       .subscribe(
         (users) => {
@@ -211,7 +212,7 @@ export class AddUsersComponent implements OnInit {
             }
 
           });
-
+          this.LoadingUsers = true;
           console.log('this.users - after', this.users);
           this.dataSourceAllUsers = new MatTableDataSource(this.users);
           //reset the length
@@ -241,7 +242,7 @@ export class AddUsersComponent implements OnInit {
 
         // console.log('we have user', this.dataSourceAllUsers.data);
         // this.dataSourceAllUsers = new MatTableDataSource(this.dataSourceAllUsers.data);
-
+        this.allUsersPaginator.length = this.usersCount--; //reduce the count after selecting 1
         this.dataSourceAllUsers.paginator = this.allUsersPaginator;
         this.dataSourceAllUsers.sort = this.allUsersSort;
 
