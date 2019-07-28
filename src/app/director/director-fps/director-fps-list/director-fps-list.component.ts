@@ -13,6 +13,24 @@ export class DirectorFpsListComponent implements OnInit {
 
   Loading: boolean;
 
+  //Descriptions - used in the html and in the export to pdf
+  executiveSummaryDesc = 'Briefly explain why your agency is requesting this grant, what outcomes you hope to achieve, and how you will spend the funds if the grant is made (2000 characters max).';
+  purposeDesc = 'Describe the target population and how they will benefit (2000 characters max).';
+  projectGoalsDesc = 'Describe the project goals, measurable objectives, and action plans (2000 characters max).';
+  newOrOngoingDesc = 'Is this a new or ongoing activity for the organization?'; //more like a question than a desc
+  timeTableDesc = 'Provide a timetable for implementation: (2000 characters max)';
+  partnersDesc = 'If there are any other partners in the project, describe them and indicate how you will cooperate on the project (2000 characters max).';
+  diffDesc = 'How does your proposed project differ from the work of other existing projects (in your organization or in other similar organizations; 2000 characters max))?';
+  involveDesc = 'Describe the active involvement of constituents in defining problems to be addressed, making policy, and planning the program (2000 characters max).';
+  staffDesc = 'Describe the qualifications of key staff and volunteers that will ensure the success of the program, and any staff training that will be needed(2000 characters max).';
+  strategyDesc = 'Describe your long-term strategies for funding this project at end of grant period (2000 characters max).';
+  evaluationDesc = 'Describe your plans for evaluation of the project, including how success will be defined and measured (2000 characters max).';
+  disseminationDesc = 'How will the evaluation results be used and/or disseminated? If appropriate, how will the project be replicated? (2000 characters max).';
+  activeDesc = 'Describe the active involvement of constituents in evaluating the program, if any (2000 characters max).';
+  priorityDesc = 'In the event that you are not able to secure full funding, what are the priority items in the budget above? (2000 characters max)';
+  historyDesc = 'Provide a brief history and overview of your organization (2000 characters max).';
+  websiteDesc = 'If your organization has a website, provide the link here:';
+
   @Input()
   fps: any
 
