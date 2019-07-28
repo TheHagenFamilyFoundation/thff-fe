@@ -242,7 +242,7 @@ export class AddUsersComponent implements OnInit {
 
         // console.log('we have user', this.dataSourceAllUsers.data);
         // this.dataSourceAllUsers = new MatTableDataSource(this.dataSourceAllUsers.data);
-
+        this.allUsersPaginator.length = this.usersCount--;
         this.dataSourceAllUsers.paginator = this.allUsersPaginator;
         this.dataSourceAllUsers.sort = this.allUsersSort;
 
