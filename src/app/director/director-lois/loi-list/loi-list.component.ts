@@ -41,9 +41,7 @@ export class LoiListComponent implements OnInit {
 
     console.log('this.lois.length', this.lois.length)
     for (let i = 0; i < this.lois.length; i++) {
-      // this.lois.forEach(loi => {
 
-      // let loiDoc = '#loi_' + this.lois[i].id;
       let loiDoc = this.lois[i].id;
       console.log('loiDoc', loiDoc)
       console.log('this.lois[i]', this.lois[i])
@@ -84,18 +82,16 @@ export class LoiListComponent implements OnInit {
         //output no info
         pdf.text(75, vertical + shift, `No Info`) //no info
       }
-      
+
       if (i < this.lois.length - 1) {
         pdf.addPage();
       }
-      // });
+
     }
 
     this.Loading = false;
 
     pdf.save('converteddoc.pdf');
   }
-
-
 
 }
