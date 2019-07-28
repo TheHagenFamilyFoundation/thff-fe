@@ -84,9 +84,7 @@ export class LoiListComponent implements OnInit {
         //output no info
         pdf.text(75, vertical + shift, `No Info`) //no info
       }
-
-
-
+      
       if (i < this.lois.length - 1) {
         pdf.addPage();
       }
