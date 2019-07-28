@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, AfterViewInit, Input } from '@angular/core';
 
-import { MatPaginator, MatSort } from '@angular/material';
-import { MatDialog } from '@angular/material';
+import { MatPaginator, MatSort, MatDialog, MatTableDataSource } from '@angular/material';
+
 
 //services
 import { GetLoiService } from '../../../../services/loi/get-loi.service';
@@ -33,7 +33,7 @@ export class DirectorViewOrganizationLoisComponent implements OnInit, AfterViewI
   displayedColumns = ['name', 'createdAt', 'submitted', 'status'];
   dataSource: any;//MatTableDataSource<OrganizationData>;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
@@ -62,7 +62,7 @@ export class DirectorViewOrganizationLoisComponent implements OnInit, AfterViewI
       this.HasLOIs = false;
     }
 
-    this.dataSource = this.lois;
+    this.dataSource = new MatTableDataSource(this.lois);
     // this.dataSource.paginator = this.paginator;
     // this.dataSource.sort = this.sort;
   }
