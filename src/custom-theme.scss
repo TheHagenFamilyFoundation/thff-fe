@@ -1,10 +1,87 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 @include mat-core();
 
-$my-app-primary: mat-palette($mat-blue-grey);
-$my-app-accent:  mat-palette($mat-pink, 500, 900, A100);
-$my-app-warn:    mat-palette($mat-deep-orange);
+// $my-app-primary: mat-palette($mat-blue-grey);
+// $my-app-accent:  mat-palette($mat-pink, 500, 900, A100);
+// $my-app-warn:    mat-palette($mat-deep-orange);
 
-$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+// $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
-@include angular-material-theme($my-app-theme);
+// @include angular-material-theme($my-app-theme);
+
+// define a real custom palette (using http://mcg.mbitson.com)
+$bv-brand: (
+  50: #e7f1e8,
+  100: #c3ddc5,
+  200: #9cc79e,
+  300: #74b077,
+  400: #569f59,
+  500: #388e3c,
+  600: #328636,
+  700: #2b7b2e,
+  800: #247127,
+  900: #175f1a,
+  A100: #9aff9d,
+  A200: #67ff6b,
+  A400: #34ff3a,
+  A700: #1aff21,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$bv-orange: (
+  50: #fcfef9,
+  100: #f8fdef,
+  200: #f4fbe5,
+  300: #eff9db,
+  400: #ebf8d3,
+  500: #e8f7cb,
+  600: #e5f6c6,
+  700: #e2f5be,
+  800: #def3b8,
+  900: #d8f1ac,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+// mandatory stuff for theming
+$bv-palette-primary: mat-palette($bv-brand);
+$bv-palette-accent: mat-palette($bv-orange);
+
+// include the custom theme components into a theme object
+$bv-theme: mat-light-theme($bv-palette-primary, $bv-palette-accent);
+
+// include the custom theme object into the angular material theme
+@include angular-material-theme($bv-theme);

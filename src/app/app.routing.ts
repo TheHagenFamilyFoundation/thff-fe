@@ -64,9 +64,9 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
 const appRoutes: Routes = [
-    // { path: '', component: HomeComponent },
-    { path: '', component: GettingStartedComponent },
-    { path: 'old-home', component: HomeComponent },
+    { path: '', component: HomeComponent },
+    // { path: '', component: GettingStartedComponent },
+    // { path: 'old-home', component: HomeComponent },
     //login
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },

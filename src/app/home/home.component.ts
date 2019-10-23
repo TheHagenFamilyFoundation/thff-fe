@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   title = "Home"
 
-  fullImagePath = '/assets/images/thfflogo1.JPG';
+  fullImagePath = '/assets/images/thfflogo1.png';
   fullImagePath2 = '/assets/images/cv_busses1.JPG';
 
   env: any;

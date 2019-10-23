@@ -1,3 +1,8 @@
-mat-grid-tile {
-    background: lightblue;
-  }
+.background {
+  background: #e8f7cb;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  width: 100% !important;
+}
