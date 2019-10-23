@@ -1,123 +1,117 @@
-<!-- <div align="center">
-    <h2>{{title}}</h2>
-</div> -->
-<div *ngIf="!authService.isExpired()">
-    <h1>Hi {{currentUser?.username}}!</h1>
-</div>
-<div *ngIf="authService.isExpired()">
-    Please Login
-</div>
 <div>
-    {{env}} - {{API}} - {{InOrganization}} - {{accessLevel}}
-</div>
+  <div>
+    <div *ngIf="!authService.isExpired()">
+      <h1>Hi {{ currentUser?.username }}!</h1>
+    </div>
+    <div *ngIf="authService.isExpired()">
+      Please Login
+    </div>
+  </div>
+  <div>{{ env }} - {{ API }} - {{ InOrganization }} - {{ accessLevel }}</div>
 
-<br>
-<div align="center">
-    <mat-grid-list cols="2" rowHeight="300px">
-        <mat-grid-tile>
-            <div align="center">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <img [src]="fullImagePath" width="200px" height="200px">
-                        <div align="center">
-                            Welcome
-                            <br>
-                            <div>
-                                The Hagen Family Foundation provides financial grants to not-for-profit organizations
-                                in the areas of the arts, education,
-                                environment, religion, and social services.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <div align="center">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <img [src]="fullImagePath2" width="200px" height="200px">
-                        <div align="center">
-                            The Christus Victor pre-school children are happy with their new buses. The Foundation was
-                            delighted to help with their purchase
-                            (2009).
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </mat-grid-tile>
-    </mat-grid-list>
-</div>
+  <header class="w3-container w3-center" style="padding:128px 16px">
+    <img [src]="fullImagePath" width="225px" height="200px" />
+    <h1 class="w3-margin w3-jumbo">Welcome</h1>
+    <p>
+      The Hagen Family Foundation provides financial grants to not-for-profit
+      organizations in the areas of the arts, education, environment, religion,
+      and social services.
+    </p>
+  </header>
 
-<br>
-<div align="center">
-    <mat-grid-list cols="3" rowHeight="200px">
-        <mat-grid-tile>
-            <div align="center">
-                <a [routerLink]="['/about']">About Us</a>
-                <br> Our Mission, Board of Directors, and Public Information
-            </div>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <div align="center">
-                <table>
-                    <tr>
-                        <div align="center">
-                            <td>
-                                <a [routerLink]="['/application-materials']">Application Materials</a>
-                            </td>
-                        </div>
+  <div class="w3-row-padding w3-padding-64 w3-container background">
+    <div class="w3-content">
+      <div align="center">
+        <div class="col-xs-12">
+          <img [src]="fullImagePath2" width="200px" height="200px" />
+          <div align="center">
+            The Christus Victor pre-school children are happy with their new
+            buses. The Foundation was delighted to help with their purchase
+            (2009).
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                    </tr>
-                    <tr>
-                        <div align="center">
-                            <td>
-                                <a [routerLink]="['/application-timeline']">Application Timeline</a>
-                            </td>
-                        </div>
+  <br />
 
-                    </tr>
-                    <tr>
-                        <div align="center">
-                            <td>
-                                <a href="mailto:support@hagen.foundation" target="_top">Contact Us</a>
-                            </td>
-                        </div>
+  <div align="center">
+    <div align="center">
+      <a [routerLink]="['/about']">About Us</a>
+      <br />
+      Our Mission, Board of Directors, and Public Information
+    </div>
+    <div align="center">
+      <table>
+        <tr>
+          <div align="center">
+            <td>
+              <a [routerLink]="['/application-materials']"
+                >Application Materials</a
+              >
+            </td>
+          </div>
+        </tr>
+        <tr>
+          <div align="center">
+            <td>
+              <a [routerLink]="['/application-timeline']"
+                >Application Timeline</a
+              >
+            </td>
+          </div>
+        </tr>
+        <tr>
+          <div align="center">
+            <td>
+              <a href="mailto:support@hagen.foundation" target="_top"
+                >Contact Us</a
+              >
+            </td>
+          </div>
+        </tr>
+      </table>
+    </div>
+    <div align="center">
+      <table>
+        <tr>
+          <div align="center">
+            <td>
+              <a [routerLink]="['/inthenews']">THFF In The News</a>
+            </td>
+          </div>
+        </tr>
+        <tr>
+          <div align="center">
+            <td>
+              <a [routerLink]="['/grants-awarded']">Grants Awarded</a>
+            </td>
+          </div>
+        </tr>
+        <tr>
+          <div align="center">
+            <td>
+              <a [routerLink]="['/frequently-asked-questions']"
+                >Frequently Asked Questions</a
+              >
+            </td>
+          </div>
+        </tr>
+      </table>
+    </div>
+  </div>
 
-                    </tr>
-                </table>
-            </div>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <div align="center">
-                <table>
-                    <tr>
-                        <div align="center">
-                            <td>
-                                <a [routerLink]="['/inthenews']">THFF In The News</a>
-                            </td>
-                        </div>
-
-                    </tr>
-                    <tr>
-                        <div align="center">
-                            <td>
-                                <a [routerLink]="['/grants-awarded']">Grants Awarded</a>
-                            </td>
-                        </div>
-
-                    </tr>
-                    <tr>
-                        <div align="center">
-                            <td>
-                                <a [routerLink]="['/frequently-asked-questions']">Frequently Asked Questions</a>
-                            </td>
-                        </div>
-
-                    </tr>
-                </table>
-            </div>
-
-        </mat-grid-tile>
-    </mat-grid-list>
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity">
+    Footer - Placeholder
+    <div class="w3-xlarge w3-padding-32">
+      <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      <i class="fa fa-instagram w3-hover-opacity"></i>
+      <i class="fa fa-snapchat w3-hover-opacity"></i>
+      <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+      <i class="fa fa-twitter w3-hover-opacity"></i>
+      <i class="fa fa-linkedin w3-hover-opacity"></i>
+    </div>
+  </footer>
 </div>
