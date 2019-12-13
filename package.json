@@ -41,7 +41,7 @@
     "ngx-currency": "^1.5.2",
     "ngx-page-scroll": "^6.0.2",
     "ngx-page-scroll-core": "^6.0.2",
-    "npm": "^6.10.2",
+    "npm": "^6.13.4",
     "path": "^0.12.7",
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.5.2",
