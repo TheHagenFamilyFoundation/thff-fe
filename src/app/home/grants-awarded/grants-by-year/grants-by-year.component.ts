@@ -64,7 +64,4 @@ export class GrantsByYearComponent implements OnInit {
       });
   }//end of getGrantsByYear
 
-
-
-
 }
