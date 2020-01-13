@@ -11,6 +11,10 @@ app.get('/backend', (req, res) => {
   res.send({ url: process.env.BE_API })
 });
 
+app.get('/test', (req, res) => {
+  res.send({ url: process.env.HAPPY })
+});
+
 
 // For all GET requests, send back index.html
 // so that PathLocationStrategy can be used
