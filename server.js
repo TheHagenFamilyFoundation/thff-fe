@@ -15,7 +15,6 @@ app.get('/test', (req, res) => {
   res.send({ url: process.env.HAPPY })
 });
 
-
 // For all GET requests, send back index.html
 // so that PathLocationStrategy can be used
 app.get('/*', function (req, res) {
