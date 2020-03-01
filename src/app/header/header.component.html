@@ -4,15 +4,24 @@
     <button mat-button routerLink="/" fxHide="false">
       <mat-icon>home</mat-icon>
     </button>
+    </div>
+  </mat-toolbar>
+
+<!-- <mat-toolbar color="primary">
+
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button routerLink="/" fxHide="false">
+      <mat-icon>home</mat-icon>
+    </button>
     <div *ngIf="authService.isExpired()">
       <button mat-button routerLink="/login" fxHide="false">Login</button>
-    </div>
+    </div> -->
     <!-- Keep -->
     <!-- <div *ngIf="authService.isExpired()" fxHide="false">
       <button mat-button routerLink="/register">Register</button>
     </div> -->
 
-    <div *ngIf="!authService.isExpired()">
+    <!-- <div *ngIf="!authService.isExpired()">
       <div *ngIf="!InOrganization">
         <button mat-button routerLink="/create-organization" fxHide="false">Create Organization</button>
       </div>
@@ -25,26 +34,26 @@
       </div>
     </div>
 
-    <div *ngIf="!authService.isExpired() && directorService.isDirector()">
+    <div *ngIf="!authService.isExpired() && directorService.isDirector()"> -->
       <!-- <div *ngIf="IsDirector"> -->
-      <button mat-button routerLink="/director" fxHide="false">Directors</button>
+      <!-- <button mat-button routerLink="/director" fxHide="false">Directors</button> -->
       <!-- </div> -->
-    </div>
+    <!-- </div>
 
-  </div>
+  </div> -->
 
 
 
-  <button mat-button [matMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
+  <!-- <button mat-button [matMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
     <mat-icon>menu</mat-icon>
-  </button>
+  </button> -->
 
   <!-- This fills the remaining space of the current row -->
-  <span class="example-spacer"></span>
+  <!-- <span class="example-spacer"></span>
 
-  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm> -->
     <!-- logged in -->
-    <div *ngIf="!authService.isExpired()">
+    <!-- <div *ngIf="!authService.isExpired()">
       <button mat-button [matMenuTriggerFor]="user">
         User
         <mat-icon>account_circle</mat-icon>
@@ -61,7 +70,7 @@
     </div>
   </mat-menu>
 
-</mat-toolbar>
+</mat-toolbar> -->
 
 
 
@@ -69,14 +78,14 @@
 
 
 <!-- Shown when the window is for mobile or smaller-->
-<mat-menu x-position="before" #menu="matMenu">
+<!-- <mat-menu x-position="before" #menu="matMenu">
   <div *ngIf="authService.isExpired()">
     <button mat-button routerLink="/login">Login</button>
-  </div>
+  </div> -->
   <!-- <div *ngIf="authService.isExpired()">
     <button mat-button routerLink="/register">Register</button>
   </div> -->
-  <div *ngIf="!authService.isExpired()">
+  <!-- <div *ngIf="!authService.isExpired()">
     <button mat-button (click)="authService.logout()">Logout</button>
   </div>
-</mat-menu>
+</mat-menu> -->
