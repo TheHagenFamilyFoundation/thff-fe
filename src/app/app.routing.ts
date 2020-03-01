@@ -6,6 +6,7 @@ import { AuthGuard } from './_guards/auth.guard';
 //Home
 import { HomeComponent } from './home/home.component';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
+import { PortalMovedComponent } from './portal-moved/portal-moved.component';
 
 import { AboutusComponent } from './home/aboutus/aboutus.component'
 import { ApplicationMaterialsComponent } from './home/application-materials/application-materials.component';
@@ -65,62 +66,62 @@ const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
 const appRoutes: Routes = [
     // { path: '', component: HomeComponent },
-    { path: '', component: GettingStartedComponent },
-    { path: 'old-home', component: HomeComponent },
-    //login
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'reset-password-or-username', component: ResetPasswordOrUsernameComponent },
-    { path: 'type-new-password/:username/:resetCode', component: TypeNewPasswordComponent },
+    { path: '', component: PortalMovedComponent },
+    // { path: 'old-home', component: HomeComponent },
+    // //login
+    // { path: 'login', component: LoginComponent },
+    // { path: 'register', component: RegisterComponent },
+    // { path: 'reset-password-or-username', component: ResetPasswordOrUsernameComponent },
+    // { path: 'type-new-password/:username/:resetCode', component: TypeNewPasswordComponent },
 
-    { path: 'about', component: AboutusComponent },
-    { path: 'application-materials', component: ApplicationMaterialsComponent },
-    { path: 'process', component: ProcessComponent },
+    // { path: 'about', component: AboutusComponent },
+    // { path: 'application-materials', component: ApplicationMaterialsComponent },
+    // { path: 'process', component: ProcessComponent },
 
-    { path: 'application-timeline', component: ApplicationTimelineComponent },
+    // { path: 'application-timeline', component: ApplicationTimelineComponent },
 
-    { path: 'inthenews', component: InthenewsComponent },
-    //child routes
+    // { path: 'inthenews', component: InthenewsComponent },
+    // //child routes
 
-    { path: 'grants-awarded', component: GrantsAwardedComponent },
-    { path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent },
+    // { path: 'grants-awarded', component: GrantsAwardedComponent },
+    // { path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent },
 
-    { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+    // { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
 
-    { path: 'organization/:id', component: OrganizationComponent, canActivate: [AuthGuard] },
-    { path: 'create-organization', component: CreateOrganizationFullComponent, canActivate: [AuthGuard] },
-    { path: 'view-organizations', component: ViewOrganizationsComponent, canActivate: [AuthGuard] },
+    // { path: 'organization/:id', component: OrganizationComponent, canActivate: [AuthGuard] },
+    // { path: 'create-organization', component: CreateOrganizationFullComponent, canActivate: [AuthGuard] },
+    // { path: 'view-organizations', component: ViewOrganizationsComponent, canActivate: [AuthGuard] },
 
-    //Letter of Intent
-    { path: 'loi/:id', component: LetterOfIntentComponent, canActivate: [AuthGuard] },
-    { path: 'create-loi-full', component: CreateLetterOfIntentFullComponent, canActivate: [AuthGuard] },
+    // //Letter of Intent
+    // { path: 'loi/:id', component: LetterOfIntentComponent, canActivate: [AuthGuard] },
+    // { path: 'create-loi-full', component: CreateLetterOfIntentFullComponent, canActivate: [AuthGuard] },
 
-    //Full Proposal
-    { path: 'fp/:id', component: FullProposalComponent, canActivate: [AuthGuard] },
-    { path: 'create-fp-full/:orgID/:loiID', component: CreateFullProposalFullComponent, canActivate: [AuthGuard] },
+    // //Full Proposal
+    // { path: 'fp/:id', component: FullProposalComponent, canActivate: [AuthGuard] },
+    // { path: 'create-fp-full/:orgID/:loiID', component: CreateFullProposalFullComponent, canActivate: [AuthGuard] },
 
-    { path: 'director', component: DirectorsMenuComponent, canActivate: [AuthGuard] },
-    { path: 'director/organizations', component: DirectorOrganizationsComponent, canActivate: [AuthGuard] },
-    { path: 'director/lois', component: DirectorLoisComponent, canActivate: [AuthGuard] },
-    { path: 'director/fullproposals', component: DirectorFpsComponent, canActivate: [AuthGuard] },
-    { path: 'director/users', component: DirectorsMenuComponent, canActivate: [AuthGuard] },
-    { path: 'director-organization/:id', component: DirectorViewOrganizationComponent, canActivate: [AuthGuard] },
-    { path: 'director-loi/:id', component: DirectorOrgViewLetterOfIntentComponent, canActivate: [AuthGuard] },
-    { path: 'director-fp/:id', component: DirectorViewFPComponent, canActivate: [AuthGuard] },
+    // { path: 'director', component: DirectorsMenuComponent, canActivate: [AuthGuard] },
+    // { path: 'director/organizations', component: DirectorOrganizationsComponent, canActivate: [AuthGuard] },
+    // { path: 'director/lois', component: DirectorLoisComponent, canActivate: [AuthGuard] },
+    // { path: 'director/fullproposals', component: DirectorFpsComponent, canActivate: [AuthGuard] },
+    // { path: 'director/users', component: DirectorsMenuComponent, canActivate: [AuthGuard] },
+    // { path: 'director-organization/:id', component: DirectorViewOrganizationComponent, canActivate: [AuthGuard] },
+    // { path: 'director-loi/:id', component: DirectorOrgViewLetterOfIntentComponent, canActivate: [AuthGuard] },
+    // { path: 'director-fp/:id', component: DirectorViewFPComponent, canActivate: [AuthGuard] },
 
 
-    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+    // { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
 
-    {
-        path: 'externalRedirect',
-        resolve: {
-            url: externalUrlProvider,
-        },
-        // We need a component here because we cannot define the route otherwise
-        component: NotFoundComponent,
-    },
+    // {
+    //     path: 'externalRedirect',
+    //     resolve: {
+    //         url: externalUrlProvider,
+    //     },
+    //     // We need a component here because we cannot define the route otherwise
+    //     component: NotFoundComponent,
+    // },
 
-    { path: 'email', component: EmailComponent },
+    // { path: 'email', component: EmailComponent },
 
     { path: '**', redirectTo: '' }
 ];

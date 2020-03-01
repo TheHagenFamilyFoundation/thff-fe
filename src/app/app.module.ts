@@ -139,6 +139,7 @@ import { CreateFieldOpenFpService } from './services/full-proposal/utility/creat
 //Home
 import { HomeComponent } from './home/home.component';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
+import { PortalMovedComponent } from './portal-moved/portal-moved.component';
 
 import { HeaderComponent } from './header/header.component';
 
@@ -275,6 +276,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         //Home
         HomeComponent,
         GettingStartedComponent,
+        PortalMovedComponent,
 
         AboutusComponent, ApplicationMaterialsComponent, ApplicationTimelineComponent,
         InthenewsComponent, FrequentlyAskedQuestionsComponent, ProcessComponent,
@@ -367,6 +369,7 @@ import { NotFoundComponent } from './utilities/not-found/not-found.component';
         NotFoundComponent,
 
         PhoneMaskDirective,
+
     ],
     imports: [BrowserModule,
         HttpClientModule, HttpClientXsrfModule.withOptions({
